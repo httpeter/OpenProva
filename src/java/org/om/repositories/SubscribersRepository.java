@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.List;
 import org.om.model.Activity;
 import org.om.model.Contact;
-import org.om.model.Project;
 
 public class SubscribersRepository extends DefaultRepository implements Serializable
 {

@@ -30,7 +30,7 @@ public class DBScaffolder implements Serializable
             l.setSixteenCharsEncryptionPassword("secret0000000000");
             l.setSixteenCharsEncryptionSalt("confusing0000000");
 
-            l.setAppTitle("Inschrijven");
+            l.setAppTitle("OpenProva");
             l.setOrganizationName("VU-Kamerorkest");
             l.setWelcomeMSG("welkom...");
             l.setMSGTimeoutHeader("Sessie Verlopen!");

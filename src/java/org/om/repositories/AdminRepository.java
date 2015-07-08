@@ -1,6 +1,9 @@
 package org.om.repositories;
 
 import java.io.Serializable;
+import java.util.List;
+import org.om.model.Activity;
+import org.om.model.Contact;
 import org.om.model.User;
 
 public class AdminRepository extends DefaultRepository implements Serializable
@@ -30,4 +33,41 @@ public class AdminRepository extends DefaultRepository implements Serializable
         }
         return null;
     }
+
+    public List<Activity> getProjectActivities(long projectId, boolean isMasterActivity)
+    {
+        if (this.getEmf().isOpen() && this.getEm().isOpen())
+        {
+            return this.getEm().createQuery("select a from Activity a where a.projectId = :projectId and a.isMasterActivity = :isMasterActivity")
+                    .setParameter("projectId", projectId)
+                    .setParameter("isMasterActivity", isMasterActivity).getResultList();
+        }
+        return null;
+    }
+
+    public List<Activity> getContactActivities(Contact c, boolean isMasterActivity)
+    {
+        if (this.getEmf().isOpen() && this.getEm().isOpen())
+        {
+            return this.getEm().createQuery("select a from Activity a where a.contactId = :contactId and a.isMasterActivity = :isMasterActivity")
+                    .setParameter("contactId", c.getId())
+                    .setParameter("isMasterActivity", isMasterActivity).getResultList();
+        }
+        return null;
+    }
+
+    public boolean subscriptionRemoved(Activity a)
+    {
+        if (this.getEmf().isOpen() && this.getEm().isOpen())
+        {
+            this.getEm().getTransaction().begin();
+            a = this.getEm().merge(a);
+            this.getEm().remove(a);
+            this.getEm().getTransaction().commit();
+            this.getEm().clear();
+            return true;
+        }
+        return false;
+    }
+
 }

@@ -6,6 +6,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
+import org.om.model.Activity;
 import org.om.model.Contact;
 import org.om.model.User;
 import org.om.repositories.AdminRepository;
@@ -140,9 +141,9 @@ public class AdminController implements Serializable
                 && adminRepository.persisted(newContact))
         {
             msg.info(newContact.getFirstName()
-                    .concat(" ")
-                    .concat(newContact.getLastName())
-                    .concat(" saved"));
+                    + " "
+                    + newContact.getLastName()
+                    + " saved");
         } else
         {
             msg.error("new contact not saved");
@@ -156,10 +157,11 @@ public class AdminController implements Serializable
                 && mail.addressValid(selectedContact.getEmail())
                 && adminRepository.persisted(selectedContact))
         {
-            msg.info(selectedContact.getFirstName()
-                    .concat(" ")
-                    .concat(selectedContact.getLastName())
-                    .concat(" saved"));
+            msg.info("Contact "
+                    + selectedContact.getFirstName()
+                    + " "
+                    + selectedContact.getLastName()
+                    + " saved");
         } else
         {
             msg.error("existing contact not saved");
@@ -170,14 +172,38 @@ public class AdminController implements Serializable
     {
         if (adminRepository.deleted(selectedContact))
         {
-            msg.info(selectedContact.getFirstName()
-                    .concat(" ")
-                    .concat(selectedContact.getLastName())
-                    .concat(" deleted"));
+            msg.info("Contact '"
+                    + selectedContact.getFirstName()
+                    + " "
+                    + selectedContact.getLastName()
+                    + "' deleted");
         } else
         {
             msg.error("existing contact not deleted");
         }
+
+        List<Activity> selectedContactActivities = adminRepository
+                .getContactActivities(selectedContact, false);
+        selectedContactActivities.forEach((activity) ->
+        {
+            if (adminRepository.subscriptionRemoved(activity))
+            {
+                msg.info("Subscription id: "
+                        + activity.getId()
+                        + ", "
+                        + activity.getDescription()
+                        + ", " + activity.getDate()
+                        + " removed");
+            } else
+            {
+                msg.error("Subscription id: "
+                        + activity.getId()
+                        + ", "
+                        + activity.getDescription()
+                        + ", " + activity.getDate()
+                        + " could not be removed");
+            }
+        });
     }
 
 }
