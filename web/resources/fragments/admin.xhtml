@@ -1,0 +1,261 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+
+
+    <!--Admin login panel-->
+    <h:panelGrid  columns="2" rendered="#{!adminController.currentUserIsAdmin}">
+        <p:inputText id="auText" value="#{adminController.currentUser.username}">
+            <p:watermark for="auText" value="#{indexController.labels.adminUsername}"/>
+        </p:inputText>
+        <p:outputLabel value="*"/>
+        <p:password id="auPwd" value="#{adminController.currentUser.password}">
+            <p:watermark for="auPwd" value="#{indexController.labels.adminPassword}"/>
+        </p:password>
+        <p:outputLabel value="*"/>
+        <p:commandButton value="Login" action="#{adminController.login()}" update="@form" styleClass="mySpecialButton"/>
+    </h:panelGrid>
+
+
+
+
+    <!--Admin content-->
+    <p:tabView id="adminTabView" rendered="#{adminController.currentUserIsAdmin}" style="border:none">
+
+
+        <p:tab title="#{indexController.labels.adminTabContacts}">
+
+
+            <p:panelGrid columns="2" layout="grid">
+
+                <p:commandButton value="#{indexController.labels.adminTabContactsAddContact}"
+                                 icon="ui-icon-document"  
+                                 oncomplete="PF('contactDLGNew').show()"/>
+
+                <h:panelGrid columns="4">
+                    <h:commandLink>
+                        <p:graphicImage value="/resources/img/excel.png" />
+                        <p:dataExporter type="xls" target="contactsTable" fileName="Leden"/>
+                    </h:commandLink>
+                    <h:commandLink>
+                        <p:graphicImage value="/resources/img/pdf.png" />
+                        <p:dataExporter type="pdf" target="contactsTable" fileName="Leden"/>
+                    </h:commandLink>
+                    <h:commandLink>
+                        <p:graphicImage value="/resources/img/csv.png" />
+                        <p:dataExporter type="csv" target="contactsTable" fileName="Leden"/>
+                    </h:commandLink>
+                    <h:commandLink>
+                        <p:graphicImage value="/resources/img/xml.png" />
+                        <p:dataExporter type="xml" target="contactsTable" fileName="Leden"/>
+                    </h:commandLink>
+                </h:panelGrid>
+
+            </p:panelGrid>
+
+
+
+
+            <p:spacer width="0" height="10"/>
+
+
+
+
+            <!--Contacts Datatable-->
+            <p:dataTable id="contactsTable" var="contact" 
+                         value="#{adminController.contacts}"
+                         rowKey="#{contact.email}" 
+                         selection="#{adminController.selectedContact}" 
+                         selectionMode="single"
+                         reflow="true">
+
+                <p:ajax event="rowSelect" 
+                        oncomplete="PF('changeContactDLG').show()" 
+                        update="mainForm:adminTabView:changeContactDLG"/>
+
+                <p:column headerText="#{indexController.labels.adminTabContactsTableFirstname}" 
+                          sortBy="#{contact.firstName}" 
+                          filterBy="#{contact.firstName}" 
+                          filterMatchMode="contains">
+                    <h:outputText value="#{contact.firstName}" />
+                </p:column>
+
+                <p:column headerText="#{indexController.labels.adminTabContactsTableLastname}" 
+                          sortBy="#{contact.lastName}" 
+                          filterBy="#{contact.lastName}" 
+                          filterMatchMode="contains">
+                    <h:outputText value="#{contact.lastName}" />
+                </p:column>
+
+                <p:column headerText="#{indexController.labels.adminTabContactsTableInstrument}" 
+                          sortBy="#{contact.instrument}" 
+                          filterBy="#{contact.instrument}" 
+                          filterMatchMode="contains">
+                    <h:outputText value="#{contact.instrument}"/>
+                </p:column>
+
+                <p:column headerText="#{indexController.labels.adminTabContactsTablePhone}"
+                          sortBy="#{contact.phone}" 
+                          filterBy="#{contact.phone}"
+                          filterMatchMode="contains">
+                    <h:outputText value="#{contact.phone}" />                                                    
+                </p:column>
+
+                <p:column headerText="#{indexController.labels.adminTabContactsTableEmail}"
+                          sortBy="#{contact.email}" 
+                          filterBy="#{contact.email}"
+                          filterMatchMode="contains">
+                    <h:outputText value="#{contact.email}" />
+                </p:column>
+
+                <p:column headerText="#{indexController.labels.adminTabContactsTableNotes}"
+                          sortBy="#{contact.notes}"
+                          filterBy="#{contact.notes}" 
+                          filterMatchMode="contains">
+                    <h:outputText value="#{contact.notes}" />
+                </p:column>
+
+            </p:dataTable>
+
+
+
+
+            <!--Change contact DLG-->
+            <p:dialog id="changeContactDLG"
+                      widgetVar="changeContactDLG" 
+                      header="Edit #{adminController.selectedContact.firstName} #{adminController.selectedContact.lastName}"
+                      modal="true" 
+                      dynamic="true"
+                      closeOnEscape="true" 
+                      fitViewport="true" height="700">
+
+                <p:panelGrid columns="2" layout="grid" >
+                    <p:outputLabel value="#{indexController.labels.adminTabContactsTableFirstname}*"/>
+                    <p:inputText value="#{adminController.selectedContact.firstName}"/>
+
+                    <p:outputLabel value="#{indexController.labels.adminTabContactsTableLastname}"/>
+                    <p:inputText value="#{adminController.selectedContact.lastName}"/>
+
+                    <p:outputLabel value="#{indexController.labels.adminTabContactsTableInstrument}"/>
+                    <p:inputText value="#{adminController.selectedContact.instrument}"/>
+
+                    <p:outputLabel value="#{indexController.labels.adminTabContactsTablePhone}"/>
+                    <p:inputText value="#{adminController.selectedContact.phone}"/>
+
+                    <p:outputLabel value="#{indexController.labels.adminTabContactsTableEmail}*"/>
+                    <p:inputText value="#{adminController.selectedContact.email}"/>
+
+                    <p:outputLabel value="#{indexController.labels.adminTabContactsTableNotes}"/>
+                    <p:inputTextarea value="#{adminController.selectedContact.notes}"/>
+                </p:panelGrid>
+
+                <p:spacer/>
+
+                <p:panelGrid columns="2" layout="grid">
+                    <p:commandButton value="Save" icon="ui-icon-disk"
+                                     action="#{adminController.saveContact()}"
+                                     update="@form" 
+                                     oncomplete="PF('changeContactDLG').hide()"
+                                     styleClass="mySpecialButton"/>
+
+                    <p:commandButton value="Cancel"
+                                     icon="ui-icon-arrowreturn-1-n" 
+                                     onclick="PF('changeContactDLG').hide()"
+                                     styleClass="mySpecialButton"/>
+                </p:panelGrid>
+
+                <p:spacer/>
+                <p:separator/>
+                <p:spacer/>
+
+                <p:commandButton icon="ui-icon-closethick" 
+                                 value="Delete #{adminController.selectedContact.firstName} #{adminController.selectedContact.lastName}" 
+                                 oncomplete="PF('delDLG').show();"
+                                 update="@form"
+                                 styleClass="mySpecialButton"/>
+            </p:dialog>
+
+
+
+
+
+            <!--New Contact DLG-->
+            <p:dialog id="contactDLGNew"
+                      widgetVar="contactDLGNew" 
+                      header="New Contact"
+                      modal="true" 
+                      dynamic="true"
+                      closeOnEscape="true" 
+                      fitViewport="true" height="700">
+
+                <p:panelGrid columns="2" layout="grid" >
+                    <p:outputLabel value="#{indexController.labels.adminTabContactsTableFirstname}*"/>
+                    <p:inputText value="#{adminController.newContact.firstName}"/>
+
+                    <p:outputLabel value="#{indexController.labels.adminTabContactsTableLastname}"/>
+                    <p:inputText value="#{adminController.newContact.lastName}"/>
+
+                    <p:outputLabel value="#{indexController.labels.adminTabContactsTableInstrument}"/>
+                    <p:inputText value="#{adminController.newContact.instrument}"/>
+
+                    <p:outputLabel value="#{indexController.labels.adminTabContactsTablePhone}"/>
+                    <p:inputText value="#{adminController.newContact.phone}"/>
+
+                    <p:outputLabel value="#{indexController.labels.adminTabContactsTableEmail}*"/>
+                    <p:inputText value="#{adminController.newContact.email}"/>
+
+                    <p:outputLabel value="#{indexController.labels.adminTabContactsTableNotes}"/>
+                    <p:inputTextarea value="#{adminController.newContact.notes}"/>
+                </p:panelGrid>
+
+                <p:spacer/>
+
+                <p:panelGrid columns="2" layout="grid">
+                    <p:commandButton value="Save" icon="ui-icon-disk"
+                                     action="#{adminController.saveNewContact()}"
+                                     update="@form" 
+                                     oncomplete="PF('contactDLGNew').hide()"
+                                     styleClass="mySpecialButton"/>
+
+                    <p:commandButton value="Cancel"
+                                     icon="ui-icon-arrowreturn-1-n" 
+                                     onclick="PF('contactDLGNew').hide()"
+                                     styleClass="mySpecialButton"/>
+                </p:panelGrid>
+
+            </p:dialog>
+
+
+
+
+
+
+            <!--Delete Contact DLG-->
+            <p:dialog widgetVar="delDLG" header="Please confirm..." 
+                      modal="true" 
+                      resizable="false" 
+                      closeOnEscape="true">
+                <h:outputText value="Delete #{adminController.selectedContact.firstName} #{adminController.selectedContact.lastName}?"/>
+                <br/>
+                <br/>
+                <p:commandButton value="Yes" icon="ui-icon-check" 
+                                 action="#{adminController.deleteContact()}" 
+                                 oncomplete="PF('delDLG').hide();" update="@form"/>
+
+                <p:commandButton value="No" 
+                                 onclick="PF('delDLG').hide();" 
+                                 icon="ui-icon-arrowthick-1-ne"/>
+            </p:dialog>
+
+
+
+
+        </p:tab>
+
+    </p:tabView>
+
+
+</ui:composition>

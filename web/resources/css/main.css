@@ -1,0 +1,31 @@
+.myDefaultBody
+{
+    font-size: 11pt;
+    font-family: arial;
+}
+
+.myMenuBar
+{
+    font-size: 14pt;
+}
+
+.mySpecialButton
+{
+    width: 100%;
+}
+
+.mySpecialInputTextarea
+{
+    width: 100%;
+}
+
+.myAdminButton
+{
+    color: yellowgreen;
+}
+
+/*PF inputfield overridden...*/
+.ui-inputfield
+{
+    width: 95%;
+}

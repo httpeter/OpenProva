@@ -1,0 +1,153 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <h:outputText value="#{indexController.labels.projectSubscriptionNewMSG}" escape="false"/>
+
+    <br/>
+
+    <p:panel header="#{indexController.labels.project} #{newController.selectedProject.projectName}">
+
+        <br/>
+
+        <h:selectOneMenu label="#{newController.selectedProject.projectName}" 
+                         value="#{newController.selectedProject.id}" 
+                         style="width:100%">
+            <f:selectItem itemLabel="#{indexController.labels.projectSelect}"/>
+            <f:selectItems value="#{newController.projects}" 
+                           var="project" 
+                           itemLabel="#{project.projectName}" 
+                           itemValue="#{project.id}"/>
+            <p:ajax listener="#{newController.selectProject()}" update="@form"/>
+        </h:selectOneMenu>
+
+        <br/>
+        <br/>
+
+        <h:panelGrid id="programmePanel" columns="3" rendered="#{not empty newController.selectedProject.projectName}">
+
+            <p:outputLabel value="#{indexController.labels.projectFrom}"/>
+            <p:outputLabel value=":"/>
+            <h:outputText value="#{newController.selectedProject.projectStartDate}">
+                <f:convertDateTime pattern="dd-MM-yyyy"/>
+            </h:outputText>
+
+            <p:outputLabel value="#{indexController.labels.projectUntil}"/>
+            <p:outputLabel value=":"/>
+            <h:outputText value="#{newController.selectedProject.projectEndDate}">
+                <f:convertDateTime pattern="dd-MM-yyyy"/>
+            </h:outputText>
+
+            <p:outputLabel value="#{indexController.labels.projectRepertoire}"/>
+            <p:outputLabel value=":"/>
+            <h:outputText value="#{newController.selectedProject.projectRepertoire}"/>
+
+        </h:panelGrid>
+
+    </p:panel>
+
+    <br/>
+
+    <p:panel header="#{indexController.labels.projectSubscriptionPanelHeader}" 
+             rendered="#{not empty newController.selectedProject.projectName}">
+
+        <br/>
+
+        <h:panelGrid columns="2" style="width:100%">                                        
+
+            <p:inputText id="a" value="#{newController.newContact.firstName}">
+                <p:watermark for="a" value="#{indexController.labels.adminTabContactsTableFirstname}"/>
+            </p:inputText>
+            <p:outputLabel value="*"/>                                       
+
+            <p:inputText id="b" value="#{newController.newContact.lastName}">
+                <p:watermark for="b" value="#{indexController.labels.adminTabContactsTableLastname}"/>
+            </p:inputText>
+            <p:outputLabel value="*"/>
+
+            <p:inputText id="c" value="#{newController.newContact.email}" >
+                <p:watermark for="c" value="#{indexController.labels.adminTabContactsTableEmail}"/>
+            </p:inputText>
+            <p:outputLabel value="*"/>
+
+            <p:inputText id="d" value="#{newController.newContact.phone}">
+                <p:watermark for="d" value="#{indexController.labels.adminTabContactsTablePhone}"/>
+            </p:inputText>
+            <p:outputLabel value="*"/>
+
+            <p:inputText id="e" value="#{newController.newContact.instrument}">
+                <p:watermark for="e" value="#{indexController.labels.adminTabContactsTableInstrument}"/>
+            </p:inputText>
+            <p:outputLabel value="*"/>
+
+        </h:panelGrid>
+
+        <br/>
+        <br/>
+
+        <p:selectBooleanCheckbox value="#{newController.allDatesSelected}" itemLabel="Alle data selecteren">
+            <p:ajax listener="#{newController.selectAllDates}" update="dTable"/>
+        </p:selectBooleanCheckbox>
+
+        <br/>
+        <br/>
+
+        <p:dataTable id="dTable" 
+                     var="date" 
+                     value="#{newController.projectActivities}"
+                     reflow="true">
+
+            <p:column headerText="#{indexController.labels.activityPresent}">
+                <p:selectBooleanCheckbox value="#{date.present}"/>
+            </p:column>
+
+            <p:column headerText="#{indexController.labels.activityDate}">
+                <h:outputText value="#{date.date}">
+                    <f:convertDateTime pattern="dd-MM-yyyy"/>
+                </h:outputText>
+            </p:column>
+
+            <p:column headerText="#{indexController.labels.activityTime}">
+                <h:outputText value="#{date.startTime}"/>
+                <h:outputText value=" - "/>
+                <h:outputText value="#{date.endTime}"/>
+            </p:column>
+
+            <p:column headerText="#{indexController.labels.activityDescription}">
+                <h:outputText value="#{date.description}"/>
+            </p:column>
+
+            <p:column headerText="#{indexController.labels.activityLocation}">
+                <h:outputText value="#{date.location}"/>
+            </p:column>
+
+            <p:column headerText="#{indexController.labels.activityCommentsByContact}">
+                <p:inputTextarea value="#{date.commentsByContact}" rows="1" cols="10"/>
+            </p:column>
+
+        </p:dataTable>
+
+        <br/>
+
+        <p:inputTextarea id="additionalMessage" 
+                         value="#{newController.additionalMessage}" 
+                         styleClass="mySpecialInputTextarea">
+            <p:watermark for="additionalMessage" value="#{indexController.labels.activityAdditionalMessage}"/>
+        </p:inputTextarea>
+
+        <br/>
+        <br/>
+
+        <p:commandButton value="#{indexController.labels.save}" 
+                         icon="ui-icon-disk" 
+                         action="#{newController.saveNewSubscription}" 
+                         update="@form"
+                         styleClass="mySpecialButton"/>
+        <br/>
+        <br/>
+
+    </p:panel>
+
+</ui:composition>   
