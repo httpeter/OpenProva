@@ -1,7 +1,7 @@
 # OpenProva
 <table>
   <tr>
-    <td><h2>Orchestra Manager</h2></td>
+    <td><h2>OpenProva - Manage musical projects</h2></td>
     <td><img alt='' src='http://www.vu-kamerorkest.nl/images/griff-blauw.png' width='100px' height='100px'/></td>
   </tr>
 </table>
