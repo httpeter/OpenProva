@@ -5,6 +5,7 @@ import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 import org.om.model.Activity;
 import org.om.model.Contact;
+import org.om.model.Labels;
 import org.om.model.Project;
 
 /**
@@ -33,11 +34,14 @@ public class MailFactory
             String additionalMessage) throws Exception
     {
 
-        String key = session.getAttribute("key").toString();
-        String salt = session.getAttribute("salt").toString();
-        AESEncryptor aESEncryptor = new AESEncryptor(key, salt);
+        Labels labels = (Labels) session.getAttribute("labels");
+        AESEncryptor aESEncryptor = new AESEncryptor(labels.getSixteenCharsEncryptionPassword(),
+                labels.getSixteenCharsEncryptionSalt());
 
-        System.out.println("Testmsg!: \n\n" + aESEncryptor.encrypt("Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit."));
+        String a = aESEncryptor.encrypt("Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.");
+        System.out.println("Testmsg!: \n\nEncrypted: "
+                + a
+                + "\nDecrypted:" + aESEncryptor.decrypt(a));
 
 //  #!#contactFirstName#!#
 //  #!#selectedProjectName#!#

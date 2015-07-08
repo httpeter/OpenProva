@@ -60,8 +60,7 @@ public class IndexController implements Serializable
         }
         LabelRepository labelRepository = new LabelRepository("OrchestraManagerPU");
         labels = labelRepository.getLabels();
-        session.setAttribute("key", labels.getSixteenCharsEncryptionPassword());
-        session.setAttribute("salt", labels.getSixteenCharsEncryptionSalt());
+        session.setAttribute("labels", labels);
         labelRepository.close();
         this.showHomeFragment();
     }

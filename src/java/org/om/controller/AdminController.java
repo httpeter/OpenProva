@@ -1,15 +1,20 @@
 package org.om.controller;
 
 import java.io.Serializable;
+import java.io.UnsupportedEncodingException;
 import java.util.List;
+import javax.crypto.BadPaddingException;
+import javax.crypto.IllegalBlockSizeException;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 import org.om.model.Activity;
 import org.om.model.Contact;
+import org.om.model.Labels;
 import org.om.model.User;
 import org.om.repositories.AdminRepository;
+import org.om.util.AESEncryptor;
 import org.om.util.FMessage;
 import org.om.util.MailFactory;
 
@@ -37,6 +42,10 @@ public class AdminController implements Serializable
     private Contact selectedContact = new Contact();
 
     private Contact newContact = new Contact();
+
+    private AESEncryptor aESEncryptor;
+
+    private Labels labels = (Labels) session.getAttribute("labels");
 
     //<editor-fold defaultstate="collapsed" desc="Getters & Setters">
     public Contact getNewContact()
@@ -100,17 +109,28 @@ public class AdminController implements Serializable
 //</editor-fold>
     public void login()
     {
-        User u = adminRepository.getUser(currentUser.getUsername(),
-                currentUser.getPassword(), "admin");
-        if (u != null)
+        try
         {
-            currentUser = u;
-            currentUserIsAdmin = true;
-            //Optional for now. should be triggered in another way..
-            loadContacts();
-        } else
+            aESEncryptor = new AESEncryptor(labels.getSixteenCharsEncryptionPassword(),
+                    labels.getSixteenCharsEncryptionSalt());
+
+            User u = adminRepository.getUser(aESEncryptor.encrypt(currentUser.getUsername()),
+                    aESEncryptor.encrypt(currentUser.getPassword()), "admin");
+
+            if (u != null)
+            {
+                currentUser = u;
+                currentUserIsAdmin = true;
+                //Optional for now. should be triggered in another way..
+                loadContacts();
+            } else
+            {
+                msg.warn("wrong login...");
+            }
+        } catch (UnsupportedEncodingException | IllegalBlockSizeException | BadPaddingException e)
         {
-            msg.warn("wrong login...");
+            e.printStackTrace();
+            msg.error("Login Error: " + e.getMessage());
         }
 
     }

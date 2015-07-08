@@ -5,6 +5,8 @@ package org.om.util;
 import java.io.Serializable;
 import java.sql.Date;
 import java.sql.Time;
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
 import org.om.model.Contact;
 import org.om.model.Labels;
 import org.om.model.Activity;
@@ -21,11 +23,10 @@ public class DBScaffolder implements Serializable
     {
         System.out.println("Restoring standard DB items...");
         FMessage msg = new FMessage();
+        Labels l = new Labels();
 
         if (defaultRepository.getResultList(Labels.class).isEmpty())
         {
-            Labels l = new Labels();
-
             //Dummy password and salt. Change for production or be vulnerable...
             l.setSixteenCharsEncryptionPassword("secret0000000000");
             l.setSixteenCharsEncryptionSalt("confusing0000000");
@@ -128,9 +129,18 @@ public class DBScaffolder implements Serializable
         if (defaultRepository.getResultList(User.class).isEmpty())
         {
             //Users
+
+            AESEncryptor aESEncryptor = new AESEncryptor(l.getSixteenCharsEncryptionPassword(),
+                    l.getSixteenCharsEncryptionSalt());
             User u = new User();
-            u.setUsername("test");
-            u.setPassword("user");
+            try
+            {
+                u.setUsername(aESEncryptor.encrypt("test"));
+                u.setPassword(aESEncryptor.encrypt("user"));
+            } catch (Exception e)
+            {
+                e.printStackTrace();
+            }
             u.setFirstName("Peter");
             u.setLastName("Hendriks");
             u.setRole("admin");
