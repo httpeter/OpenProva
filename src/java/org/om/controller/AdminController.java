@@ -23,7 +23,7 @@ public class AdminController implements Serializable
 
     private final AdminRepository adminRepository = new AdminRepository("OrchestraManagerPU");
 
-    private MailFactory mail = new MailFactory();
+    private final MailFactory mail = new MailFactory();
 
     private final FMessage msg = new FMessage();
 
