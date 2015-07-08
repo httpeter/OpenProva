@@ -206,6 +206,7 @@ public class AdminController implements Serializable
 
         List<Activity> selectedContactActivities = adminRepository
                 .getContactActivities(selectedContact, false);
+
         selectedContactActivities.forEach((activity) ->
         {
             if (adminRepository.subscriptionRemoved(activity))

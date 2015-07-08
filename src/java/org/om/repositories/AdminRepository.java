@@ -38,7 +38,9 @@ public class AdminRepository extends DefaultRepository implements Serializable
     {
         if (this.getEmf().isOpen() && this.getEm().isOpen())
         {
-            return this.getEm().createQuery("select a from Activity a where a.projectId = :projectId and a.isMasterActivity = :isMasterActivity")
+            return this.getEm()
+                    .createQuery("select a from Activity a where a.projectId = :projectId"
+                            + " and a.isMasterActivity = :isMasterActivity")
                     .setParameter("projectId", projectId)
                     .setParameter("isMasterActivity", isMasterActivity).getResultList();
         }
@@ -49,7 +51,9 @@ public class AdminRepository extends DefaultRepository implements Serializable
     {
         if (this.getEmf().isOpen() && this.getEm().isOpen())
         {
-            return this.getEm().createQuery("select a from Activity a where a.contactId = :contactId and a.isMasterActivity = :isMasterActivity")
+            return this.getEm()
+                    .createQuery("select a from Activity a where a.contactId = :contactId"
+                            + " and a.isMasterActivity = :isMasterActivity")
                     .setParameter("contactId", c.getId())
                     .setParameter("isMasterActivity", isMasterActivity).getResultList();
         }
