@@ -14,6 +14,9 @@ public class Labels implements Serializable {
 
     @Column(unique=false,updatable=true,insertable=true,nullable=true,length=255,scale=0,precision=0)
     @Basic
+    private String mailMSGNewMemberSubscriptionSubject;
+    @Column(unique=false,updatable=true,insertable=true,nullable=true,length=255,scale=0,precision=0)
+    @Basic
     private String activityAdditionalMessage;
     @Column(unique=false,updatable=true,insertable=true,nullable=true,length=255,scale=0,precision=0)
     @Basic
@@ -30,6 +33,9 @@ public class Labels implements Serializable {
     @Column(unique=false,updatable=true,insertable=true,nullable=true,length=255,scale=0,precision=0)
     @Basic
     private String project;
+    @Column(unique=false,updatable=true,insertable=true,nullable=true,length=2048,scale=0,precision=0)
+    @Basic
+    private String mailMSGToAdminNewMemberSubscriptionBody;
     @Column(unique=false,updatable=true,insertable=true,nullable=true,length=255,scale=0,precision=0)
     @Basic
     private String activityStartTime;
@@ -57,6 +63,9 @@ public class Labels implements Serializable {
     @Column(unique=false,updatable=true,insertable=true,nullable=true,length=255,scale=0,precision=0)
     @Basic
     private String MSGTimeoutBody;
+    @Column(unique=false,updatable=true,insertable=true,nullable=true,length=2048,scale=0,precision=0)
+    @Basic
+    private String mailMSGNewMemberSubscriptionBody;
     @Column(unique=false,updatable=true,insertable=true,nullable=true,length=255,scale=0,precision=0)
     @Basic
     private String adminTabContactsTableFirstname;
@@ -81,10 +90,10 @@ public class Labels implements Serializable {
     private String menuItemHome;
     @Column(unique=false,updatable=true,insertable=true,nullable=true,length=255,scale=0,precision=0)
     @Basic
-    private String activityTime;
-    @Column(unique=false,updatable=true,insertable=true,nullable=true,length=2048,scale=0,precision=0)
+    private String mailMSGToAdminNewMemberSubscriptionSubject;
+    @Column(unique=false,updatable=true,insertable=true,nullable=true,length=255,scale=0,precision=0)
     @Basic
-    private String mailMSGNewMemberSubscription;
+    private String activityTime;
     @Column(unique=false,updatable=true,insertable=true,nullable=true,length=255,scale=0,precision=0)
     @Basic
     private String adminTabContacts;
@@ -121,9 +130,6 @@ public class Labels implements Serializable {
     @Column(unique=false,updatable=true,insertable=true,nullable=true,length=255,scale=0,precision=0)
     @Basic
     private String menuItemProjects;
-    @Column(unique=false,updatable=true,insertable=true,nullable=true,length=2048,scale=0,precision=0)
-    @Basic
-    private String mailMSGToAdminNewMemberSubscription;
     @Column(unique=false,updatable=true,insertable=true,nullable=true,length=255,scale=0,precision=0)
     @Basic(fetch=FetchType.LAZY)
     private String sixteenCharsEncryptionSalt;
@@ -145,6 +151,14 @@ public class Labels implements Serializable {
 
     public Labels() {
 
+    }
+   
+    public String getMailMSGNewMemberSubscriptionSubject() {
+        return this.mailMSGNewMemberSubscriptionSubject;
+    }
+
+    public void setMailMSGNewMemberSubscriptionSubject(String mailMSGNewMemberSubscriptionSubject) {
+        this.mailMSGNewMemberSubscriptionSubject = mailMSGNewMemberSubscriptionSubject;
     }
    
     public String getActivityAdditionalMessage() {
@@ -193,6 +207,14 @@ public class Labels implements Serializable {
 
     public void setProject(String project) {
         this.project = project;
+    }
+   
+    public String getMailMSGToAdminNewMemberSubscriptionBody() {
+        return this.mailMSGToAdminNewMemberSubscriptionBody;
+    }
+
+    public void setMailMSGToAdminNewMemberSubscriptionBody(String mailMSGToAdminNewMemberSubscriptionBody) {
+        this.mailMSGToAdminNewMemberSubscriptionBody = mailMSGToAdminNewMemberSubscriptionBody;
     }
    
     public String getActivityStartTime() {
@@ -267,6 +289,14 @@ public class Labels implements Serializable {
         this.MSGTimeoutBody = MSGTimeoutBody;
     }
    
+    public String getMailMSGNewMemberSubscriptionBody() {
+        return this.mailMSGNewMemberSubscriptionBody;
+    }
+
+    public void setMailMSGNewMemberSubscriptionBody(String mailMSGNewMemberSubscriptionBody) {
+        this.mailMSGNewMemberSubscriptionBody = mailMSGNewMemberSubscriptionBody;
+    }
+   
     public String getAdminTabContactsTableFirstname() {
         return this.adminTabContactsTableFirstname;
     }
@@ -323,20 +353,20 @@ public class Labels implements Serializable {
         this.menuItemHome = menuItemHome;
     }
    
+    public String getMailMSGToAdminNewMemberSubscriptionSubject() {
+        return this.mailMSGToAdminNewMemberSubscriptionSubject;
+    }
+
+    public void setMailMSGToAdminNewMemberSubscriptionSubject(String mailMSGToAdminNewMemberSubscriptionSubject) {
+        this.mailMSGToAdminNewMemberSubscriptionSubject = mailMSGToAdminNewMemberSubscriptionSubject;
+    }
+   
     public String getActivityTime() {
         return this.activityTime;
     }
 
     public void setActivityTime(String activityTime) {
         this.activityTime = activityTime;
-    }
-   
-    public String getMailMSGNewMemberSubscription() {
-        return this.mailMSGNewMemberSubscription;
-    }
-
-    public void setMailMSGNewMemberSubscription(String mailMSGNewMemberSubscription) {
-        this.mailMSGNewMemberSubscription = mailMSGNewMemberSubscription;
     }
    
     public String getAdminTabContacts() {
@@ -433,14 +463,6 @@ public class Labels implements Serializable {
 
     public void setMenuItemProjects(String menuItemProjects) {
         this.menuItemProjects = menuItemProjects;
-    }
-   
-    public String getMailMSGToAdminNewMemberSubscription() {
-        return this.mailMSGToAdminNewMemberSubscription;
-    }
-
-    public void setMailMSGToAdminNewMemberSubscription(String mailMSGToAdminNewMemberSubscription) {
-        this.mailMSGToAdminNewMemberSubscription = mailMSGToAdminNewMemberSubscription;
     }
    
     public String getSixteenCharsEncryptionSalt() {

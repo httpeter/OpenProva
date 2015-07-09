@@ -5,8 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-import javax.faces.context.FacesContext;
-import javax.servlet.http.HttpSession;
 import org.om.model.Activity;
 import org.om.model.Contact;
 import org.om.model.Project;

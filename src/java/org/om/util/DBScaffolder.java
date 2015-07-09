@@ -5,8 +5,6 @@ package org.om.util;
 import java.io.Serializable;
 import java.sql.Date;
 import java.sql.Time;
-import javax.faces.context.FacesContext;
-import javax.servlet.http.HttpSession;
 import org.om.model.Contact;
 import org.om.model.Labels;
 import org.om.model.Activity;
@@ -81,7 +79,7 @@ public class DBScaffolder implements Serializable
             l.setActivityAdditionalMessage("Optioneel: bericht aan de blazers- dan wel strijkerschef...");
 
             //Mail messages subscription page
-            l.setMailMSGNewMemberSubscription("Beste #!#contactFirstName#!#,\n"
+            l.setMailMSGNewMemberSubscriptionBody("Beste #!#contactFirstName#!#,\n"
                     + "\\n\\n\n"
                     + "\\n\n"
                     + "Goed dat je je hebt aangemeld voor het project #!#selectedProjectName#!# van het #!#organizationName#!#.\\n\n"
@@ -104,7 +102,9 @@ public class DBScaffolder implements Serializable
                     + "\\n\n"
                     + "Bestuur VU-Kamerorkest\\n\n"
                     + "(dit bericht werd automatisch gegenereerd)");
-            l.setMailMSGToAdminNewMemberSubscription("");
+
+            //Doe hier iets mee...
+            l.setMailMSGToAdminNewMemberSubscriptionBody("hier moet nog wat...");
 
             //Admin panel
             l.setAdminUsername("Gebruikersnaam");
@@ -145,6 +145,7 @@ public class DBScaffolder implements Serializable
             u.setLastName("Hendriks");
             u.setRole("admin");
             u.setEmail("vuko.strijkerschef@gmail.com");
+            u.setEmailPassword("strijkerschef!");
             if (defaultRepository.persisted(u))
             {
                 msg.info("Standard users restored");

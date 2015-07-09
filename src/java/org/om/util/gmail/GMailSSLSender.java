@@ -22,7 +22,7 @@ public class GMailSSLSender implements Serializable
         this.gmailPwd = gmailPwd;
     }
 
-    public void send(String toAddress, String fromAddress, String subject, String body) throws MessagingException
+    public void send(String toAddress, String subject, String body) throws MessagingException
     {
         Properties props = new Properties();
         props.put("mail.smtp.host", "smtp.gmail.com");
@@ -44,7 +44,7 @@ public class GMailSSLSender implements Serializable
         {
             Message message;
             message = new MimeMessage(session);
-            message.setFrom(new InternetAddress(fromAddress));
+            message.setFrom(new InternetAddress(gmailUsr));
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(toAddress));
             message.setSubject(subject);
             message.setText(body);

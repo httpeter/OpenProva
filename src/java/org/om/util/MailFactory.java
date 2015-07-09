@@ -1,12 +1,16 @@
 package org.om.util;
 
+import static java.lang.Math.log;
 import java.util.List;
+import java.util.logging.Level;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 import org.om.model.Activity;
 import org.om.model.Contact;
 import org.om.model.Labels;
 import org.om.model.Project;
+import org.om.model.User;
+import org.om.util.gmail.GMailSSLSender;
 
 /**
  *
@@ -19,6 +23,10 @@ public class MailFactory
     private final HttpSession session = (HttpSession) FacesContext.getCurrentInstance()
             .getExternalContext()
             .getSession(false);
+
+    private final FMessage msg = new FMessage();
+
+    private GMailSSLSender mail;
 
     public final boolean addressValid(String emailAddress)
     {
@@ -35,65 +43,56 @@ public class MailFactory
     {
 
         Labels labels = (Labels) session.getAttribute("labels");
-        AESEncryptor aESEncryptor = new AESEncryptor(labels.getSixteenCharsEncryptionPassword(),
+        User currentUser = (User) session.getAttribute("currentUser");
+
+        AESEncryptor aESEncryptor = new AESEncryptor(
+                labels.getSixteenCharsEncryptionPassword(),
                 labels.getSixteenCharsEncryptionSalt());
 
-        
+        new Thread(() ->
+        {
+            while (true)
+            {
+                try
+                {
 
-//  #!#contactFirstName#!#
-//  #!#selectedProjectName#!#
-//  #!#selectedProjectRepertoire#!#
-//  #!#selectedProjectStartDate#!#
-//  #!#selectedProjectEndDate#!#
-//  #!#contactInstrument#!#
-// #!#organizationName#!#
-// #!#instrument#!#     
-        //was hiervoor contextURL werk aan het vervangen van de spaties en moeilijke karakters
-// #!#personalURL#!# (doe iets met een contactID ipv een naam!)
-// #!#membersUsername#!#
-// #!#membersPassword#!#
-//            inputNewRendered = false;
-//            new Thread(() ->
-//            {
-//                while (true)
-//                {
-//                    try
-//                    {
-//
-//                        senderCheck(contactInstrument);
-//                        mail = new SendGMailSSL(mailSender, mailSenderPwd);
-//                        mail.Send(contactEmail, mailSender, "Inschrijving VUKO "
-//                                + selectedProjectName, msg.toString());
-//
-//                        senderCheck(contactInstrument);
-//                        mail = new SendGMailSSL(mailSender, mailSenderPwd);
-//                        mail.Send(mailSender, mailSender, "Inschrijving nieuwe "
-//                                + contactInstrument, "Ingeschreven: "
-//                                + contactFirstName
-//                                + " "
-//                                + contactLastName
-//                                + "\nSpeelt: "
-//                                + contactInstrument
-//                                + "\nEmail: "
-//                                + contactEmail
-//                                + "\nTelefoon: "
-//                                + contactPhone
-//                                + "\nBeschikbaarheid: "
-//                                + contextURL.toString()
-//                                + "/index.xhtml?u=vuko&p=keuris&name="
-//                                + contactFirstName.replace(" ", "_")
-//                                + "%20"
-//                                + contactLastName.replace(" ", "_")
-//                                + "\n\n Controleer auditiebeleid!\n(dit bericht werd automatisch gegenereerd)");
-//                    } catch (Exception e)
-//                    {
-//                        log.log(Level.WARNING, e.getMessage());
-//                        throw new RuntimeException(e);
-//                    }
-//                    break;
-//                }
-//            }).start();
-//        } 
+                    mail = new GMailSSLSender(currentUser.getEmail(),
+                            currentUser.getEmailPassword());
+
+                    mail.send(contact.getEmail(),
+                            labels.getMailMSGNewMemberSubscriptionSubject(),
+                            labels.getMailMSGNewMemberSubscriptionBody()//replace tags....(aparte class maken?!)
+                    );
+
+                    senderCheck(contactInstrument);
+                    mail = new SendGMailSSL(mailSender, mailSenderPwd);
+                    mail.Send(mailSender, mailSender, "Inschrijving nieuwe "
+                            + contactInstrument, "Ingeschreven: "
+                            + contactFirstName
+                            + " "
+                            + contactLastName
+                            + "\nSpeelt: "
+                            + contactInstrument
+                            + "\nEmail: "
+                            + contactEmail
+                            + "\nTelefoon: "
+                            + contactPhone
+                            + "\nBeschikbaarheid: "
+                            + contextURL.toString()
+                            + "/index.xhtml?u=vuko&p=keuris&name="
+                            + contactFirstName.replace(" ", "_")
+                            + "%20"
+                            + contactLastName.replace(" ", "_")
+                            + "\n\n Controleer auditiebeleid!\n(dit bericht werd automatisch gegenereerd)");
+                } catch (Exception e)
+                {
+                    msg.error("Error sending mail: \n" + e.getMessage());
+                    throw new RuntimeException(e);
+                }
+                break;
+            }
+        }).start();
     }
+}
 
 }

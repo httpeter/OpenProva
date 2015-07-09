@@ -12,6 +12,9 @@
             <jpa:basic name="role" attribute-type="String" visibile="true" id="_14313627030735">
                 <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
             </jpa:basic>
+            <jpa:basic name="emailPassword" attribute-type="String" visibile="true" id="_143644629044224">
+                <jpa:column unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:basic>
         </jpa:attributes>
     </jpa:entity>
     <jpa:entity class="Labels" jaxb-root-element="false" static-metamodel="false" visibile="true" minimized="false" id="_1431427726267">
@@ -134,10 +137,10 @@
             <jpa:basic name="activityAdditionalMessage" attribute-type="String" visibile="true" id="_143565074981432">
                 <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
             </jpa:basic>
-            <jpa:basic name="mailMSGNewMemberSubscription" attribute-type="String" visibile="true" id="_143566800081112">
+            <jpa:basic name="mailMSGNewMemberSubscriptionBody" attribute-type="String" visibile="true" id="_143566800081112">
                 <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="2048" precision="0" scale="0"/>
             </jpa:basic>
-            <jpa:basic name="mailMSGToAdminNewMemberSubscription" attribute-type="String" visibile="true" id="_143566981707513">
+            <jpa:basic name="mailMSGToAdminNewMemberSubscriptionBody" attribute-type="String" visibile="true" id="_143566981707513">
                 <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="2048" precision="0" scale="0"/>
             </jpa:basic>
             <jpa:basic name="sixteenCharsEncryptionPassword" fetch="LAZY" attribute-type="String" visibile="true" id="_143593336340412">
@@ -145,6 +148,12 @@
             </jpa:basic>
             <jpa:basic name="sixteenCharsEncryptionSalt" fetch="LAZY" attribute-type="String" visibile="true" id="_143593340657313">
                 <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </jpa:basic>
+            <jpa:basic name="mailMSGNewMemberSubscriptionSubject" attribute-type="String" visibile="true" id="_143644648558436">
+                <jpa:column unique="false" nullable="true" insertable="true" updatable="true"/>
+            </jpa:basic>
+            <jpa:basic name="mailMSGToAdminNewMemberSubscriptionSubject" attribute-type="String" visibile="true" id="_143644648714437">
+                <jpa:column unique="false" nullable="true" insertable="true" updatable="true"/>
             </jpa:basic>
         </jpa:attributes>
     </jpa:entity>
@@ -249,10 +258,10 @@
     <jpa:diagram id="_14313464543468">
         <plane elementRef="_14313464543467" id="_14313464543469_p">
             <shape elementRef="_1431346516231" id="_1431346516231_gui">
-                <Bounds x="370.0" y="265.0" width="128.0" height="100.0"/>
+                <Bounds x="370.0" y="265.0" width="137.0" height="121.0"/>
             </shape>
             <shape elementRef="_1431427726267" id="_1431427726267_gui">
-                <Bounds x="10.0" y="20.0" width="288.0" height="953.0"/>
+                <Bounds x="10.0" y="20.0" width="329.0" height="995.0"/>
             </shape>
             <shape elementRef="_1432038649639" id="_1432038649639_gui">
                 <Bounds x="519.0" y="265.0" width="140.0" height="79.0"/>

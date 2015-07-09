@@ -45,7 +45,7 @@ public class AdminController implements Serializable
 
     private AESEncryptor aESEncryptor;
 
-    private Labels labels = (Labels) session.getAttribute("labels");
+    private final Labels labels = (Labels) session.getAttribute("labels");
 
     //<editor-fold defaultstate="collapsed" desc="Getters & Setters">
     public Contact getNewContact()
@@ -122,6 +122,7 @@ public class AdminController implements Serializable
             {
                 currentUser = u;
                 currentUserIsAdmin = true;
+                session.setAttribute("currentUser", currentUser);
                 //Optional for now. should be triggered in another way..
                 loadContacts();
             } else
