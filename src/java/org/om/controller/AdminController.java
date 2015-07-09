@@ -114,8 +114,7 @@ public class AdminController implements Serializable
             aESEncryptor = new AESEncryptor(labels.getSixteenCharsEncryptionPassword(),
                     labels.getSixteenCharsEncryptionSalt());
 
-            User u = adminRepository.getUser(
-                    aESEncryptor.encrypt(currentUser.getUsername().toLowerCase()),
+            User u = adminRepository.getUser(currentUser.getUsername().toLowerCase(),
                     aESEncryptor.encrypt(currentUser.getPassword().toLowerCase()),
                     "admin");
 

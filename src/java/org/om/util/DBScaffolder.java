@@ -135,7 +135,7 @@ public class DBScaffolder implements Serializable
             User u = new User();
             try
             {
-                u.setUsername(aESEncryptor.encrypt("test"));
+                u.setUsername("test");
                 u.setPassword(aESEncryptor.encrypt("user"));
             } catch (Exception e)
             {

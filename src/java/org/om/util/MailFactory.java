@@ -38,10 +38,7 @@ public class MailFactory
         AESEncryptor aESEncryptor = new AESEncryptor(labels.getSixteenCharsEncryptionPassword(),
                 labels.getSixteenCharsEncryptionSalt());
 
-        String a = aESEncryptor.encrypt("Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.");
-        System.out.println("Testmsg!: \n\nEncrypted: "
-                + a
-                + "\nDecrypted:" + aESEncryptor.decrypt(a));
+        
 
 //  #!#contactFirstName#!#
 //  #!#selectedProjectName#!#
