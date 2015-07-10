@@ -55,21 +55,24 @@ public class MailFactory
             {
                 try
                 {
+                    TagReplacer tr = new TagReplacer();
 
                     mail = new GMailSSLSender(currentUser.getEmail(),
                             currentUser.getEmailPassword());
 
                     // Send msg to new member
                     mail.send(contact.getEmail(),
-                            labels.getMailMSGNewMemberSubscriptionSubject(),
-                            labels.getMailMSGNewMemberSubscriptionBody()
-//replace tags....(aparte class maken?!)
-                    );
+                            tr.getReplacedString(labels.getMailMSGNewMemberSubscriptionSubject(),
+                                    project,
+                                    contact),
+                            tr.getReplacedString(labels.getMailMSGNewMemberSubscriptionBody(),
+                                    project,
+                                    contact));
 
                     // Send msg to admin about new subscription
-                    mail.send(contact.getEmail(),
-                            labels.getMailMSGNewMemberSubscriptionSubject(),
-                            labels.getMailMSGNewMemberSubscriptionBody()
+                    mail.send((String) session.getAttribute("currentUser"),
+                            labels.getMailMSGToAdminNewMemberSubscriptionSubject(),
+                            labels.getMailMSGToAdminNewMemberSubscriptionBody()
                     );
 
                 } catch (Exception e)
