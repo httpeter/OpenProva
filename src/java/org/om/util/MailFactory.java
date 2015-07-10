@@ -59,31 +59,19 @@ public class MailFactory
                     mail = new GMailSSLSender(currentUser.getEmail(),
                             currentUser.getEmailPassword());
 
+                    // Send msg to new member
                     mail.send(contact.getEmail(),
                             labels.getMailMSGNewMemberSubscriptionSubject(),
-                            labels.getMailMSGNewMemberSubscriptionBody()//replace tags....(aparte class maken?!)
+                            labels.getMailMSGNewMemberSubscriptionBody()
+//replace tags....(aparte class maken?!)
                     );
 
-                    senderCheck(contactInstrument);
-                    mail = new SendGMailSSL(mailSender, mailSenderPwd);
-                    mail.Send(mailSender, mailSender, "Inschrijving nieuwe "
-                            + contactInstrument, "Ingeschreven: "
-                            + contactFirstName
-                            + " "
-                            + contactLastName
-                            + "\nSpeelt: "
-                            + contactInstrument
-                            + "\nEmail: "
-                            + contactEmail
-                            + "\nTelefoon: "
-                            + contactPhone
-                            + "\nBeschikbaarheid: "
-                            + contextURL.toString()
-                            + "/index.xhtml?u=vuko&p=keuris&name="
-                            + contactFirstName.replace(" ", "_")
-                            + "%20"
-                            + contactLastName.replace(" ", "_")
-                            + "\n\n Controleer auditiebeleid!\n(dit bericht werd automatisch gegenereerd)");
+                    // Send msg to admin about new subscription
+                    mail.send(contact.getEmail(),
+                            labels.getMailMSGNewMemberSubscriptionSubject(),
+                            labels.getMailMSGNewMemberSubscriptionBody()
+                    );
+
                 } catch (Exception e)
                 {
                     msg.error("Error sending mail: \n" + e.getMessage());
@@ -93,6 +81,4 @@ public class MailFactory
             }
         }).start();
     }
-}
-
 }
