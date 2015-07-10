@@ -73,7 +73,8 @@ public class MailFactory
                     mail.send((String) session.getAttribute("currentUser"),
                             labels.getMailMSGToAdminNewMemberSubscriptionSubject(),
                             labels.getMailMSGToAdminNewMemberSubscriptionBody()
-                    );
+                            + "\n\n___________________________________________\n\n"
+                            + additionalMessage);
 
                 } catch (Exception e)
                 {
