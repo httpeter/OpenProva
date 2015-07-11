@@ -17,7 +17,11 @@
 </p>
 <p>
     The system uses Java8, JSF, Primefaces, JPA2 and was created with Netbeans. Currently a <a href='http://inschrijven-vukamerorkest.rhcloud.com/'>simplified version</a> that I made for the <a href='http://vu-kamerorkest.nl/'>VU-Chamber Orchestra</a> is running at Redhat's OpenShift (free!) cloud platform.
+    <br/>
+    I used the great new Netbeans JPA Modeler plugin to create Entities. The ERD can be viewed <a href='web/resouces/img/ERD.png'>here</a>.
 </p>
 <p>
-    I haven't added a license yet, you're free to use it as you please as long as it does not hurt anyone. For questions, feel free to contact me at <a href='mailto:httpeter@gmail.com'>httpeter@gmail.com</a>.
+    You're free to use the code as you please as long as it does not hurt anyone (Apache2 lisence).
+    <br/>
+    For questions, feel free to contact me at <a href='mailto:httpeter@gmail.com'>httpeter@gmail.com</a>.
 </p>
