@@ -1,4 +1,4 @@
-package org.om.util;
+package org.op.util;
 
 import java.io.Serializable;
 import java.util.logging.Level;

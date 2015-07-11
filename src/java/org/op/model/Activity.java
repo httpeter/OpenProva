@@ -1,4 +1,4 @@
-package org.om.model;
+package org.op.model;
 
 import java.io.Serializable;
 import java.sql.Date;

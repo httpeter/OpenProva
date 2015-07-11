@@ -22,11 +22,11 @@
  *
  *
  */
-package org.om.util;
+package org.op.util;
 
 import java.text.SimpleDateFormat;
-import org.om.model.Contact;
-import org.om.model.Project;
+import org.op.model.Contact;
+import org.op.model.Project;
 
 /**
  *

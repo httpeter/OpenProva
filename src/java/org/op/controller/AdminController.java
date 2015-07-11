@@ -1,4 +1,4 @@
-package org.om.controller;
+package org.op.controller;
 
 import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
@@ -9,14 +9,14 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
-import org.om.model.Activity;
-import org.om.model.Contact;
-import org.om.model.Labels;
-import org.om.model.User;
-import org.om.repositories.AdminRepository;
-import org.om.util.AESEncryptor;
-import org.om.util.FMessage;
-import org.om.util.MailFactory;
+import org.op.model.Activity;
+import org.op.model.Contact;
+import org.op.model.Labels;
+import org.op.model.User;
+import org.op.repositories.AdminRepository;
+import org.op.util.AESEncryptor;
+import org.op.util.FMessage;
+import org.op.util.MailFactory;
 
 @ManagedBean
 @SessionScoped

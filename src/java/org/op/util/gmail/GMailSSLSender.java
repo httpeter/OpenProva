@@ -1,4 +1,4 @@
-package org.om.util.gmail;
+package org.op.util.gmail;
 
 import java.io.Serializable;
 import java.util.Properties;

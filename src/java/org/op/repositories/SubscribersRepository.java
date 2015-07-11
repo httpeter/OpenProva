@@ -1,9 +1,9 @@
-package org.om.repositories;
+package org.op.repositories;
 
 import java.io.Serializable;
 import java.util.List;
-import org.om.model.Activity;
-import org.om.model.Contact;
+import org.op.model.Activity;
+import org.op.model.Contact;
 
 public class SubscribersRepository extends DefaultRepository implements Serializable
 {

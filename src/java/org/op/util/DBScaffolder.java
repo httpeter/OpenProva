@@ -1,16 +1,16 @@
 //Adapt the strings in the 'restore' method below 
 //to change the values of the labels that your see in the system
-package org.om.util;
+package org.op.util;
 
 import java.io.Serializable;
 import java.sql.Date;
 import java.sql.Time;
-import org.om.model.Contact;
-import org.om.model.Labels;
-import org.om.model.Activity;
-import org.om.model.Project;
-import org.om.model.User;
-import org.om.repositories.DefaultRepository;
+import org.op.model.Contact;
+import org.op.model.Labels;
+import org.op.model.Activity;
+import org.op.model.Project;
+import org.op.model.User;
+import org.op.repositories.DefaultRepository;
 
 public class DBScaffolder implements Serializable
 {

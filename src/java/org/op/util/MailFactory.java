@@ -1,16 +1,16 @@
-package org.om.util;
+package org.op.util;
 
 import static java.lang.Math.log;
 import java.util.List;
 import java.util.logging.Level;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
-import org.om.model.Activity;
-import org.om.model.Contact;
-import org.om.model.Labels;
-import org.om.model.Project;
-import org.om.model.User;
-import org.om.util.gmail.GMailSSLSender;
+import org.op.model.Activity;
+import org.op.model.Contact;
+import org.op.model.Labels;
+import org.op.model.Project;
+import org.op.model.User;
+import org.op.util.gmail.GMailSSLSender;
 
 /**
  *

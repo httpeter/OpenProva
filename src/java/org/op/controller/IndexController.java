@@ -1,13 +1,13 @@
-package org.om.controller;
+package org.op.controller;
 
 import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
-import org.om.model.Labels;
-import org.om.repositories.LabelRepository;
-import org.om.util.FMessage;
+import org.op.model.Labels;
+import org.op.repositories.LabelRepository;
+import org.op.util.FMessage;
 
 @ManagedBean
 @SessionScoped
@@ -56,7 +56,7 @@ public class IndexController implements Serializable
                 .toString()
                 .equalsIgnoreCase("DEVELOPMENT"))
         {
-            new org.om.util.DBScaffolder().restore();
+            new org.op.util.DBScaffolder().restore();
         }
         LabelRepository labelRepository = new LabelRepository("OrchestraManagerPU");
         labels = labelRepository.getLabels();

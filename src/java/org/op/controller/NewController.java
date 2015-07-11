@@ -1,17 +1,17 @@
-package org.om.controller;
+package org.op.controller;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-import org.om.model.Activity;
-import org.om.model.Contact;
-import org.om.model.Project;
+import org.op.model.Activity;
+import org.op.model.Contact;
+import org.op.model.Project;
 
-import org.om.repositories.SubscribersRepository;
-import org.om.util.FMessage;
-import org.om.util.MailFactory;
+import org.op.repositories.SubscribersRepository;
+import org.op.util.FMessage;
+import org.op.util.MailFactory;
 
 @ManagedBean
 @ViewScoped
