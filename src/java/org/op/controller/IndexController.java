@@ -58,7 +58,7 @@ public class IndexController implements Serializable
         {
             new org.op.util.DBScaffolder().restore();
         }
-        LabelRepository labelRepository = new LabelRepository("OrchestraManagerPU");
+        LabelRepository labelRepository = new LabelRepository("OpenProvaPU");
         labels = labelRepository.getLabels();
         session.setAttribute("labels", labels);
         labelRepository.close();

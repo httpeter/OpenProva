@@ -15,7 +15,7 @@ import org.op.repositories.DefaultRepository;
 public class DBScaffolder implements Serializable
 {
 
-    private final DefaultRepository defaultRepository = new DefaultRepository("OrchestraManagerPU");
+    private final DefaultRepository defaultRepository = new DefaultRepository("OpenProvaPU");
 
     public void restore()
     {

@@ -27,7 +27,7 @@ public class AdminController implements Serializable
             .getExternalContext()
             .getSession(false);
 
-    private final AdminRepository adminRepository = new AdminRepository("OrchestraManagerPU");
+    private final AdminRepository adminRepository = new AdminRepository("OpenProvaPU");
 
     private final MailFactory mail = new MailFactory();
 

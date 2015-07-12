@@ -18,7 +18,7 @@ import org.op.util.MailFactory;
 public class NewController implements Serializable
 {
 
-    private final SubscribersRepository subscribersRepository = new SubscribersRepository("OrchestraManagerPU");
+    private final SubscribersRepository subscribersRepository = new SubscribersRepository("OpenProvaPU");
 
     private List<Project> projects = subscribersRepository.getResultList(Project.class);
 
