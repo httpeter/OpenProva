@@ -130,7 +130,8 @@ public class DBScaffolder implements Serializable
         {
             //Users
 
-            AESEncryptor aESEncryptor = new AESEncryptor(l.getSixteenCharsEncryptionPassword(),
+            AESEncryptor aESEncryptor = new AESEncryptor(
+                    l.getSixteenCharsEncryptionPassword(),
                     l.getSixteenCharsEncryptionSalt());
             User u = new User();
             try

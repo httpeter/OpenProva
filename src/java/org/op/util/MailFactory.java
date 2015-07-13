@@ -1,8 +1,6 @@
 package org.op.util;
 
-import static java.lang.Math.log;
 import java.util.List;
-import java.util.logging.Level;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 import org.op.model.Activity;
@@ -26,7 +24,7 @@ public class MailFactory
 
     private final FMessage msg = new FMessage();
 
-    private GMailSSLSender mail;
+    private GMailSSLSender gMailClient;
 
     public final boolean addressValid(String emailAddress)
     {
@@ -49,19 +47,19 @@ public class MailFactory
                 labels.getSixteenCharsEncryptionPassword(),
                 labels.getSixteenCharsEncryptionSalt());
 
-        new Thread(() ->
-        {
-            while (true)
-            {
+//        new Thread(() ->
+//        {
+//            while (true)
+//            {
                 try
                 {
                     TagReplacer tr = new TagReplacer();
 
-                    mail = new GMailSSLSender(currentUser.getEmail(),
+                    gMailClient = new GMailSSLSender(currentUser.getEmail(),
                             currentUser.getEmailPassword());
 
                     // Send msg to new member
-                    mail.send(contact.getEmail(),
+                    gMailClient.send(contact.getEmail(),
                             tr.getReplacedString(labels.getMailMSGNewMemberSubscriptionSubject(),
                                     project,
                                     contact),
@@ -70,7 +68,7 @@ public class MailFactory
                                     contact));
 
                     // Send msg to admin about new subscription
-                    mail.send((String) session.getAttribute("currentUser"),
+                    gMailClient.send((String) session.getAttribute("currentUser"),
                             labels.getMailMSGToAdminNewMemberSubscriptionSubject(),
                             labels.getMailMSGToAdminNewMemberSubscriptionBody()
                             + "\n\n___________________________________________\n\n"
@@ -78,11 +76,11 @@ public class MailFactory
 
                 } catch (Exception e)
                 {
-                    msg.error("Error sending mail: \n" + e.getMessage());
-                    throw new RuntimeException(e);
+                    e.printStackTrace();
                 }
-                break;
-            }
-        }).start();
-    }
+    } 
+//                break;
+//            }
+//        }).start();
+//    }
 }

@@ -22,7 +22,7 @@ public class NewController implements Serializable
 
     private List<Project> projects = subscribersRepository.getResultList(Project.class);
 
-    private final MailFactory mail = new MailFactory();
+    private final MailFactory mailFactory = new MailFactory();
 
     private final FMessage msg = new FMessage();
 
@@ -148,7 +148,7 @@ public class NewController implements Serializable
     public void saveNewSubscription()
     {
         //Saving the new Contact
-        if (mail.addressValid(newContact.getEmail())
+        if (mailFactory.addressValid(newContact.getEmail())
                 && !subscribersRepository.isExistingContact(newContact)
                 && subscribersRepository.persisted(newContact))
         {
@@ -179,14 +179,14 @@ public class NewController implements Serializable
                 try
                 {
                     //Here we go sending an email...
-                    mail.sendNewMemberSubscriptionMail(newContact,
+                    mailFactory.sendNewMemberSubscriptionMail(newContact,
                             selectedProject,
                             projectActivities,
                             additionalMessage);
                     subscribersRepository.close();
                 } catch (Exception e)
                 {
-                    msg.error("Subscription email could not be sent...\n"
+                    msg.error("Subscription email could not be sent...\n\n"
                             + e.getMessage());
                 }
 
