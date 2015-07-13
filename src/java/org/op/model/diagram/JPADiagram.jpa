@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <jpa:entity-mappings theme="MAC" persistenceUnitName="OpenProvaPU" jaxb-support="false" id="_14313464543467" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm orm_2_1.xsd" xmlns:java="http://jcp.org/en/jsr/detail?id=270" xmlns:jpa="http://java.sun.com/xml/ns/persistence/orm" xmlns:ns4="http://nbmodeler.java.net" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-    <jpa:package>org.om.model</jpa:package>
+    <jpa:package>org.op.model</jpa:package>
     <jpa:entity class="User" jaxb-root-element="false" static-metamodel="false" superclassId="_1432042365590" visibile="true" minimized="false" id="_1431346516231">
         <jpa:attributes>
             <jpa:basic name="username" attribute-type="String" visibile="true" id="_143134678807015">
@@ -13,7 +13,7 @@
                 <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
             </jpa:basic>
             <jpa:basic name="emailPassword" attribute-type="String" visibile="true" id="_143644629044224">
-                <jpa:column unique="false" nullable="true" insertable="true" updatable="true"/>
+                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
             </jpa:basic>
         </jpa:attributes>
     </jpa:entity>
@@ -150,10 +150,10 @@
                 <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
             </jpa:basic>
             <jpa:basic name="mailMSGNewMemberSubscriptionSubject" attribute-type="String" visibile="true" id="_143644648558436">
-                <jpa:column unique="false" nullable="true" insertable="true" updatable="true"/>
+                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
             </jpa:basic>
             <jpa:basic name="mailMSGToAdminNewMemberSubscriptionSubject" attribute-type="String" visibile="true" id="_143644648714437">
-                <jpa:column unique="false" nullable="true" insertable="true" updatable="true"/>
+                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
             </jpa:basic>
         </jpa:attributes>
     </jpa:entity>

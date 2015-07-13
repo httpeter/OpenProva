@@ -2,19 +2,12 @@
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
   <persistence-unit name="OpenProvaPU" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-    <non-jta-data-source>OpenProvaDatasource</non-jta-data-source>
+    <class>org.op.model.Activity</class>
+    <class>org.op.model.Contact</class>
     <class>org.op.model.Labels</class>
     <class>org.op.model.Person</class>
     <class>org.op.model.Project</class>
-    <class>org.op.model.Contact</class>
-    <class>org.op.model.Activity</class>
     <class>org.op.model.User</class>
-    <class>org.om.model.User</class>
-    <class>org.om.model.Labels</class>
-    <class>org.om.model.Contact</class>
-    <class>org.om.model.Project</class>
-    <class>org.om.model.Activity</class>
-    <class>org.om.model.Person</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <shared-cache-mode>ENABLE_SELECTIVE</shared-cache-mode>
     <properties>
@@ -23,8 +16,6 @@
       <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
       <property name="javax.persistence.jdbc.password" value="keuris"/>
       <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
-      <!--Remove setting below for production...-->
-      <!--<property name="eclipselink.logging.level.sql" value="FINE"/>-->
     </properties>
   </persistence-unit>
 </persistence>
