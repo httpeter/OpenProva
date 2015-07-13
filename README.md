@@ -25,5 +25,3 @@
     <br/>
     For questions, feel free to contact me at <a href='mailto:httpeter@gmail.com'>httpeter@gmail.com</a>.
 </p>
-
-[ ] test 
