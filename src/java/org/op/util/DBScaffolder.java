@@ -77,33 +77,35 @@ public class DBScaffolder implements Serializable
             l.setActivityCommentsByContact("Commentaar");
             l.setSave("Opslaan");
             l.setActivityAdditionalMessage("Optioneel: bericht aan de blazers- dan wel strijkerschef...");
+            
+            //Email addresses winds- and strings coordinators
+            l.setDefaultEmailStringsCoordinator("vuko.strijkerschef@gmail.com");
+            l.setDefaultEmailStringsCoordinatorPWD("strijkerschef!");
+            l.setDefaultEmailWindsCoordinator("vuko.blazerschef@gmail.com");
+            l.setDefaultEmailWindsCoordinatorPWD("onbekend");
 
             //Mail messages subscription page
+            l.setMailMSGNewMemberSubscriptionSubject("Inschrijving VU-Kamerorkest");
             l.setMailMSGNewMemberSubscriptionBody("Beste #!#contactFirstName#!#,\n"
-                    + "\\n\\n\n"
-                    + "\\n\n"
-                    + "Goed dat je je hebt aangemeld voor het project #!#selectedProjectName#!# van het #!#organizationName#!#.\\n\n"
-                    + "We zijn blij dat je bij ons #!#instrument#!# wil komen spelen. Het kan zijn dat we je vragen om auditie te doen. Dit zal informeel gebeuren hier zullen o.a. de dirigent en de concertmeester bij aanwezig zijn.\\n\n"
+                    + "\n\n"
+                    + "Goed dat je je hebt aangemeld voor het project #!#selectedProjectName#!# van het #!#organizationName#!#.\n\n"
+                    + "We zijn blij dat je bij ons #!#contactInstrument#!# wil komen spelen. Het kan zijn dat we je vragen om auditie te doen. Dit zal informeel gebeuren hier zullen o.a. de dirigent en de concertmeester bij aanwezig zijn.\n\n"
                     + "Wees hier niet zenuwachtig voor, het is slechts een formaliteit en we hebben het allemaal gedaan.\n"
-                    + "We nemen contact met je op over eventuele auditietijden, tot die tijd vind je meer informatie op www.vuko.nl .\\n\\n\n"
-                    + "Wil je je in de toekomst afmelden voor repetities dan kan dat via de volgende link:\\n\\n\n"
-                    + "#!#subscriptionURL#!#\n"
-                    + "\\n\\n\n"
-                    + "\\n\\n\n"
-                    + "Mocht de link niet werken dan kun je ook inloggen met\n"
-                    + "\\n\\n\n"
-                    + "Gebruikersnaam: #!#membersUsername#!#\n"
-                    + "\\nWachtwoord: #!#membersPassword#!#\n"
-                    + "\\n\\n\n"
+                    + "We nemen contact met je op over eventuele auditietijden, tot die tijd vind je meer informatie op www.vuko.nl .\n\n\n"
+                    + "Wil je je in de toekomst afmelden voor repetities dan kan dat via de volgende link:\n\n\n"
+                    + "#!#personalURL#!#\n"
+                    + "\n\n"
+                    + "Mocht de link niet werken dan kun je ook inloggen met je inlogcode:\n\n#!#membersLoginCode#!#"
+                    + "\n\n"
                     + "Het wordt zeker een mooi project en we zijn blij dat jij er bij wil zijn!\n"
-                    + "\\n\\n\n"
+                    + "\n\n"
                     + "Tot snel,\n"
-                    + "\\n\\n\n"
-                    + "\\n\n"
-                    + "Bestuur VU-Kamerorkest\\n\n"
+                    + "\n\n\n"
+                    + "Bestuur VU-Kamerorkest\n\n"
                     + "(dit bericht werd automatisch gegenereerd)");
 
-            //Doe hier iets mee...
+            //Administrator subscription confirmation mail
+            l.setMailMSGToAdminNewMemberSubscriptionSubject("#!#contactFirstName#!# ingeschreven");
             l.setMailMSGToAdminNewMemberSubscriptionBody("hier moet nog wat...");
 
             //Admin panel

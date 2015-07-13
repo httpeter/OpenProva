@@ -11,7 +11,7 @@ public class UrlGenerator
 
     public String getPersonalURL(Contact c)
     {
-        return "<<URL has to bee dobne>>>";
+        return "<<URL has to bee done>>>";
     }
 
 }

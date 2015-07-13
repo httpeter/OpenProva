@@ -8,6 +8,10 @@
  *
  * #!#contactInstrument#!#
  *
+ * #!#organizationName#!#
+ *
+ * #!#membersLoginCode#!#
+ *
  * #!#selectedProjectName#!#
  *
  * #!#selectedProjectRepertoire#!#
@@ -26,6 +30,7 @@ package org.op.util;
 
 import java.text.SimpleDateFormat;
 import org.op.model.Contact;
+import org.op.model.Labels;
 import org.op.model.Project;
 
 /**
@@ -35,19 +40,26 @@ import org.op.model.Project;
 public class TagReplacer
 {
 
-    public String getReplacedString(String inputString, Project p, Contact c)
+    public String getReplacedString(String inputString, Project p, Contact c, Labels l)
+            throws Exception
     {
+
+        String encryptedEmail = new AESEncryptor(l.getSixteenCharsEncryptionPassword(),
+                l.getSixteenCharsEncryptionSalt()).encrypt(c.getEmail());
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
         UrlGenerator urlGenerator = new UrlGenerator();
+
         return inputString
-                .replace("#!#contactFirstName#!#".toLowerCase(), c.getFirstName())
-                .replace("#!#contactLastName#!#".toLowerCase(), c.getLastName())
-                .replace("#!#contactInstrument#!#".toLowerCase(), c.getInstrument())
-                .replace("#!#selectedProjectName#!#".toLowerCase(), p.getProjectName())
-                .replace("#!#selectedProjectRepertoire#!#".toLowerCase(), p.getProjectRepertoire())
-                .replace("#!#selectedProjectStartDate#!#".toLowerCase(), sdf.format(p.getProjectStartDate()))
-                .replace("#!#selectedProjectEndDate#!#".toLowerCase(), sdf.format(p.getProjectEndDate()))
-                .replace("#!#personalURL#!#".toLowerCase(),urlGenerator.getPersonalURL(c));
+                .replace("#!#contactFirstName#!#", c.getFirstName())
+                .replace("#!#contactLastName#!#", c.getLastName())
+                .replace("#!#contactInstrument#!#", c.getInstrument())
+                .replace("#!#organizationName#!#", l.getOrganizationName())
+                .replace("#!#selectedProjectName#!#", p.getProjectName())
+                .replace("#!#selectedProjectRepertoire#!#", p.getProjectRepertoire())
+                .replace("#!#selectedProjectStartDate#!#", sdf.format(p.getProjectStartDate()))
+                .replace("#!#selectedProjectEndDate#!#", sdf.format(p.getProjectEndDate()))
+                .replace("#!#membersLoginCode#!#", encryptedEmail)
+                .replace("#!#personalURL#!#", urlGenerator.getPersonalURL(c));
 
     }
 
