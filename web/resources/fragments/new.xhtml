@@ -15,12 +15,16 @@
         <h:selectOneMenu label="#{newController.selectedProject.projectName}" 
                          value="#{newController.selectedProject.id}" 
                          style="width:100%">
+
             <f:selectItem itemLabel="#{indexController.labels.projectSelect}"/>
+
             <f:selectItems value="#{newController.projects}" 
                            var="project" 
                            itemLabel="#{project.projectName}" 
                            itemValue="#{project.id}"/>
-            <p:ajax listener="#{newController.selectProject()}" update="@form"/>
+
+            <p:ajax listener="#{newController.selectProject()}" update=":mainForm:currentFragment"/>
+
         </h:selectOneMenu>
 
         <br/>
@@ -50,7 +54,7 @@
 
     <br/>
 
-    <p:panel header="#{indexController.labels.projectSubscriptionPanelHeader}" 
+    <p:panel id="newSubscriptionPanel" header="#{indexController.labels.projectSubscriptionPanelHeader}" 
              rendered="#{not empty newController.selectedProject.projectName}">
 
         <br/>
@@ -143,7 +147,7 @@
         <p:commandButton value="#{indexController.labels.save}" 
                          icon="ui-icon-disk" 
                          action="#{newController.saveNewSubscription}" 
-                         update="@form"
+                         update="mainForm:currentFragment"
                          styleClass="mySpecialButton"/>
         <br/>
         <br/>

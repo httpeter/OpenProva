@@ -1,9 +1,13 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
+
+
+
 
     <h:head>
         <link rel="stylesheet" href="resources/css/main.css" type="text/css" media="all"/>
@@ -13,40 +17,86 @@
         <title>#{indexController.labels.appTitle} - #{indexController.labels.organizationName}</title>
     </h:head>
 
+
+
+
     <h:body styleClass="myDefaultBody">
+
         <h:form id="mainForm">
 
-            <p:growl/>
+
+            <p:growl autoUpdate="true"/>
+
 
             <p:sticky target="menu"/>
 
+
             <p:menubar id="menu" styleClass="myMenuBar" autoDisplay="false">
-                <p:menuitem value="#{indexController.labels.menuItemHome}" action="#{indexController.showHomeFragment()}" update="@form" icon="fa fa-home"/>
+
+                <p:menuitem value="#{indexController.labels.menuItemHome}" 
+                            action="#{indexController.showHomeFragment()}" 
+                            update="mainForm:currentFragment" icon="fa fa-home"/>
+
                 <p:submenu label="#{indexController.labels.menuItemProjects}" icon="fa fa-users">
-                    <p:menuitem value="#{indexController.labels.menuItemNewProject}" action="#{indexController.showNewFragment()}" update="@form" icon="ui-icon-person"/>
-                    <p:menuitem value="#{indexController.labels.menuItemExistingProject}" action="#{indexController.showMembersFragment()}" update="@form" icon="ui-icon-refresh"/>
+
+                    <p:menuitem value="#{indexController.labels.menuItemNewProject}" 
+                                action="#{indexController.showNewFragment()}" 
+                                update="mainForm:currentFragment" icon="ui-icon-person"/>
+
+                    <p:menuitem value="#{indexController.labels.menuItemExistingProject}" 
+                                action="#{indexController.showMembersFragment()}" 
+                                update="mainForm:currentFragment" icon="ui-icon-refresh"/>
                 </p:submenu>
-                <p:menuitem value="#{indexController.labels.menuItemAdmin}" action="#{indexController.showAdminFragment()}" update="@form" icon="fa fa-legal"/>
+
+                <p:menuitem value="#{indexController.labels.menuItemAdmin}" 
+                            action="#{indexController.showAdminFragment()}"
+                            update="mainForm:currentFragment" 
+                            icon="fa fa-legal"/>
+
                 <p:menuitem value="#{adminController.currentUser.firstName} #{indexController.labels.menuItemLogout}" 
-                            action="#{adminController.logout()}" icon="fa fa-sign-out" rendered="#{adminController.currentUserIsAdmin}" ajax="false" styleClass="myAdminButton"/>
+                            action="#{adminController.logout()}" 
+                            icon="fa fa-sign-out" 
+                            rendered="#{adminController.currentUserIsAdmin}" 
+                            ajax="false" 
+                            styleClass="myAdminButton"/>
+
             </p:menubar>
+
+
 
             <p:spacer/>
 
-            <p:outputPanel>
+
+            <!-- Currently loaded Page Fragment -->
+            <p:outputPanel id="currentFragment">
                 <ui:include src="#{indexController.currentFragment}"/>
             </p:outputPanel>
 
+
+
             <p:idleMonitor timeout="1080000" onidle="PF('idleDialog').show();"/>
-            <p:dialog widgetVar="idleDialog" header="#{indexController.labels.MSGTimeoutHeader}"  modal="true" closable="false" resizable="false">
+
+            <!--Session Timeout Dialog-->
+            <p:dialog widgetVar="idleDialog" 
+                      header="#{indexController.labels.MSGTimeoutHeader}"  
+                      modal="true" 
+                      closable="false" 
+                      resizable="false">
                 <h:outputText value="#{indexController.labels.MSGTimeoutBody}" escape="false"/>
                 <br/>
                 <br/>
-                <p:button value="Ververs" onclick="window.location.reload();"/>
+                <p:button value="Refresh" onclick="window.location.reload();"/>
             </p:dialog>     
 
+
+
+
         </h:form>
+
     </h:body>
+
+
+
 
 </html>
 

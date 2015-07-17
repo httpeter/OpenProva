@@ -8,15 +8,21 @@
 
     <!--Admin login panel-->
     <h:panelGrid  columns="2" rendered="#{!adminController.currentUserIsAdmin}">
+
         <p:inputText id="auText" value="#{adminController.currentUser.username}">
             <p:watermark for="auText" value="#{indexController.labels.adminUsername}"/>
         </p:inputText>
         <p:outputLabel value="*"/>
+
         <p:password id="auPwd" value="#{adminController.currentUser.password}">
             <p:watermark for="auPwd" value="#{indexController.labels.adminPassword}"/>
         </p:password>
         <p:outputLabel value="*"/>
-        <p:commandButton value="Login" action="#{adminController.login()}" update="@form" styleClass="mySpecialButton"/>
+
+        <p:commandButton value="Login" 
+                         action="#{adminController.login()}" 
+                         update="mainForm:currentFragment" 
+                         styleClass="mySpecialButton"/>
     </h:panelGrid>
 
 
@@ -157,7 +163,7 @@
                 <p:panelGrid columns="2" layout="grid">
                     <p:commandButton value="Save" icon="ui-icon-disk"
                                      action="#{adminController.saveContact()}"
-                                     update="@form" 
+                                     update="mainForm:currentFragment" 
                                      oncomplete="PF('changeContactDLG').hide()"
                                      styleClass="mySpecialButton"/>
 
@@ -174,7 +180,7 @@
                 <p:commandButton icon="ui-icon-closethick" 
                                  value="Delete #{adminController.selectedContact.firstName} #{adminController.selectedContact.lastName}" 
                                  oncomplete="PF('delDLG').show();"
-                                 update="@form"
+                                 update="mainForm:currentFragment"
                                  styleClass="mySpecialButton"/>
             </p:dialog>
 
@@ -216,7 +222,7 @@
                 <p:panelGrid columns="2" layout="grid">
                     <p:commandButton value="Save" icon="ui-icon-disk"
                                      action="#{adminController.saveNewContact()}"
-                                     update="@form" 
+                                     update="mainForm:currentFragment" 
                                      oncomplete="PF('contactDLGNew').hide()"
                                      styleClass="mySpecialButton"/>
 
