@@ -10,8 +10,8 @@
 
 
     <h:head>
-        <link rel="stylesheet" href="resources/css/main.css" type="text/css" media="all"/>
-        <link type="text/css" rel="stylesheet" href="resources/css/main.css"/>
+        <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'/>
+        <link rel="stylesheet" type="text/css" href="resources/css/main.css"/>
         <meta name="viewport" content="width=device-width, user-scalable=no"/>
         <meta name="mobile-web-app-capable" content="yes"/>
         <title>#{indexController.labels.appTitle} - #{indexController.labels.organizationName}</title>
@@ -20,7 +20,7 @@
 
 
 
-    <h:body styleClass="myDefaultBody">
+    <h:body>
 
         <h:form id="mainForm">
 
@@ -31,7 +31,7 @@
             <p:sticky target="menu"/>
 
 
-            <p:menubar id="menu" styleClass="myMenuBar" autoDisplay="false">
+            <p:menubar id="menu" autoDisplay="false">
 
                 <p:menuitem value="#{indexController.labels.menuItemHome}" 
                             action="#{indexController.showHomeFragment()}" 
