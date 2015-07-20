@@ -1,4 +1,16 @@
 
+
+
+.myForm
+{
+    min-height: 800px;
+    background-image: url("../img/background.svg");
+    background-color: #ECEFF1;
+    background-attachment: fixed;
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
 /*Specific*/
 .mySpecialButton
 {
