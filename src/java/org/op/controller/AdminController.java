@@ -47,7 +47,19 @@ public class AdminController implements Serializable
 
     private final Labels labels = (Labels) session.getAttribute("labels");
 
+    private int activeAdminTab;
+
     //<editor-fold defaultstate="collapsed" desc="Getters & Setters">
+    public int getActiveAdminTab()
+    {
+        return activeAdminTab;
+    }
+
+    public void setActiveAdminTab(int activeAdminTab)
+    {
+        this.activeAdminTab = activeAdminTab;
+    }
+
     public Contact getNewContact()
     {
         return newContact;
@@ -80,20 +92,12 @@ public class AdminController implements Serializable
 
     public List<Contact> getContacts()
     {
-        return adminRepository.getResultList(Contact.class);
-
+        return contacts;
     }
 
     public void setContacts(List<Contact> contacts)
     {
         this.contacts = contacts;
-        if (adminRepository.persisted(contacts))
-        {
-            msg.info("Contact saved");
-        } else
-        {
-            msg.warn("Could not save");
-        }
     }
 
     public Contact getSelectedContact()
@@ -107,6 +111,18 @@ public class AdminController implements Serializable
     }
 
 //</editor-fold>
+    private void loadContacts()
+    {
+        try
+        {
+            contacts = adminRepository.getResultList(Contact.class);
+        } catch (Exception e)
+        {
+            msg.error("Error loading contacts\n\n"
+                    .concat(e.getCause().getMessage()));
+        }
+    }
+
     public void login()
     {
         try
@@ -123,8 +139,6 @@ public class AdminController implements Serializable
                 currentUser = u;
                 currentUserIsAdmin = true;
                 session.setAttribute("currentUser", currentUser);
-                //Optional for now. should be triggered in another way..
-                loadContacts();
             } else
             {
                 msg.warn("wrong login...");
@@ -137,15 +151,11 @@ public class AdminController implements Serializable
 
     }
 
-    private void loadContacts()
+    public void adminTabChange()
     {
-        try
+        if (activeAdminTab == 1)
         {
-            contacts = adminRepository.getResultList(Contact.class);
-        } catch (Exception e)
-        {
-            msg.error("Error loading contacts\n\n"
-                    .concat(e.getCause().getMessage()));
+            loadContacts();
         }
     }
 

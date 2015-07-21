@@ -77,7 +77,7 @@ public class DBScaffolder implements Serializable
             l.setActivityCommentsByContact("Commentaar");
             l.setSave("Opslaan");
             l.setActivityAdditionalMessage("Optioneel: bericht aan de blazers- dan wel strijkerschef...");
-            
+
             //Email addresses winds- and strings coordinators
             l.setDefaultEmailStringsCoordinator("vuko.strijkerschef@gmail.com");
             l.setDefaultEmailStringsCoordinatorPWD("strijkerschef!");
@@ -157,27 +157,30 @@ public class DBScaffolder implements Serializable
                 msg.warn("Error while trying to restore standard users...");
             }
 
-            //Contacts
-            Contact c1 = new Contact();
-            c1.setFirstName("Pieter");
-            c1.setLastName("Paukeman");
-            c1.setInstrument("slagwerk");
-            c1.setNotes("Geweldige speler");
-            c1.setPhone("06123123123");
-            c1.setEmail("p.paukeman@gmail.com");
-            Contact c2 = new Contact();
-            c2.setFirstName("Daphne");
-            c2.setLastName("Dinges");
-            c2.setInstrument("viool");
-            c2.setNotes("via Ellis");
-            c2.setPhone("063423423");
-            c2.setEmail("e.dinges@gmail.com");
-            if (defaultRepository.persisted(c1) && defaultRepository.persisted(c2))
+            for (int i = 0; i < 100; i++)
             {
-                msg.info("Standard contacts restored");
-            } else
-            {
-                msg.warn("Error while trying to restore standard contacts...");
+                //Contacts
+                Contact c1 = new Contact();
+                c1.setFirstName("Pieter" + Math.round(Math.random() * 1000));
+                c1.setLastName("Paukeman" + Math.round(Math.random() * 1000));
+                c1.setInstrument("slagwerk");
+                c1.setNotes("Geweldige speler");
+                c1.setPhone("06123123123" + Math.round(Math.random() * 100));
+                c1.setEmail("p.paukeman@gmail.com" + Math.round(Math.random() * 100));
+                Contact c2 = new Contact();
+                c2.setFirstName("Daphne" + Math.round(Math.random() * 1000));
+                c2.setLastName("Dinges" + Math.round(Math.random() * 1000));
+                c2.setInstrument("viool");
+                c2.setNotes("via Ellis");
+                c2.setPhone("063423423" + Math.round(Math.random() * 10));
+                c2.setEmail("e.dinges@gmail.com" + Math.round(Math.random() * 100));
+                if (defaultRepository.persisted(c1) && defaultRepository.persisted(c2))
+                {
+                    msg.info("Standard contacts restored");
+                } else
+                {
+                    msg.warn("Error while trying to restore standard contacts...");
+                }
             }
         }
 

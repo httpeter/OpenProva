@@ -21,15 +21,27 @@
 
         <p:commandButton value="Login" 
                          action="#{adminController.login()}" 
-                         update="mainForm:currentFragment" 
-                         styleClass="mySpecialButton"/>
+                         styleClass="mySpecialButton"
+                         ajax="false"/>
     </h:panelGrid>
 
 
 
 
     <!--Admin content-->
-    <p:tabView id="adminTabView" rendered="#{adminController.currentUserIsAdmin}" style="border:none">
+    <p:tabView id="adminTabView" 
+               activeIndex="#{adminController.activeAdminTab}" 
+               rendered="#{adminController.currentUserIsAdmin}"
+               dynamic="true">
+
+        <p:ajax event="tabChange" 
+                listener="#{adminController.adminTabChange()}"
+                update="adminTabView"/>
+
+        <p:tab title="Test">
+            <p>content...</p>
+        </p:tab>
+
 
 
         <p:tab title="#{indexController.labels.adminTabContacts}">
@@ -76,7 +88,7 @@
                          rowKey="#{contact.email}" 
                          selection="#{adminController.selectedContact}" 
                          selectionMode="single"
-                         reflow="true">
+                         reflow="true" paginator="true" rows="100">
 
                 <p:ajax event="rowSelect" 
                         oncomplete="PF('changeContactDLG').show()" 
