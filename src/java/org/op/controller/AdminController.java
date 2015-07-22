@@ -181,6 +181,7 @@ public class AdminController implements Serializable
             msg.error("new contact not saved");
         }
         newContact = new Contact();
+        loadContacts();
     }
 
     public void saveContact()
@@ -198,6 +199,7 @@ public class AdminController implements Serializable
         {
             msg.error("existing contact not saved");
         }
+        loadContacts();
     }
 
     public void deleteContact()
@@ -237,6 +239,7 @@ public class AdminController implements Serializable
                         + " could not be removed");
             }
         });
+        loadContacts();
     }
 
 }
