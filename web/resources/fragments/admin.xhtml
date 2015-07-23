@@ -261,7 +261,7 @@
                 <br/>
                 <p:commandButton value="Yes" icon="ui-icon-check" 
                                  action="#{adminController.deleteContact()}" 
-                                 oncomplete="PF('delDLG').hide();" update="@form"/>
+                                 oncomplete="PF('delDLG').hide();" update="mainForm:currentFragment"/>
 
                 <p:commandButton value="No" 
                                  onclick="PF('delDLG').hide();" 
