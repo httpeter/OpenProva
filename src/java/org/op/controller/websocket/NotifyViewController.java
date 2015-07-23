@@ -2,12 +2,12 @@ package org.op.controller.websocket;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.ViewScoped;
 import org.primefaces.push.EventBus;
 import org.primefaces.push.EventBusFactory;
 
 @ManagedBean
-@RequestScoped
+@ViewScoped
 public class NotifyViewController
 {
 
@@ -22,17 +22,17 @@ public class NotifyViewController
     {
         return name;
     }
-    
+
     public void setName(String name)
     {
         this.name = name;
     }
-    
+
     public String getDetail()
     {
         return detail;
     }
-    
+
     public void setDetail(String detail)
     {
         this.detail = detail;

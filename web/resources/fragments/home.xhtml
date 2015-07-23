@@ -5,6 +5,54 @@
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
 
-    <h:outputText value="#{indexController.labels.welcomeMSG}" escape="false"/>
+
+
+
+
+    <p:dashboard id="dashboard" model="#{homeController.dashboardModel}" >
+
+        <p:panel id="a" header="a" style="width:500px; margin: 10px;">  
+            <h:outputText value="#{indexController.labels.welcomeMSG}" escape="false"/>
+        </p:panel>
+
+        <p:panel id="b" header="b" style="width:500px; margin: 10px;">
+
+        </p:panel>
+
+        <p:panel id="c" header="c" style="width:500px; margin: 10px;">
+            <p:growl widgetVar="growl" life="2000"/>
+
+            <h:panelGrid columns="2">
+                <p:outputLabel for="name" value="Name" /> 
+                <p:inputText id="name" value="#{notifyViewController.name}"/>
+
+                <p:outputLabel for="msg" value="Message" /> 
+                <p:inputTextarea id="msg" value="#{notifyViewController.detail}"/>
+
+                <h:outputText/>
+                <p:commandButton value="Send" actionListener="#{notifyViewController.send}"/>
+            </h:panelGrid>
+
+            <p:socket onMessage="handleMessage" channel="/notify" />
+
+            <script type="text/javascript">
+                function handleMessage(facesmessage) {
+                    facesmessage.severity = 'info';
+                    PF('growl').show([facesmessage]);
+                }
+            </script>
+        </p:panel>
+
+        <p:panel id="d" header="d" style="width:500px; margin: 10px;">
+
+        </p:panel>
+
+        <p:panel id="e" header="e" style="width:500px; margin: 10px;">
+
+        </p:panel>
+
+
+    </p:dashboard>
+
 
 </ui:composition>
