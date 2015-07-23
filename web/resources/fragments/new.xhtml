@@ -35,13 +35,13 @@
             <p:outputLabel value="#{indexController.labels.projectFrom}"/>
             <p:outputLabel value=":"/>
             <h:outputText value="#{newController.selectedProject.projectStartDate}">
-                <f:convertDateTime pattern="dd-MM-yyyy"/>
+                <f:convertDateTime locale="#{indexController.labels.locale}"/>
             </h:outputText>
 
             <p:outputLabel value="#{indexController.labels.projectUntil}"/>
             <p:outputLabel value=":"/>
             <h:outputText value="#{newController.selectedProject.projectEndDate}">
-                <f:convertDateTime pattern="dd-MM-yyyy"/>
+                <f:convertDateTime locale="#{indexController.labels.locale}"/>
             </h:outputText>
 
             <p:outputLabel value="#{indexController.labels.projectRepertoire}"/>
@@ -91,6 +91,7 @@
         <br/>
         <br/>
 
+        <!--Hier moet nog een generiek label..-->
         <p:selectBooleanCheckbox value="#{newController.allDatesSelected}" itemLabel="Alle data selecteren">
             <p:ajax listener="#{newController.selectAllDates}" update="dTable"/>
         </p:selectBooleanCheckbox>
@@ -109,14 +110,18 @@
 
             <p:column headerText="#{indexController.labels.activityDate}">
                 <h:outputText value="#{date.date}">
-                    <f:convertDateTime pattern="dd-MM-yyyy"/>
+                    <f:convertDateTime locale="#{indexController.labels.locale}"/>
                 </h:outputText>
             </p:column>
 
             <p:column headerText="#{indexController.labels.activityTime}">
-                <h:outputText value="#{date.startTime}"/>
+                <h:outputText value="#{date.startTime}">
+                    <f:convertDateTime type="time" timeStyle="short" locale="#{indexController.labels.locale}"/>
+                </h:outputText>
                 <h:outputText value=" - "/>
-                <h:outputText value="#{date.endTime}"/>
+                <h:outputText value="#{date.endTime}">
+                    <f:convertDateTime type="time" timeStyle="short" locale="#{indexController.labels.locale}"/>
+                </h:outputText>
             </p:column>
 
             <p:column headerText="#{indexController.labels.activityDescription}">

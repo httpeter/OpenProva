@@ -109,6 +109,9 @@ public class Labels implements Serializable {
     @Column(unique=false,updatable=true,insertable=true,nullable=true,length=255,scale=0,precision=0)
     @Basic
     private String appTitle;
+    @Column(unique=false,updatable=true,insertable=true,nullable=true,length=8,scale=0,precision=0)
+    @Basic
+    private String locale;
     @Column(unique=false,updatable=true,insertable=true,nullable=true,length=255,scale=0,precision=0)
     @Basic
     private String adminTabContactsTablePhone;
@@ -419,6 +422,14 @@ public class Labels implements Serializable {
 
     public void setAppTitle(String appTitle) {
         this.appTitle = appTitle;
+    }
+   
+    public String getLocale() {
+        return this.locale;
+    }
+
+    public void setLocale(String locale) {
+        this.locale = locale;
     }
    
     public String getAdminTabContactsTablePhone() {

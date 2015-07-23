@@ -25,6 +25,9 @@ public class DBScaffolder implements Serializable
 
         if (defaultRepository.getResultList(Labels.class).isEmpty())
         {
+            //locale
+            l.setLocale("nl");
+            
             //Dummy password and salt. Change for production or be vulnerable...
             l.setSixteenCharsEncryptionPassword("secret0000000000");
             l.setSixteenCharsEncryptionSalt("confusing0000000");

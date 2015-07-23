@@ -167,6 +167,9 @@
             <jpa:basic name="defaultEmailWindsCoordinatorPWD" attribute-type="String" visibile="true" id="_143679691776859">
                 <jpa:column unique="false" nullable="true" insertable="true" updatable="true"/>
             </jpa:basic>
+            <jpa:basic name="locale" attribute-type="String" visibile="true" id="_143766172723512">
+                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="8"/>
+            </jpa:basic>
         </jpa:attributes>
     </jpa:entity>
     <jpa:entity class="Contact" jaxb-root-element="false" static-metamodel="false" superclassId="_1432042365590" visibile="true" minimized="false" id="_1432038649639">
@@ -273,7 +276,7 @@
                 <Bounds x="370.0" y="265.0" width="137.0" height="121.0"/>
             </shape>
             <shape elementRef="_1431427726267" id="_1431427726267_gui">
-                <Bounds x="10.0" y="20.0" width="329.0" height="1079.0"/>
+                <Bounds x="10.0" y="20.0" width="329.0" height="1100.0"/>
             </shape>
             <shape elementRef="_1432038649639" id="_1432038649639_gui">
                 <Bounds x="519.0" y="265.0" width="140.0" height="79.0"/>
