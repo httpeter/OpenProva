@@ -1,5 +1,4 @@
-
-
+/*Specific*/
 
 .myForm
 {
@@ -11,7 +10,7 @@
     background-repeat: no-repeat;
 }
 
-/*Specific*/
+
 .mySpecialButton
 {
     width: 100%;
@@ -30,7 +29,7 @@
 /*PrimeFaces Overrides...*/
 .ui-inputfield
 {
-    width: 95%; 
+    width: 95%;
 }
 
 .ui-widget, 
