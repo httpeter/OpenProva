@@ -22,7 +22,8 @@
         <p:commandButton value="Login" 
                          action="#{adminController.login()}" 
                          styleClass="mySpecialButton"
-                         ajax="false"/>
+                         ajax="false">
+        </p:commandButton>
     </h:panelGrid>
 
 
@@ -39,13 +40,16 @@
                 update="adminTabView"/>
 
         <p:tab title="Test">
-            <p>content...</p>
+            <p>
+                content...
+                <p:effect event="load" type="bounce"/>
+            </p>
+
         </p:tab>
 
 
 
         <p:tab title="#{indexController.labels.adminTabContacts}">
-
 
             <p:panelGrid columns="2" layout="grid">
 
