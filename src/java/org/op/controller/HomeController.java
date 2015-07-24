@@ -48,6 +48,7 @@ public class HomeController implements Serializable
         column2.addWidget("d");
         
         column3.addWidget("e");
+        column3.addWidget("f");
 
         dashboardModel.addColumn(column1);
         dashboardModel.addColumn(column2);
