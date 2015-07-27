@@ -21,18 +21,20 @@ import org.primefaces.model.DefaultDashboardModel;
 @ViewScoped
 public class HomeController implements Serializable
 {
-
+    
     private DashboardModel dashboardModel;
 
+    //<editor-fold defaultstate="collapsed" desc="Getters & Setters">
     public DashboardModel getDashboardModel()
     {
         return dashboardModel;
     }
-
+    
     public void setDashboardModel(DashboardModel dashboardModel)
     {
         this.dashboardModel = dashboardModel;
     }
+//</editor-fold>
 
     public HomeController()
     {
@@ -40,7 +42,7 @@ public class HomeController implements Serializable
         DashboardColumn column1 = new DefaultDashboardColumn();
         DashboardColumn column2 = new DefaultDashboardColumn();
         DashboardColumn column3 = new DefaultDashboardColumn();
-
+        
         column1.addWidget("a");
         column1.addWidget("b");
         
@@ -49,11 +51,11 @@ public class HomeController implements Serializable
         
         column3.addWidget("e");
         column3.addWidget("f");
-
+        
         dashboardModel.addColumn(column1);
         dashboardModel.addColumn(column2);
         dashboardModel.addColumn(column3);
-
+        
     }
-
+    
 }
