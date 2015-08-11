@@ -169,7 +169,7 @@ public class AdminController implements Serializable
     public void saveNewContact()
     {
         if (!newContact.getFirstName().isEmpty()
-                && mail.addressValid(selectedContact.getEmail())
+                && mail.addressValid(newContact.getEmail())
                 && adminRepository.persisted(newContact))
         {
             msg.info(newContact.getFirstName()
