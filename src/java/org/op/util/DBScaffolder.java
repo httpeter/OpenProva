@@ -27,7 +27,7 @@ public class DBScaffolder implements Serializable
         {
             //locale
             l.setLocale("nl");
-            
+
             //Dummy password and salt. Change for production or be vulnerable...
             l.setSixteenCharsEncryptionPassword("secret0000000000");
             l.setSixteenCharsEncryptionSalt("confusing0000000");
@@ -83,7 +83,12 @@ public class DBScaffolder implements Serializable
 
             //Email addresses winds- and strings coordinators
             l.setDefaultEmailStringsCoordinator("vuko.strijkerschef@gmail.com");
+            //           
+//This has to be encrypted!
+            //
             l.setDefaultEmailStringsCoordinatorPWD("strijkerschef!");
+            //
+            //
             l.setDefaultEmailWindsCoordinator("vuko.blazerschef@gmail.com");
             l.setDefaultEmailWindsCoordinatorPWD("onbekend");
 

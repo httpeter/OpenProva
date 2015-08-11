@@ -46,42 +46,41 @@ public class MailFactory
                 labels.getSixteenCharsEncryptionPassword(),
                 labels.getSixteenCharsEncryptionSalt());
 
-//        new Thread(() ->
-//        {
-//            while (true)
-//            {
-        try
+        new Thread(() ->
         {
-            TagReplacer tr = new TagReplacer();
+            while (true)
+            {
+                try
+                {
+                    TagReplacer tr = new TagReplacer();
 
-            gMailClient = new GMailSSLSender(labels.getDefaultEmailStringsCoordinator(),
-                    labels.getDefaultEmailStringsCoordinatorPWD());
+                    gMailClient = new GMailSSLSender(labels.getDefaultEmailStringsCoordinator(),
+                            labels.getDefaultEmailStringsCoordinatorPWD());
 
-            // Send msg to new member
-            gMailClient.send(contact.getEmail(),
-                    tr.getReplacedString(labels.getMailMSGNewMemberSubscriptionSubject(),
-                            project, contact, labels),
-                    tr.getReplacedString(labels.getMailMSGNewMemberSubscriptionBody(),
-                            project, contact, labels));
+                    // Send msg to new member
+                    gMailClient.send(contact.getEmail(),
+                            tr.getReplacedString(labels.getMailMSGNewMemberSubscriptionSubject(),
+                                    project, contact, labels),
+                            tr.getReplacedString(labels.getMailMSGNewMemberSubscriptionBody(),
+                                    project, contact, labels));
 
-            // Send msg to admin about new subscription
-            gMailClient.send(labels.getDefaultEmailStringsCoordinator(),
-                    tr.getReplacedString(labels.getMailMSGToAdminNewMemberSubscriptionSubject(),
-                            project, contact, labels),
-                    tr.getReplacedString(labels.getMailMSGToAdminNewMemberSubscriptionBody(),
-                            project, contact, labels)
-                    + "\n\n___________________________________________\n\n"
-                    + additionalMessage);
+                    // Send msg to admin about new subscription
+                    gMailClient.send(labels.getDefaultEmailStringsCoordinator(),
+                            tr.getReplacedString(labels.getMailMSGToAdminNewMemberSubscriptionSubject(),
+                                    project, contact, labels),
+                            tr.getReplacedString(labels.getMailMSGToAdminNewMemberSubscriptionBody(),
+                                    project, contact, labels)
+                            + "\n\n___________________________________________\n\n"
+                            + additionalMessage);
 
-        } catch (Exception e)
-        {
-            e.printStackTrace();
-            msg.error("Email problem:\n\n"
-                    + e.getMessage());
-        }
+                } catch (Exception e)
+                {
+                    e.printStackTrace();
+                    msg.error("Email problem:\n\n"
+                            + e.getMessage());
+                }
+                break;
+            }
+        }).start();
     }
-//                break;
-//            }
-//        }).start();
-//    }
 }
