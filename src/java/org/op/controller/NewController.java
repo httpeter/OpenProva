@@ -132,8 +132,7 @@ public class NewController implements Serializable
 
     public void selectAllDates()
     {
-        //Functional Operation doesnt work for some reason...
-        for (Activity activity : projectActivities)
+        projectActivities.parallelStream().forEach((activity) ->
         {
             if (allDatesSelected)
             {
@@ -142,7 +141,7 @@ public class NewController implements Serializable
             {
                 activity.setPresent(false);
             }
-        }
+        });
     }
 
     public void saveNewSubscription()
