@@ -7,7 +7,6 @@ import org.op.model.Activity;
 import org.op.model.Contact;
 import org.op.model.Labels;
 import org.op.model.Project;
-import org.op.model.User;
 import org.op.util.gmail.GMailSSLSender;
 
 /**
