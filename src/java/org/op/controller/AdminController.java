@@ -23,7 +23,7 @@ import org.op.util.MailFactory;
 public class AdminController implements Serializable
 {
 
-    HttpSession session = (HttpSession) FacesContext.getCurrentInstance()
+    private HttpSession session = (HttpSession) FacesContext.getCurrentInstance()
             .getExternalContext()
             .getSession(false);
 
