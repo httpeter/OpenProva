@@ -20,7 +20,8 @@ public class SubscribersRepository extends DefaultRepository implements Serializ
             if (this.getEmf().isOpen() && this.getEm().isOpen())
             {
                 Contact con = (Contact) this.getEm()
-                        .createQuery("select c from Contact c where c.email = :cEmail")
+                        .createQuery("select c from Contact c "
+                                + "where c.email = :cEmail")
                         .setParameter("cEmail", c.getEmail())
                         .getSingleResult();
 
@@ -42,7 +43,9 @@ public class SubscribersRepository extends DefaultRepository implements Serializ
     {
         if (this.getEmf().isOpen() && this.getEm().isOpen())
         {
-            return this.getEm().createQuery("select a from Activity a where a.projectId = :projectId and a.isMasterActivity = :isMasterActivity")
+            return this.getEm().createQuery("select a from Activity a "
+                    + "where a.projectId = :projectId "
+                    + "and a.isMasterActivity = :isMasterActivity")
                     .setParameter("projectId", projectId)
                     .setParameter("isMasterActivity", isMasterActivity).getResultList();
         }

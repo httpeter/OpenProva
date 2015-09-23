@@ -1,7 +1,6 @@
 package org.op.repositories;
 
 import java.io.Serializable;
-import org.op.model.Contact;
 import org.op.model.Labels;
 
 public class LabelRepository extends DefaultRepository implements Serializable

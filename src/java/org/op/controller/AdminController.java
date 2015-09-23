@@ -49,6 +49,18 @@ public class AdminController implements Serializable
 
     private int activeAdminTab;
 
+    private void loadContacts()
+    {
+        try
+        {
+            contacts = adminRepository.getResultList(Contact.class);
+        } catch (Exception e)
+        {
+            msg.error("Error loading contacts\n\n"
+                    .concat(e.getCause().getMessage()));
+        }
+    }
+
     //<editor-fold defaultstate="collapsed" desc="Getters & Setters">
     public int getActiveAdminTab()
     {
@@ -111,18 +123,6 @@ public class AdminController implements Serializable
     }
 
 //</editor-fold>
-    private void loadContacts()
-    {
-        try
-        {
-            contacts = adminRepository.getResultList(Contact.class);
-        } catch (Exception e)
-        {
-            msg.error("Error loading contacts\n\n"
-                    .concat(e.getCause().getMessage()));
-        }
-    }
-
     public void login()
     {
         try
