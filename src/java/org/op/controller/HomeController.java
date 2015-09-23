@@ -54,7 +54,7 @@ public class HomeController implements Serializable
         
         dashboardModel.addColumn(column1);
         dashboardModel.addColumn(column2);
-        dashboardModel.addColumn(column3);
+        
         
     }
     
