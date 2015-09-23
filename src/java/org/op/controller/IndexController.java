@@ -64,22 +64,22 @@ public class IndexController implements Serializable
         this.showHomeFragment();
     }
 
-    public void showHomeFragment()
+    public final void showHomeFragment()
     {
         currentFragment = "resources/fragments/home.xhtml";
     }
 
-    public void showNewFragment()
+    public final void showNewFragment()
     {
         currentFragment = "resources/fragments/new.xhtml";
     }
 
-    public void showMembersFragment()
+    public final void showMembersFragment()
     {
         currentFragment = "resources/fragments/members.xhtml";
     }
 
-    public void showAdminFragment()
+    public final void showAdminFragment()
     {
         currentFragment = "resources/fragments/admin.xhtml";
     }
