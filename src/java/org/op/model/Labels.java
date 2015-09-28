@@ -10,561 +10,713 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Labels implements Serializable {
 
-    @Column(unique=false,updatable=true,insertable=true,nullable=true,length=255,scale=0,precision=0)
+public class Labels implements Serializable
+{
+
+    @Column(unique = false, updatable = true, insertable = true, nullable = true, length = 255, scale = 0, precision = 0)
     @Basic
     private String mailMSGNewMemberSubscriptionSubject;
-    @Column(unique=false,updatable=true,insertable=true,nullable=true,length=255,scale=0,precision=0)
+
+    @Column(unique = false, updatable = true, insertable = true, nullable = true, length = 255, scale = 0, precision = 0)
     @Basic
     private String activityAdditionalMessage;
-    @Column(unique=false,updatable=true,insertable=true,nullable=true,length=255,scale=0,precision=0)
+
+    @Column(unique = false, updatable = true, insertable = true, nullable = true, length = 255, scale = 0, precision = 0)
     @Basic
     private String menuItemAdmin;
-    @Column(unique=false,updatable=true,insertable=true,nullable=true,length=255,scale=0,precision=0)
+
+    @Column(unique = false, updatable = true, insertable = true, nullable = true, length = 255, scale = 0, precision = 0)
     @Basic
     private String project;
-    @Column(unique=false,updatable=true,insertable=true,nullable=true,length=255,scale=0,precision=0)
+
+    @Column(unique = false, updatable = true, insertable = true, nullable = true, length = 255, scale = 0, precision = 0)
     @Basic
     private String defaultEmailWindsCoordinator;
-    @Column(unique=false,updatable=true,insertable=true,nullable=true,length=255,scale=0,precision=0)
+
+    @Column(unique = false, updatable = true, insertable = true, nullable = true, length = 255, scale = 0, precision = 0)
     @Basic
     private String menuItemExistingProject;
-    @Column(unique=false,updatable=true,insertable=true,nullable=true,length=255,scale=0,precision=0)
+
+    @Column(unique = false, updatable = true, insertable = true, nullable = true, length = 255, scale = 0, precision = 0)
     @Basic
     private String adminTabContactsTableInstrument;
-    @Column(unique=false,updatable=true,insertable=true,nullable=true,length=255,scale=0,precision=0)
+
+    @Column(unique = false, updatable = true, insertable = true, nullable = true, length = 255, scale = 0, precision = 0)
     @Basic
     private String MSGTimeoutBody;
-    @Column(unique=false,updatable=true,insertable=true,nullable=true,length=255,scale=0,precision=0)
+
+    @Column(unique = false, updatable = true, insertable = true, nullable = true, length = 255, scale = 0, precision = 0)
     @Basic
     private String adminTabContactsTableFirstname;
-    @Column(unique=false,updatable=true,insertable=true,nullable=true,length=255,scale=0,precision=0)
+
+    @Column(unique = false, updatable = true, insertable = true, nullable = true, length = 255, scale = 0, precision = 0)
     @Basic
     private String projectFrom;
-    @Column(unique=false,updatable=true,insertable=true,nullable=true,length=255,scale=0,precision=0)
+
+    @Column(unique = false, updatable = true, insertable = true, nullable = true, length = 255, scale = 0, precision = 0)
     @Basic
     private String activityCommentsByContact;
-    @Column(unique=false,updatable=true,insertable=true,nullable=false,length=255,scale=0,precision=0)
+
+    @Column(unique = false, updatable = true, insertable = true, nullable = false, length = 255, scale = 0, precision = 0)
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Column(unique=false,updatable=true,insertable=true,nullable=true,length=255,scale=0,precision=0)
+
+    @Column(unique = false, updatable = true, insertable = true, nullable = true, length = 255, scale = 0, precision = 0)
     @Basic
     private String organizationName;
-    @Column(unique=false,updatable=true,insertable=true,nullable=true,length=255,scale=0,precision=0)
+
+    @Column(unique = false, updatable = true, insertable = true, nullable = true, length = 255, scale = 0, precision = 0)
     @Basic
     private String menuItemHome;
-    @Column(unique=false,updatable=true,insertable=true,nullable=true,length=255,scale=0,precision=0)
+
+    @Column(unique = false, updatable = true, insertable = true, nullable = true, length = 255, scale = 0, precision = 0)
     @Basic
     private String mailMSGToAdminNewMemberSubscriptionSubject;
-    @Column(unique=false,updatable=true,insertable=true,nullable=true,length=255,scale=0,precision=0)
+
+    @Column(unique = false, updatable = true, insertable = true, nullable = true, length = 255, scale = 0, precision = 0)
     @Basic
     private String adminTabContacts;
-    @Column(unique=false,updatable=true,insertable=true,nullable=true,length=255,scale=0,precision=0)
+
+    @Column(unique = false, updatable = true, insertable = true, nullable = true, length = 255, scale = 0, precision = 0)
     @Basic
     private String defaultEmailWindsCoordinatorPWD;
-    @Column(unique=false,updatable=true,insertable=true,nullable=true,length=255,scale=0,precision=0)
+
+    @Column(unique = false, updatable = true, insertable = true, nullable = true, length = 255, scale = 0, precision = 0)
     @Basic
     private String adminUsername;
-    @Column(unique=false,updatable=true,insertable=true,nullable=true,length=255,scale=0,precision=0)
+
+    @Column(unique = false, updatable = true, insertable = true, nullable = true, length = 255, scale = 0, precision = 0)
     @Basic
     private String activityLocation;
-    @Column(unique=false,updatable=true,insertable=true,nullable=true,length=255,scale=0,precision=0)
+
+    @Column(unique = false, updatable = true, insertable = true, nullable = true, length = 255, scale = 0, precision = 0)
     @Basic
     private String activityEndTime;
-    @Column(unique=false,updatable=true,insertable=true,nullable=true,length=255,scale=0,precision=0)
+
+    @Column(unique = false, updatable = true, insertable = true, nullable = true, length = 255, scale = 0, precision = 0)
     @Basic
     private String projectUntil;
-    @Column(unique=false,updatable=true,insertable=true,nullable=true,length=255,scale=0,precision=0)
+
+    @Column(unique = false, updatable = true, insertable = true, nullable = true, length = 255, scale = 0, precision = 0)
     @Basic
     private String menuItemProjects;
-    @Column(unique=false,updatable=true,insertable=true,nullable=true,length=255,scale=0,precision=0)
-    @Basic(fetch=FetchType.LAZY)
+
+    @Column(unique = false, updatable = true, insertable = true, nullable = true, length = 255, scale = 0, precision = 0)
+    @Basic(fetch = FetchType.LAZY)
     private String sixteenCharsEncryptionSalt;
-    @Column(unique=false,updatable=true,insertable=true,nullable=true,length=255,scale=0,precision=0)
+
+    @Column(unique = false, updatable = true, insertable = true, nullable = true, length = 255, scale = 0, precision = 0)
     @Basic
     private String activityDescription;
-    @Column(unique=false,updatable=true,insertable=true,nullable=true,length=255,scale=0,precision=0)
+
+    @Column(unique = false, updatable = true, insertable = true, nullable = true, length = 255, scale = 0, precision = 0)
     @Basic
     private String adminTabContactsTableLastname;
-    @Column(unique=false,updatable=true,insertable=true,nullable=true,length=255,scale=0,precision=0)
+
+    @Column(unique = false, updatable = true, insertable = true, nullable = true, length = 255, scale = 0, precision = 0)
     @Basic
     private String projectSelect;
-    @Column(unique=false,updatable=true,insertable=true,nullable=true,length=255,scale=0,precision=0)
+
+    @Column(unique = false, updatable = true, insertable = true, nullable = true, length = 255, scale = 0, precision = 0)
     @Basic
     private String adminTabContactsAddContact;
-    @Column(unique=false,updatable=true,insertable=true,nullable=true,length=2048,scale=0,precision=0)
+
+    @Column(unique = false, updatable = true, insertable = true, nullable = true, length = 2048, scale = 0, precision = 0)
     @Basic
     private String projectSubscriptionNewMSG;
-    @Column(unique=false,updatable=true,insertable=true,nullable=true,length=255,scale=0,precision=0)
+
+    @Column(unique = false, updatable = true, insertable = true, nullable = true, length = 255, scale = 0, precision = 0)
     @Basic
     private String save;
-    @Column(unique=false,updatable=true,insertable=true,nullable=true,length=2048,scale=0,precision=0)
+
+    @Column(unique = false, updatable = true, insertable = true, nullable = true, length = 2048, scale = 0, precision = 0)
     @Basic
     private String mailMSGToAdminNewMemberSubscriptionBody;
-    @Column(unique=false,updatable=true,insertable=true,nullable=true,length=255,scale=0,precision=0)
+
+    @Column(unique = false, updatable = true, insertable = true, nullable = true, length = 255, scale = 0, precision = 0)
     @Basic
     private String activityStartTime;
-    @Column(unique=false,updatable=true,insertable=true,nullable=true,length=255,scale=0,precision=0)
+
+    @Column(unique = false, updatable = true, insertable = true, nullable = true, length = 255, scale = 0, precision = 0)
     @Basic
     private String appTitle;
-    @Column(unique=false,updatable=true,insertable=true,nullable=true,length=8,scale=0,precision=0)
+
+    @Column(unique = false, updatable = true, insertable = true, nullable = true, length = 8, scale = 0, precision = 0)
     @Basic
     private String locale;
-    @Column(unique=false,updatable=true,insertable=true,nullable=true,length=255,scale=0,precision=0)
+
+    @Column(unique = false, updatable = true, insertable = true, nullable = true, length = 255, scale = 0, precision = 0)
     @Basic
     private String adminTabContactsTablePhone;
-    @Column(unique=false,updatable=true,insertable=true,nullable=true,length=255,scale=0,precision=0)
+
+    @Column(unique = false, updatable = true, insertable = true, nullable = true, length = 255, scale = 0, precision = 0)
     @Basic
     private String MSGTimeoutHeader;
-    @Column(unique=false,updatable=true,insertable=true,nullable=true,length=255,scale=0,precision=0)
+
+    @Column(unique = false, updatable = true, insertable = true, nullable = true, length = 255, scale = 0, precision = 0)
     @Basic
     private String adminTabContactsTableNotes;
-    @Column(unique=false,updatable=true,insertable=true,nullable=true,length=255,scale=0,precision=0)
+
+    @Column(unique = false, updatable = true, insertable = true, nullable = true, length = 255, scale = 0, precision = 0)
     @Basic
     private String activityDate;
-    @Column(unique=false,updatable=true,insertable=true,nullable=true,length=2048,scale=0,precision=0)
+
+    @Column(unique = false, updatable = true, insertable = true, nullable = true, length = 2048, scale = 0, precision = 0)
     @Basic
     private String mailMSGNewMemberSubscriptionBody;
-    @Column(unique=false,updatable=true,insertable=true,nullable=true,length=255,scale=0,precision=0)
+
+    @Column(unique = false, updatable = true, insertable = true, nullable = true, length = 255, scale = 0, precision = 0)
     @Basic
     private String adminPassword;
-    @Column(unique=false,updatable=true,insertable=true,nullable=true,length=255,scale=0,precision=0)
+
+    @Column(unique = false, updatable = true, insertable = true, nullable = true, length = 255, scale = 0, precision = 0)
     @Basic
     private String defaultEmailStringsCoordinator;
-    @Column(unique=false,updatable=true,insertable=true,nullable=true,length=255,scale=0,precision=0)
+
+    @Column(unique = false, updatable = true, insertable = true, nullable = true, length = 255, scale = 0, precision = 0)
     @Basic
     private String activityTime;
-    @Column(unique=false,updatable=true,insertable=true,nullable=true,length=255,scale=0,precision=0)
+
+    @Column(unique = false, updatable = true, insertable = true, nullable = true, length = 255, scale = 0, precision = 0)
     @Basic
     private String projectSubscriptionPanelHeader;
-    @Column(unique=false,updatable=true,insertable=true,nullable=true,length=255,scale=0,precision=0)
+
+    @Column(unique = false, updatable = true, insertable = true, nullable = true, length = 255, scale = 0, precision = 0)
     @Basic
     private String defaultEmailStringsCoordinatorPWD;
-    @Column(unique=false,updatable=true,insertable=true,nullable=true,length=512,scale=0,precision=0)
+
+    @Column(unique = false, updatable = true, insertable = true, nullable = true, length = 512, scale = 0, precision = 0)
     @Basic
     private String projectRepertoire;
-    @Column(unique=false,updatable=true,insertable=true,nullable=true,length=255,scale=0,precision=0)
+
+    @Column(unique = false, updatable = true, insertable = true, nullable = true, length = 255, scale = 0, precision = 0)
     @Basic
     private String activityPresent;
-    @Column(unique=false,updatable=true,insertable=true,nullable=true,length=255,scale=0,precision=0)
+
+    @Column(unique = false, updatable = true, insertable = true, nullable = true, length = 255, scale = 0, precision = 0)
     @Basic
     private String menuItemNewProject;
-    @Column(unique=false,updatable=true,insertable=true,nullable=true,length=255,scale=0,precision=0)
+
+    @Column(unique = false, updatable = true, insertable = true, nullable = true, length = 255, scale = 0, precision = 0)
     @Basic
     private String menuItemLogout;
-    @Column(unique=false,updatable=true,insertable=true,nullable=true,length=255,scale=0,precision=0)
-    @Basic(fetch=FetchType.LAZY)
+
+    @Column(unique = false, updatable = true, insertable = true, nullable = true, length = 255, scale = 0, precision = 0)
+    @Basic(fetch = FetchType.LAZY)
     private String sixteenCharsEncryptionPassword;
-    @Column(unique=false,updatable=true,insertable=true,nullable=true,length=255,scale=0,precision=0)
+
+    @Column(unique = false, updatable = true, insertable = true, nullable = true, length = 255, scale = 0, precision = 0)
     @Basic
     private String adminTabContactsTableEmail;
-    @Column(unique=false,updatable=true,insertable=true,nullable=true,length=2048,scale=0,precision=0)
+
+    @Column(unique = false, updatable = true, insertable = true, nullable = true, length = 2048, scale = 0, precision = 0)
     @Basic
     private String welcomeMSG;
 
-    public Labels() {
+    public Labels()
+    {
 
     }
-   
-    public String getMailMSGNewMemberSubscriptionSubject() {
+
+    public String getMailMSGNewMemberSubscriptionSubject()
+    {
         return this.mailMSGNewMemberSubscriptionSubject;
     }
 
-    public void setMailMSGNewMemberSubscriptionSubject(String mailMSGNewMemberSubscriptionSubject) {
+    public void setMailMSGNewMemberSubscriptionSubject(String mailMSGNewMemberSubscriptionSubject)
+    {
         this.mailMSGNewMemberSubscriptionSubject = mailMSGNewMemberSubscriptionSubject;
     }
-   
-    public String getActivityAdditionalMessage() {
+
+    public String getActivityAdditionalMessage()
+    {
         return this.activityAdditionalMessage;
     }
 
-    public void setActivityAdditionalMessage(String activityAdditionalMessage) {
+    public void setActivityAdditionalMessage(String activityAdditionalMessage)
+    {
         this.activityAdditionalMessage = activityAdditionalMessage;
     }
-   
-    public String getMenuItemAdmin() {
+
+    public String getMenuItemAdmin()
+    {
         return this.menuItemAdmin;
     }
 
-    public void setMenuItemAdmin(String menuItemAdmin) {
+    public void setMenuItemAdmin(String menuItemAdmin)
+    {
         this.menuItemAdmin = menuItemAdmin;
     }
-   
-    public String getProject() {
+
+    public String getProject()
+    {
         return this.project;
     }
 
-    public void setProject(String project) {
+    public void setProject(String project)
+    {
         this.project = project;
     }
-   
-    public String getDefaultEmailWindsCoordinator() {
+
+    public String getDefaultEmailWindsCoordinator()
+    {
         return this.defaultEmailWindsCoordinator;
     }
 
-    public void setDefaultEmailWindsCoordinator(String defaultEmailWindsCoordinator) {
+    public void setDefaultEmailWindsCoordinator(String defaultEmailWindsCoordinator)
+    {
         this.defaultEmailWindsCoordinator = defaultEmailWindsCoordinator;
     }
-   
-    public String getMenuItemExistingProject() {
+
+    public String getMenuItemExistingProject()
+    {
         return this.menuItemExistingProject;
     }
 
-    public void setMenuItemExistingProject(String menuItemExistingProject) {
+    public void setMenuItemExistingProject(String menuItemExistingProject)
+    {
         this.menuItemExistingProject = menuItemExistingProject;
     }
-   
-    public String getAdminTabContactsTableInstrument() {
+
+    public String getAdminTabContactsTableInstrument()
+    {
         return this.adminTabContactsTableInstrument;
     }
 
-    public void setAdminTabContactsTableInstrument(String adminTabContactsTableInstrument) {
+    public void setAdminTabContactsTableInstrument(String adminTabContactsTableInstrument)
+    {
         this.adminTabContactsTableInstrument = adminTabContactsTableInstrument;
     }
-   
-    public String getMSGTimeoutBody() {
+
+    public String getMSGTimeoutBody()
+    {
         return this.MSGTimeoutBody;
     }
 
-    public void setMSGTimeoutBody(String MSGTimeoutBody) {
+    public void setMSGTimeoutBody(String MSGTimeoutBody)
+    {
         this.MSGTimeoutBody = MSGTimeoutBody;
     }
-   
-    public String getAdminTabContactsTableFirstname() {
+
+    public String getAdminTabContactsTableFirstname()
+    {
         return this.adminTabContactsTableFirstname;
     }
 
-    public void setAdminTabContactsTableFirstname(String adminTabContactsTableFirstname) {
+    public void setAdminTabContactsTableFirstname(String adminTabContactsTableFirstname)
+    {
         this.adminTabContactsTableFirstname = adminTabContactsTableFirstname;
     }
-   
-    public String getProjectFrom() {
+
+    public String getProjectFrom()
+    {
         return this.projectFrom;
     }
 
-    public void setProjectFrom(String projectFrom) {
+    public void setProjectFrom(String projectFrom)
+    {
         this.projectFrom = projectFrom;
     }
-   
-    public String getActivityCommentsByContact() {
+
+    public String getActivityCommentsByContact()
+    {
         return this.activityCommentsByContact;
     }
 
-    public void setActivityCommentsByContact(String activityCommentsByContact) {
+    public void setActivityCommentsByContact(String activityCommentsByContact)
+    {
         this.activityCommentsByContact = activityCommentsByContact;
     }
-   
-    public Long getId() {
+
+    public Long getId()
+    {
         return this.id;
     }
 
-    public void setId(Long id) {
+    public void setId(Long id)
+    {
         this.id = id;
     }
-   
-    public String getOrganizationName() {
+
+    public String getOrganizationName()
+    {
         return this.organizationName;
     }
 
-    public void setOrganizationName(String organizationName) {
+    public void setOrganizationName(String organizationName)
+    {
         this.organizationName = organizationName;
     }
-   
-    public String getMenuItemHome() {
+
+    public String getMenuItemHome()
+    {
         return this.menuItemHome;
     }
 
-    public void setMenuItemHome(String menuItemHome) {
+    public void setMenuItemHome(String menuItemHome)
+    {
         this.menuItemHome = menuItemHome;
     }
-   
-    public String getMailMSGToAdminNewMemberSubscriptionSubject() {
+
+    public String getMailMSGToAdminNewMemberSubscriptionSubject()
+    {
         return this.mailMSGToAdminNewMemberSubscriptionSubject;
     }
 
-    public void setMailMSGToAdminNewMemberSubscriptionSubject(String mailMSGToAdminNewMemberSubscriptionSubject) {
+    public void setMailMSGToAdminNewMemberSubscriptionSubject(String mailMSGToAdminNewMemberSubscriptionSubject)
+    {
         this.mailMSGToAdminNewMemberSubscriptionSubject = mailMSGToAdminNewMemberSubscriptionSubject;
     }
-   
-    public String getAdminTabContacts() {
+
+    public String getAdminTabContacts()
+    {
         return this.adminTabContacts;
     }
 
-    public void setAdminTabContacts(String adminTabContacts) {
+    public void setAdminTabContacts(String adminTabContacts)
+    {
         this.adminTabContacts = adminTabContacts;
     }
-   
-    public String getDefaultEmailWindsCoordinatorPWD() {
+
+    public String getDefaultEmailWindsCoordinatorPWD()
+    {
         return this.defaultEmailWindsCoordinatorPWD;
     }
 
-    public void setDefaultEmailWindsCoordinatorPWD(String defaultEmailWindsCoordinatorPWD) {
+    public void setDefaultEmailWindsCoordinatorPWD(String defaultEmailWindsCoordinatorPWD)
+    {
         this.defaultEmailWindsCoordinatorPWD = defaultEmailWindsCoordinatorPWD;
     }
-   
-    public String getAdminUsername() {
+
+    public String getAdminUsername()
+    {
         return this.adminUsername;
     }
 
-    public void setAdminUsername(String adminUsername) {
+    public void setAdminUsername(String adminUsername)
+    {
         this.adminUsername = adminUsername;
     }
-   
-    public String getActivityLocation() {
+
+    public String getActivityLocation()
+    {
         return this.activityLocation;
     }
 
-    public void setActivityLocation(String activityLocation) {
+    public void setActivityLocation(String activityLocation)
+    {
         this.activityLocation = activityLocation;
     }
-   
-    public String getActivityEndTime() {
+
+    public String getActivityEndTime()
+    {
         return this.activityEndTime;
     }
 
-    public void setActivityEndTime(String activityEndTime) {
+    public void setActivityEndTime(String activityEndTime)
+    {
         this.activityEndTime = activityEndTime;
     }
-   
-    public String getProjectUntil() {
+
+    public String getProjectUntil()
+    {
         return this.projectUntil;
     }
 
-    public void setProjectUntil(String projectUntil) {
+    public void setProjectUntil(String projectUntil)
+    {
         this.projectUntil = projectUntil;
     }
-   
-    public String getMenuItemProjects() {
+
+    public String getMenuItemProjects()
+    {
         return this.menuItemProjects;
     }
 
-    public void setMenuItemProjects(String menuItemProjects) {
+    public void setMenuItemProjects(String menuItemProjects)
+    {
         this.menuItemProjects = menuItemProjects;
     }
-   
-    public String getSixteenCharsEncryptionSalt() {
+
+    public String getSixteenCharsEncryptionSalt()
+    {
         return this.sixteenCharsEncryptionSalt;
     }
 
-    public void setSixteenCharsEncryptionSalt(String sixteenCharsEncryptionSalt) {
+    public void setSixteenCharsEncryptionSalt(String sixteenCharsEncryptionSalt)
+    {
         this.sixteenCharsEncryptionSalt = sixteenCharsEncryptionSalt;
     }
-   
-    public String getActivityDescription() {
+
+    public String getActivityDescription()
+    {
         return this.activityDescription;
     }
 
-    public void setActivityDescription(String activityDescription) {
+    public void setActivityDescription(String activityDescription)
+    {
         this.activityDescription = activityDescription;
     }
-   
-    public String getAdminTabContactsTableLastname() {
+
+    public String getAdminTabContactsTableLastname()
+    {
         return this.adminTabContactsTableLastname;
     }
 
-    public void setAdminTabContactsTableLastname(String adminTabContactsTableLastname) {
+    public void setAdminTabContactsTableLastname(String adminTabContactsTableLastname)
+    {
         this.adminTabContactsTableLastname = adminTabContactsTableLastname;
     }
-   
-    public String getProjectSelect() {
+
+    public String getProjectSelect()
+    {
         return this.projectSelect;
     }
 
-    public void setProjectSelect(String projectSelect) {
+    public void setProjectSelect(String projectSelect)
+    {
         this.projectSelect = projectSelect;
     }
-   
-    public String getAdminTabContactsAddContact() {
+
+    public String getAdminTabContactsAddContact()
+    {
         return this.adminTabContactsAddContact;
     }
 
-    public void setAdminTabContactsAddContact(String adminTabContactsAddContact) {
+    public void setAdminTabContactsAddContact(String adminTabContactsAddContact)
+    {
         this.adminTabContactsAddContact = adminTabContactsAddContact;
     }
-   
-    public String getProjectSubscriptionNewMSG() {
+
+    public String getProjectSubscriptionNewMSG()
+    {
         return this.projectSubscriptionNewMSG;
     }
 
-    public void setProjectSubscriptionNewMSG(String projectSubscriptionNewMSG) {
+    public void setProjectSubscriptionNewMSG(String projectSubscriptionNewMSG)
+    {
         this.projectSubscriptionNewMSG = projectSubscriptionNewMSG;
     }
-   
-    public String getSave() {
+
+    public String getSave()
+    {
         return this.save;
     }
 
-    public void setSave(String save) {
+    public void setSave(String save)
+    {
         this.save = save;
     }
-   
-    public String getMailMSGToAdminNewMemberSubscriptionBody() {
+
+    public String getMailMSGToAdminNewMemberSubscriptionBody()
+    {
         return this.mailMSGToAdminNewMemberSubscriptionBody;
     }
 
-    public void setMailMSGToAdminNewMemberSubscriptionBody(String mailMSGToAdminNewMemberSubscriptionBody) {
+    public void setMailMSGToAdminNewMemberSubscriptionBody(String mailMSGToAdminNewMemberSubscriptionBody)
+    {
         this.mailMSGToAdminNewMemberSubscriptionBody = mailMSGToAdminNewMemberSubscriptionBody;
     }
-   
-    public String getActivityStartTime() {
+
+    public String getActivityStartTime()
+    {
         return this.activityStartTime;
     }
 
-    public void setActivityStartTime(String activityStartTime) {
+    public void setActivityStartTime(String activityStartTime)
+    {
         this.activityStartTime = activityStartTime;
     }
-   
-    public String getAppTitle() {
+
+    public String getAppTitle()
+    {
         return this.appTitle;
     }
 
-    public void setAppTitle(String appTitle) {
+    public void setAppTitle(String appTitle)
+    {
         this.appTitle = appTitle;
     }
-   
-    public String getLocale() {
+
+    public String getLocale()
+    {
         return this.locale;
     }
 
-    public void setLocale(String locale) {
+    public void setLocale(String locale)
+    {
         this.locale = locale;
     }
-   
-    public String getAdminTabContactsTablePhone() {
+
+    public String getAdminTabContactsTablePhone()
+    {
         return this.adminTabContactsTablePhone;
     }
 
-    public void setAdminTabContactsTablePhone(String adminTabContactsTablePhone) {
+    public void setAdminTabContactsTablePhone(String adminTabContactsTablePhone)
+    {
         this.adminTabContactsTablePhone = adminTabContactsTablePhone;
     }
-   
-    public String getMSGTimeoutHeader() {
+
+    public String getMSGTimeoutHeader()
+    {
         return this.MSGTimeoutHeader;
     }
 
-    public void setMSGTimeoutHeader(String MSGTimeoutHeader) {
+    public void setMSGTimeoutHeader(String MSGTimeoutHeader)
+    {
         this.MSGTimeoutHeader = MSGTimeoutHeader;
     }
-   
-    public String getAdminTabContactsTableNotes() {
+
+    public String getAdminTabContactsTableNotes()
+    {
         return this.adminTabContactsTableNotes;
     }
 
-    public void setAdminTabContactsTableNotes(String adminTabContactsTableNotes) {
+    public void setAdminTabContactsTableNotes(String adminTabContactsTableNotes)
+    {
         this.adminTabContactsTableNotes = adminTabContactsTableNotes;
     }
-   
-    public String getActivityDate() {
+
+    public String getActivityDate()
+    {
         return this.activityDate;
     }
 
-    public void setActivityDate(String activityDate) {
+    public void setActivityDate(String activityDate)
+    {
         this.activityDate = activityDate;
     }
-   
-    public String getMailMSGNewMemberSubscriptionBody() {
+
+    public String getMailMSGNewMemberSubscriptionBody()
+    {
         return this.mailMSGNewMemberSubscriptionBody;
     }
 
-    public void setMailMSGNewMemberSubscriptionBody(String mailMSGNewMemberSubscriptionBody) {
+    public void setMailMSGNewMemberSubscriptionBody(String mailMSGNewMemberSubscriptionBody)
+    {
         this.mailMSGNewMemberSubscriptionBody = mailMSGNewMemberSubscriptionBody;
     }
-   
-    public String getAdminPassword() {
+
+    public String getAdminPassword()
+    {
         return this.adminPassword;
     }
 
-    public void setAdminPassword(String adminPassword) {
+    public void setAdminPassword(String adminPassword)
+    {
         this.adminPassword = adminPassword;
     }
-   
-    public String getDefaultEmailStringsCoordinator() {
+
+    public String getDefaultEmailStringsCoordinator()
+    {
         return this.defaultEmailStringsCoordinator;
     }
 
-    public void setDefaultEmailStringsCoordinator(String defaultEmailStringsCoordinator) {
+    public void setDefaultEmailStringsCoordinator(String defaultEmailStringsCoordinator)
+    {
         this.defaultEmailStringsCoordinator = defaultEmailStringsCoordinator;
     }
-   
-    public String getActivityTime() {
+
+    public String getActivityTime()
+    {
         return this.activityTime;
     }
 
-    public void setActivityTime(String activityTime) {
+    public void setActivityTime(String activityTime)
+    {
         this.activityTime = activityTime;
     }
-   
-    public String getProjectSubscriptionPanelHeader() {
+
+    public String getProjectSubscriptionPanelHeader()
+    {
         return this.projectSubscriptionPanelHeader;
     }
 
-    public void setProjectSubscriptionPanelHeader(String projectSubscriptionPanelHeader) {
+    public void setProjectSubscriptionPanelHeader(String projectSubscriptionPanelHeader)
+    {
         this.projectSubscriptionPanelHeader = projectSubscriptionPanelHeader;
     }
-   
-    public String getDefaultEmailStringsCoordinatorPWD() {
+
+    public String getDefaultEmailStringsCoordinatorPWD()
+    {
         return this.defaultEmailStringsCoordinatorPWD;
     }
 
-    public void setDefaultEmailStringsCoordinatorPWD(String defaultEmailStringsCoordinatorPWD) {
+    public void setDefaultEmailStringsCoordinatorPWD(String defaultEmailStringsCoordinatorPWD)
+    {
         this.defaultEmailStringsCoordinatorPWD = defaultEmailStringsCoordinatorPWD;
     }
-   
-    public String getProjectRepertoire() {
+
+    public String getProjectRepertoire()
+    {
         return this.projectRepertoire;
     }
 
-    public void setProjectRepertoire(String projectRepertoire) {
+    public void setProjectRepertoire(String projectRepertoire)
+    {
         this.projectRepertoire = projectRepertoire;
     }
-   
-    public String getActivityPresent() {
+
+    public String getActivityPresent()
+    {
         return this.activityPresent;
     }
 
-    public void setActivityPresent(String activityPresent) {
+    public void setActivityPresent(String activityPresent)
+    {
         this.activityPresent = activityPresent;
     }
-   
-    public String getMenuItemNewProject() {
+
+    public String getMenuItemNewProject()
+    {
         return this.menuItemNewProject;
     }
 
-    public void setMenuItemNewProject(String menuItemNewProject) {
+    public void setMenuItemNewProject(String menuItemNewProject)
+    {
         this.menuItemNewProject = menuItemNewProject;
     }
-   
-    public String getMenuItemLogout() {
+
+    public String getMenuItemLogout()
+    {
         return this.menuItemLogout;
     }
 
-    public void setMenuItemLogout(String menuItemLogout) {
+    public void setMenuItemLogout(String menuItemLogout)
+    {
         this.menuItemLogout = menuItemLogout;
     }
-   
-    public String getSixteenCharsEncryptionPassword() {
+
+    public String getSixteenCharsEncryptionPassword()
+    {
         return this.sixteenCharsEncryptionPassword;
     }
 
-    public void setSixteenCharsEncryptionPassword(String sixteenCharsEncryptionPassword) {
+    public void setSixteenCharsEncryptionPassword(String sixteenCharsEncryptionPassword)
+    {
         this.sixteenCharsEncryptionPassword = sixteenCharsEncryptionPassword;
     }
-   
-    public String getAdminTabContactsTableEmail() {
+
+    public String getAdminTabContactsTableEmail()
+    {
         return this.adminTabContactsTableEmail;
     }
 
-    public void setAdminTabContactsTableEmail(String adminTabContactsTableEmail) {
+    public void setAdminTabContactsTableEmail(String adminTabContactsTableEmail)
+    {
         this.adminTabContactsTableEmail = adminTabContactsTableEmail;
     }
-   
-    public String getWelcomeMSG() {
+
+    public String getWelcomeMSG()
+    {
         return this.welcomeMSG;
     }
 
-    public void setWelcomeMSG(String welcomeMSG) {
+    public void setWelcomeMSG(String welcomeMSG)
+    {
         this.welcomeMSG = welcomeMSG;
     }
 }

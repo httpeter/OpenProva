@@ -11,132 +11,167 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Activity implements Serializable {
 
-    @Column(unique=false,updatable=true,insertable=true,nullable=true,length=255,scale=0,precision=0)
+public class Activity implements Serializable
+{
+
+    @Column(unique = false, updatable = true, insertable = true, nullable = true, length = 255, scale = 0, precision = 0)
     @Basic
     private Date date;
-    @Column(unique=false,updatable=true,insertable=true,nullable=true,length=255,scale=0,precision=0)
+
+    @Column(unique = false, updatable = true, insertable = true, nullable = true, length = 255, scale = 0, precision = 0)
     @Id
     private Long contactId;
-    @Column(unique=false,updatable=true,insertable=true,nullable=true,length=512,scale=0,precision=0)
+
+    @Column(unique = false, updatable = true, insertable = true, nullable = true, length = 512, scale = 0, precision = 0)
     @Basic
     private String commentsByContact;
-    @Column(unique=false,updatable=true,insertable=true,nullable=true,length=512,scale=0,precision=0)
+
+    @Column(unique = false, updatable = true, insertable = true, nullable = true, length = 512, scale = 0, precision = 0)
     @Basic
     private String description;
-    @Column(unique=false,updatable=true,insertable=true,nullable=true,length=255,scale=0,precision=0)
+
+    @Column(unique = false, updatable = true, insertable = true, nullable = true, length = 255, scale = 0, precision = 0)
     @Basic
     private Time startTime;
-    @Column(unique=false,updatable=true,insertable=true,nullable=true,length=255,scale=0,precision=0)
+
+    @Column(unique = false, updatable = true, insertable = true, nullable = true, length = 255, scale = 0, precision = 0)
     @Basic
     private String location;
-    @Column(unique=true,updatable=true,insertable=true,nullable=false,length=255,scale=0,precision=0)
+
+    @Column(unique = true, updatable = true, insertable = true, nullable = false, length = 255, scale = 0, precision = 0)
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Column(unique=false,updatable=true,insertable=true,nullable=true,length=255,scale=0,precision=0)
+
+    @Column(unique = false, updatable = true, insertable = true, nullable = true, length = 255, scale = 0, precision = 0)
     @Basic
     private Time endTime;
-    @Column(unique=false,updatable=true,insertable=true,nullable=true,length=255,scale=0,precision=0)
+
+    @Column(unique = false, updatable = true, insertable = true, nullable = true, length = 255, scale = 0, precision = 0)
     @Basic
     private boolean present;
-    @Column(unique=false,updatable=true,insertable=true,nullable=true,length=255,scale=0,precision=0)
+
+    @Column(unique = false, updatable = true, insertable = true, nullable = true, length = 255, scale = 0, precision = 0)
     @Basic
     private boolean isMasterActivity;
-    @Column(unique=false,updatable=true,insertable=true,nullable=true,length=255,scale=0,precision=0)
+
+    @Column(unique = false, updatable = true, insertable = true, nullable = true, length = 255, scale = 0, precision = 0)
     @Id
     private Long projectId;
 
-    public Activity() {
+    public Activity()
+    {
 
     }
-   
-    public Date getDate() {
+
+    public Date getDate()
+    {
         return this.date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(Date date)
+    {
         this.date = date;
     }
-   
-    public Long getContactId() {
+
+    public Long getContactId()
+    {
         return this.contactId;
     }
 
-    public void setContactId(Long contactId) {
+    public void setContactId(Long contactId)
+    {
         this.contactId = contactId;
     }
-   
-    public String getCommentsByContact() {
+
+    public String getCommentsByContact()
+    {
         return this.commentsByContact;
     }
 
-    public void setCommentsByContact(String commentsByContact) {
+    public void setCommentsByContact(String commentsByContact)
+    {
         this.commentsByContact = commentsByContact;
     }
-   
-    public String getDescription() {
+
+    public String getDescription()
+    {
         return this.description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(String description)
+    {
         this.description = description;
     }
-   
-    public Time getStartTime() {
+
+    public Time getStartTime()
+    {
         return this.startTime;
     }
 
-    public void setStartTime(Time startTime) {
+    public void setStartTime(Time startTime)
+    {
         this.startTime = startTime;
     }
-   
-    public String getLocation() {
+
+    public String getLocation()
+    {
         return this.location;
     }
 
-    public void setLocation(String location) {
+    public void setLocation(String location)
+    {
         this.location = location;
     }
-   
-    public Long getId() {
+
+    public Long getId()
+    {
         return this.id;
     }
 
-    public void setId(Long id) {
+    public void setId(Long id)
+    {
         this.id = id;
     }
-   
-    public Time getEndTime() {
+
+    public Time getEndTime()
+    {
         return this.endTime;
     }
 
-    public void setEndTime(Time endTime) {
+    public void setEndTime(Time endTime)
+    {
         this.endTime = endTime;
     }
-    
-    public boolean isPresent() {
+
+    public boolean isPresent()
+    {
         return this.present;
     }
 
-    public void setPresent(boolean present) {
+    public void setPresent(boolean present)
+    {
         this.present = present;
     }
-    
-    public boolean isIsMasterActivity() {
+
+    public boolean isIsMasterActivity()
+    {
         return this.isMasterActivity;
     }
 
-    public void setIsMasterActivity(boolean isMasterActivity) {
+    public void setIsMasterActivity(boolean isMasterActivity)
+    {
         this.isMasterActivity = isMasterActivity;
     }
-   
-    public Long getProjectId() {
+
+    public Long getProjectId()
+    {
         return this.projectId;
     }
 
-    public void setProjectId(Long projectId) {
+    public void setProjectId(Long projectId)
+    {
         this.projectId = projectId;
     }
 }
