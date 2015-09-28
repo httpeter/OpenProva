@@ -34,22 +34,22 @@
             <p:menubar id="menu" autoDisplay="false">
 
                 <p:menuitem value="#{indexController.labels.menuItemHome}" 
-                            action="#{indexController.showHomeFragment()}" 
+                            action="#{indexController.showFragment('resources/fragments/home.xhtml')}" 
                             update="mainForm:currentFragment" icon="fa fa-home"/>
 
                 <p:submenu label="#{indexController.labels.menuItemProjects}" icon="fa fa-users">
 
                     <p:menuitem value="#{indexController.labels.menuItemNewProject}" 
-                                action="#{indexController.showNewFragment()}" 
+                                action="#{indexController.showFragment('resources/fragments/new.xhtml')}" 
                                 update="mainForm:currentFragment" icon="ui-icon-person"/>
 
                     <p:menuitem value="#{indexController.labels.menuItemExistingProject}" 
-                                action="#{indexController.showMembersFragment()}" 
+                                action="#{indexController.showFragment('resources/fragments/members.xhtml')}" 
                                 update="mainForm:currentFragment" icon="ui-icon-refresh"/>
                 </p:submenu>
 
                 <p:menuitem value="#{indexController.labels.menuItemAdmin}" 
-                            action="#{indexController.showAdminFragment()}"
+                            action="#{indexController.showFragment('resources/fragments/admin.xhtml')}"
                             update="mainForm:currentFragment" 
                             icon="fa fa-legal"/>
 
@@ -65,7 +65,7 @@
 
 
             <p:spacer/>
-
+            
 
             <!-- Currently loaded Page Fragment -->
             <p:outputPanel id="currentFragment">

@@ -61,27 +61,12 @@ public class IndexController implements Serializable
         labels = labelRepository.getLabels();
         session.setAttribute("labels", labels);
         labelRepository.close();
-        this.showHomeFragment();
+        this.showFragment("resources/fragments/home.xhtml");
     }
 
-    public final void showHomeFragment()
+    public final void showFragment(String fragmentLocation)
     {
-        currentFragment = "resources/fragments/home.xhtml";
-    }
-
-    public final void showNewFragment()
-    {
-        currentFragment = "resources/fragments/new.xhtml";
-    }
-
-    public final void showMembersFragment()
-    {
-        currentFragment = "resources/fragments/members.xhtml";
-    }
-
-    public final void showAdminFragment()
-    {
-        currentFragment = "resources/fragments/admin.xhtml";
+        currentFragment = fragmentLocation;
     }
 
 }

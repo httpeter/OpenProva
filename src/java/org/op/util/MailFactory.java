@@ -45,6 +45,7 @@ public class MailFactory
                 labels.getSixteenCharsEncryptionPassword(),
                 labels.getSixteenCharsEncryptionSalt());
 
+//        For new member subscriptions, this is BS
         new Thread(() ->
         {
             while (true)
