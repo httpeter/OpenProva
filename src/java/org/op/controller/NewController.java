@@ -101,7 +101,6 @@ public class NewController implements Serializable
     //Loading project data and cloning dates
     public void selectProject()
     {
-        projectActivities = new ArrayList();
         projects.forEach((p) ->
         {
             if (p.getId() != null)
@@ -112,8 +111,14 @@ public class NewController implements Serializable
                 selectedProject = new Project();
             }
         });
+
         List<Activity> masterActivities = subscribersRepository
                 .getProjectActivities(selectedProject.getId(), true);
+
+        projectActivities = new ArrayList();
+
+        //not using the Collections clong constructor option because this
+        //is not a master activity
         masterActivities.forEach((ma) ->
         {
             Activity a = new Activity();
@@ -126,6 +131,7 @@ public class NewController implements Serializable
             a.setPresent(ma.isPresent());
             a.setProjectId(ma.getProjectId());
             a.setStartTime(ma.getStartTime());
+            a.setIsMasterActivity(false);
             projectActivities.add(a);
         });
     }
