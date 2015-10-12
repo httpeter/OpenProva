@@ -14,7 +14,7 @@ import org.op.util.FMessage;
 public class IndexController implements Serializable
 {
 
-    private final HttpSession session = (HttpSession) FacesContext.getCurrentInstance()
+    private HttpSession session = (HttpSession) FacesContext.getCurrentInstance()
             .getExternalContext()
             .getSession(true);
 

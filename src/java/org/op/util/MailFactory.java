@@ -17,7 +17,7 @@ public class MailFactory
 {
 
     //getSession(false) attaches to existing session, getSession(true) creates a new one
-    private final HttpSession session = (HttpSession) FacesContext.getCurrentInstance()
+    private HttpSession session = (HttpSession) FacesContext.getCurrentInstance()
             .getExternalContext()
             .getSession(false);
 

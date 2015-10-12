@@ -49,7 +49,7 @@
 
 
 
-        <p:tab title="#{indexController.labels.adminTabContacts}">
+        <p:tab title="#{indexController.labels.adminTabContacts} (#{adminController.contacts.size()})">
 
             <p:panelGrid columns="2" layout="grid">
 
@@ -87,16 +87,27 @@
 
 
             <!--Contacts Datatable-->
-            <p:dataTable id="contactsTable" var="contact" 
+            <p:dataTable id="contactsTable" 
+                         var="contact" 
                          value="#{adminController.contacts}"
                          rowKey="#{contact.email}" 
                          selection="#{adminController.selectedContact}" 
                          selectionMode="single"
-                         reflow="true" paginator="true" rows="50">
+                         reflow="true" 
+                         paginator="true" 
+                         rows="50"
+                         draggableColumns="true">
 
                 <p:ajax event="rowSelect" 
                         oncomplete="PF('changeContactDLG').show()" 
                         update="mainForm:adminTabView:changeContactDLG"/>
+
+                <p:column headerText="Id"
+                          sortBy="#{contact.id}"
+                          filterBy="#{contact.id}"
+                          filterMatchMode="contains">
+                    <h:outputText value="#{contact.id}"/>
+                </p:column>
 
                 <p:column headerText="#{indexController.labels.adminTabContactsTableFirstname}" 
                           sortBy="#{contact.firstName}" 
