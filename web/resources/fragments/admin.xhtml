@@ -150,6 +150,13 @@
                           filterMatchMode="contains">
                     <h:outputText value="#{contact.notes}" />
                 </p:column>
+                
+                <p:column headerText="Responsibility"
+                          sortBy="#{contact.user.firstName}"
+                          filterBy="#{contact.user.firstName}" 
+                          filterMatchMode="contains">
+                    <h:outputText value="#{contact.user.firstName} #{contact.user.lastName}" />
+                </p:column>
 
             </p:dataTable>
 

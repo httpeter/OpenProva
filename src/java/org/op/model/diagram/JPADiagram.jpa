@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <jpa:entity-mappings theme="MAC" persistenceUnitName="OpenProvaPU" jaxb-support="false" id="_14313464543467" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm orm_2_1.xsd" xmlns:java="http://jcp.org/en/jsr/detail?id=270" xmlns:jpa="http://java.sun.com/xml/ns/persistence/orm" xmlns:ns4="http://nbmodeler.java.net" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <jpa:package>org.op.model</jpa:package>
-    <jpa:entity class="User" jaxb-root-element="false" static-metamodel="false" superclassId="_1432042365590" visibile="true" minimized="false" id="_1431346516231">
+    <jpa:entity jaxb-root-element="false" static-metamodel="false" abstract="false" class="User" superclassId="_1432042365590" visibile="true" minimized="false" id="_1431346516231">
         <jpa:attributes>
             <jpa:basic name="username" attribute-type="String" visibile="true" id="_143134678807015">
                 <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
@@ -17,7 +17,7 @@
             </jpa:basic>
         </jpa:attributes>
     </jpa:entity>
-    <jpa:entity class="Labels" jaxb-root-element="false" static-metamodel="false" visibile="true" minimized="false" id="_1431427726267">
+    <jpa:entity jaxb-root-element="false" static-metamodel="false" abstract="false" class="Labels" visibile="true" minimized="false" id="_1431427726267">
         <jpa:attributes>
             <jpa:id name="id" attribute-type="Long" visibile="true" id="_14314377655909">
                 <jpa:column unique="false" nullable="false" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
@@ -156,23 +156,23 @@
                 <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
             </jpa:basic>
             <jpa:basic name="defaultEmailStringsCoordinator" attribute-type="String" visibile="true" id="_143679667368023">
-                <jpa:column unique="false" nullable="true" insertable="true" updatable="true"/>
+                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
             </jpa:basic>
             <jpa:basic name="defaultEmailWindsCoordinator" attribute-type="String" visibile="true" id="_143679667549624">
-                <jpa:column unique="false" nullable="true" insertable="true" updatable="true"/>
+                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
             </jpa:basic>
             <jpa:basic name="defaultEmailStringsCoordinatorPWD" attribute-type="String" visibile="true" id="_143679690891158">
-                <jpa:column unique="false" nullable="true" insertable="true" updatable="true"/>
+                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
             </jpa:basic>
             <jpa:basic name="defaultEmailWindsCoordinatorPWD" attribute-type="String" visibile="true" id="_143679691776859">
-                <jpa:column unique="false" nullable="true" insertable="true" updatable="true"/>
+                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
             </jpa:basic>
             <jpa:basic name="locale" attribute-type="String" visibile="true" id="_143766172723512">
-                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="8"/>
+                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="8" precision="0" scale="0"/>
             </jpa:basic>
         </jpa:attributes>
     </jpa:entity>
-    <jpa:entity class="Contact" jaxb-root-element="false" static-metamodel="false" superclassId="_1432042365590" visibile="true" minimized="false" id="_1432038649639">
+    <jpa:entity jaxb-root-element="false" static-metamodel="false" abstract="false" class="Contact" superclassId="_1432042365590" visibile="true" minimized="false" id="_1432038649639">
         <jpa:attributes>
             <jpa:basic name="instrument" attribute-type="String" visibile="true" id="_14320386973398">
                 <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
@@ -180,9 +180,12 @@
             <jpa:basic name="notes" attribute-type="String" visibile="true" id="_143203877700313">
                 <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
             </jpa:basic>
+            <jpa:many-to-one name="user" target-entity="User" primaryKey="false" connected-entity-id="_1431346516231" visibile="true" id="_144474899499217">
+                <jpa:join-table/>
+            </jpa:many-to-one>
         </jpa:attributes>
     </jpa:entity>
-    <jpa:entity class="Project" jaxb-root-element="false" static-metamodel="false" visibile="true" minimized="false" id="_1432038824827">
+    <jpa:entity jaxb-root-element="false" static-metamodel="false" abstract="false" class="Project" visibile="true" minimized="false" id="_1432038824827">
         <jpa:attributes>
             <jpa:id name="id" attribute-type="Long" visibile="true" id="_143203883421015">
                 <jpa:column unique="true" nullable="false" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
@@ -208,7 +211,7 @@
             </jpa:basic>
         </jpa:attributes>
     </jpa:entity>
-    <jpa:entity class="Activity" jaxb-root-element="false" static-metamodel="false" visibile="true" minimized="false" id="_1432039053983">
+    <jpa:entity jaxb-root-element="false" static-metamodel="false" abstract="false" class="Activity" visibile="true" minimized="false" id="_1432039053983">
         <jpa:attributes>
             <jpa:id name="id" attribute-type="Long" visibile="true" id="_143203911937623">
                 <jpa:column unique="true" nullable="false" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
@@ -248,9 +251,7 @@
             </jpa:basic>
         </jpa:attributes>
     </jpa:entity>
-    <jpa:entity class="Person" jaxb-root-element="false" static-metamodel="false" visibile="true" minimized="false" id="_1432042365590">
-        <jpa:inheritance/>
-        <jpa:discriminator-column/>
+    <jpa:entity jaxb-root-element="false" static-metamodel="false" abstract="false" class="Person" visibile="true" minimized="false" id="_1432042365590">
         <jpa:attributes>
             <jpa:id name="id" attribute-type="Long" visibile="true" id="_143204237669233">
                 <jpa:column unique="true" nullable="false" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
@@ -269,6 +270,7 @@
                 <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
             </jpa:basic>
         </jpa:attributes>
+        <jpa:discriminator-column/>
     </jpa:entity>
     <jpa:diagram id="_14313464543468">
         <plane elementRef="_14313464543467" id="_14313464543469_p">
@@ -279,7 +281,7 @@
                 <Bounds x="10.0" y="20.0" width="329.0" height="1100.0"/>
             </shape>
             <shape elementRef="_1432038649639" id="_1432038649639_gui">
-                <Bounds x="519.0" y="265.0" width="140.0" height="79.0"/>
+                <Bounds x="566.0" y="265.0" width="140.0" height="113.0"/>
             </shape>
             <shape elementRef="_1432038824827" id="_1432038824827_gui">
                 <Bounds x="728.0" y="20.0" width="149.0" height="197.0"/>

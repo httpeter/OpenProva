@@ -139,27 +139,55 @@ public class DBScaffolder implements Serializable
         if (defaultRepository.getResultList(User.class).isEmpty())
         {
             //Users
-
             AESEncryptor aESEncryptor = new AESEncryptor(
                     l.getSixteenCharsEncryptionPassword(),
                     l.getSixteenCharsEncryptionSalt());
-            User u = new User();
+
+            User u1 = new User();
+
             try
             {
-                u.setUsername("test");
-                u.setPassword(aESEncryptor.encrypt("user"));
+                u1.setUsername("test");
+                u1.setPassword(aESEncryptor.encrypt("user"));
             } catch (Exception e)
             {
                 e.printStackTrace();
             }
-            u.setFirstName("Peter");
-            u.setLastName("Hendriks");
-            u.setRole("admin");
-            u.setEmail("vuko.strijkerschef@gmail.com");
-            u.setEmailPassword("strijkerschef!");
-            if (defaultRepository.persisted(u))
+
+//            For the strings
+            u1.setFirstName("Peter");
+            u1.setLastName("Hendriks");
+            u1.setRole("admin");
+            u1.setEmail("vuko.strijkerschef@gmail.com");
+            u1.setEmailPassword("strijkerschef!");
+            if (defaultRepository.persisted(u1))
             {
-                msg.info("Standard users restored");
+                msg.info("Standard strings admin user restored");
+            } else
+            {
+                msg.warn("Error while trying to restore standard users...");
+            }
+
+            User u2 = new User();
+
+            try
+            {
+                u2.setUsername("test2");
+                u2.setPassword(aESEncryptor.encrypt("user2"));
+            } catch (Exception e)
+            {
+                e.printStackTrace();
+            }
+
+//            For the winds
+            u2.setFirstName("Dirk");
+            u2.setLastName("Banaan");
+            u2.setRole("admin");
+            u2.setEmail("vuko.blazerschef@gmail.com");
+            u2.setEmailPassword("unknown");
+            if (defaultRepository.persisted(u2))
+            {
+                msg.info("Standard winds user restored");
             } else
             {
                 msg.warn("Error while trying to restore standard users...");
@@ -169,19 +197,24 @@ public class DBScaffolder implements Serializable
             {
                 //Contacts
                 Contact c1 = new Contact();
+                c1.setUser(u1);
                 c1.setFirstName("Pieter" + Math.round(Math.random() * 1000));
                 c1.setLastName("Paukeman" + Math.round(Math.random() * 1000));
                 c1.setInstrument("slagwerk");
                 c1.setNotes("Geweldige speler");
                 c1.setPhone("06123123123" + Math.round(Math.random() * 100));
                 c1.setEmail("p.paukeman@gmail.com" + Math.round(Math.random() * 100));
+
+                //Contact2
                 Contact c2 = new Contact();
+                c2.setUser(u2);
                 c2.setFirstName("Daphne" + Math.round(Math.random() * 1000));
                 c2.setLastName("Dinges" + Math.round(Math.random() * 1000));
                 c2.setInstrument("viool");
                 c2.setNotes("via Ellis");
                 c2.setPhone("063423423" + Math.round(Math.random() * 10));
                 c2.setEmail("e.dinges@gmail.com" + Math.round(Math.random() * 100));
+
                 if (defaultRepository.persisted(c1) && defaultRepository.persisted(c2))
                 {
                     msg.info("Standard contacts restored");
