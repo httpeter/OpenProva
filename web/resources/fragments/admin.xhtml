@@ -6,6 +6,15 @@
 
 
 
+
+
+
+
+
+
+
+
+
     <!--Admin login panel-->
     <h:panelGrid  columns="2" rendered="#{!adminController.currentUserIsAdmin}">
 
@@ -25,6 +34,17 @@
                          ajax="false">
         </p:commandButton>
     </h:panelGrid>
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -49,7 +69,7 @@
 
 
 
-        <p:tab title="#{indexController.labels.adminTabContacts} (#{adminController.contacts.size()})">
+        <p:tab title="#{indexController.labels.adminTabContacts}">
 
             <p:panelGrid columns="2" layout="grid">
 
@@ -150,7 +170,7 @@
                           filterMatchMode="contains">
                     <h:outputText value="#{contact.notes}" />
                 </p:column>
-                
+
                 <p:column headerText="Responsibility"
                           sortBy="#{contact.user.firstName}"
                           filterBy="#{contact.user.firstName}" 
@@ -170,9 +190,18 @@
                       modal="true" 
                       dynamic="true"
                       closeOnEscape="true" 
-                      fitViewport="true" height="700">
+                      fitViewport="true" 
+                      height="700">
 
                 <p:panelGrid columns="2" layout="grid" >
+
+                    <p:outputLabel value="Responsibility"/>
+                    <p:dataList value="#{adminController.allUsers}" var="au">
+                        <h:outputText value="#{au.username}"/>
+                    </p:dataList>
+                    
+                    
+
                     <p:outputLabel value="#{indexController.labels.adminTabContactsTableFirstname}*"/>
                     <p:inputText value="#{adminController.selectedContact.firstName}"/>
 
@@ -212,7 +241,8 @@
                 <p:spacer/>
 
                 <p:commandButton icon="ui-icon-closethick" 
-                                 value="Delete #{adminController.selectedContact.firstName} #{adminController.selectedContact.lastName}" 
+                                 value="Delete #{adminController.selectedContact.firstName} 
+                                 #{adminController.selectedContact.lastName}" 
                                  oncomplete="PF('delDLG').show();"
                                  update="mainForm:currentFragment"
                                  styleClass="mySpecialButton"/>
@@ -229,7 +259,8 @@
                       modal="true" 
                       dynamic="true"
                       closeOnEscape="true" 
-                      fitViewport="true" height="700">
+                      fitViewport="true" 
+                      height="700">
 
                 <p:panelGrid columns="2" layout="grid" >
                     <p:outputLabel value="#{indexController.labels.adminTabContactsTableFirstname}*"/>

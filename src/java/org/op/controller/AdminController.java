@@ -2,6 +2,7 @@ package org.op.controller;
 
 import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 import java.util.List;
 import javax.crypto.BadPaddingException;
 import javax.crypto.IllegalBlockSizeException;
@@ -37,6 +38,8 @@ public class AdminController implements Serializable
 
     private List<Contact> contacts;
 
+    private List<User> allUsers;
+
     private User currentUser = new User();
 
     private Contact selectedContact = new Contact();
@@ -62,6 +65,16 @@ public class AdminController implements Serializable
     }
 
     //<editor-fold defaultstate="collapsed" desc="Getters & Setters">
+    public List<User> getAllUsers()
+    {
+        return allUsers;
+    }
+
+    public void setAllUsers(List<User> allUsers)
+    {
+        this.allUsers = allUsers;
+    }
+
     public int getActiveAdminTab()
     {
         return activeAdminTab;
@@ -139,6 +152,12 @@ public class AdminController implements Serializable
                 currentUser = u;
                 currentUserIsAdmin = true;
                 session.setAttribute("currentUser", currentUser);
+                List<User> au = adminRepository.getResultList(User.class);
+                allUsers = new ArrayList<>();
+                au.forEach((usr) ->
+                {
+                    allUsers.add(usr);
+                });
             } else
             {
                 msg.warn("wrong login...");
