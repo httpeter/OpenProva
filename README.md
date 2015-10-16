@@ -20,7 +20,7 @@
     <br/>
     The current source looks like <a href='http://87.233.41.210/openprova'>this</a> when deployed.
     <br/>
-    I used the great new Netbeans JPA Modeler plugin to create Entities. The ERD can be viewed <a href='src/src/java/org/op/model/diagram/JPADiagram.jpa.png?raw=true' target='_blank'>here</a>.
+    I used the great new Netbeans JPA Modeler plugin to create Entities. The ERD can be viewed <a href='src/java/org/op/model/diagram/JPADiagram.jpa.png?raw=true' target='_blank'>here</a>.
 </p>
 <p>
     You're free to use the code as you please as long as it does not hurt anyone (Apache2 lisence).
