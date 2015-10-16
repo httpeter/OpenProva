@@ -150,7 +150,7 @@ public class AdminController implements Serializable
             if (u != null)
             {
                 currentUser = u;
-                currentUserIsAdmin = true;
+                currentUserIsAdmin = currentUser.getRole().equalsIgnoreCase("admin");
                 session.setAttribute("currentUser", currentUser);
                 List<User> au = adminRepository.getResultList(User.class);
                 allUsers = new ArrayList<>();
