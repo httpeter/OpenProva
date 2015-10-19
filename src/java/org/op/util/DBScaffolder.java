@@ -151,7 +151,7 @@ public class DBScaffolder implements Serializable
                 u1.setPassword(aESEncryptor.encrypt("user"));
             } catch (Exception e)
             {
-                e.printStackTrace();
+                e.printStackTrace(System.out);
             }
 
 //            For the strings
@@ -176,7 +176,7 @@ public class DBScaffolder implements Serializable
                 u2.setPassword(aESEncryptor.encrypt("user2"));
             } catch (Exception e)
             {
-                e.printStackTrace();
+                e.printStackTrace(System.out);
             }
 
 //            For the winds

@@ -164,7 +164,7 @@ public class AdminController implements Serializable
             }
         } catch (UnsupportedEncodingException | IllegalBlockSizeException | BadPaddingException e)
         {
-            e.printStackTrace();
+            e.printStackTrace(System.out);
             msg.error("Login Error: " + e.getMessage());
         }
 

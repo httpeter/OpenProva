@@ -75,7 +75,7 @@ public class MailFactory
 
                 } catch (Exception e)
                 {
-                    e.printStackTrace();
+                    e.printStackTrace(System.out);
                     msg.error("Email problem:\n\n"
                             + e.getMessage());
                 }

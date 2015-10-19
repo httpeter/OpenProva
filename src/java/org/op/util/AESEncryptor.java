@@ -38,7 +38,7 @@ public class AESEncryptor implements Serializable
                     encryptor.getParameters());
         } catch (NoSuchAlgorithmException | NoSuchPaddingException | InvalidKeyException | InvalidAlgorithmParameterException e)
         {
-            e.printStackTrace();
+            e.printStackTrace(System.out);
         }
     }
 
