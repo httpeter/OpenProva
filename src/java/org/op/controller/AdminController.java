@@ -42,9 +42,8 @@ public class AdminController implements Serializable
 
     private User currentUser = new User();
 
-    private Contact selectedContact = new Contact();
-
-    private Contact newContact = new Contact();
+    private Contact selectedContact = new Contact(),
+            newContact = new Contact();
 
     private AESEncryptor aESEncryptor;
 
