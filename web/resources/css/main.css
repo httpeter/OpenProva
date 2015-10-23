@@ -7,9 +7,8 @@
     max-width: 250px;
 }
 
-.myForm
+.myBody
 {
-    min-height: 800px;
     background-image: url("../img/background.svg");
     background-color: #ECEFF1;
     background-attachment: fixed;
@@ -17,6 +16,12 @@
     background-repeat: no-repeat;
 }
 
+.myForm
+{
+    max-width: 1280px;
+    margin:0px auto;
+    text-align:left;
+}
 
 .mySpecialButton
 {
