@@ -14,6 +14,8 @@ public class AdminRepository extends DefaultRepository implements Serializable
         super(persistenceUnitName);
     }
 
+
+
     public User getUser(String username, String password, String role)
     {
         try
@@ -34,6 +36,8 @@ public class AdminRepository extends DefaultRepository implements Serializable
         return null;
     }
 
+
+
     public List<Activity> getProjectActivities(long projectId, boolean isMasterActivity)
     {
         if (this.getEmf().isOpen() && this.getEm().isOpen())
@@ -48,6 +52,8 @@ public class AdminRepository extends DefaultRepository implements Serializable
         return null;
     }
 
+
+
     public List<Activity> getContactActivities(Contact c, boolean isMasterActivity)
     {
         if (this.getEmf().isOpen() && this.getEm().isOpen())
@@ -61,6 +67,8 @@ public class AdminRepository extends DefaultRepository implements Serializable
         }
         return null;
     }
+
+
 
     public boolean subscriptionRemoved(Activity a)
     {

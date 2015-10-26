@@ -17,6 +17,8 @@ public class AESEncryptor implements Serializable
     private Cipher encryptor;
     private Cipher decryptor;
 
+
+
     public AESEncryptor(String sessionKey, String iv)
     {
 
@@ -42,6 +44,8 @@ public class AESEncryptor implements Serializable
         }
     }
 
+
+
     public String encrypt(String plainText) throws UnsupportedEncodingException, IllegalBlockSizeException, BadPaddingException
     {
         // get bytes from string, encrypt, encode
@@ -49,6 +53,8 @@ public class AESEncryptor implements Serializable
         byte[] ciphertext = encryptor.doFinal(utf8bytes);
         return Base64.getEncoder().encodeToString(ciphertext);
     }
+
+
 
     public String decrypt(String cipherText) throws IOException, IllegalBlockSizeException, BadPaddingException
     {

@@ -16,11 +16,15 @@ public class GMailSSLSender implements Serializable
     private final String gmailUsr,
             gmailPwd;
 
+
+
     public GMailSSLSender(String gmailUsr, String gmailPwd)
     {
         this.gmailUsr = gmailUsr;
         this.gmailPwd = gmailPwd;
     }
+
+
 
     public void send(String toAddress, String subject, String body) throws MessagingException
     {

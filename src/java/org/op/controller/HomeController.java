@@ -24,17 +24,25 @@ public class HomeController implements Serializable
 
     private DashboardModel dashboardModel;
 
+
+
     //<editor-fold defaultstate="collapsed" desc="Getters & Setters">
+
+
     public DashboardModel getDashboardModel()
     {
         return dashboardModel;
     }
+
+
 
     public void setDashboardModel(DashboardModel dashboardModel)
     {
         this.dashboardModel = dashboardModel;
     }
 //</editor-fold>
+
+
 
     public HomeController()
     {

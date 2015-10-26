@@ -16,21 +16,31 @@ public class DefaultRepository implements Serializable
     private EntityManagerFactory emf;
     private EntityManager em;
 
+
+
     //<editor-fold defaultstate="collapsed" desc="Getters & Setters">
+
+
     public EntityManagerFactory getEmf()
     {
         return emf;
     }
+
+
 
     public void setEmf(EntityManagerFactory emf)
     {
         this.emf = emf;
     }
 
+
+
     public EntityManager getEm()
     {
         return em;
     }
+
+
 
     public void setEm(EntityManager em)
     {
@@ -38,11 +48,15 @@ public class DefaultRepository implements Serializable
     }
 //</editor-fold>
 
+
+
     public DefaultRepository(String persistenceUnitName)
     {
         emf = Persistence.createEntityManagerFactory(persistenceUnitName);
         em = emf.createEntityManager();
     }
+
+
 
     public boolean persisted(Object object)
     {
@@ -74,6 +88,8 @@ public class DefaultRepository implements Serializable
         }
     }
 
+
+
     public List getResultList(Class c)
     {
         if (emf.isOpen() && em.isOpen())
@@ -85,6 +101,8 @@ public class DefaultRepository implements Serializable
         }
         return null;
     }
+
+
 
     public boolean deleted(Object object)
     {
@@ -103,6 +121,8 @@ public class DefaultRepository implements Serializable
         }
 
     }
+
+
 
     public void close()
     {

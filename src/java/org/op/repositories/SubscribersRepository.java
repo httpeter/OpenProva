@@ -13,6 +13,8 @@ public class SubscribersRepository extends DefaultRepository implements Serializ
         super(persistenceUnitName);
     }
 
+
+
     public boolean isExistingContact(Contact c)
     {
         try
@@ -38,6 +40,8 @@ public class SubscribersRepository extends DefaultRepository implements Serializ
         }
         return false;
     }
+
+
 
     public List<Activity> getProjectActivities(long projectId, boolean isMasterActivity)
     {

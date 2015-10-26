@@ -24,21 +24,31 @@ public class IndexController implements Serializable
 
     private String currentFragment;
 
+
+
     //<editor-fold defaultstate="collapsed" desc="Getters & Setters">
+
+
     public Labels getLabels()
     {
         return labels;
     }
+
+
 
     public void setLabels(Labels labels)
     {
         this.labels = labels;
     }
 
+
+
     public String getCurrentFragment()
     {
         return currentFragment;
     }
+
+
 
     public void setCurrentFragment(String currentFragment)
     {
@@ -46,6 +56,8 @@ public class IndexController implements Serializable
     }
 
 //</editor-fold>
+
+
     public IndexController()
     {
         if (FacesContext

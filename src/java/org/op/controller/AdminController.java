@@ -51,6 +51,8 @@ public class AdminController implements Serializable
 
     private int activeAdminTab;
 
+
+
     private void loadContacts()
     {
         try
@@ -63,71 +65,101 @@ public class AdminController implements Serializable
         }
     }
 
+
+
     //<editor-fold defaultstate="collapsed" desc="Getters & Setters">
+
+
     public List<User> getAllUsers()
     {
         return allUsers;
     }
+
+
 
     public void setAllUsers(List<User> allUsers)
     {
         this.allUsers = allUsers;
     }
 
+
+
     public int getActiveAdminTab()
     {
         return activeAdminTab;
     }
+
+
 
     public void setActiveAdminTab(int activeAdminTab)
     {
         this.activeAdminTab = activeAdminTab;
     }
 
+
+
     public Contact getNewContact()
     {
         return newContact;
     }
+
+
 
     public void setNewContact(Contact newContact)
     {
         this.newContact = newContact;
     }
 
+
+
     public boolean isCurrentUserIsAdmin()
     {
         return currentUserIsAdmin;
     }
+
+
 
     public void setCurrentUserIsAdmin(boolean currentUserIsAdmin)
     {
         this.currentUserIsAdmin = currentUserIsAdmin;
     }
 
+
+
     public User getCurrentUser()
     {
         return currentUser;
     }
+
+
 
     public void setCurrentUser(User currentUser)
     {
         this.currentUser = currentUser;
     }
 
+
+
     public List<Contact> getContacts()
     {
         return contacts;
     }
+
+
 
     public void setContacts(List<Contact> contacts)
     {
         this.contacts = contacts;
     }
 
+
+
     public Contact getSelectedContact()
     {
         return selectedContact;
     }
+
+
 
     public void setSelectedContact(Contact selectedContact)
     {
@@ -135,6 +167,8 @@ public class AdminController implements Serializable
     }
 
 //</editor-fold>
+
+
     public void login()
     {
         try
@@ -169,6 +203,8 @@ public class AdminController implements Serializable
 
     }
 
+
+
     public void adminTabChange()
     {
         if (activeAdminTab == 1)
@@ -177,12 +213,16 @@ public class AdminController implements Serializable
         }
     }
 
+
+
     public void logout()
     {
         currentUserIsAdmin = false;
         currentUser = new User();
         session.invalidate();
     }
+
+
 
     public void saveNewContact()
     {
@@ -202,6 +242,8 @@ public class AdminController implements Serializable
         loadContacts();
     }
 
+
+
     public void saveContact()
     {
         if (!selectedContact.getFirstName().isEmpty()
@@ -219,6 +261,8 @@ public class AdminController implements Serializable
         }
         loadContacts();
     }
+
+
 
     public void deleteContact()
     {

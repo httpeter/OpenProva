@@ -25,6 +25,8 @@ public class MailFactory
 
     private GMailSSLSender gMailClient;
 
+
+
     public final boolean addressValid(String emailAddress)
     {
         return !emailAddress.isEmpty()
@@ -32,6 +34,8 @@ public class MailFactory
                 && emailAddress.contains("@")
                 && emailAddress.contains(".");
     }
+
+
 
     public void sendNewMemberSubscriptionMail(Contact contact,
             Project project,

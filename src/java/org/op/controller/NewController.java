@@ -36,66 +36,92 @@ public class NewController implements Serializable
 
     private String additionalMessage;
 
+
+
     //<editor-fold defaultstate="collapsed" desc="Getters & Setters">
     public String getAdditionalMessage()
     {
         return additionalMessage;
     }
 
+
+
     public void setAdditionalMessage(String additionalMessage)
     {
         this.additionalMessage = additionalMessage;
     }
+
+
 
     public boolean isAllDatesSelected()
     {
         return allDatesSelected;
     }
 
+
+
     public void setAllDatesSelected(boolean allDatesSelected)
     {
         this.allDatesSelected = allDatesSelected;
     }
+
+
 
     public Contact getNewContact()
     {
         return newContact;
     }
 
+
+
     public void setNewContact(Contact newContact)
     {
         this.newContact = newContact;
     }
+
+
 
     public List<Project> getProjects()
     {
         return projects;
     }
 
+
+
     public void setProjects(List<Project> projects)
     {
         this.projects = projects;
     }
+
+
 
     public Project getSelectedProject()
     {
         return selectedProject;
     }
 
+
+
     public void setSelectedProject(Project selectedProject)
     {
         this.selectedProject = selectedProject;
     }
+
+
 
     public List<Activity> getProjectActivities()
     {
         return projectActivities;
     }
 
+
+
     public void setProjectActivities(List<Activity> projectActivities)
     {
         this.projectActivities = projectActivities;
     }
+
+
 
     //</editor-fold>
     //Loading project data and cloning dates
@@ -136,6 +162,8 @@ public class NewController implements Serializable
         });
     }
 
+
+
     public void selectAllDates()
     {
         projectActivities.parallelStream().forEach((activity) ->
@@ -149,6 +177,8 @@ public class NewController implements Serializable
             }
         });
     }
+
+
 
     public void saveNewSubscription()
     {
