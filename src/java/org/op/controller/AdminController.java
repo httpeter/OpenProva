@@ -264,7 +264,7 @@ public class AdminController implements Serializable
 
 
 
-    public void deleteContact()
+    public void deleteContactAndActivities()
     {
         if (adminRepository.deleted(selectedContact))
         {
