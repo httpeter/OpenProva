@@ -180,7 +180,7 @@ public class NewController implements Serializable
 
 
 
-    public void saveNewSubscription()
+    public void saveAndMailNewSubscription()
     {
         //Saving the new Contact
         if (mailFactory.addressValid(newContact.getEmail())
