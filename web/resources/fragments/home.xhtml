@@ -6,17 +6,14 @@
 
 
 
-
-
-
     <p:dashboard id="dashboard" model="#{homeController.dashboardModel}" >
 
-        <p:panel id="a" styleClass="myDashboardPanel" header="Info">
-            <h:outputText value="#{indexController.labels.welcomeMSG}" escape="false"/>
+        <p:panel id="a" styleClass="myDashboardPanel">
+            <h:outputText value="#{labels.projectSubscriptionNewMSG}" escape="false"/>
         </p:panel>
 
         <p:panel id="b" styleClass="myDashboardPanel" header="Inschrijven">
-            <h:outputText value="#{indexController.labels.projectSubscriptionNewMSG}" escape="false"/>
+            <h:outputText value="#{labels.welcomeMSG}" escape="false"/>
         </p:panel>
 
     </p:dashboard>

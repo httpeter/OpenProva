@@ -4,11 +4,11 @@
                 xmlns:p="http://primefaces.org/ui"
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
-    <h:outputText value="#{indexController.labels.projectSubscriptionNewMSG}" escape="false"/>
+    <h:outputText value="#{labels.projectSubscriptionNewMSG}" escape="false"/>
 
     <br/>
 
-    <p:panel header="#{indexController.labels.project} #{newController.selectedProject.projectName}">
+    <p:panel header="#{labels.project} #{newController.selectedProject.projectName}">
 
         <br/>
 
@@ -16,7 +16,7 @@
                          value="#{newController.selectedProject.id}" 
                          style="width:100%">
 
-            <f:selectItem itemLabel="#{indexController.labels.projectSelect}"/>
+            <f:selectItem itemLabel="#{labels.projectSelect}"/>
 
             <f:selectItems value="#{newController.projects}" 
                            var="project" 
@@ -32,19 +32,19 @@
 
         <h:panelGrid id="programmePanel" columns="3" rendered="#{not empty newController.selectedProject.projectName}">
 
-            <p:outputLabel value="#{indexController.labels.projectFrom}"/>
+            <p:outputLabel value="#{labels.projectFrom}"/>
             <p:outputLabel value=":"/>
             <h:outputText value="#{newController.selectedProject.projectStartDate}">
-                <f:convertDateTime locale="#{indexController.labels.locale}"/>
+                <f:convertDateTime locale="#{labels.locale}"/>
             </h:outputText>
 
-            <p:outputLabel value="#{indexController.labels.projectUntil}"/>
+            <p:outputLabel value="#{labels.projectUntil}"/>
             <p:outputLabel value=":"/>
             <h:outputText value="#{newController.selectedProject.projectEndDate}">
-                <f:convertDateTime locale="#{indexController.labels.locale}"/>
+                <f:convertDateTime locale="#{labels.locale}"/>
             </h:outputText>
 
-            <p:outputLabel value="#{indexController.labels.projectRepertoire}"/>
+            <p:outputLabel value="#{labels.projectRepertoire}"/>
             <p:outputLabel value=":"/>
             <h:outputText value="#{newController.selectedProject.projectRepertoire}"/>
 
@@ -58,7 +58,7 @@
 
     <br/>
 
-    <p:panel id="newSubscriptionPanel" header="#{indexController.labels.projectSubscriptionPanelHeader}" 
+    <p:panel id="newSubscriptionPanel" header="#{labels.projectSubscriptionPanelHeader}" 
              rendered="#{not empty newController.selectedProject.projectName}">
 
         <br/>
@@ -66,27 +66,27 @@
         <h:panelGrid columns="2" style="width:100%">                                        
 
             <p:inputText id="a" value="#{newController.newContact.firstName}">
-                <p:watermark for="a" value="#{indexController.labels.adminTabContactsTableFirstname}"/>
+                <p:watermark for="a" value="#{labels.adminTabContactsTableFirstname}"/>
             </p:inputText>
             <p:outputLabel value="*"/>                                       
 
             <p:inputText id="b" value="#{newController.newContact.lastName}">
-                <p:watermark for="b" value="#{indexController.labels.adminTabContactsTableLastname}"/>
+                <p:watermark for="b" value="#{labels.adminTabContactsTableLastname}"/>
             </p:inputText>
             <p:outputLabel value="*"/>
 
             <p:inputText id="c" value="#{newController.newContact.email}" >
-                <p:watermark for="c" value="#{indexController.labels.adminTabContactsTableEmail}"/>
+                <p:watermark for="c" value="#{labels.adminTabContactsTableEmail}"/>
             </p:inputText>
             <p:outputLabel value="*"/>
 
             <p:inputText id="d" value="#{newController.newContact.phone}">
-                <p:watermark for="d" value="#{indexController.labels.adminTabContactsTablePhone}"/>
+                <p:watermark for="d" value="#{labels.adminTabContactsTablePhone}"/>
             </p:inputText>
             <p:outputLabel value="*"/>
 
             <p:inputText id="e" value="#{newController.newContact.instrument}">
-                <p:watermark for="e" value="#{indexController.labels.adminTabContactsTableInstrument}"/>
+                <p:watermark for="e" value="#{labels.adminTabContactsTableInstrument}"/>
             </p:inputText>
             <p:outputLabel value="*"/>
 
@@ -108,35 +108,35 @@
                      value="#{newController.projectActivities}"
                      reflow="true">
 
-            <p:column headerText="#{indexController.labels.activityPresent}">
+            <p:column headerText="#{labels.activityPresent}">
                 <p:selectBooleanCheckbox value="#{date.present}"/>
             </p:column>
 
-            <p:column headerText="#{indexController.labels.activityDate}">
+            <p:column headerText="#{labels.activityDate}">
                 <h:outputText value="#{date.date}">
-                    <f:convertDateTime locale="#{indexController.labels.locale}"/>
+                    <f:convertDateTime locale="#{labels.locale}"/>
                 </h:outputText>
             </p:column>
 
-            <p:column headerText="#{indexController.labels.activityTime}">
+            <p:column headerText="#{labels.activityTime}">
                 <h:outputText value="#{date.startTime}">
-                    <f:convertDateTime type="time" timeStyle="short" locale="#{indexController.labels.locale}"/>
+                    <f:convertDateTime type="time" timeStyle="short" locale="#{labels.locale}"/>
                 </h:outputText>
                 <h:outputText value=" - "/>
                 <h:outputText value="#{date.endTime}">
-                    <f:convertDateTime type="time" timeStyle="short" locale="#{indexController.labels.locale}"/>
+                    <f:convertDateTime type="time" timeStyle="short" locale="#{labels.locale}"/>
                 </h:outputText>
             </p:column>
 
-            <p:column headerText="#{indexController.labels.activityDescription}">
+            <p:column headerText="#{labels.activityDescription}">
                 <h:outputText value="#{date.description}"/>
             </p:column>
 
-            <p:column headerText="#{indexController.labels.activityLocation}">
+            <p:column headerText="#{labels.activityLocation}">
                 <h:outputText value="#{date.location}"/>
             </p:column>
 
-            <p:column headerText="#{indexController.labels.activityCommentsByContact}">
+            <p:column headerText="#{labels.activityCommentsByContact}">
                 <p:inputTextarea value="#{date.commentsByContact}" rows="1" cols="10"/>
             </p:column>
 
@@ -147,13 +147,13 @@
         <p:inputTextarea id="additionalMessage" 
                          value="#{newController.additionalMessage}" 
                          styleClass="mySpecialInputTextarea">
-            <p:watermark for="additionalMessage" value="#{indexController.labels.activityAdditionalMessage}"/>
+            <p:watermark for="additionalMessage" value="#{labels.activityAdditionalMessage}"/>
         </p:inputTextarea>
 
         <br/>
         <br/>
 
-        <p:commandButton value="#{indexController.labels.save}" 
+        <p:commandButton value="#{labels.save}" 
                          icon="ui-icon-disk" 
                          action="#{newController.saveAndMailNewSubscription}" 
                          styleClass="mySpecialButton"

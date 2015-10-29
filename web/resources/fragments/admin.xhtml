@@ -19,12 +19,12 @@
     <h:panelGrid  columns="2" rendered="#{!adminController.currentUserIsAdmin}">
 
         <p:inputText id="auText" value="#{adminController.currentUser.username}">
-            <p:watermark for="auText" value="#{indexController.labels.adminUsername}"/>
+            <p:watermark for="auText" value="#{labels.adminUsername}"/>
         </p:inputText>
         <p:outputLabel value="*"/>
 
         <p:password id="auPwd" value="#{adminController.currentUser.password}">
-            <p:watermark for="auPwd" value="#{indexController.labels.adminPassword}"/>
+            <p:watermark for="auPwd" value="#{labels.adminPassword}"/>
         </p:password>
         <p:outputLabel value="*"/>
 
@@ -69,11 +69,11 @@
 
 
 
-        <p:tab title="#{indexController.labels.adminTabContacts}">
+        <p:tab title="#{labels.adminTabContacts}">
 
             <p:panelGrid columns="2" layout="grid">
 
-                <p:commandButton value="#{indexController.labels.adminTabContactsAddContact}"
+                <p:commandButton value="#{labels.adminTabContactsAddContact}"
                                  icon="ui-icon-document"  
                                  oncomplete="PF('contactDLGNew').show()"/>
 
@@ -129,42 +129,42 @@
                     <h:outputText value="#{contact.id}"/>
                 </p:column>
 
-                <p:column headerText="#{indexController.labels.adminTabContactsTableFirstname}" 
+                <p:column headerText="#{labels.adminTabContactsTableFirstname}" 
                           sortBy="#{contact.firstName}" 
                           filterBy="#{contact.firstName}" 
                           filterMatchMode="contains">
                     <h:outputText value="#{contact.firstName}" />
                 </p:column>
 
-                <p:column headerText="#{indexController.labels.adminTabContactsTableLastname}" 
+                <p:column headerText="#{labels.adminTabContactsTableLastname}" 
                           sortBy="#{contact.lastName}" 
                           filterBy="#{contact.lastName}" 
                           filterMatchMode="contains">
                     <h:outputText value="#{contact.lastName}" />
                 </p:column>
 
-                <p:column headerText="#{indexController.labels.adminTabContactsTableInstrument}" 
+                <p:column headerText="#{labels.adminTabContactsTableInstrument}" 
                           sortBy="#{contact.instrument}" 
                           filterBy="#{contact.instrument}" 
                           filterMatchMode="contains">
                     <h:outputText value="#{contact.instrument}"/>
                 </p:column>
 
-                <p:column headerText="#{indexController.labels.adminTabContactsTablePhone}"
+                <p:column headerText="#{labels.adminTabContactsTablePhone}"
                           sortBy="#{contact.phone}" 
                           filterBy="#{contact.phone}"
                           filterMatchMode="contains">
                     <h:outputText value="#{contact.phone}" />                                                    
                 </p:column>
 
-                <p:column headerText="#{indexController.labels.adminTabContactsTableEmail}"
+                <p:column headerText="#{labels.adminTabContactsTableEmail}"
                           sortBy="#{contact.email}" 
                           filterBy="#{contact.email}"
                           filterMatchMode="contains">
                     <h:outputText value="#{contact.email}" />
                 </p:column>
 
-                <p:column headerText="#{indexController.labels.adminTabContactsTableNotes}"
+                <p:column headerText="#{labels.adminTabContactsTableNotes}"
                           sortBy="#{contact.notes}"
                           filterBy="#{contact.notes}" 
                           filterMatchMode="contains">
@@ -202,22 +202,22 @@
                     
                     
 
-                    <p:outputLabel value="#{indexController.labels.adminTabContactsTableFirstname}*"/>
+                    <p:outputLabel value="#{labels.adminTabContactsTableFirstname}*"/>
                     <p:inputText value="#{adminController.selectedContact.firstName}"/>
 
-                    <p:outputLabel value="#{indexController.labels.adminTabContactsTableLastname}"/>
+                    <p:outputLabel value="#{labels.adminTabContactsTableLastname}"/>
                     <p:inputText value="#{adminController.selectedContact.lastName}"/>
 
-                    <p:outputLabel value="#{indexController.labels.adminTabContactsTableInstrument}"/>
+                    <p:outputLabel value="#{labels.adminTabContactsTableInstrument}"/>
                     <p:inputText value="#{adminController.selectedContact.instrument}"/>
 
-                    <p:outputLabel value="#{indexController.labels.adminTabContactsTablePhone}"/>
+                    <p:outputLabel value="#{labels.adminTabContactsTablePhone}"/>
                     <p:inputText value="#{adminController.selectedContact.phone}"/>
 
-                    <p:outputLabel value="#{indexController.labels.adminTabContactsTableEmail}*"/>
+                    <p:outputLabel value="#{labels.adminTabContactsTableEmail}*"/>
                     <p:inputText value="#{adminController.selectedContact.email}"/>
 
-                    <p:outputLabel value="#{indexController.labels.adminTabContactsTableNotes}"/>
+                    <p:outputLabel value="#{labels.adminTabContactsTableNotes}"/>
                     <p:inputTextarea value="#{adminController.selectedContact.notes}"/>
                 </p:panelGrid>
 
@@ -263,22 +263,22 @@
                       height="700">
 
                 <p:panelGrid columns="2" layout="grid" >
-                    <p:outputLabel value="#{indexController.labels.adminTabContactsTableFirstname}*"/>
+                    <p:outputLabel value="#{labels.adminTabContactsTableFirstname}*"/>
                     <p:inputText value="#{adminController.newContact.firstName}"/>
 
-                    <p:outputLabel value="#{indexController.labels.adminTabContactsTableLastname}"/>
+                    <p:outputLabel value="#{labels.adminTabContactsTableLastname}"/>
                     <p:inputText value="#{adminController.newContact.lastName}"/>
 
-                    <p:outputLabel value="#{indexController.labels.adminTabContactsTableInstrument}"/>
+                    <p:outputLabel value="#{labels.adminTabContactsTableInstrument}"/>
                     <p:inputText value="#{adminController.newContact.instrument}"/>
 
-                    <p:outputLabel value="#{indexController.labels.adminTabContactsTablePhone}"/>
+                    <p:outputLabel value="#{labels.adminTabContactsTablePhone}"/>
                     <p:inputText value="#{adminController.newContact.phone}"/>
 
-                    <p:outputLabel value="#{indexController.labels.adminTabContactsTableEmail}*"/>
+                    <p:outputLabel value="#{labels.adminTabContactsTableEmail}*"/>
                     <p:inputText value="#{adminController.newContact.email}"/>
 
-                    <p:outputLabel value="#{indexController.labels.adminTabContactsTableNotes}"/>
+                    <p:outputLabel value="#{labels.adminTabContactsTableNotes}"/>
                     <p:inputTextarea value="#{adminController.newContact.notes}"/>
                 </p:panelGrid>
 

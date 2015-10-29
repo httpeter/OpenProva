@@ -27,8 +27,6 @@ public class IndexController implements Serializable
 
 
     //<editor-fold defaultstate="collapsed" desc="Getters & Setters">
-
-
     public Labels getLabels()
     {
         return labels;

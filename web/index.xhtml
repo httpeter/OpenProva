@@ -8,11 +8,16 @@
 
 
 
+    <f:loadBundle basename="org.op.properties.labelsNL" var="labels"/>
+
+
+
+
     <h:head>
         <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'/>
         <meta name="viewport" content="width=device-width, user-scalable=no"/>
         <meta name="mobile-web-app-capable" content="yes"/>
-        <title>#{indexController.labels.appTitle} - #{indexController.labels.organizationName}</title>
+        <title>#{labels.appTitle} - #{labels.organizationName}</title>
         <link rel="stylesheet" type="text/css" href="resources/css/main.css"/>
     </h:head>
 
@@ -31,27 +36,27 @@
 
             <p:menubar id="menu" autoDisplay="false">
 
-                <p:menuitem value="#{indexController.labels.menuItemHome}" 
+                <p:menuitem value="#{labels.menuItemHome}" 
                             action="#{indexController.setCurrentFragment('resources/fragments/home.xhtml')}" 
                             update="mainForm:currentFragment" icon="fa fa-home"/>
 
-                <p:submenu label="#{indexController.labels.menuItemProjects}" icon="fa fa-users">
+                <p:submenu label="#{labels.menuItemProjects}" icon="fa fa-users">
 
-                    <p:menuitem value="#{indexController.labels.menuItemNewProject}" 
+                    <p:menuitem value="#{labels.menuItemNewProject}" 
                                 action="#{indexController.setCurrentFragment('resources/fragments/new.xhtml')}" 
                                 update="mainForm:currentFragment" icon="ui-icon-person"/>
 
-                    <p:menuitem value="#{indexController.labels.menuItemExistingProject}" 
+                    <p:menuitem value="#{labels.menuItemExistingProject}" 
                                 action="#{indexController.setCurrentFragment('resources/fragments/members.xhtml')}" 
                                 update="mainForm:currentFragment" icon="ui-icon-refresh"/>
                 </p:submenu>
 
-                <p:menuitem value="#{indexController.labels.menuItemAdmin}" 
+                <p:menuitem value="#{labels.menuItemAdmin}" 
                             action="#{indexController.setCurrentFragment('resources/fragments/admin.xhtml')}"
                             update="mainForm:currentFragment" 
                             icon="fa fa-legal"/>
 
-                <p:menuitem value="#{adminController.currentUser.firstName} #{indexController.labels.menuItemLogout}" 
+                <p:menuitem value="#{adminController.currentUser.firstName} #{labels.menuItemLogout}" 
                             action="#{adminController.logout()}" 
                             icon="fa fa-sign-out" 
                             rendered="#{adminController.currentUserIsAdmin}" 
@@ -74,11 +79,11 @@
 
             <!--Session Timeout Dialog-->
             <p:dialog widgetVar="idleDialog" 
-                      header="#{indexController.labels.MSGTimeoutHeader}"  
+                      header="#{labels.MSGTimeoutHeader}"  
                       modal="true" 
                       closable="false" 
                       resizable="false">
-                <h:outputText value="#{indexController.labels.MSGTimeoutBody}" escape="false"/>
+                <h:outputText value="#{labels.MSGTimeoutBody}" escape="false"/>
                 <br/>
                 <br/>
                 <p:button value="Refresh" onclick="window.location.reload();"/>
