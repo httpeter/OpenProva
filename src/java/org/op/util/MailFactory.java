@@ -1,6 +1,8 @@
 package org.op.util;
 
+import java.io.InputStream;
 import java.util.List;
+import java.util.Properties;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 import jdk.nashorn.internal.ir.Labels;
@@ -43,7 +45,10 @@ public class MailFactory
             String additionalMessage) throws Exception
     {
 
-        Labels labels = (Labels) session.getAttribute("labels");
+        Properties labels = new Properties();
+
+        labels.load(this.getClass().getClassLoader()
+                .getResourceAsStream("org.op.properties.labelsNL.properties"));
 
         AESEncryptor aESEncryptor = new AESEncryptor();
 
@@ -56,12 +61,12 @@ public class MailFactory
                 {
                     TagReplacer tr = new TagReplacer();
 
-                    gMailClient = new GMailSSLSender(labels.getDefaultEmailStringsCoordinator(),
-                            labels.getDefaultEmailStringsCoordinatorPWD());
+                    gMailClient = new GMailSSLSender(contact.getUser().getEmail(),
+                            contact.getUser().getEmailPassword());
 
                     // Send msg to new member
                     gMailClient.send(contact.getEmail(),
-                            tr.getReplacedString(labels.getMailMSGNewMemberSubscriptionSubject(),
+                            tr.getReplacedString(labels.getProperty("mailMSGNewMemberSubscriptionSubject"),
                                     project, contact, labels),
                             tr.getReplacedString(labels.getMailMSGNewMemberSubscriptionBody(),
                                     project, contact, labels));
