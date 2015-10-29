@@ -3,9 +3,9 @@ package org.op.util;
 import java.util.List;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
+import jdk.nashorn.internal.ir.Labels;
 import org.op.model.Activity;
 import org.op.model.Contact;
-import org.op.model.Labels;
 import org.op.model.Project;
 import org.op.util.gmail.GMailSSLSender;
 
@@ -45,9 +45,7 @@ public class MailFactory
 
         Labels labels = (Labels) session.getAttribute("labels");
 
-        AESEncryptor aESEncryptor = new AESEncryptor(
-                labels.getSixteenCharsEncryptionPassword(),
-                labels.getSixteenCharsEncryptionSalt());
+        AESEncryptor aESEncryptor = new AESEncryptor();
 
 //        For new member subscriptions, this is BS
         new Thread(() ->

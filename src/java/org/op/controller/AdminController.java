@@ -1,18 +1,14 @@
 package org.op.controller;
 
 import java.io.Serializable;
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
-import javax.crypto.BadPaddingException;
-import javax.crypto.IllegalBlockSizeException;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 import org.op.model.Activity;
 import org.op.model.Contact;
-import org.op.model.Labels;
 import org.op.model.User;
 import org.op.repositories.AdminRepository;
 import org.op.util.AESEncryptor;
@@ -47,8 +43,6 @@ public class AdminController implements Serializable
 
     private AESEncryptor aESEncryptor;
 
-    private final Labels labels = (Labels) session.getAttribute("labels");
-
     private int activeAdminTab;
 
 
@@ -67,9 +61,20 @@ public class AdminController implements Serializable
 
 
 
+    public AdminController()
+    {
+        try
+        {
+            aESEncryptor = new AESEncryptor();
+        } catch (Exception e)
+        {
+            e.printStackTrace(System.out);
+        }
+    }
+
+
+
     //<editor-fold defaultstate="collapsed" desc="Getters & Setters">
-
-
     public List<User> getAllUsers()
     {
         return allUsers;
@@ -173,8 +178,6 @@ public class AdminController implements Serializable
     {
         try
         {
-            aESEncryptor = new AESEncryptor(labels.getSixteenCharsEncryptionPassword(),
-                    labels.getSixteenCharsEncryptionSalt());
 
             User u = adminRepository.getUser(currentUser.getUsername().toLowerCase(),
                     aESEncryptor.encrypt(currentUser.getPassword().toLowerCase()),
@@ -195,7 +198,7 @@ public class AdminController implements Serializable
             {
                 msg.warn("wrong login...");
             }
-        } catch (UnsupportedEncodingException | IllegalBlockSizeException | BadPaddingException e)
+        } catch (Exception e)
         {
             e.printStackTrace(System.out);
             msg.error("Login Error: " + e.getMessage());

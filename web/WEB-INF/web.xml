@@ -19,7 +19,17 @@
         <param-value>bootstrap</param-value>
     </context-param>
     -->
+    <context-param>
+        <param-name>sixteenBitEncryptionKey</param-name>
+        <param-value></param-value>
+    </context-param>
     
+    <context-param>
+        <param-name>sixteenBitEncryptionSalt</param-name>
+        <param-value></param-value>
+    </context-param>
+    
+            
     <context-param>
         <param-name>primefaces.FONT_AWESOME</param-name>
         <param-value>true</param-value>

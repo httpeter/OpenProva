@@ -17,161 +17,6 @@
             </jpa:basic>
         </jpa:attributes>
     </jpa:entity>
-    <jpa:entity jaxb-root-element="false" static-metamodel="false" abstract="false" class="Labels" visibile="true" minimized="false" id="_1431427726267">
-        <jpa:attributes>
-            <jpa:id name="id" attribute-type="Long" visibile="true" id="_14314377655909">
-                <jpa:column unique="false" nullable="false" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
-                <jpa:generated-value strategy="AUTO"/>
-            </jpa:id>
-            <jpa:basic name="welcomeMSG" attribute-type="String" visibile="true" id="_14314278569487">
-                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="2048" precision="0" scale="0"/>
-            </jpa:basic>
-            <jpa:basic name="menuItemNewProject" attribute-type="String" visibile="true" id="_14314407777196">
-                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
-            </jpa:basic>
-            <jpa:basic name="menuItemExistingProject" attribute-type="String" visibile="true" id="_143144189602212">
-                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
-            </jpa:basic>
-            <jpa:basic name="menuItemAdmin" attribute-type="String" visibile="true" id="_143144191899113">
-                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
-            </jpa:basic>
-            <jpa:basic name="appTitle" attribute-type="String" visibile="true" id="_143194839581411">
-                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
-            </jpa:basic>
-            <jpa:basic name="menuItemHome" attribute-type="String" visibile="true" id="_143194933327412">
-                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
-            </jpa:basic>
-            <jpa:basic name="menuItemProjects" attribute-type="String" visibile="true" id="_143194953870513">
-                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
-            </jpa:basic>
-            <jpa:basic name="menuItemLogout" attribute-type="String" visibile="true" id="_143195513383414">
-                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
-            </jpa:basic>
-            <jpa:basic name="MSGTimeoutHeader" attribute-type="String" visibile="true" id="_14319615700996">
-                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
-            </jpa:basic>
-            <jpa:basic name="MSGTimeoutBody" attribute-type="String" visibile="true" id="_14319616174827">
-                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
-            </jpa:basic>
-            <jpa:basic name="adminTabContacts" attribute-type="String" visibile="true" id="_143245613519716">
-                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
-            </jpa:basic>
-            <jpa:basic name="adminTabContactsTableFirstname" attribute-type="String" visibile="true" id="_143245666080993">
-                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
-            </jpa:basic>
-            <jpa:basic name="adminTabContactsTableLastname" attribute-type="String" visibile="true" id="_143245666396994">
-                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
-            </jpa:basic>
-            <jpa:basic name="adminTabContactsTableInstrument" attribute-type="String" visibile="true" id="_143245666616995">
-                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
-            </jpa:basic>
-            <jpa:basic name="adminTabContactsTablePhone" attribute-type="String" visibile="true" id="_143245666743696">
-                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
-            </jpa:basic>
-            <jpa:basic name="adminTabContactsTableEmail" attribute-type="String" visibile="true" id="_143245667105697">
-                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
-            </jpa:basic>
-            <jpa:basic name="adminTabContactsTableNotes" attribute-type="String" visibile="true" id="_143245667219698">
-                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
-            </jpa:basic>
-            <jpa:basic name="adminUsername" attribute-type="String" visibile="true" id="_143245981126416">
-                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
-            </jpa:basic>
-            <jpa:basic name="adminPassword" attribute-type="String" visibile="true" id="_143245983026917">
-                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
-            </jpa:basic>
-            <jpa:basic name="adminTabContactsAddContact" attribute-type="String" visibile="true" id="_143246489101333">
-                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
-            </jpa:basic>
-            <jpa:basic name="project" attribute-type="String" visibile="true" id="_143265219047331">
-                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
-            </jpa:basic>
-            <jpa:basic name="projectSelect" attribute-type="String" visibile="true" id="_143265220904632">
-                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
-            </jpa:basic>
-            <jpa:basic name="projectFrom" attribute-type="String" visibile="true" id="_143265224765133">
-                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
-            </jpa:basic>
-            <jpa:basic name="projectUntil" attribute-type="String" visibile="true" id="_143265225572434">
-                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
-            </jpa:basic>
-            <jpa:basic name="projectRepertoire" attribute-type="String" visibile="true" id="_143265226620735">
-                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="512" precision="0" scale="0"/>
-            </jpa:basic>
-            <jpa:basic name="projectSubscriptionNewMSG" attribute-type="String" visibile="true" id="_143265295240136">
-                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="2048" precision="0" scale="0"/>
-            </jpa:basic>
-            <jpa:basic name="projectSubscriptionPanelHeader" attribute-type="String" visibile="true" id="_143411267635848">
-                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
-            </jpa:basic>
-            <jpa:basic name="organizationName" attribute-type="String" visibile="true" id="_143523112906534">
-                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
-            </jpa:basic>
-            <jpa:basic name="activityPresent" attribute-type="String" visibile="true" id="_143558992748612">
-                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
-            </jpa:basic>
-            <jpa:basic name="activityDate" attribute-type="String" visibile="true" id="_143558994350613">
-                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
-            </jpa:basic>
-            <jpa:basic name="activityStartTime" attribute-type="String" visibile="true" id="_143558995426014">
-                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
-            </jpa:basic>
-            <jpa:basic name="activityEndTime" attribute-type="String" visibile="true" id="_143558996980215">
-                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
-            </jpa:basic>
-            <jpa:basic name="activityDescription" attribute-type="String" visibile="true" id="_143558998116716">
-                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
-            </jpa:basic>
-            <jpa:basic name="activityLocation" attribute-type="String" visibile="true" id="_143559000043117">
-                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
-            </jpa:basic>
-            <jpa:basic name="activityCommentsByContact" attribute-type="String" visibile="true" id="_143559001340918">
-                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
-            </jpa:basic>
-            <jpa:basic name="save" attribute-type="String" visibile="true" id="_143559003468819">
-                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
-            </jpa:basic>
-            <jpa:basic name="activityTime" attribute-type="String" visibile="true" id="_143559020978920">
-                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
-            </jpa:basic>
-            <jpa:basic name="activityAdditionalMessage" attribute-type="String" visibile="true" id="_143565074981432">
-                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
-            </jpa:basic>
-            <jpa:basic name="mailMSGNewMemberSubscriptionBody" attribute-type="String" visibile="true" id="_143566800081112">
-                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="2048" precision="0" scale="0"/>
-            </jpa:basic>
-            <jpa:basic name="mailMSGToAdminNewMemberSubscriptionBody" attribute-type="String" visibile="true" id="_143566981707513">
-                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="2048" precision="0" scale="0"/>
-            </jpa:basic>
-            <jpa:basic name="sixteenCharsEncryptionPassword" fetch="LAZY" attribute-type="String" visibile="true" id="_143593336340412">
-                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
-            </jpa:basic>
-            <jpa:basic name="sixteenCharsEncryptionSalt" fetch="LAZY" attribute-type="String" visibile="true" id="_143593340657313">
-                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
-            </jpa:basic>
-            <jpa:basic name="mailMSGNewMemberSubscriptionSubject" attribute-type="String" visibile="true" id="_143644648558436">
-                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
-            </jpa:basic>
-            <jpa:basic name="mailMSGToAdminNewMemberSubscriptionSubject" attribute-type="String" visibile="true" id="_143644648714437">
-                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
-            </jpa:basic>
-            <jpa:basic name="defaultEmailStringsCoordinator" attribute-type="String" visibile="true" id="_143679667368023">
-                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
-            </jpa:basic>
-            <jpa:basic name="defaultEmailWindsCoordinator" attribute-type="String" visibile="true" id="_143679667549624">
-                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
-            </jpa:basic>
-            <jpa:basic name="defaultEmailStringsCoordinatorPWD" attribute-type="String" visibile="true" id="_143679690891158">
-                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
-            </jpa:basic>
-            <jpa:basic name="defaultEmailWindsCoordinatorPWD" attribute-type="String" visibile="true" id="_143679691776859">
-                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
-            </jpa:basic>
-            <jpa:basic name="locale" attribute-type="String" visibile="true" id="_143766172723512">
-                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="8" precision="0" scale="0"/>
-            </jpa:basic>
-        </jpa:attributes>
-    </jpa:entity>
     <jpa:entity jaxb-root-element="false" static-metamodel="false" abstract="false" class="Contact" superclassId="_1432042365590" visibile="true" minimized="false" id="_1432038649639">
         <jpa:attributes>
             <jpa:basic name="instrument" attribute-type="String" visibile="true" id="_14320386973398">
@@ -275,22 +120,19 @@
     <jpa:diagram id="_14313464543468">
         <plane elementRef="_14313464543467" id="_14313464543469_p">
             <shape elementRef="_1431346516231" id="_1431346516231_gui">
-                <Bounds x="370.0" y="265.0" width="137.0" height="121.0"/>
-            </shape>
-            <shape elementRef="_1431427726267" id="_1431427726267_gui">
-                <Bounds x="10.0" y="20.0" width="329.0" height="1100.0"/>
+                <Bounds x="38.0" y="390.0" width="137.0" height="121.0"/>
             </shape>
             <shape elementRef="_1432038649639" id="_1432038649639_gui">
-                <Bounds x="566.0" y="265.0" width="140.0" height="113.0"/>
+                <Bounds x="264.0" y="390.0" width="140.0" height="113.0"/>
             </shape>
             <shape elementRef="_1432038824827" id="_1432038824827_gui">
-                <Bounds x="728.0" y="20.0" width="149.0" height="197.0"/>
+                <Bounds x="502.0" y="41.0" width="149.0" height="197.0"/>
             </shape>
             <shape elementRef="_1432039053983" id="_1432039053983_gui">
-                <Bounds x="728.0" y="265.0" width="164.0" height="281.0"/>
+                <Bounds x="502.0" y="279.0" width="164.0" height="281.0"/>
             </shape>
             <shape elementRef="_1432042365590" id="_1432042365590_gui">
-                <Bounds x="442.0" y="20.0" width="137.0" height="155.0"/>
+                <Bounds x="155.0" y="41.0" width="137.0" height="155.0"/>
             </shape>
         </plane>
     </jpa:diagram>

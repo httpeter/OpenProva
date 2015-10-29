@@ -29,6 +29,7 @@
 package org.op.util;
 
 import java.text.SimpleDateFormat;
+import jdk.nashorn.internal.ir.Labels;
 import org.op.model.Contact;
 import org.op.model.Labels;
 import org.op.model.Project;
@@ -44,8 +45,7 @@ public class TagReplacer
             throws Exception
     {
 
-        String encryptedEmail = new AESEncryptor(l.getSixteenCharsEncryptionPassword(),
-                l.getSixteenCharsEncryptionSalt()).encrypt(c.getEmail());
+        String encryptedEmail = new AESEncryptor().encrypt(c.getEmail());
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
         UrlGenerator urlGenerator = new UrlGenerator();
 

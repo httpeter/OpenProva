@@ -10,6 +10,8 @@ import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
 
 public class AESEncryptor implements Serializable
 {
@@ -19,29 +21,29 @@ public class AESEncryptor implements Serializable
 
 
 
-    public AESEncryptor(String sessionKey, String iv)
+    public AESEncryptor() throws Exception
     {
+        ExternalContext externalContext = FacesContext.getCurrentInstance()
+                .getExternalContext();
+
+        String sessionKey = externalContext.getInitParameter("sixteenBitEncryptionKey");
+        String iv = externalContext.getInitParameter("sixteenBitEncryptionSalt");
 
         byte[] keyBytes;
         byte[] vectorBytes;
-        try
-        {
-            //new BASE64Decoder().decodeBuffer(sessionKey);
-            keyBytes = sessionKey.getBytes();
-            //new BASE64Decoder().decodeBuffer(iv);
-            vectorBytes = iv.getBytes();
-            encryptor = Cipher.getInstance("AES/CBC/PKCS5Padding");
-            encryptor.init(Cipher.ENCRYPT_MODE,
-                    new SecretKeySpec(keyBytes, "AES"),
-                    new IvParameterSpec(vectorBytes));
-            decryptor = Cipher.getInstance("AES/CBC/PKCS5Padding");
-            decryptor.init(Cipher.DECRYPT_MODE,
-                    new SecretKeySpec(keyBytes, "AES"),
-                    encryptor.getParameters());
-        } catch (NoSuchAlgorithmException | NoSuchPaddingException | InvalidKeyException | InvalidAlgorithmParameterException e)
-        {
-            e.printStackTrace(System.out);
-        }
+
+        //new BASE64Decoder().decodeBuffer(sessionKey);
+        keyBytes = sessionKey.getBytes();
+        //new BASE64Decoder().decodeBuffer(iv);
+        vectorBytes = iv.getBytes();
+        encryptor = Cipher.getInstance("AES/CBC/PKCS5Padding");
+        encryptor.init(Cipher.ENCRYPT_MODE,
+                new SecretKeySpec(keyBytes, "AES"),
+                new IvParameterSpec(vectorBytes));
+        decryptor = Cipher.getInstance("AES/CBC/PKCS5Padding");
+        decryptor.init(Cipher.DECRYPT_MODE,
+                new SecretKeySpec(keyBytes, "AES"),
+                encryptor.getParameters());
     }
 
 
