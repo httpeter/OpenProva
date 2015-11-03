@@ -67,16 +67,16 @@ public class MailFactory
                     // Send msg to new member
                     gMailClient.send(contact.getEmail(),
                             tr.getReplacedString(labels.getProperty("mailMSGNewMemberSubscriptionSubject"),
-                                    project, contact, labels),
-                            tr.getReplacedString(labels.getMailMSGNewMemberSubscriptionBody(),
-                                    project, contact, labels));
+                                    project, contact, labels.getProperty("organizationName")),
+                            tr.getReplacedString(labels.getProperty("mailMSGNewMemberSubscriptionBody"),
+                                    project, contact, labels.getProperty("organizationName")));
 
                     // Send msg to admin about new subscription
-                    gMailClient.send(labels.getDefaultEmailStringsCoordinator(),
-                            tr.getReplacedString(labels.getMailMSGToAdminNewMemberSubscriptionSubject(),
-                                    project, contact, labels),
-                            tr.getReplacedString(labels.getMailMSGToAdminNewMemberSubscriptionBody(),
-                                    project, contact, labels)
+                    gMailClient.send(labels.getProperty("defaultEmailStringsCoordinator"),
+                            tr.getReplacedString(labels.getProperty("mailMSGToAdminNewMemberSubscriptionSubject"),
+                                    project, contact, labels.getProperty("organizationName")),
+                            tr.getReplacedString(labels.getProperty("mailMSGToAdminNewMemberSubscriptionBody"),
+                                    project, contact, labels.getProperty("organizationName"))
                             + "\n\n___________________________________________\n\n"
                             + additionalMessage);
 
