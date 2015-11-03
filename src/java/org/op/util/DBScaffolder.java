@@ -22,7 +22,7 @@ public class DBScaffolder implements Serializable
     {
         try
         {
-            System.out.println("Restoring standard DB items...");
+
             FMessage msg = new FMessage();
             AESEncryptor aESEncryptor = new AESEncryptor();
 

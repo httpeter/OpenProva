@@ -30,12 +30,12 @@
     -->
     <context-param>
         <param-name>sixteenBitEncryptionKey</param-name>
-        <param-value></param-value>
+        <param-value>secret0000000000</param-value>
     </context-param>
     
     <context-param>
         <param-name>sixteenBitEncryptionSalt</param-name>
-        <param-value></param-value>
+        <param-value>confusing0000000</param-value>
     </context-param>
     
             
