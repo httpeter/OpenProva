@@ -7,12 +7,13 @@
         <param-value>Development</param-value>
     </context-param>
     
-    <!-- Uncomment for production   
-    <context-param>
+    <!-- Uncomment for production -->
+     
+<!--    <context-param>
         <param-name>javax.faces.FACELETS_REFRESH_PERIOD</param-name>
         <param-value>-1</param-value>
-    </context-param>
-    -->
+    </context-param>-->
+    
     
     <!--You have to change this to a non-commercial version-->
     <!--Or uncomment the bootstrap theme below-->
