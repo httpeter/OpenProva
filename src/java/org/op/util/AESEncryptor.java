@@ -6,9 +6,6 @@ import javax.crypto.spec.SecretKeySpec;
 import java.io.IOException;
 import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
-import java.security.InvalidAlgorithmParameterException;
-import java.security.InvalidKeyException;
-import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
@@ -16,8 +13,8 @@ import javax.faces.context.FacesContext;
 public class AESEncryptor implements Serializable
 {
 
-    private Cipher encryptor;
-    private Cipher decryptor;
+    private final Cipher encryptor = Cipher.getInstance("AES/CBC/PKCS5Padding");
+    private final Cipher decryptor = Cipher.getInstance("AES/CBC/PKCS5Padding");
 
 
 
@@ -36,11 +33,11 @@ public class AESEncryptor implements Serializable
         keyBytes = sessionKey.getBytes();
         //new BASE64Decoder().decodeBuffer(iv);
         vectorBytes = iv.getBytes();
-        encryptor = Cipher.getInstance("AES/CBC/PKCS5Padding");
+
         encryptor.init(Cipher.ENCRYPT_MODE,
                 new SecretKeySpec(keyBytes, "AES"),
                 new IvParameterSpec(vectorBytes));
-        decryptor = Cipher.getInstance("AES/CBC/PKCS5Padding");
+
         decryptor.init(Cipher.DECRYPT_MODE,
                 new SecretKeySpec(keyBytes, "AES"),
                 encryptor.getParameters());
