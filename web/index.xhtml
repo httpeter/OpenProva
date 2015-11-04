@@ -8,16 +8,16 @@
 
 
 
-    <f:loadBundle basename="org.op.properties.labelsNL" var="labels"/>
+    <f:loadBundle basename="#{indexController.labelFile}" var="labels"/>
 
 
 
 
     <h:head>
-        <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'/>
         <meta name="viewport" content="width=device-width, user-scalable=no"/>
         <meta name="mobile-web-app-capable" content="yes"/>
         <title>#{labels.appTitle} - #{labels.organizationName}</title>
+        <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Roboto"/>
         <link rel="stylesheet" type="text/css" href="resources/css/main.css"/>
     </h:head>
 
@@ -69,8 +69,8 @@
 
             <p:spacer/>
 
-            
-            
+
+
 
             <!-- Currently loaded Page Fragment -->
             <p:outputPanel id="currentFragment">
@@ -79,11 +79,11 @@
 
             <p:idleMonitor timeout="1080000" onidle="PF('idleDialog').show();"/>
 
-            
-            
-            
-            
-            
+
+
+
+
+
             <!--Session Timeout Dialog-->
             <p:dialog widgetVar="idleDialog" 
                       header="#{labels.MSGTimeoutHeader}"  
@@ -96,9 +96,9 @@
                 <p:button value="Refresh" onclick="window.location.reload();"/>
             </p:dialog>     
 
-            
-            
-            
+
+
+
 
         </h:form>
 
