@@ -31,7 +31,7 @@
     
     <context-param>
         <param-name>labelFile</param-name>
-        <param-value>org.op.properties.labelsNL.properties</param-value>
+        <param-value>org.op.properties.labelsNL</param-value>
     </context-param>
     
     <context-param>
