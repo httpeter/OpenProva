@@ -69,6 +69,8 @@
 
             <p:spacer/>
 
+            
+            
 
             <!-- Currently loaded Page Fragment -->
             <p:outputPanel id="currentFragment">
@@ -77,6 +79,11 @@
 
             <p:idleMonitor timeout="1080000" onidle="PF('idleDialog').show();"/>
 
+            
+            
+            
+            
+            
             <!--Session Timeout Dialog-->
             <p:dialog widgetVar="idleDialog" 
                       header="#{labels.MSGTimeoutHeader}"  
@@ -89,6 +96,9 @@
                 <p:button value="Refresh" onclick="window.location.reload();"/>
             </p:dialog>     
 
+            
+            
+            
 
         </h:form>
 
