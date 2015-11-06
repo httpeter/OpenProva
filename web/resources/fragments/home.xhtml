@@ -8,13 +8,44 @@
 
     <p:dashboard id="dashboard" model="#{homeController.dashboardModel}" >
 
-        <p:panel id="a" styleClass="myDashboardPanel">
-            <h:outputText value="#{labels.projectSubscriptionNewMSG}" escape="false"/>
+
+
+        <p:panel id="dashboardInfoPanel" styleClass="myDashboardPanel">
+
+            <h:outputText value="#{labels.welcomeMSG}" escape="false"/>
+
         </p:panel>
 
-        <p:panel id="b" styleClass="myDashboardPanel" header="Inschrijven">
-            <h:outputText value="#{labels.welcomeMSG}" escape="false"/>
+
+
+
+        <p:panel id="dashboardSubscriptionPanel" 
+                 styleClass="myDashboardPanel" 
+                 header="#{labels.projectSubscriptionPanelHeader}">
+
+            <h:outputText value="#{labels.projectSubscriptionNewMSG}" escape="false"/>
+
+            <p:separator/>
+
+            <h:panelGrid columns="2">
+                <p:inputText id="inputName" value="" >
+                    <p:watermark value="testing" for="inputName"/>
+                </p:inputText>
+            </h:panelGrid>
+
         </p:panel>
+        
+        
+        
+        <p:panel id="chatPanel" 
+                 styleClass="myDashboardpanel"
+                 header="#{labels.chatPanelHeader}">
+            
+            
+            
+        </p:panel>
+
+
 
     </p:dashboard>
 

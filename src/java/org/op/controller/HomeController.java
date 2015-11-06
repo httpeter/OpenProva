@@ -51,8 +51,9 @@ public class HomeController implements Serializable
         DashboardColumn column1 = new DefaultDashboardColumn();
         DashboardColumn column2 = new DefaultDashboardColumn();
 
-        column1.addWidget("a");
-        column2.addWidget("b");
+        column1.addWidget("dashboardInfoPanel");
+        column2.addWidget("dashboardSubscriptionPanel");
+        column1.addWidget("chatPanel");
 
         dashboardModel.addColumn(column1);
         dashboardModel.addColumn(column2);

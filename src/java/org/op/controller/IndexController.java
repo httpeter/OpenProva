@@ -26,6 +26,8 @@ public class IndexController implements Serializable
 
 
     //<editor-fold defaultstate="collapsed" desc="Getters & Setters">
+
+
     public String getCurrentFragment()
     {
         return currentFragment;
@@ -52,9 +54,9 @@ public class IndexController implements Serializable
         this.labelFile = labelFile;
     }
 
-
-
 //</editor-fold>
+
+
     public IndexController()
     {
 
