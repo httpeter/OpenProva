@@ -77,17 +77,19 @@
         <param-value>true</param-value>
     </context-param>
 
-    <!--PF Push-->            
+    <!--PF Push            
     <servlet>
         <servlet-name>Push Servlet</servlet-name>
         <servlet-class>org.primefaces.push.PushServlet</servlet-class>
         <async-supported>true</async-supported>
     </servlet>
     
+    
     <servlet-mapping>
         <servlet-name>Push Servlet</servlet-name>
         <url-pattern>/primepush/*</url-pattern>
     </servlet-mapping>
+    -->
                                                                                                                                             		
     <servlet>
         <servlet-name>Faces Servlet</servlet-name>

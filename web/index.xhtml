@@ -43,19 +43,19 @@
 
                 <p:submenu label="#{labels.menuItemProjects}" icon="fa fa-users">
 
-                    <p:menuitem value="#{labels.menuItemNewProject}" 
-                                action="#{indexController.setCurrentFragment('resources/fragments/new.xhtml')}" 
-                                update="mainForm:currentFragment" icon="ui-icon-person"/>
-
+                   
                     <p:menuitem value="#{labels.menuItemExistingProject}" 
-                                action="#{indexController.setCurrentFragment('resources/fragments/members.xhtml')}" 
+                                action="#{indexController.setCurrentFragment('resources/fragments/projects.xhtml')}" 
                                 update="mainForm:currentFragment" icon="ui-icon-refresh"/>
+
+                    <p:menuitem value="#{labels.menuItemAdmin}" 
+                                action="#{indexController.setCurrentFragment('resources/fragments/admin.xhtml')}"
+                                update="mainForm:currentFragment" 
+                                icon="fa fa-legal"/>
+
                 </p:submenu>
 
-                <p:menuitem value="#{labels.menuItemAdmin}" 
-                            action="#{indexController.setCurrentFragment('resources/fragments/admin.xhtml')}"
-                            update="mainForm:currentFragment" 
-                            icon="fa fa-legal"/>
+
 
                 <p:menuitem value="#{adminController.currentUser.firstName} #{labels.menuItemLogout}" 
                             action="#{adminController.logout()}" 

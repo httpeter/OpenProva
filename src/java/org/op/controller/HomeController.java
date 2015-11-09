@@ -27,8 +27,6 @@ public class HomeController implements Serializable
 
 
     //<editor-fold defaultstate="collapsed" desc="Getters & Setters">
-
-
     public DashboardModel getDashboardModel()
     {
         return dashboardModel;
@@ -49,14 +47,10 @@ public class HomeController implements Serializable
         dashboardModel = new DefaultDashboardModel();
 
         DashboardColumn column1 = new DefaultDashboardColumn();
-        DashboardColumn column2 = new DefaultDashboardColumn();
 
         column1.addWidget("dashboardInfoPanel");
-        column2.addWidget("dashboardSubscriptionPanel");
-        column1.addWidget("chatPanel");
 
         dashboardModel.addColumn(column1);
-        dashboardModel.addColumn(column2);
 
     }
 
