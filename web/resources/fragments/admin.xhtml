@@ -19,16 +19,16 @@
     <h:panelGrid  columns="2" rendered="#{!adminController.currentUserIsAdmin}">
 
         <p:inputText id="auText" value="#{adminController.currentUser.username}">
-            <p:watermark for="auText" value="#{labels.adminUsername}"/>
+            <p:watermark for="auText" value="#{labels.username}"/>
         </p:inputText>
         <p:outputLabel value="*"/>
 
         <p:password id="auPwd" value="#{adminController.currentUser.password}">
-            <p:watermark for="auPwd" value="#{labels.adminPassword}"/>
+            <p:watermark for="auPwd" value="#{labels.password}"/>
         </p:password>
         <p:outputLabel value="*"/>
 
-        <p:commandButton value="#{labels.adminLogin}" 
+        <p:commandButton value="#{labels.login}" 
                          action="#{adminController.login()}" 
                          styleClass="mySpecialButton"
                          ajax="false">
@@ -59,7 +59,13 @@
                 listener="#{adminController.adminTabChange()}"
                 update="adminTabView"/>
 
+       
+        
+        
+        
+        
         <p:tab title="Test">
+            
             <p>
                 content...
                 grafieken etc.
@@ -69,6 +75,9 @@
 
 
 
+        
+        
+        
         <p:tab title="#{labels.adminTabContacts}">
 
             <p:panelGrid columns="2" layout="grid">

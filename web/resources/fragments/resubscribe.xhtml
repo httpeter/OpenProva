@@ -123,9 +123,15 @@
             <p:ajax listener="#{resubscribeController.selectAllDates}" update="dTable"/>
         </p:selectBooleanCheckbox>
 
+        
+        
+        
         <br/>
         <br/>
 
+        
+        
+        
         <p:dataTable id="dTable" 
                      var="date" 
                      value="#{resubscribeController.projectActivities}"
@@ -166,25 +172,38 @@
 
         </p:dataTable>
 
+        
+        
         <br/>
 
+        
+        
         <p:inputTextarea id="additionalMessage" 
                          value="#{resubscribeController.additionalMessage}" 
                          styleClass="mySpecialInputTextarea">
             <p:watermark for="additionalMessage" value="#{labels.activityAdditionalMessage}"/>
         </p:inputTextarea>
 
+        
+        
         <br/>
         <br/>
 
+        
+        
         <p:commandButton value="#{labels.save}" 
                          icon="ui-icon-disk" 
                          action="#{resubscribeController.saveAndMailNewSubscription}" 
                          styleClass="mySpecialButton"
                          ajax="false"/>
+        
+        
+        
         <br/>
         <br/>
 
+        
+        
     </p:panel>
 
 
