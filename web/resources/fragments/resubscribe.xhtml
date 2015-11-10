@@ -4,22 +4,22 @@
                 xmlns:p="http://primefaces.org/ui"
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
-    
-    
-    
-    
+
+
+
+
     <h:outputText value="#{labels.projectResubscriptionMSG}" escape="false"/>
 
-    
-    
-    
-    
+
+
+
+
     <p:panel header="#{labels.resubscribeProject} #{newController.selectedProject.projectName}">
 
 
         <br/>
 
-        
+
         <h:selectOneMenu label="#{newController.selectedProject.projectName}" 
                          value="#{newController.selectedProject.id}" 
                          style="width:100%">
@@ -35,13 +35,13 @@
 
         </h:selectOneMenu>
 
-        
-        
+
+
         <br/>
         <br/>
 
-        
-        
+
+
         <h:panelGrid id="programmePanel" columns="3" rendered="#{not empty newController.selectedProject.projectName}">
 
             <p:outputLabel value="#{labels.projectFrom}"/>
@@ -68,13 +68,13 @@
 
     </p:panel>
 
-    
-    
+
+
     <br/>
 
-    
-    
-    
+
+
+
     <p:panel id="newSubscriptionPanel" header="#{labels.projectResubscriptionPanelHeader}" 
              rendered="#{not empty newController.selectedProject.projectName}">
 
@@ -109,11 +109,17 @@
 
         </h:panelGrid>
 
+
+
+
         <br/>
         <br/>
 
-        <!--Hier moet nog een generiek label..-->
-        <p:selectBooleanCheckbox value="#{newController.allDatesSelected}" itemLabel="Alle data selecteren">
+
+
+
+
+        <p:selectBooleanCheckbox value="#{newController.allDatesSelected}" itemLabel="#{labels.selectAllDates}">
             <p:ajax listener="#{newController.selectAllDates}" update="dTable"/>
         </p:selectBooleanCheckbox>
 
@@ -123,7 +129,8 @@
         <p:dataTable id="dTable" 
                      var="date" 
                      value="#{newController.projectActivities}"
-                     reflow="true">
+                     reflow="true"
+                     draggableColumns="true">
 
             <p:column headerText="#{labels.activityPresent}">
                 <p:selectBooleanCheckbox value="#{date.present}"/>
