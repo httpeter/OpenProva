@@ -4,14 +4,22 @@
                 xmlns:p="http://primefaces.org/ui"
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
-    <h:outputText value="#{labels.projectSubscriptionNewMSG}" escape="false"/>
+    
+    
+    
+    
+    <h:outputText value="#{labels.projectResubscriptionMSG}" escape="false"/>
 
-    <br/>
+    
+    
+    
+    
+    <p:panel header="#{labels.resubscribeProject} #{newController.selectedProject.projectName}">
 
-    <p:panel header="#{labels.project} #{newController.selectedProject.projectName}">
 
         <br/>
 
+        
         <h:selectOneMenu label="#{newController.selectedProject.projectName}" 
                          value="#{newController.selectedProject.id}" 
                          style="width:100%">
@@ -27,9 +35,13 @@
 
         </h:selectOneMenu>
 
+        
+        
         <br/>
         <br/>
 
+        
+        
         <h:panelGrid id="programmePanel" columns="3" rendered="#{not empty newController.selectedProject.projectName}">
 
             <p:outputLabel value="#{labels.projectFrom}"/>
@@ -56,37 +68,42 @@
 
     </p:panel>
 
+    
+    
     <br/>
 
-    <p:panel id="newSubscriptionPanel" header="#{labels.projectSubscriptionPanelHeader}" 
+    
+    
+    
+    <p:panel id="newSubscriptionPanel" header="#{labels.projectResubscriptionPanelHeader}" 
              rendered="#{not empty newController.selectedProject.projectName}">
 
         <br/>
 
         <h:panelGrid columns="2" style="width:100%">                                        
 
-            <p:inputText id="a" value="#{newController.newContact.firstName}">
-                <p:watermark for="a" value="#{labels.adminTabContactsTableFirstname}"/>
+            <p:inputText id="firstName" value="#{newController.newContact.firstName}">
+                <p:watermark for="firstName" value="#{labels.firstName}"/>
             </p:inputText>
             <p:outputLabel value="*"/>                                       
 
-            <p:inputText id="b" value="#{newController.newContact.lastName}">
-                <p:watermark for="b" value="#{labels.adminTabContactsTableLastname}"/>
+            <p:inputText id="lastName" value="#{newController.newContact.lastName}">
+                <p:watermark for="lastName" value="#{labels.lastName}"/>
             </p:inputText>
             <p:outputLabel value="*"/>
 
-            <p:inputText id="c" value="#{newController.newContact.email}" >
-                <p:watermark for="c" value="#{labels.adminTabContactsTableEmail}"/>
+            <p:inputText id="email" value="#{newController.newContact.email}" >
+                <p:watermark for="email" value="#{labels.email}"/>
             </p:inputText>
             <p:outputLabel value="*"/>
 
-            <p:inputText id="d" value="#{newController.newContact.phone}">
-                <p:watermark for="d" value="#{labels.adminTabContactsTablePhone}"/>
+            <p:inputText id="phone" value="#{newController.newContact.phone}">
+                <p:watermark for="phone" value="#{labels.phone}"/>
             </p:inputText>
             <p:outputLabel value="*"/>
 
-            <p:inputText id="e" value="#{newController.newContact.instrument}">
-                <p:watermark for="e" value="#{labels.adminTabContactsTableInstrument}"/>
+            <p:inputText id="instrument" value="#{newController.newContact.instrument}">
+                <p:watermark for="instrument" value="#{labels.instrument}"/>
             </p:inputText>
             <p:outputLabel value="*"/>
 

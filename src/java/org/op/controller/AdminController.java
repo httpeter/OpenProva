@@ -190,9 +190,10 @@ public class AdminController implements Serializable
                 session.setAttribute("currentUser", currentUser);
                 List<User> au = adminRepository.getResultList(User.class);
                 allUsers = new ArrayList<>();
-                au.forEach((usr) ->
-                {
-                    allUsers.add(usr);
+                au.forEach((usr)
+                        -> 
+                        {
+                            allUsers.add(usr);
                 });
             } else
             {
@@ -284,25 +285,26 @@ public class AdminController implements Serializable
         List<Activity> selectedContactActivities = adminRepository
                 .getContactActivities(selectedContact, false);
 
-        selectedContactActivities.forEach((activity) ->
-        {
-            if (adminRepository.subscriptionRemoved(activity))
-            {
-                msg.info("Subscription id: "
-                        + activity.getId()
-                        + ", "
-                        + activity.getDescription()
-                        + ", " + activity.getDate()
-                        + " removed");
-            } else
-            {
-                msg.error("Subscription id: "
-                        + activity.getId()
-                        + ", "
-                        + activity.getDescription()
-                        + ", " + activity.getDate()
-                        + " could not be removed");
-            }
+        selectedContactActivities.forEach((activity)
+                -> 
+                {
+                    if (adminRepository.subscriptionRemoved(activity))
+                    {
+                        msg.info("Subscription id: "
+                                + activity.getId()
+                                + ", "
+                                + activity.getDescription()
+                                + ", " + activity.getDate()
+                                + " removed");
+                    } else
+                    {
+                        msg.error("Subscription id: "
+                                + activity.getId()
+                                + ", "
+                                + activity.getDescription()
+                                + ", " + activity.getDate()
+                                + " could not be removed");
+                    }
         });
         loadContacts();
     }
