@@ -15,7 +15,7 @@ import org.op.util.MailFactory;
 
 @ManagedBean
 @ViewScoped
-public class NewController implements Serializable
+public class ResubscribeController implements Serializable
 {
 
     private final SubscribersRepository subscribersRepository = new SubscribersRepository("OpenProvaPU");

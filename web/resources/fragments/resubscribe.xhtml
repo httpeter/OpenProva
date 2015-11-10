@@ -14,24 +14,24 @@
 
 
 
-    <p:panel header="#{labels.resubscribeProject} #{newController.selectedProject.projectName}">
+    <p:panel header="#{labels.resubscribeProject} #{resubscribeController.selectedProject.projectName}">
 
 
         <br/>
 
 
-        <h:selectOneMenu label="#{newController.selectedProject.projectName}" 
-                         value="#{newController.selectedProject.id}" 
+        <h:selectOneMenu label="#{resubscribeController.selectedProject.projectName}" 
+                         value="#{resubscribeController.selectedProject.id}" 
                          style="width:100%">
 
             <f:selectItem itemLabel="#{labels.projectSelect}"/>
 
-            <f:selectItems value="#{newController.projects}" 
+            <f:selectItems value="#{resubscribeController.projects}" 
                            var="project" 
                            itemLabel="#{project.projectName}" 
                            itemValue="#{project.id}"/>
 
-            <p:ajax listener="#{newController.selectProject()}" update=":mainForm:currentFragment"/>
+            <p:ajax listener="#{resubscribeController.selectProject()}" update=":mainForm:currentFragment"/>
 
         </h:selectOneMenu>
 
@@ -42,23 +42,23 @@
 
 
 
-        <h:panelGrid id="programmePanel" columns="3" rendered="#{not empty newController.selectedProject.projectName}">
+        <h:panelGrid id="programmePanel" columns="3" rendered="#{not empty resubscribeController.selectedProject.projectName}">
 
             <p:outputLabel value="#{labels.projectFrom}"/>
             <p:outputLabel value=":"/>
-            <h:outputText value="#{newController.selectedProject.projectStartDate}">
+            <h:outputText value="#{resubscribeController.selectedProject.projectStartDate}">
                 <f:convertDateTime locale="#{labels.locale}"/>
             </h:outputText>
 
             <p:outputLabel value="#{labels.projectUntil}"/>
             <p:outputLabel value=":"/>
-            <h:outputText value="#{newController.selectedProject.projectEndDate}">
+            <h:outputText value="#{resubscribeController.selectedProject.projectEndDate}">
                 <f:convertDateTime locale="#{labels.locale}"/>
             </h:outputText>
 
             <p:outputLabel value="#{labels.projectRepertoire}"/>
             <p:outputLabel value=":"/>
-            <h:outputText value="#{newController.selectedProject.projectRepertoire}"/>
+            <h:outputText value="#{resubscribeController.selectedProject.projectRepertoire}"/>
 
             <p:effect event="load" type="highlight"/>
             <h:outputText/>
@@ -76,33 +76,33 @@
 
 
     <p:panel id="newSubscriptionPanel" header="#{labels.projectResubscriptionPanelHeader}" 
-             rendered="#{not empty newController.selectedProject.projectName}">
+             rendered="#{not empty resubscribeController.selectedProject.projectName}">
 
         <br/>
 
         <h:panelGrid columns="2" style="width:100%">                                        
 
-            <p:inputText id="firstName" value="#{newController.newContact.firstName}">
+            <p:inputText id="firstName" value="#{resubscribeController.newContact.firstName}">
                 <p:watermark for="firstName" value="#{labels.firstName}"/>
             </p:inputText>
             <p:outputLabel value="*"/>                                       
 
-            <p:inputText id="lastName" value="#{newController.newContact.lastName}">
+            <p:inputText id="lastName" value="#{resubscribeController.newContact.lastName}">
                 <p:watermark for="lastName" value="#{labels.lastName}"/>
             </p:inputText>
             <p:outputLabel value="*"/>
 
-            <p:inputText id="email" value="#{newController.newContact.email}" >
+            <p:inputText id="email" value="#{resubscribeController.newContact.email}" >
                 <p:watermark for="email" value="#{labels.email}"/>
             </p:inputText>
             <p:outputLabel value="*"/>
 
-            <p:inputText id="phone" value="#{newController.newContact.phone}">
+            <p:inputText id="phone" value="#{resubscribeController.newContact.phone}">
                 <p:watermark for="phone" value="#{labels.phone}"/>
             </p:inputText>
             <p:outputLabel value="*"/>
 
-            <p:inputText id="instrument" value="#{newController.newContact.instrument}">
+            <p:inputText id="instrument" value="#{resubscribeController.newContact.instrument}">
                 <p:watermark for="instrument" value="#{labels.instrument}"/>
             </p:inputText>
             <p:outputLabel value="*"/>
@@ -119,8 +119,8 @@
 
 
 
-        <p:selectBooleanCheckbox value="#{newController.allDatesSelected}" itemLabel="#{labels.selectAllDates}">
-            <p:ajax listener="#{newController.selectAllDates}" update="dTable"/>
+        <p:selectBooleanCheckbox value="#{resubscribeController.allDatesSelected}" itemLabel="#{labels.selectAllDates}">
+            <p:ajax listener="#{resubscribeController.selectAllDates}" update="dTable"/>
         </p:selectBooleanCheckbox>
 
         <br/>
@@ -128,7 +128,7 @@
 
         <p:dataTable id="dTable" 
                      var="date" 
-                     value="#{newController.projectActivities}"
+                     value="#{resubscribeController.projectActivities}"
                      reflow="true"
                      draggableColumns="true">
 
@@ -169,7 +169,7 @@
         <br/>
 
         <p:inputTextarea id="additionalMessage" 
-                         value="#{newController.additionalMessage}" 
+                         value="#{resubscribeController.additionalMessage}" 
                          styleClass="mySpecialInputTextarea">
             <p:watermark for="additionalMessage" value="#{labels.activityAdditionalMessage}"/>
         </p:inputTextarea>
@@ -179,7 +179,7 @@
 
         <p:commandButton value="#{labels.save}" 
                          icon="ui-icon-disk" 
-                         action="#{newController.saveAndMailNewSubscription}" 
+                         action="#{resubscribeController.saveAndMailNewSubscription}" 
                          styleClass="mySpecialButton"
                          ajax="false"/>
         <br/>
