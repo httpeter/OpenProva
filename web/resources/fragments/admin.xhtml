@@ -59,13 +59,13 @@
                 listener="#{adminController.adminTabChange()}"
                 update="adminTabView"/>
 
-       
-        
-        
-        
-        
+
+
+
+
+
         <p:tab title="Test">
-            
+
             <p>
                 content...
                 grafieken etc.
@@ -75,9 +75,9 @@
 
 
 
-        
-        
-        
+
+
+
         <p:tab title="#{labels.contacts}">
 
             <p:panelGrid columns="2" layout="grid">
@@ -192,6 +192,16 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
             <!--Change contact DLG-->
             <p:dialog id="changeContactDLG"
                       widgetVar="changeContactDLG" 
@@ -208,8 +218,8 @@
                     <p:dataList value="#{adminController.allUsers}" var="au">
                         <h:outputText value="#{au.username}"/>
                     </p:dataList>
-                    
-                    
+
+
                     <p:outputLabel value="#{labels.firstName}*"/>
                     <p:inputText value="#{adminController.selectedContact.firstName}"/>
 
@@ -260,6 +270,15 @@
 
 
 
+
+
+
+
+
+
+
+
+
             <!--New Contact DLG-->
             <p:dialog id="contactDLGNew"
                       widgetVar="contactDLGNew" 
@@ -271,22 +290,22 @@
                       height="700">
 
                 <p:panelGrid columns="2" layout="grid" >
-                    <p:outputLabel value="#{labels.adminTabContactsTableFirstname}*"/>
+                    <p:outputLabel value="#{labels.firstName}*"/>
                     <p:inputText value="#{adminController.newContact.firstName}"/>
 
-                    <p:outputLabel value="#{labels.adminTabContactsTableLastname}"/>
+                    <p:outputLabel value="#{labels.lastName}"/>
                     <p:inputText value="#{adminController.newContact.lastName}"/>
 
-                    <p:outputLabel value="#{labels.adminTabContactsTableInstrument}"/>
+                    <p:outputLabel value="#{labels.instrument}"/>
                     <p:inputText value="#{adminController.newContact.instrument}"/>
 
-                    <p:outputLabel value="#{labels.adminTabContactsTablePhone}"/>
+                    <p:outputLabel value="#{labels.phone}"/>
                     <p:inputText value="#{adminController.newContact.phone}"/>
 
-                    <p:outputLabel value="#{labels.adminTabContactsTableEmail}*"/>
+                    <p:outputLabel value="#{labels.email}*"/>
                     <p:inputText value="#{adminController.newContact.email}"/>
 
-                    <p:outputLabel value="#{labels.adminTabContactsTableNotes}"/>
+                    <p:outputLabel value="#{labels.notes}"/>
                     <p:inputTextarea value="#{adminController.newContact.notes}"/>
                 </p:panelGrid>
 
@@ -312,6 +331,13 @@
 
 
 
+
+
+
+
+
+
+
             <!--Delete Contact DLG-->
             <p:dialog widgetVar="delDLG" header="Please confirm..." 
                       modal="true" 
@@ -328,6 +354,14 @@
                                  onclick="PF('delDLG').hide();" 
                                  icon="ui-icon-arrowthick-1-ne"/>
             </p:dialog>
+
+
+
+
+
+
+
+
 
 
 

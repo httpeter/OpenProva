@@ -9,7 +9,13 @@
 
 
 
+
+
+
     <f:loadBundle basename="#{indexController.labelFile}" var="labels"/>
+
+
+
 
 
 
@@ -23,27 +29,34 @@
     </h:head>
 
 
-    <h:body styleClass="myBody">
 
+
+
+
+    <h:body styleClass="myBody">
 
         <h:form id="mainForm" styleClass="myForm">
 
-
             <p:growl autoUpdate="true"/>
-
 
             <p:sticky target="menu"/>
 
 
+
+
+
+
             <p:menubar id="menu" autoDisplay="false">
+
 
                 <p:menuitem value="#{labels.menuItemHome}" 
                             action="#{indexController.setCurrentFragment('resources/fragments/home.xhtml')}" 
                             update="mainForm:currentFragment" icon="fa fa-home"/>
 
+
+
                 <p:submenu label="#{labels.menuItemProjects}" icon="fa fa-users">
 
-                   
                     <p:menuitem value="#{labels.menuItemResubscribe}" 
                                 action="#{indexController.setCurrentFragment('resources/fragments/resubscribe.xhtml')}" 
                                 update="mainForm:currentFragment" icon="ui-icon-refresh"/>
@@ -54,7 +67,6 @@
                                 icon="fa fa-legal"/>
 
                 </p:submenu>
-
 
 
                 <p:menuitem value="#{adminController.currentUser.firstName} #{labels.menuItemLogout}" 
@@ -73,12 +85,25 @@
 
 
 
+
+
+
+
+
+
+
             <!-- Currently loaded Page Fragment -->
             <p:outputPanel id="currentFragment">
                 <ui:include src="#{indexController.currentFragment}"/>
             </p:outputPanel>
 
             <p:idleMonitor timeout="1080000" onidle="PF('idleDialog').show();"/>
+
+
+
+
+
+
 
 
 
@@ -101,12 +126,14 @@
 
 
 
+
+
+
+
+
         </h:form>
 
-
     </h:body>
-
-
 
 </html>
 
