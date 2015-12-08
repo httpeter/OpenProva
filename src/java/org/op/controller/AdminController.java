@@ -62,6 +62,7 @@ public class AdminController implements Serializable
 
     public AdminController()
     {
+        currentUser = new User();
 
         msg = new FMessage();
 
