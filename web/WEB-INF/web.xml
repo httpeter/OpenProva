@@ -11,7 +11,7 @@
     
     
      
-    <!-- Uncomment for production
+<!--     Uncomment for production
     <context-param>
         <param-name>javax.faces.FACELETS_REFRESH_PERIOD</param-name>
         <param-value>-1</param-value>
@@ -89,8 +89,9 @@
         <servlet-name>Push Servlet</servlet-name>
         <url-pattern>/primepush/*</url-pattern>
     </servlet-mapping>
-    -->
-                                                                                                                                            		
+    -->                                                                                                                                                        
+                                                                                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    		
     <servlet>
         <servlet-name>Faces Servlet</servlet-name>
         <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>

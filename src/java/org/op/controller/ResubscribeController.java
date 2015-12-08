@@ -127,38 +127,40 @@ public class ResubscribeController implements Serializable
     //Loading project data and cloning dates
     public void selectProject()
     {
-        projects.forEach((p) ->
-        {
-            if (p.getId() != null)
-            {
-                selectedProject = p;
-            } else
-            {
-                selectedProject = new Project();
-            }
+        projects.forEach((p)
+                -> 
+                {
+                    if (p.getId() != null)
+                    {
+                        selectedProject = p;
+                    } else
+                    {
+                        selectedProject = new Project();
+                    }
         });
 
         List<Activity> masterActivities = subscribersRepository
                 .getProjectActivities(selectedProject.getId(), true);
 
-        projectActivities = new ArrayList();
+        projectActivities = new ArrayList(masterActivities.size());
 
         //not using the Collections clong constructor option because this
         //is not a master activity
-        masterActivities.forEach((ma) ->
-        {
-            Activity a = new Activity();
-            a.setCommentsByContact(ma.getCommentsByContact());
-            a.setDate(ma.getDate());
-            a.setDescription(ma.getDescription());
-            a.setEndTime(ma.getEndTime());
-            a.setIsMasterActivity(false);
-            a.setLocation(ma.getLocation());
-            a.setPresent(ma.isPresent());
-            a.setProjectId(ma.getProjectId());
-            a.setStartTime(ma.getStartTime());
-            a.setIsMasterActivity(false);
-            projectActivities.add(a);
+        masterActivities.forEach((ma)
+                -> 
+                {
+                    Activity a = new Activity();
+                    a.setCommentsByContact(ma.getCommentsByContact());
+                    a.setDate(ma.getDate());
+                    a.setDescription(ma.getDescription());
+                    a.setEndTime(ma.getEndTime());
+                    a.setIsMasterActivity(false);
+                    a.setLocation(ma.getLocation());
+                    a.setPresent(ma.isPresent());
+                    a.setProjectId(ma.getProjectId());
+                    a.setStartTime(ma.getStartTime());
+                    a.setIsMasterActivity(false);
+                    projectActivities.add(a);
         });
     }
 
@@ -166,16 +168,21 @@ public class ResubscribeController implements Serializable
 
     public void selectAllDates()
     {
-        projectActivities.parallelStream().forEach((activity) ->
+        if (projectActivities != null)
         {
-            if (allDatesSelected)
-            {
-                activity.setPresent(true);
-            } else
-            {
-                activity.setPresent(false);
-            }
-        });
+            projectActivities.parallelStream()
+                    .forEach((activity)
+                            -> 
+                            {
+                                if (allDatesSelected)
+                                {
+                                    activity.setPresent(true);
+                                } else
+                                {
+                                    activity.setPresent(false);
+                                }
+                    });
+        }
     }
 
 
@@ -194,13 +201,14 @@ public class ResubscribeController implements Serializable
 
             //now saving the projectdata
             StringBuilder resultLog = new StringBuilder();
-            projectActivities.forEach((newActivity) ->
-            {
-                newActivity.setContactId(newContact.getId());
-                if (!subscribersRepository.persisted(newActivity))
-                {
-                    resultLog.append(newActivity.getDate());
-                }
+            projectActivities.forEach((newActivity)
+                    -> 
+                    {
+                        newActivity.setContactId(newContact.getId());
+                        if (!subscribersRepository.persisted(newActivity))
+                        {
+                            resultLog.append(newActivity.getDate());
+                        }
             });
 
             if (resultLog.length() == 0)

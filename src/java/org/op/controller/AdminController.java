@@ -189,7 +189,7 @@ public class AdminController implements Serializable
                 currentUserIsAdmin = currentUser.getRole().equalsIgnoreCase("admin");
                 session.setAttribute("currentUser", currentUser);
                 List<User> au = adminRepository.getResultList(User.class);
-                allUsers = new ArrayList<>();
+                allUsers = new ArrayList<>(au.size());
                 au.forEach((usr)
                         -> 
                         {
