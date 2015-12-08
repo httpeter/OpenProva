@@ -1,4 +1,4 @@
-package org.op.repositories;
+package org.op.data.repositories;
 
 import java.io.Serializable;
 import java.util.List;

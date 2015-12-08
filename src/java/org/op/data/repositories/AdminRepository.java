@@ -1,10 +1,10 @@
-package org.op.repositories;
+package org.op.data.repositories;
 
 import java.io.Serializable;
 import java.util.List;
-import org.op.model.Activity;
-import org.op.model.Contact;
-import org.op.model.User;
+import org.op.data.model.Activity;
+import org.op.data.model.Contact;
+import org.op.data.model.User;
 
 public class AdminRepository extends DefaultRepository implements Serializable
 {

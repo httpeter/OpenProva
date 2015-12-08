@@ -5,11 +5,11 @@ package org.op.util;
 import java.io.Serializable;
 import java.sql.Date;
 import java.sql.Time;
-import org.op.model.Contact;
-import org.op.model.Activity;
-import org.op.model.Project;
-import org.op.model.User;
-import org.op.repositories.DefaultRepository;
+import org.op.data.model.Contact;
+import org.op.data.model.Activity;
+import org.op.data.model.Project;
+import org.op.data.model.User;
+import org.op.data.repositories.DefaultRepository;
 
 public class DBScaffolder implements Serializable
 {

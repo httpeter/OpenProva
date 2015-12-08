@@ -2,11 +2,11 @@
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
   <persistence-unit name="OpenProvaPU" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-    <class>org.op.model.Activity</class>
-    <class>org.op.model.Contact</class>
-    <class>org.op.model.Person</class>
-    <class>org.op.model.Project</class>
-    <class>org.op.model.User</class>
+    <class>org.op.data.model.Person</class>
+    <class>org.op.data.model.Project</class>
+    <class>org.op.data.model.User</class>
+    <class>org.op.data.model.Activity</class>
+    <class>org.op.data.model.Contact</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/db_openprova?zeroDateTimeBehavior=convertToNull"/>

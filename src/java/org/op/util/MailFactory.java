@@ -4,9 +4,9 @@ import java.util.List;
 import java.util.Properties;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
-import org.op.model.Activity;
-import org.op.model.Contact;
-import org.op.model.Project;
+import org.op.data.model.Activity;
+import org.op.data.model.Contact;
+import org.op.data.model.Project;
 import org.op.util.gmail.GMailSSLSender;
 
 /**

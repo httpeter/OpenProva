@@ -1,6 +1,6 @@
 package org.op.util;
 
-import org.op.model.Contact;
+import org.op.data.model.Contact;
 
 /**
  *

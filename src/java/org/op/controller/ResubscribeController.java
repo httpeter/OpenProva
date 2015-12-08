@@ -5,11 +5,11 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-import org.op.model.Activity;
-import org.op.model.Contact;
-import org.op.model.Project;
+import org.op.data.model.Activity;
+import org.op.data.model.Contact;
+import org.op.data.model.Project;
 
-import org.op.repositories.SubscribersRepository;
+import org.op.data.repositories.SubscribersRepository;
 import org.op.util.FMessage;
 import org.op.util.MailFactory;
 
@@ -127,6 +127,7 @@ public class ResubscribeController implements Serializable
     //Loading project data and cloning dates
     public void selectProject()
     {
+
         projects.forEach((p)
                 -> 
                 {
@@ -139,6 +140,9 @@ public class ResubscribeController implements Serializable
                     }
         });
 
+        if(selectedProject.getId()!=null)
+        {
+        
         List<Activity> masterActivities = subscribersRepository
                 .getProjectActivities(selectedProject.getId(), true);
 
@@ -162,6 +166,7 @@ public class ResubscribeController implements Serializable
                     a.setIsMasterActivity(false);
                     projectActivities.add(a);
         });
+        }
     }
 
 
@@ -182,6 +187,9 @@ public class ResubscribeController implements Serializable
                                     activity.setPresent(false);
                                 }
                     });
+        } else
+        {
+            msg.error("No project activities");
         }
     }
 
@@ -232,9 +240,6 @@ public class ResubscribeController implements Serializable
                     msg.error("Subscription email could not be sent...\n\n"
                             + e.getMessage());
                 }
-
-                selectedProject = new Project();
-                projectActivities = new ArrayList();
                 newContact = new Contact();
             } else
             {

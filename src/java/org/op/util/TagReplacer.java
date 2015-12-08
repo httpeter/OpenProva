@@ -29,8 +29,8 @@
 package org.op.util;
 
 import java.text.SimpleDateFormat;
-import org.op.model.Contact;
-import org.op.model.Project;
+import org.op.data.model.Contact;
+import org.op.data.model.Project;
 
 /**
  *

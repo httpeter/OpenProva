@@ -24,11 +24,11 @@
                          value="#{resubscribeController.selectedProject.id}" 
                          style="width:100%">
 
-            <f:selectItem itemLabel="#{labels.projectSelect}"/>
+            <f:selectItem itemLabel="#{labels.projectSelect}" itemValue="0"/>
 
-            <f:selectItems value="#{resubscribeController.projects}" 
+            <f:selectItems value="#{resubscribeController.projects}"
                            var="project" 
-                           itemLabel="#{project.projectName}" 
+                           itemLabel="#{project.projectName}"
                            itemValue="#{project.id}"/>
 
             <p:ajax listener="#{resubscribeController.selectProject()}" update=":mainForm:currentFragment"/>
@@ -123,15 +123,15 @@
             <p:ajax listener="#{resubscribeController.selectAllDates}" update="dTable"/>
         </p:selectBooleanCheckbox>
 
-        
-        
-        
+
+
+
         <br/>
         <br/>
 
-        
-        
-        
+
+
+
         <p:dataTable id="dTable" 
                      var="date" 
                      value="#{resubscribeController.projectActivities}"
@@ -172,38 +172,38 @@
 
         </p:dataTable>
 
-        
-        
+
+
         <br/>
 
-        
-        
+
+
         <p:inputTextarea id="additionalMessage" 
                          value="#{resubscribeController.additionalMessage}" 
                          styleClass="mySpecialInputTextarea">
             <p:watermark for="additionalMessage" value="#{labels.activityAdditionalMessage}"/>
         </p:inputTextarea>
 
-        
-        
+
+
         <br/>
         <br/>
 
-        
-        
+
+
         <p:commandButton value="#{labels.save}" 
                          icon="ui-icon-disk" 
                          action="#{resubscribeController.saveAndMailNewSubscription}" 
                          styleClass="mySpecialButton"
                          ajax="false"/>
-        
-        
-        
+
+
+
         <br/>
         <br/>
 
-        
-        
+
+
     </p:panel>
 
 
