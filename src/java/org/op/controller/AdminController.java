@@ -24,11 +24,10 @@ public class AdminController implements Serializable
             .getExternalContext()
             .getSession(false);
 
-    private final AdminRepository adminRepository = new AdminRepository("OpenProvaPU");
+    private AdminRepository adminRepository;
+    private MailFactory mail;
 
-    private final MailFactory mail = new MailFactory();
-
-    private final FMessage msg = new FMessage();
+    private final FMessage msg;
 
     private boolean currentUserIsAdmin;
 
@@ -36,10 +35,10 @@ public class AdminController implements Serializable
 
     private List<User> allUsers;
 
-    private User currentUser = new User();
+    private User currentUser;
 
-    private Contact selectedContact = new Contact(),
-            newContact = new Contact();
+    private Contact selectedContact,
+            newContact;
 
     private AESEncryptor aESEncryptor;
 
@@ -63,6 +62,9 @@ public class AdminController implements Serializable
 
     public AdminController()
     {
+
+        msg = new FMessage();
+
         try
         {
             aESEncryptor = new AESEncryptor();
@@ -178,6 +180,7 @@ public class AdminController implements Serializable
     {
         try
         {
+            adminRepository = new AdminRepository("OpenProvaPU");
 
             User u = adminRepository.getUser(currentUser.getUsername().toLowerCase(),
                     aESEncryptor.encrypt(currentUser.getPassword().toLowerCase()),
@@ -250,6 +253,8 @@ public class AdminController implements Serializable
 
     public void saveContact()
     {
+        mail = new MailFactory();
+
         if (!selectedContact.getFirstName().isEmpty()
                 && mail.addressValid(selectedContact.getEmail())
                 && adminRepository.persisted(selectedContact))

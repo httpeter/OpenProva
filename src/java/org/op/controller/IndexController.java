@@ -13,21 +13,14 @@ import org.op.util.FMessage;
 public class IndexController implements Serializable
 {
 
-    private final ExternalContext externalContext = FacesContext.getCurrentInstance()
-            .getExternalContext();
+    private final FMessage msg;
 
-    private final HttpSession session = (HttpSession) externalContext.getSession(true);
-
-    private final FMessage msg = new FMessage();
-
-    private String labelFile = externalContext.getInitParameter("labelFile"),
-            currentFragment = "resources/fragments/home.xhtml";
+    private String labelFile,
+            currentFragment;
 
 
 
     //<editor-fold defaultstate="collapsed" desc="Getters & Setters">
-
-
     public String getCurrentFragment()
     {
         return currentFragment;
@@ -59,7 +52,18 @@ public class IndexController implements Serializable
 
     public IndexController()
     {
+        msg = new FMessage();
 
+        ExternalContext externalContext = FacesContext.getCurrentInstance()
+                .getExternalContext();
+
+        HttpSession session = (HttpSession) externalContext.getSession(true);
+
+        labelFile = externalContext.getInitParameter("labelFile");
+
+        currentFragment = "resources/fragments/home.xhtml";
+
+        //Calling db schaffolding when in dev. 
         if (FacesContext
                 .getCurrentInstance()
                 .getApplication()

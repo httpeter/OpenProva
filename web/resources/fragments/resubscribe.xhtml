@@ -26,7 +26,7 @@
 
             <f:selectItem itemLabel="#{labels.projectSelect}" itemValue="0"/>
 
-            <f:selectItems value="#{resubscribeController.projects}"
+            <f:selectItems value="#{resubscribeController.activeProjects}"
                            var="project" 
                            itemLabel="#{project.projectName}"
                            itemValue="#{project.id}"/>

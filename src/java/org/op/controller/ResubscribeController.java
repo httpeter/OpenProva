@@ -8,7 +8,6 @@ import javax.faces.bean.ViewScoped;
 import org.op.data.model.Activity;
 import org.op.data.model.Contact;
 import org.op.data.model.Project;
-
 import org.op.data.repositories.SubscribersRepository;
 import org.op.util.FMessage;
 import org.op.util.MailFactory;
@@ -18,18 +17,19 @@ import org.op.util.MailFactory;
 public class ResubscribeController implements Serializable
 {
 
-    private final SubscribersRepository subscribersRepository = new SubscribersRepository("OpenProvaPU");
+    private final SubscribersRepository subscribersRepository;
 
-    private List<Project> projects = subscribersRepository.getResultList(Project.class);
+    private List<Project> activeProjects;
 
-    private final MailFactory mailFactory = new MailFactory();
+    private final MailFactory mailFactory;
 
-    private final FMessage msg = new FMessage();
+    private final FMessage msg;
 
-    private Project selectedProject = new Project();
+    private Project selectedProject;
 
     private List<Activity> projectActivities;
 
+    //Moet weg. alleen nog bestaande contanten
     private Contact newContact = new Contact();
 
     private boolean allDatesSelected;
@@ -81,16 +81,16 @@ public class ResubscribeController implements Serializable
 
 
 
-    public List<Project> getProjects()
+    public List<Project> getActiveProjects()
     {
-        return projects;
+        return activeProjects;
     }
 
 
 
-    public void setProjects(List<Project> projects)
+    public void setActiveProjects(List<Project> activeProjects)
     {
-        this.projects = projects;
+        this.activeProjects = activeProjects;
     }
 
 
@@ -124,25 +124,29 @@ public class ResubscribeController implements Serializable
 
 
     //</editor-fold>
+    public ResubscribeController()
+    {
+        subscribersRepository = new SubscribersRepository("OpenProvaPU");
+        activeProjects = subscribersRepository.getActiveProjects(true);
+        mailFactory = new MailFactory();
+        selectedProject = new Project();
+        msg = new FMessage();
+    }
+
+
+
     //Loading project data and cloning dates
     public void selectProject()
     {
-
-        projects.forEach((p)
+        activeProjects.forEach((ap)
                 -> 
                 {
-                    if (p.getId() != null)
+                    if (ap.getId() != null)
                     {
-                        selectedProject = p;
-                    } else
-                    {
-                        selectedProject = new Project();
+                        selectedProject = ap;
                     }
         });
 
-        if(selectedProject.getId()!=null)
-        {
-        
         List<Activity> masterActivities = subscribersRepository
                 .getProjectActivities(selectedProject.getId(), true);
 
@@ -166,7 +170,7 @@ public class ResubscribeController implements Serializable
                     a.setIsMasterActivity(false);
                     projectActivities.add(a);
         });
-        }
+
     }
 
 

@@ -19,18 +19,15 @@ public class SubscribersRepository extends DefaultRepository implements Serializ
     {
         try
         {
-            if (this.getEmf().isOpen() && this.getEm().isOpen())
-            {
-                Contact con = (Contact) this.getEm()
-                        .createQuery("select c from Contact c "
-                                + "where c.email = :cEmail")
-                        .setParameter("cEmail", c.getEmail())
-                        .getSingleResult();
+            Contact con = (Contact) this.getEm()
+                    .createQuery("select c from Contact c "
+                            + "where c.email = :cEmail")
+                    .setParameter("cEmail", c.getEmail())
+                    .getSingleResult();
 
-                if (con != null)
-                {
-                    return true;
-                }
+            if (con != null)
+            {
+                return true;
             }
 
         } catch (Exception e)
@@ -45,15 +42,20 @@ public class SubscribersRepository extends DefaultRepository implements Serializ
 
     public List<Activity> getProjectActivities(long projectId, boolean isMasterActivity)
     {
-        if (this.getEmf().isOpen() && this.getEm().isOpen())
-        {
-            return this.getEm().createQuery("select a from Activity a "
-                    + "where a.projectId = :projectId "
-                    + "and a.isMasterActivity = :isMasterActivity")
-                    .setParameter("projectId", projectId)
-                    .setParameter("isMasterActivity", isMasterActivity).getResultList();
-        }
-        return null;
+        return this.getEm().createQuery("select a from Activity a "
+                + "where a.projectId = :projectId "
+                + "and a.isMasterActivity = :isMasterActivity")
+                .setParameter("projectId", projectId)
+                .setParameter("isMasterActivity", isMasterActivity).getResultList();
+    }
+
+
+
+    public List getActiveProjects(boolean active)
+    {
+        return this.getEm().createQuery("select p from Project p "
+                + "where p.active = :active")
+                .setParameter("active", active).getResultList();
     }
 
 }
