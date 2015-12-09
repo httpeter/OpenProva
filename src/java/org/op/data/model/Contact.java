@@ -11,16 +11,16 @@ import javax.persistence.ManyToOne;
 public class Contact extends Person implements Serializable
 {
 
-    @Column(unique = false, updatable = true, insertable = true, nullable = true, length = 255, scale = 0, precision = 0)
+    @Column(unique = false, updatable = true, insertable = true, nullable = true, length = 500, scale = 0, precision = 0)
     @Basic
     private String notes;
+
+    @ManyToOne(optional = true, targetEntity = SystemUser.class)
+    private SystemUser systemUser;
 
     @Column(unique = false, updatable = true, insertable = true, nullable = true, length = 255, scale = 0, precision = 0)
     @Basic
     private String instrument;
-
-    @ManyToOne(optional = true, targetEntity = User.class)
-    private User user;
 
 
 
@@ -45,6 +45,20 @@ public class Contact extends Person implements Serializable
 
 
 
+    public SystemUser getSystemUser()
+    {
+        return this.systemUser;
+    }
+
+
+
+    public void setSystemUser(SystemUser systemUser)
+    {
+        this.systemUser = systemUser;
+    }
+
+
+
     public String getInstrument()
     {
         return this.instrument;
@@ -55,19 +69,5 @@ public class Contact extends Person implements Serializable
     public void setInstrument(String instrument)
     {
         this.instrument = instrument;
-    }
-
-
-
-    public User getUser()
-    {
-        return this.user;
-    }
-
-
-
-    public void setUser(User user)
-    {
-        this.user = user;
     }
 }

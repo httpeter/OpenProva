@@ -7,7 +7,7 @@ import javax.persistence.Entity;
 
 @Entity
 
-public class User extends Person implements Serializable
+public class SystemUser extends Person implements Serializable
 {
 
     @Column(unique = false, updatable = true, insertable = true, nullable = true, length = 255, scale = 0, precision = 0)
@@ -16,11 +16,11 @@ public class User extends Person implements Serializable
 
     @Column(unique = false, updatable = true, insertable = true, nullable = true, length = 255, scale = 0, precision = 0)
     @Basic
-    private String role;
+    private String emailPassword;
 
     @Column(unique = false, updatable = true, insertable = true, nullable = true, length = 255, scale = 0, precision = 0)
     @Basic
-    private String emailPassword;
+    private String userRole;
 
     @Column(unique = false, updatable = true, insertable = true, nullable = true, length = 255, scale = 0, precision = 0)
     @Basic
@@ -28,7 +28,7 @@ public class User extends Person implements Serializable
 
 
 
-    public User()
+    public SystemUser()
     {
 
     }
@@ -49,20 +49,6 @@ public class User extends Person implements Serializable
 
 
 
-    public String getRole()
-    {
-        return this.role;
-    }
-
-
-
-    public void setRole(String role)
-    {
-        this.role = role;
-    }
-
-
-
     public String getEmailPassword()
     {
         return this.emailPassword;
@@ -73,6 +59,20 @@ public class User extends Person implements Serializable
     public void setEmailPassword(String emailPassword)
     {
         this.emailPassword = emailPassword;
+    }
+
+
+
+    public String getUserRole()
+    {
+        return this.userRole;
+    }
+
+
+
+    public void setUserRole(String userRole)
+    {
+        this.userRole = userRole;
     }
 
 

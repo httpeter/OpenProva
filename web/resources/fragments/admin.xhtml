@@ -91,6 +91,7 @@
 
                 <p:commandButton value="#{labels.addContact}"
                                  icon="ui-icon-circle-plus"  
+                                 action="#{adminController.addNewContact()}"
                                  oncomplete="PF('contactDLGNew').show()"/>
 
                 <h:panelGrid columns="4">
@@ -190,10 +191,10 @@
                 </p:column>
 
                 <p:column headerText="#{labels.responsibility}"
-                          sortBy="#{contact.user.firstName}"
-                          filterBy="#{contact.user.firstName}" 
+                          sortBy="#{contact.systemUser.firstName}"
+                          filterBy="#{contact.systemUser.firstName}" 
                           filterMatchMode="contains">
-                    <h:outputText value="#{contact.user.firstName} #{contact.user.lastName}" />
+                    <h:outputText value="#{contact.systemUser.firstName} #{contact.systemUser.lastName}" />
                 </p:column>
 
             </p:dataTable>
@@ -240,7 +241,7 @@
                     <p:inputTextarea value="#{adminController.selectedContact.notes}"/>
 
                     <p:outputLabel value="#{labels.responsibility}"/>
-                    <p:selectOneRadio value="#{adminController.selectedContact.user.username}">
+                    <p:selectOneRadio value="#{adminController.selectedContact.systemUser.username}">
                         <f:selectItems value="#{adminController.allUsers}" 
                                        var="u" 
                                        itemLabel="#{u.username}" 
@@ -320,11 +321,16 @@
                     <p:outputLabel value="#{labels.email}*"/>
                     <p:inputText value="#{adminController.newContact.email}"/>
 
-                    <p:outputLabel value="#{labels.responsibility}"/>
-                    <p:inputText value="#{adminController.newContact.user}"/>
-
                     <p:outputLabel value="#{labels.notes}"/>
                     <p:inputTextarea value="#{adminController.newContact.notes}"/>
+
+                    <p:outputLabel value="#{labels.responsibility}"/>
+                    <p:selectOneRadio value="#{adminController.newContact.systemUser.username}">
+                        <f:selectItems value="#{adminController.allUsers}" 
+                                       var="u" 
+                                       itemLabel="#{u.username}" 
+                                       itemValue="#{u.username}" />
+                    </p:selectOneRadio>
 
                 </p:panelGrid>
 

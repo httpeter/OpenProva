@@ -14,7 +14,7 @@ import javax.persistence.Id;
 public class Project implements Serializable
 {
 
-    @Column(unique = false, updatable = true, insertable = true, nullable = true, length = 512, scale = 0, precision = 0)
+    @Column(unique = false, updatable = true, insertable = true, nullable = true, length = 500, scale = 0, precision = 0)
     @Basic
     private String projectRepertoire;
 

@@ -143,11 +143,12 @@
             </p:column>
 
             <p:column headerText="#{labels.activityDate}">
-                <h:outputText value="#{date.date}">
+                <h:outputText value="#{date.activityDate}">
                     <f:convertDateTime locale="#{labels.locale}"/>
                 </h:outputText>
             </p:column>
 
+            <p:calendar value="#{adminController.currentUser}"
             <p:column headerText="#{labels.activityTime}">
                 <h:outputText value="#{date.startTime}">
                     <f:convertDateTime type="time" timeStyle="short" locale="#{labels.locale}"/>

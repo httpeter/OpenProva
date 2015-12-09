@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 import org.op.data.model.Activity;
 import org.op.data.model.Contact;
-import org.op.data.model.User;
+import org.op.data.model.SystemUser;
 
 public class AdminRepository extends DefaultRepository implements Serializable
 {
@@ -16,16 +16,15 @@ public class AdminRepository extends DefaultRepository implements Serializable
 
 
 
-    public User getUser(String username, String password, String role) throws Exception
+    public SystemUser getSystemUser(String username, String password, String uRole) throws Exception
     {
-        return (User) this.getEm()
-                .createQuery("select u from User u "
+        return (SystemUser) this.getEm().createQuery("select u from SystemUser u "
                         + "where u.username = :uName "
                         + "and :pWord = u.password "
-                        + "and u.role = :uRole")
+                        + "and u.userRole = :uRole")
                 .setParameter("uName", username)
                 .setParameter("pWord", password)
-                .setParameter("uRole", role)
+                .setParameter("uRole", uRole)
                 .getSingleResult();
     }
 

@@ -17,17 +17,17 @@ public class Activity implements Serializable
 
     @Column(unique = false, updatable = true, insertable = true, nullable = true, length = 255, scale = 0, precision = 0)
     @Basic
-    private Date date;
+    private Date activityDate;
 
     @Column(unique = false, updatable = true, insertable = true, nullable = true, length = 255, scale = 0, precision = 0)
     @Id
     private Long contactId;
 
-    @Column(unique = false, updatable = true, insertable = true, nullable = true, length = 512, scale = 0, precision = 0)
+    @Column(unique = false, updatable = true, insertable = true, nullable = true, length = 255, scale = 0, precision = 0)
     @Basic
     private String commentsByContact;
 
-    @Column(unique = false, updatable = true, insertable = true, nullable = true, length = 512, scale = 0, precision = 0)
+    @Column(unique = false, updatable = true, insertable = true, nullable = true, length = 255, scale = 0, precision = 0)
     @Basic
     private String description;
 
@@ -69,16 +69,16 @@ public class Activity implements Serializable
 
 
 
-    public Date getDate()
+    public Date getActivityDate()
     {
-        return this.date;
+        return this.activityDate;
     }
 
 
 
-    public void setDate(Date date)
+    public void setActivityDate(Date activityDate)
     {
-        this.date = date;
+        this.activityDate = activityDate;
     }
 
 

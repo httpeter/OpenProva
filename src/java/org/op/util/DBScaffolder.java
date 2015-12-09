@@ -8,7 +8,7 @@ import java.sql.Time;
 import org.op.data.model.Contact;
 import org.op.data.model.Activity;
 import org.op.data.model.Project;
-import org.op.data.model.User;
+import org.op.data.model.SystemUser;
 import org.op.data.repositories.DefaultRepository;
 
 public class DBScaffolder implements Serializable
@@ -26,11 +26,11 @@ public class DBScaffolder implements Serializable
             FMessage msg = new FMessage();
             AESEncryptor aESEncryptor = new AESEncryptor();
 
-            if (defaultRepository.getResultList(User.class).isEmpty())
+            if (defaultRepository.getResultList(SystemUser.class).isEmpty())
             {
 
                 //Users
-                User u1 = new User();
+                SystemUser u1 = new SystemUser();
 
                 u1.setUsername("test");
                 u1.setPassword(aESEncryptor.encrypt("user"));
@@ -38,7 +38,7 @@ public class DBScaffolder implements Serializable
 //            For the strings
                 u1.setFirstName("Peter");
                 u1.setLastName("Hendriks");
-                u1.setRole("admin");
+                u1.setUserRole("admin");
                 u1.setEmail("vuko.strijkerschef@gmail.com");
                 u1.setEmailPassword("strijkerschef!");
                 if (defaultRepository.persisted(u1))
@@ -49,7 +49,7 @@ public class DBScaffolder implements Serializable
                     msg.warn("Error while trying to restore standard users...");
                 }
 
-                User u2 = new User();
+                SystemUser u2 = new SystemUser();
 
                 u2.setUsername("test2");
                 u2.setPassword(aESEncryptor.encrypt("user2"));
@@ -57,7 +57,7 @@ public class DBScaffolder implements Serializable
 //            For the winds
                 u2.setFirstName("Dirk");
                 u2.setLastName("Banaan");
-                u2.setRole("admin");
+                u2.setUserRole("admin");
                 u2.setEmail("vuko.blazerschef@gmail.com");
                 u2.setEmailPassword("unknown");
                 if (defaultRepository.persisted(u2))
@@ -72,7 +72,7 @@ public class DBScaffolder implements Serializable
                 {
                     //Contacts
                     Contact c1 = new Contact();
-                    c1.setUser(u1);
+                    c1.setSystemUser(u1);
                     c1.setFirstName("Pieter" + Math.round(Math.random() * 1000));
                     c1.setLastName("Paukeman" + Math.round(Math.random() * 1000));
                     c1.setInstrument("slagwerk");
@@ -82,7 +82,7 @@ public class DBScaffolder implements Serializable
 
                     //Contact2
                     Contact c2 = new Contact();
-                    c2.setUser(u2);
+                    c2.setSystemUser(u2);
                     c2.setFirstName("Daphne" + Math.round(Math.random() * 1000));
                     c2.setLastName("Dinges" + Math.round(Math.random() * 1000));
                     c2.setInstrument("viool");
@@ -126,7 +126,7 @@ public class DBScaffolder implements Serializable
                 {
                     Activity a = new Activity();
                     a.setIsMasterActivity(true);
-                    a.setDate(new java.sql.Date(115, 6, i));
+                    a.setActivityDate(new java.sql.Date(115, 6, i));
                     a.setStartTime(new Time((int) Math.round(Math.random() * 10), 00, 0));
                     a.setEndTime(new Time((int) Math.round(Math.random() * 10), 00, 0));
                     a.setDescription("bla " + String.valueOf(Math.round(Math.random() * 100)));
@@ -135,7 +135,7 @@ public class DBScaffolder implements Serializable
                     a.setContactId(0L);
                     if (defaultRepository.persisted(a))
                     {
-                        msgBuffer.append(a.getDate());
+                        msgBuffer.append(a.getActivityDate());
                         msgBuffer.append("\n");
                     }
                 }

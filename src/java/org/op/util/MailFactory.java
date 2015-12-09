@@ -60,8 +60,8 @@ public class MailFactory
                         {
                             TagReplacer tr = new TagReplacer();
 
-                            gMailClient = new GMailSSLSender(contact.getUser().getEmail(),
-                                    contact.getUser().getEmailPassword());
+                            gMailClient = new GMailSSLSender(contact.getSystemUser().getEmail(),
+                                    contact.getSystemUser().getEmailPassword());
 
                             // Send msg to new member
                             gMailClient.send(contact.getEmail(),
