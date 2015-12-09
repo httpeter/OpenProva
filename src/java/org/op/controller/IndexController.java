@@ -62,6 +62,8 @@ public class IndexController implements Serializable
         labelFile = externalContext.getInitParameter("labelFile");
 
         currentFragment = "resources/fragments/home.xhtml";
+        
+        currentFragment = "resources/fragments/admin.xhtml";
 
         //Calling db schaffolding when in dev. 
         if (FacesContext

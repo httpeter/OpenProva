@@ -16,7 +16,7 @@ public class AdminRepository extends DefaultRepository implements Serializable
 
 
 
-    public User getUser(String username, String password, String role)
+    public User getUser(String username, String password, String role) throws Exception
     {
         return (User) this.getEm()
                 .createQuery("select u from User u "
@@ -31,7 +31,7 @@ public class AdminRepository extends DefaultRepository implements Serializable
 
 
 
-    public List<Activity> getProjectActivities(long projectId, boolean isMasterActivity)
+    public List<Activity> getProjectActivities(long projectId, boolean isMasterActivity) throws Exception
     {
         return this.getEm()
                 .createQuery("select a from Activity a "
@@ -43,7 +43,7 @@ public class AdminRepository extends DefaultRepository implements Serializable
 
 
 
-    public List<Activity> getContactActivities(Contact c, boolean isMasterActivity)
+    public List<Activity> getContactActivities(Contact c, boolean isMasterActivity) throws Exception
     {
         return this.getEm()
                 .createQuery("select a from Activity a "
@@ -55,14 +55,22 @@ public class AdminRepository extends DefaultRepository implements Serializable
 
 
 
-    public boolean subscriptionRemoved(Activity a)
+    public boolean subscriptionRemoved(Activity a) throws Exception
     {
-        this.getEm().getTransaction().begin();
-        a = this.getEm().merge(a);
-        this.getEm().remove(a);
-        this.getEm().getTransaction().commit();
-        this.getEm().clear();
-        return true;
+        if (this.getEmf().isOpen() && this.getEm().isOpen())
+        {
+            this.getEm().getTransaction().begin();
+            a = this.getEm().merge(a);
+            this.getEm().remove(a);
+            this.getEm().getTransaction().commit();
+            this.getEm().clear();
+            return true;
+        } else
+        {
+            System.out.println("EntityManagerFactor or EntityManager are closed");
+            this.getEm().getTransaction().rollback();
+            return false;
+        }
     }
 
 }

@@ -15,32 +15,20 @@ public class SubscribersRepository extends DefaultRepository implements Serializ
 
 
 
-    public boolean isExistingContact(Contact c)
+    public boolean isExistingContact(Contact c) throws Exception
     {
-        try
-        {
-            Contact con = (Contact) this.getEm()
-                    .createQuery("select c from Contact c "
-                            + "where c.email = :cEmail")
-                    .setParameter("cEmail", c.getEmail())
-                    .getSingleResult();
+        Contact con = (Contact) this.getEm()
+                .createQuery("select c from Contact c "
+                        + "where c.email = :cEmail")
+                .setParameter("cEmail", c.getEmail())
+                .getSingleResult();
 
-            if (con != null)
-            {
-                return true;
-            }
-
-        } catch (Exception e)
-        {
-            System.out.println("No entries found yet for Contact email address: "
-                    .concat(c.getEmail()));
-        }
-        return false;
+        return con != null;
     }
 
 
 
-    public List<Activity> getProjectActivities(long projectId, boolean isMasterActivity)
+    public List<Activity> getProjectActivities(long projectId, boolean isMasterActivity) throws Exception
     {
         return this.getEm().createQuery("select a from Activity a "
                 + "where a.projectId = :projectId "
@@ -51,7 +39,7 @@ public class SubscribersRepository extends DefaultRepository implements Serializ
 
 
 
-    public List getActiveProjects(boolean active)
+    public List getActiveProjects(boolean active) throws Exception
     {
         return this.getEm().createQuery("select p from Project p "
                 + "where p.active = :active")

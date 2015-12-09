@@ -90,7 +90,7 @@ public class DefaultRepository implements Serializable
 
 
 
-    public List getResultList(Class c)
+    public List getResultList(Class c) throws Exception
     {
         if (emf.isOpen() && em.isOpen())
         {
@@ -124,7 +124,7 @@ public class DefaultRepository implements Serializable
 
 
 
-    public void close()
+    public void close() throws Exception
     {
         if (emf.isOpen() && em.isOpen())
         {

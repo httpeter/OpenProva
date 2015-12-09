@@ -15,7 +15,9 @@
 
 
 
-    <!--Admin login panel-->
+    <!--
+        Admin login panel
+    -->
     <h:panelGrid  columns="2" rendered="#{!adminController.currentUserIsAdmin}">
 
         <p:inputText id="auText" value="#{adminController.currentUser.username}">
@@ -49,11 +51,12 @@
 
 
 
-    <!--Admin content-->
+    <!--
+        Admin content
+    -->
     <p:tabView id="adminTabView" 
                activeIndex="#{adminController.activeAdminTab}" 
-               rendered="#{adminController.currentUserIsAdmin}"
-               dynamic="true">
+               rendered="#{adminController.currentUserIsAdmin}">
 
         <p:ajax event="tabChange" 
                 listener="#{adminController.adminTabChange()}"
@@ -63,7 +66,9 @@
 
 
 
-
+        <!--
+            Tab1
+        -->
         <p:tab title="Test">
 
             <p>
@@ -77,7 +82,9 @@
 
 
 
-
+        <!--
+            Tab2
+        -->
         <p:tab title="#{labels.contacts}">
 
             <p:panelGrid columns="2" layout="grid">
@@ -115,7 +122,9 @@
 
 
 
-            <!--Contacts Datatable-->
+            <!--
+                Contacts Datatable
+            -->
             <p:dataTable id="contactsTable" 
                          var="contact" 
                          value="#{adminController.contacts}"
@@ -198,11 +207,9 @@
 
 
 
-
-
-
-
-            <!--Change contact DLG-->
+            <!--
+                Change contact DLG
+            -->
             <p:dialog id="changeContactDLG"
                       widgetVar="changeContactDLG" 
                       header="Edit #{adminController.selectedContact.firstName} #{adminController.selectedContact.lastName}"
@@ -213,12 +220,6 @@
                       height="700">
 
                 <p:panelGrid columns="2" layout="grid" >
-
-                    <p:outputLabel value="#{labels.responsibility}"/>
-                    <p:dataList value="#{adminController.allUsers}" var="au">
-                        <h:outputText value="#{au.username}"/>
-                    </p:dataList>
-
 
                     <p:outputLabel value="#{labels.firstName}*"/>
                     <p:inputText value="#{adminController.selectedContact.firstName}"/>
@@ -237,13 +238,24 @@
 
                     <p:outputLabel value="#{labels.notes}"/>
                     <p:inputTextarea value="#{adminController.selectedContact.notes}"/>
+
+                    <p:outputLabel value="#{labels.responsibility}"/>
+                    <p:selectOneRadio value="#{adminController.selectedContact.user.username}">
+                        <f:selectItems value="#{adminController.allUsers}" 
+                                       var="u" 
+                                       itemLabel="#{u.username}" 
+                                       itemValue="#{u.username}" />
+                    </p:selectOneRadio>
+
                 </p:panelGrid>
+
 
                 <p:spacer/>
 
+
                 <p:panelGrid columns="2" layout="grid">
                     <p:commandButton value="Save" icon="ui-icon-disk"
-                                     action="#{adminController.saveContact()}"
+                                     action="#{adminController.saveExistingContact()}"
                                      update="mainForm:currentFragment" 
                                      oncomplete="PF('changeContactDLG').hide()"
                                      styleClass="mySpecialButton"/>
@@ -279,7 +291,9 @@
 
 
 
-            <!--New Contact DLG-->
+            <!--
+                New Contact DLG                      
+            -->
             <p:dialog id="contactDLGNew"
                       widgetVar="contactDLGNew" 
                       header="New Contact"
@@ -290,6 +304,7 @@
                       height="700">
 
                 <p:panelGrid columns="2" layout="grid" >
+
                     <p:outputLabel value="#{labels.firstName}*"/>
                     <p:inputText value="#{adminController.newContact.firstName}"/>
 
@@ -305,8 +320,12 @@
                     <p:outputLabel value="#{labels.email}*"/>
                     <p:inputText value="#{adminController.newContact.email}"/>
 
+                    <p:outputLabel value="#{labels.responsibility}"/>
+                    <p:inputText value="#{adminController.newContact.user}"/>
+
                     <p:outputLabel value="#{labels.notes}"/>
                     <p:inputTextarea value="#{adminController.newContact.notes}"/>
+
                 </p:panelGrid>
 
                 <p:spacer/>
@@ -338,7 +357,9 @@
 
 
 
-            <!--Delete Contact DLG-->
+            <!--
+                Delete Contact DLG
+            -->
             <p:dialog widgetVar="delDLG" header="Please confirm..." 
                       modal="true" 
                       resizable="false" 

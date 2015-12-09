@@ -25,6 +25,7 @@ public class AdminController implements Serializable
             .getSession(false);
 
     private AdminRepository adminRepository;
+
     private MailFactory mail;
 
     private final FMessage msg;
@@ -46,6 +47,7 @@ public class AdminController implements Serializable
 
 
 
+    //Private so kept here...
     private void loadContacts()
     {
         try
@@ -63,6 +65,8 @@ public class AdminController implements Serializable
     public AdminController()
     {
         currentUser = new User();
+        selectedContact = new Contact();
+        newContact = new Contact();
 
         msg = new FMessage();
 
@@ -252,7 +256,7 @@ public class AdminController implements Serializable
 
 
 
-    public void saveContact()
+    public void saveExistingContact()
     {
         mail = new MailFactory();
 
