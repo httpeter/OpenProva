@@ -22,7 +22,7 @@ import org.op.util.MailFactory;
 public class AdminController implements Serializable
 {
 
-    private HttpSession session = (HttpSession) FacesContext.getCurrentInstance()
+    private final HttpSession session = (HttpSession) FacesContext.getCurrentInstance()
             .getExternalContext()
             .getSession(false);
 
@@ -192,7 +192,6 @@ public class AdminController implements Serializable
         {
             currentUser = u;
             currentUserIsAdmin = currentUser.getUserRole().equalsIgnoreCase("admin");
-            session.setAttribute("currentUser", currentUser);
             List<SystemUser> au = adminRepository.getResultList(SystemUser.class);
             allUsers = new ArrayList<>(au.size());
             au.forEach((usr)

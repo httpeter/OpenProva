@@ -57,8 +57,6 @@ public class IndexController implements Serializable
         ExternalContext externalContext = FacesContext.getCurrentInstance()
                 .getExternalContext();
 
-        HttpSession session = (HttpSession) externalContext.getSession(true);
-
         labelFile = externalContext.getInitParameter("labelFile");
 
         currentFragment = "resources/fragments/home.xhtml";
