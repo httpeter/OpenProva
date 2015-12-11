@@ -2,6 +2,7 @@ package org.op.data.model;
 
 import java.io.Serializable;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -15,7 +16,10 @@ public class Contact extends Person implements Serializable
     @Basic
     private String notes;
 
-    @ManyToOne(optional = true, targetEntity = SystemUser.class)
+    @ManyToOne(optional = false, cascade =
+    {
+        CascadeType.ALL
+    }, targetEntity = SystemUser.class)
     private SystemUser systemUser;
 
     @Column(unique = false, updatable = true, insertable = true, nullable = true, length = 255, scale = 0, precision = 0)

@@ -45,8 +45,11 @@
             <basic attribute-type="String" visibile="true" name="notes" id="_144967569580693">
                 <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="500" precision="0" scale="0"/>
             </basic>
-            <many-to-one optional="true" primaryKey="false" connected-entity-id="_1449675450930" target-entity="SystemUser" visibile="true" name="systemUser" id="_144967583967799">
+            <many-to-one optional="false" primaryKey="false" connected-entity-id="_1449675450930" target-entity="SystemUser" visibile="true" name="systemUser" id="_144967583967799">
                 <join-table/>
+                <cascade>
+                    <jpa:cascade-all/>
+                </cascade>
             </many-to-one>
         </jpa:attributes>
     </jpa:entity>

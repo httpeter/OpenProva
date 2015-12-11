@@ -19,8 +19,6 @@ public class DefaultRepository implements Serializable
 
 
     //<editor-fold defaultstate="collapsed" desc="Getters & Setters">
-
-
     public EntityManagerFactory getEmf()
     {
         return emf;
@@ -58,9 +56,24 @@ public class DefaultRepository implements Serializable
 
 
 
+    public boolean emIsOpen()
+    {
+        if (!emf.isOpen())
+        {
+            logger.warning("EMF is closed!");
+        }
+        if (!em.isOpen())
+        {
+            logger.warning("EM is closed!");
+        }
+        return emf.isOpen() && em.isOpen();
+    }
+
+
+
     public boolean persisted(Object object)
     {
-        if (emf.isOpen() && em.isOpen())
+        if (emIsOpen())
         {
             try
             {
@@ -90,9 +103,9 @@ public class DefaultRepository implements Serializable
 
 
 
-    public List getResultList(Class c) throws Exception
+    public List getResultList(Class c)
     {
-        if (emf.isOpen() && em.isOpen())
+        if (emIsOpen())
         {
             TypedQuery q = em.createQuery("select o from "
                     + c.getSimpleName()
@@ -106,7 +119,7 @@ public class DefaultRepository implements Serializable
 
     public boolean deleted(Object object)
     {
-        if (emf.isOpen() && em.isOpen())
+        if (emIsOpen())
         {
             em.getTransaction().begin();
             em.remove(object);
@@ -124,9 +137,9 @@ public class DefaultRepository implements Serializable
 
 
 
-    public void close() throws Exception
+    public void close()
     {
-        if (emf.isOpen() && em.isOpen())
+        if (emIsOpen())
         {
             em.clear();
             em.close();

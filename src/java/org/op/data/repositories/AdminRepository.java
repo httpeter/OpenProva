@@ -16,47 +16,66 @@ public class AdminRepository extends DefaultRepository implements Serializable
 
 
 
-    public SystemUser getSystemUser(String username, String password, String uRole) throws Exception
+    public SystemUser getSystemUser(String username, String password, String uRole)
     {
-        return (SystemUser) this.getEm().createQuery("select u from SystemUser u "
+        if (emIsOpen())
+        {
+            try
+            {
+                return (SystemUser) this.getEm().createQuery("select u from SystemUser u "
                         + "where u.username = :uName "
                         + "and :pWord = u.password "
                         + "and u.userRole = :uRole")
-                .setParameter("uName", username)
-                .setParameter("pWord", password)
-                .setParameter("uRole", uRole)
-                .getSingleResult();
+                        .setParameter("uName", username)
+                        .setParameter("pWord", password)
+                        .setParameter("uRole", uRole)
+                        .getSingleResult();
+            } catch (Exception e)
+            {
+                return null;
+            }
+
+        }
+        return null;
     }
 
 
 
-    public List<Activity> getProjectActivities(long projectId, boolean isMasterActivity) throws Exception
+    public List<Activity> getProjectActivities(long projectId, boolean isMasterActivity)
     {
-        return this.getEm()
-                .createQuery("select a from Activity a "
-                        + "where a.projectId = :projectId "
-                        + "and a.isMasterActivity = :isMasterActivity")
-                .setParameter("projectId", projectId)
-                .setParameter("isMasterActivity", isMasterActivity).getResultList();
+        if (emIsOpen())
+        {
+            return this.getEm()
+                    .createQuery("select a from Activity a "
+                            + "where a.projectId = :projectId "
+                            + "and a.isMasterActivity = :isMasterActivity")
+                    .setParameter("projectId", projectId)
+                    .setParameter("isMasterActivity", isMasterActivity).getResultList();
+        }
+        return null;
     }
 
 
 
-    public List<Activity> getContactActivities(Contact c, boolean isMasterActivity) throws Exception
+    public List<Activity> getContactActivities(Contact c, boolean isMasterActivity)
     {
-        return this.getEm()
-                .createQuery("select a from Activity a "
-                        + "where a.contactId = :contactId "
-                        + "and a.isMasterActivity = :isMasterActivity")
-                .setParameter("contactId", c.getId())
-                .setParameter("isMasterActivity", isMasterActivity).getResultList();
+        if (emIsOpen())
+        {
+            return this.getEm()
+                    .createQuery("select a from Activity a "
+                            + "where a.contactId = :contactId "
+                            + "and a.isMasterActivity = :isMasterActivity")
+                    .setParameter("contactId", c.getId())
+                    .setParameter("isMasterActivity", isMasterActivity).getResultList();
+        }
+        return null;
     }
 
 
 
-    public boolean subscriptionRemoved(Activity a) throws Exception
+    public boolean subscriptionRemoved(Activity a)
     {
-        if (this.getEmf().isOpen() && this.getEm().isOpen())
+        if (emIsOpen())
         {
             this.getEm().getTransaction().begin();
             a = this.getEm().merge(a);
@@ -66,7 +85,6 @@ public class AdminRepository extends DefaultRepository implements Serializable
             return true;
         } else
         {
-            System.out.println("EntityManagerFactor or EntityManager are closed");
             this.getEm().getTransaction().rollback();
             return false;
         }

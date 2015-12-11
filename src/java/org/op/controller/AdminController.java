@@ -43,8 +43,6 @@ public class AdminController implements Serializable
     private Contact selectedContact,
             newContact;
 
-    private AESEncryptor aESEncryptor;
-
     private int activeAdminTab;
 
 
@@ -67,18 +65,9 @@ public class AdminController implements Serializable
     public AdminController()
     {
         currentUser = new SystemUser();
-        selectedContact = new Contact();
         newContact = new Contact();
-
+        selectedContact = new Contact();
         msg = new FMessage();
-
-        try
-        {
-            aESEncryptor = new AESEncryptor();
-        } catch (Exception e)
-        {
-            e.printStackTrace(System.out);
-        }
     }
 
 
@@ -185,34 +174,35 @@ public class AdminController implements Serializable
 
     public void login()
     {
+
+        adminRepository = new AdminRepository("OpenProvaPU");
+        String userPwdEncrypted = null;
         try
         {
-            adminRepository = new AdminRepository("OpenProvaPU");
-
-            SystemUser u = adminRepository.getSystemUser(currentUser.getUsername().toLowerCase(),
-                    aESEncryptor.encrypt(currentUser.getPassword().toLowerCase()),
-                    "admin");
-
-            if (u != null)
-            {
-                currentUser = u;
-                currentUserIsAdmin = currentUser.getUserRole().equalsIgnoreCase("admin");
-                session.setAttribute("currentUser", currentUser);
-                List<SystemUser> au = adminRepository.getResultList(SystemUser.class);
-                allUsers = new ArrayList<>(au.size());
-                au.forEach((usr)
-                        -> 
-                        {
-                            allUsers.add(usr);
-                });
-            } else
-            {
-                msg.warn("wrong login...");
-            }
+            userPwdEncrypted = new AESEncryptor().encrypt(currentUser.getPassword().toLowerCase());
         } catch (Exception e)
         {
-            e.printStackTrace(System.out);
-            msg.error("Login Error: " + e.getMessage());
+            msg.fatal("Fatal Error\n\n" + e.getMessage());
+        }
+        SystemUser u = adminRepository.getSystemUser(currentUser.getUsername().toLowerCase(),
+                userPwdEncrypted,
+                "admin");
+
+        if (u != null)
+        {
+            currentUser = u;
+            currentUserIsAdmin = currentUser.getUserRole().equalsIgnoreCase("admin");
+            session.setAttribute("currentUser", currentUser);
+            List<SystemUser> au = adminRepository.getResultList(SystemUser.class);
+            allUsers = new ArrayList<>(au.size());
+            au.forEach((usr)
+                    -> 
+                    {
+                        allUsers.add(usr);
+            });
+        } else
+        {
+            msg.warn("wrong login...");
         }
 
     }
@@ -231,9 +221,12 @@ public class AdminController implements Serializable
 
     public void logout()
     {
+        adminRepository.close();
         currentUserIsAdmin = false;
         currentUser = new SystemUser();
-        session.invalidate();
+        selectedContact = new Contact();
+        newContact = new Contact();
+
     }
 
 
@@ -247,7 +240,8 @@ public class AdminController implements Serializable
 
     public void saveNewContact()
     {
-        if (!newContact.getFirstName().isEmpty()
+        if (newContact != null
+                && !newContact.getFirstName().isEmpty()
                 && mail.addressValid(newContact.getEmail())
                 && adminRepository.persisted(newContact))
         {
@@ -269,7 +263,8 @@ public class AdminController implements Serializable
     {
         mail = new MailFactory();
 
-        if (!selectedContact.getFirstName().isEmpty()
+        if (selectedContact != null
+                && !selectedContact.getFirstName().isEmpty()
                 && mail.addressValid(selectedContact.getEmail())
                 && adminRepository.persisted(selectedContact))
         {
@@ -289,7 +284,8 @@ public class AdminController implements Serializable
 
     public void deleteContactAndActivities()
     {
-        if (adminRepository.deleted(selectedContact))
+        if (selectedContact != null
+                || adminRepository.deleted(selectedContact))
         {
             msg.info("Contact '"
                     + selectedContact.getFirstName()
@@ -298,48 +294,44 @@ public class AdminController implements Serializable
                     + "' deleted");
         } else
         {
-            msg.error("existing contact not deleted");
+            msg.error("existing contact '"
+                    + selectedContact.getFirstName()
+                    + " "
+                    + selectedContact.getLastName()
+                    + "' not deleted");
         }
 
-        try
-        {
+        List<Activity> selectedContactActivities = adminRepository
+                .getContactActivities(selectedContact, false);
 
-            List<Activity> selectedContactActivities = adminRepository
-                    .getContactActivities(selectedContact, false);
-
-            selectedContactActivities.forEach((activity)
-                    -> 
+        selectedContactActivities.forEach((activity)
+                -> 
+                {
+                    try
                     {
-                        try
+                        if (adminRepository.subscriptionRemoved(activity))
                         {
-                            if (adminRepository.subscriptionRemoved(activity))
-                            {
-                                msg.info("Subscription id: "
-                                        + activity.getId()
-                                        + ", "
-                                        + activity.getDescription()
-                                        + ", " + activity.getActivityDate()
-                                        + " removed");
-                            } else
-                            {
-                                msg.error("Subscription id: "
-                                        + activity.getId()
-                                        + ", "
-                                        + activity.getDescription()
-                                        + ", " + activity.getActivityDate()
-                                        + " could not be removed");
-                            }
-                        } catch (Exception ex)
+                            msg.info("Subscription id: "
+                                    + activity.getId()
+                                    + ", "
+                                    + activity.getDescription()
+                                    + ", " + activity.getActivityDate()
+                                    + " removed");
+                        } else
                         {
-                            Logger.getLogger(AdminController.class.getName()).log(Level.SEVERE, null, ex);
+                            msg.error("Subscription id: "
+                                    + activity.getId()
+                                    + ", "
+                                    + activity.getDescription()
+                                    + ", " + activity.getActivityDate()
+                                    + " could not be removed");
                         }
-            });
+                    } catch (Exception ex)
+                    {
+                        Logger.getLogger(AdminController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+        });
 
-        } catch (Exception e)
-        {
-            msg.fatal(e.getMessage());
-            e.printStackTrace(System.out);
-        }
         loadContacts();
     }
 

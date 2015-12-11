@@ -128,14 +128,7 @@ public class ResubscribeController implements Serializable
     {
         msg = new FMessage();
         subscribersRepository = new SubscribersRepository("OpenProvaPU");
-        try
-        {
-            activeProjects = subscribersRepository.getActiveProjects(true);
-        } catch (Exception e)
-        {
-            msg.fatal("Unable to load active projects");
-            e.printStackTrace(System.out);
-        }
+        activeProjects = subscribersRepository.getActiveProjects(true);
         mailFactory = new MailFactory();
         selectedProject = new Project();
     }
@@ -154,37 +147,29 @@ public class ResubscribeController implements Serializable
                     }
         });
 
-        try
-        {
-            List<Activity> masterActivities = subscribersRepository
-                    .getProjectActivities(selectedProject.getId(), true);
+        List<Activity> masterActivities = subscribersRepository
+                .getProjectActivities(selectedProject.getId(), true);
 
-            projectActivities = new ArrayList(masterActivities.size());
+        projectActivities = new ArrayList(masterActivities.size());
 
-            //not using the Collections clong constructor option because this
-            //is not a master activity
-            masterActivities.forEach((ma)
-                    -> 
-                    {
-                        Activity a = new Activity();
-                        a.setCommentsByContact(ma.getCommentsByContact());
-                        a.setActivityDate(ma.getActivityDate());
-                        a.setDescription(ma.getDescription());
-                        a.setEndTime(ma.getEndTime());
-                        a.setIsMasterActivity(false);
-                        a.setLocation(ma.getLocation());
-                        a.setPresent(ma.isPresent());
-                        a.setProjectId(ma.getProjectId());
-                        a.setStartTime(ma.getStartTime());
-                        a.setIsMasterActivity(false);
-                        projectActivities.add(a);
-            });
-        } catch (Exception e)
-        {
-            msg.fatal(e.getMessage());
-            e.printStackTrace(System.out);
-        }
-
+        //not using the Collections clong constructor option because this
+        //is not a master activity
+        masterActivities.forEach((ma)
+                -> 
+                {
+                    Activity a = new Activity();
+                    a.setCommentsByContact(ma.getCommentsByContact());
+                    a.setActivityDate(ma.getActivityDate());
+                    a.setDescription(ma.getDescription());
+                    a.setEndTime(ma.getEndTime());
+                    a.setIsMasterActivity(false);
+                    a.setLocation(ma.getLocation());
+                    a.setPresent(ma.isPresent());
+                    a.setProjectId(ma.getProjectId());
+                    a.setStartTime(ma.getStartTime());
+                    a.setIsMasterActivity(false);
+                    projectActivities.add(a);
+        });
     }
 
 
@@ -215,66 +200,68 @@ public class ResubscribeController implements Serializable
 
     public void saveAndMailNewSubscription()
     {
-        try
-        {
 
-            //Saving the new Contact
-            if (mailFactory.addressValid(newContact.getEmail())
-                    && !subscribersRepository.isExistingContact(newContact)
-                    && subscribersRepository.persisted(newContact))
+        //Saving the new Contact
+        if (mailFactory.addressValid(newContact.getEmail())
+                && !subscribersRepository.isExistingContact(newContact)
+                && subscribersRepository.persisted(newContact))
+        {
+            msg.info("Saved "
+                    + newContact.getFirstName()
+                    + " "
+                    + newContact.getLastName());
+
+            //now saving the projectdata
+            StringBuilder resultLog = new StringBuilder();
+            projectActivities.forEach((newActivity)
+                    -> 
+                    {
+                        newActivity.setContactId(newContact.getId());
+                        if (!subscribersRepository.persisted(newActivity))
+                        {
+                            resultLog.append(newActivity.getActivityDate());
+                        }
+            });
+
+            if (resultLog.length() == 0)
             {
-                msg.info("Saved "
+                msg.info("Subscribed "
                         + newContact.getFirstName()
                         + " "
-                        + newContact.getLastName());
+                        + newContact.getLastName()
+                        + "\nTo project: "
+                        + selectedProject.getProjectName());
 
-                //now saving the projectdata
-                StringBuilder resultLog = new StringBuilder();
-                projectActivities.forEach((newActivity)
-                        -> 
-                        {
-                            newActivity.setContactId(newContact.getId());
-                            if (!subscribersRepository.persisted(newActivity))
-                            {
-                                resultLog.append(newActivity.getActivityDate());
-                            }
-                });
-
-                if (resultLog.length() == 0)
+                try
                 {
-                    msg.info("Subscribed "
-                            + newContact.getFirstName()
-                            + " "
-                            + newContact.getLastName()
-                            + "\nTo project: "
-                            + selectedProject.getProjectName());
-
-                    //Here we go sending an email...
                     mailFactory.sendNewMemberSubscriptionMail(newContact,
                             selectedProject,
                             projectActivities,
                             additionalMessage);
+
                     subscribersRepository.close();
 
-                    newContact = new Contact();
-                } else
+                } catch (Exception e)
                 {
-                    msg.error("Error saving " + selectedProject.getProjectName()
-                            + "\n\n" + resultLog);
+                    e.printStackTrace();
                 }
+                //Here we go sending an email...
+
+                newContact = new Contact();
             } else
             {
-                msg.error("Error saving "
-                        + newContact.getFirstName()
-                        + " "
-                        + newContact.getLastName());
-                msg.info("Contact email already exists, or is invalid");
+                msg.error("Error saving " + selectedProject.getProjectName()
+                        + "\n\n" + resultLog);
             }
-        } catch (Exception e)
+        } else
         {
-            msg.error("Subscription email could not be sent...\n\n"
-                    + e.getMessage());
+            msg.error("Error saving "
+                    + newContact.getFirstName()
+                    + " "
+                    + newContact.getLastName());
+            msg.info("Contact email already exists, or is invalid");
         }
+
     }
 
 }

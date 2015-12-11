@@ -240,13 +240,13 @@
                     <p:outputLabel value="#{labels.notes}"/>
                     <p:inputTextarea value="#{adminController.selectedContact.notes}"/>
 
-                    <p:outputLabel value="#{labels.responsibility}"/>
-                    <p:selectOneRadio value="#{adminController.selectedContact.systemUser.username}">
-                        <f:selectItems value="#{adminController.allUsers}" 
-                                       var="u" 
-                                       itemLabel="#{u.username}" 
-                                       itemValue="#{u.username}" />
-                    </p:selectOneRadio>
+                    <!--                    <p:outputLabel value="{labels.responsibility}"/>
+                                        <p:selectOneRadio value="{adminController.selectedContact.systemUser.username}">
+                                            <f:selectItems value="{adminController.allUsers}" 
+                                                           var="u" 
+                                                           itemLabel="{u.username}" 
+                                                           itemValue="{u.username}" />
+                                        </p:selectOneRadio>-->
 
                 </p:panelGrid>
 
@@ -302,7 +302,7 @@
                       dynamic="true"
                       closeOnEscape="true" 
                       fitViewport="true" 
-                      height="700">
+                      height="700" >
 
                 <p:panelGrid columns="2" layout="grid" >
 
@@ -324,13 +324,13 @@
                     <p:outputLabel value="#{labels.notes}"/>
                     <p:inputTextarea value="#{adminController.newContact.notes}"/>
 
-                    <p:outputLabel value="#{labels.responsibility}"/>
-                    <p:selectOneRadio value="#{adminController.newContact.systemUser.username}">
-                        <f:selectItems value="#{adminController.allUsers}" 
-                                       var="u" 
-                                       itemLabel="#{u.username}" 
-                                       itemValue="#{u.username}" />
-                    </p:selectOneRadio>
+                    <!--                    <p:outputLabel value="{labels.responsibility}"/>
+                                        <p:selectOneRadio value="{adminController.newContact.systemUser.username}">
+                                            <f:selectItems value="{adminController.allUsers}" 
+                                                           var="u" 
+                                                           itemLabel="{u.username}" 
+                                                           itemValue="{u.username}" />
+                                        </p:selectOneRadio>-->
 
                 </p:panelGrid>
 
