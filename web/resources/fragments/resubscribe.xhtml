@@ -12,13 +12,9 @@
 
 
 
-
-
     <p:panel header="#{labels.resubscribeProject} #{resubscribeController.selectedProject.projectName}">
 
-
         <br/>
-
 
         <h:selectOneMenu label="#{resubscribeController.selectedProject.projectName}" 
                          value="#{resubscribeController.selectedProject.id}" 
@@ -31,18 +27,19 @@
                            itemLabel="#{project.projectName}"
                            itemValue="#{project.id}"/>
 
-            <p:ajax listener="#{resubscribeController.selectProject()}" update=":mainForm:currentFragment"/>
+            <p:ajax listener="#{resubscribeController.selectProject()}" 
+                    update=":mainForm:currentFragment"/>
 
         </h:selectOneMenu>
 
 
-
         <br/>
         <br/>
 
 
-
-        <h:panelGrid id="programmePanel" columns="3" rendered="#{not empty resubscribeController.selectedProject.projectName}">
+        <h:panelGrid id="programmePanel" 
+                     columns="3" 
+                     rendered="#{not empty resubscribeController.selectedProject.projectName}">
 
             <p:outputLabel value="#{labels.projectFrom}"/>
             <p:outputLabel value=":"/>
@@ -119,7 +116,8 @@
 
 
 
-        <p:selectBooleanCheckbox value="#{resubscribeController.allDatesSelected}" itemLabel="#{labels.selectAllDates}">
+        <p:selectBooleanCheckbox value="#{resubscribeController.allDatesSelected}" 
+                                 itemLabel="#{labels.selectAllDates}">
             <p:ajax listener="#{resubscribeController.selectAllDates}" update="dTable"/>
         </p:selectBooleanCheckbox>
 
@@ -148,7 +146,6 @@
                 </h:outputText>
             </p:column>
 
-            <p:calendar value="#{adminController.currentUser}"
             <p:column headerText="#{labels.activityTime}">
                 <h:outputText value="#{date.startTime}">
                     <f:convertDateTime type="time" timeStyle="short" locale="#{labels.locale}"/>
