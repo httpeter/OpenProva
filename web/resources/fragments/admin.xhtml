@@ -370,7 +370,9 @@
                       modal="true" 
                       resizable="false" 
                       closeOnEscape="true">
-                <h:outputText value="Delete #{adminController.selectedContact.firstName} #{adminController.selectedContact.lastName}?"/>
+                <!--als dit fout gaat terugzetten op zelfde regel-->
+                <h:outputText value="Delete #{adminController.selectedContact.firstName} 
+                              #{adminController.selectedContact.lastName}?"/>
                 <br/>
                 <br/>
                 <p:commandButton value="Yes" icon="ui-icon-check" 
