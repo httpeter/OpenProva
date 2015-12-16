@@ -14,6 +14,17 @@ import org.op.data.repositories.DefaultRepository;
 public class DBScaffolder implements Serializable
 {
 
+    private final FMessage msg;
+
+
+
+    public DBScaffolder()
+    {
+        msg = new FMessage();
+        msg.warn("WARNING:\n\nRunning in 'Development' mode, DBScaffolding is active.\n\n"
+                + "Set to 'PRODUCTION' for use in...production.");
+    }
+
     private final DefaultRepository defaultRepository = new DefaultRepository("OpenProvaPU");
 
 
@@ -23,7 +34,6 @@ public class DBScaffolder implements Serializable
         try
         {
 
-            FMessage msg = new FMessage();
             AESEncryptor aESEncryptor = new AESEncryptor();
 
             if (defaultRepository.getResultList(SystemUser.class).isEmpty())
@@ -98,6 +108,9 @@ public class DBScaffolder implements Serializable
                         msg.warn("Error while trying to restore standard contacts...");
                     }
                 }
+            } else
+            {
+                msg.info("SystemUsers found, not restoring.");
             }
 
             //Projects
@@ -117,7 +130,11 @@ public class DBScaffolder implements Serializable
                 {
                     msg.warn("Error while trying to restore standard projects...");
                 }
+            } else
+            {
+                msg.info("Projects found, not restoring.");
             }
+
             if (defaultRepository.getResultList(Activity.class).isEmpty())
             {
                 StringBuilder msgBuffer = new StringBuilder();
@@ -142,6 +159,9 @@ public class DBScaffolder implements Serializable
                 msg.info("Standard master activities added: \n"
                         .concat(msgBuffer.toString()));
 
+            } else
+            {
+                msg.info("Activities found, not restoring.");
             }
         } catch (Exception e)
         {
