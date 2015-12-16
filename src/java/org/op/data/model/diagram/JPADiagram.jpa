@@ -47,9 +47,6 @@
             </basic>
             <many-to-one optional="false" primaryKey="false" connected-entity-id="_1449675450930" target-entity="SystemUser" visibile="true" name="systemUser" id="_144967583967799">
                 <join-table/>
-                <cascade>
-                    <jpa:cascade-all/>
-                </cascade>
             </many-to-one>
         </jpa:attributes>
     </jpa:entity>

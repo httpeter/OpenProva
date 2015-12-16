@@ -1,12 +1,12 @@
 package org.op.data.model;
 
 import java.io.Serializable;
-import javax.faces.bean.ManagedBean;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 
 @Entity
+
 public class SystemUser extends Person implements Serializable
 {
 

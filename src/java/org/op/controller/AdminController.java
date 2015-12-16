@@ -284,7 +284,7 @@ public class AdminController implements Serializable
     public void deleteContactAndActivities()
     {
         if (selectedContact != null
-                || adminRepository.deleted(selectedContact))
+                && adminRepository.deleted(selectedContact))
         {
             msg.info("Contact '"
                     + selectedContact.getFirstName()
@@ -293,7 +293,7 @@ public class AdminController implements Serializable
                     + "' deleted");
         } else
         {
-            msg.error("existing contact '"
+            msg.error("Contact '"
                     + selectedContact.getFirstName()
                     + " "
                     + selectedContact.getLastName()
@@ -306,28 +306,22 @@ public class AdminController implements Serializable
         selectedContactActivities.forEach((activity)
                 -> 
                 {
-                    try
+                    if (adminRepository.subscriptionRemoved(activity))
                     {
-                        if (adminRepository.subscriptionRemoved(activity))
-                        {
-                            msg.info("Subscription id: "
-                                    + activity.getId()
-                                    + ", "
-                                    + activity.getDescription()
-                                    + ", " + activity.getActivityDate()
-                                    + " removed");
-                        } else
-                        {
-                            msg.error("Subscription id: "
-                                    + activity.getId()
-                                    + ", "
-                                    + activity.getDescription()
-                                    + ", " + activity.getActivityDate()
-                                    + " could not be removed");
-                        }
-                    } catch (Exception ex)
+                        msg.info("Subscription id: "
+                                + activity.getId()
+                                + ", "
+                                + activity.getDescription()
+                                + ", " + activity.getActivityDate()
+                                + " removed");
+                    } else
                     {
-                        Logger.getLogger(AdminController.class.getName()).log(Level.SEVERE, null, ex);
+                        msg.error("Subscription id: "
+                                + activity.getId()
+                                + ", "
+                                + activity.getDescription()
+                                + ", " + activity.getActivityDate()
+                                + " could not be removed");
                     }
         });
 
