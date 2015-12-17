@@ -1,5 +1,8 @@
-//Adapt the strings in the 'restore' method below 
-//to change the values of the labels that your see in the system
+/**
+*Adapt the strings in the 'restore' method below 
+*to change the values of the labels that your see in the system
+**/
+
 package org.op.util;
 
 import java.io.Serializable;
