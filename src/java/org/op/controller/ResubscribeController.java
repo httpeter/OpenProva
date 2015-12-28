@@ -243,10 +243,12 @@ public class ResubscribeController implements Serializable
 
                 } catch (Exception e)
                 {
-                    e.printStackTrace();
+                    msg.fatal("Sending email failed\n\n"
+                            + e.getMessage());
+                    e.printStackTrace(System.out);
                 }
-                //Here we go sending an email...
 
+                //Here we go sending an email...
                 newContact = new Contact();
             } else
             {
