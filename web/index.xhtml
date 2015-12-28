@@ -99,9 +99,9 @@
                 <ui:include src="#{indexController.currentFragment}"/>
             </p:outputPanel>
 
-            <p:idleMonitor timeout="1080000" onidle="PF('idleDialog').show();"/>
+            <p:idleMonitor timeout="#{session.maxInactiveInterval*900}" onidle="PF('idleDialog').show();"/>
 
-
+            <h1></h1>
 
 
 
