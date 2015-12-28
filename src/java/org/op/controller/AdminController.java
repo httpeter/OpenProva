@@ -5,8 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.context.FacesContext;
-import javax.servlet.http.HttpSession;
 import org.op.data.model.Activity;
 import org.op.data.model.Contact;
 import org.op.data.model.SystemUser;
@@ -19,10 +17,6 @@ import org.op.util.MailFactory;
 @SessionScoped
 public class AdminController implements Serializable
 {
-
-    private final HttpSession session = (HttpSession) FacesContext.getCurrentInstance()
-            .getExternalContext()
-            .getSession(false);
 
     private AdminRepository adminRepository;
 
@@ -210,7 +204,7 @@ public class AdminController implements Serializable
     {
         if (activeAdminTab == 1)
         {
-            loadContacts();
+            this.loadContacts();
         }
     }
 
@@ -223,7 +217,6 @@ public class AdminController implements Serializable
         currentUser = new SystemUser();
         selectedContact = new Contact();
         newContact = new Contact();
-
     }
 
 
@@ -251,7 +244,7 @@ public class AdminController implements Serializable
             msg.error("new contact not saved");
         }
         newContact = new Contact();
-        loadContacts();
+        this.loadContacts();
     }
 
 
@@ -274,7 +267,7 @@ public class AdminController implements Serializable
         {
             msg.error("existing contact not saved");
         }
-        loadContacts();
+        this.loadContacts();
     }
 
 
@@ -323,7 +316,7 @@ public class AdminController implements Serializable
                     }
         });
 
-        loadContacts();
+        this.loadContacts();
     }
 
 }

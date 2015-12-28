@@ -2,13 +2,12 @@ package org.op.controller;
 
 import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
-import javax.faces.context.ExternalContext;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import org.op.util.FMessage;
 
 @ManagedBean
-@SessionScoped
+@ViewScoped
 public class IndexController implements Serializable
 {
 
@@ -53,17 +52,15 @@ public class IndexController implements Serializable
     {
         msg = new FMessage();
 
-        ExternalContext externalContext = FacesContext.getCurrentInstance()
-                .getExternalContext();
+        FacesContext facesContext = FacesContext.getCurrentInstance();
 
-        labelFile = externalContext.getInitParameter("labelFile");
+        labelFile = facesContext.getExternalContext()
+                .getInitParameter("labelFile");
 
         currentFragment = "resources/fragments/home.xhtml";
 
         //Calling db schaffolding when in dev. 
-        if (FacesContext
-                .getCurrentInstance()
-                .getApplication()
+        if (facesContext.getApplication()
                 .getProjectStage()
                 .toString()
                 .equalsIgnoreCase("DEVELOPMENT"))
