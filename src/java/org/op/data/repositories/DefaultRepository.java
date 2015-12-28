@@ -123,7 +123,8 @@ public class DefaultRepository implements Serializable
         {
             em.getTransaction().begin();
             em.remove(object);
-            em.getTransaction().commit();
+            em.getTransaction()
+                    .commit();
             em.clear();
             return true;
         } else

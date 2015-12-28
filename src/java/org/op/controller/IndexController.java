@@ -63,7 +63,7 @@ public class IndexController implements Serializable
         if (facesContext.getApplication()
                 .getProjectStage()
                 .toString()
-                .equalsIgnoreCase("DEVELOPMENT"))
+                .equalsIgnoreCase("development"))
         {
             new org.op.util.DBScaffolder().restore();
         }

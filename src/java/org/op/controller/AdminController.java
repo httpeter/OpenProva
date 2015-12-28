@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 import org.op.data.model.Activity;
 import org.op.data.model.Contact;
 import org.op.data.model.SystemUser;
@@ -212,11 +213,13 @@ public class AdminController implements Serializable
 
     public void logout()
     {
-        adminRepository.close();
         currentUserIsAdmin = false;
         currentUser = new SystemUser();
         selectedContact = new Contact();
         newContact = new Contact();
+        adminRepository.close();
+        FacesContext.getCurrentInstance().getExternalContext().getSession(false);
+        
     }
 
 
@@ -275,7 +278,10 @@ public class AdminController implements Serializable
     public void deleteContactAndActivities()
     {
         if (selectedContact != null
-                && adminRepository.deleted(selectedContact))
+                && adminRepository.deleted(selectedContact)
+                && selectedContact.getSystemUser()
+                .getUsername()
+                .equals(currentUser.getUsername()))
         {
             msg.info("Contact '"
                     + selectedContact.getFirstName()
@@ -288,7 +294,11 @@ public class AdminController implements Serializable
                     + selectedContact.getFirstName()
                     + " "
                     + selectedContact.getLastName()
-                    + "' not deleted");
+                    + "' can only be deleted by user '"
+                    + selectedContact.getSystemUser().getFirstName()
+                    + " "
+                    + selectedContact.getSystemUser().getLastName()
+                    + "'");
         }
 
         List<Activity> selectedContactActivities = adminRepository
