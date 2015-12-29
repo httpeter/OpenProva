@@ -285,7 +285,7 @@
                                  value="Delete #{adminController.selectedContact.firstName} 
                                  #{adminController.selectedContact.lastName}" 
                                  oncomplete="PF('delDLG').show();"
-                                 update="mainForm:currentFragment"
+                                 update="mainForm:adminTabView:contactsTab"
                                  styleClass="mySpecialButton"/>
             </p:dialog>
 
@@ -349,7 +349,7 @@
                 <p:panelGrid columns="2" layout="grid">
                     <p:commandButton value="Save" icon="ui-icon-disk"
                                      action="#{adminController.saveNewContact()}"
-                                     update="mainForm:currentFragment" 
+                                     update="mainForm:adminTabView:contactsTab" 
                                      oncomplete="PF('contactDLGNew').hide()"
                                      styleClass="mySpecialButton"/>
 
