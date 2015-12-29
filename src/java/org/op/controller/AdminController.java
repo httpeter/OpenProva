@@ -224,8 +224,9 @@ public class AdminController implements Serializable
         selectedContact = new Contact();
         newContact = new Contact();
         adminRepository.close();
-        FacesContext.getCurrentInstance().getExternalContext().getSession(false);
-
+        FacesContext.getCurrentInstance()
+                .getExternalContext()
+                .invalidateSession();
     }
 
 
@@ -239,6 +240,10 @@ public class AdminController implements Serializable
 
     public void saveNewContact()
     {
+        if (mail == null)
+        {
+            mail = new MailFactory();
+        }
         if (newContact != null
                 && !newContact.getFirstName().isEmpty()
                 && mail.addressValid(newContact.getEmail())
@@ -284,10 +289,10 @@ public class AdminController implements Serializable
     public void deleteContactAndActivities()
     {
         if (selectedContact != null
-                && adminRepository.deleted(selectedContact)
                 && selectedContact.getSystemUser()
                 .getUsername()
-                .equals(currentUser.getUsername()))
+                .equals(currentUser.getUsername())
+                && adminRepository.deleted(selectedContact))
         {
             msg.info("Contact '"
                     + selectedContact.getFirstName()
@@ -300,11 +305,7 @@ public class AdminController implements Serializable
                     + selectedContact.getFirstName()
                     + " "
                     + selectedContact.getLastName()
-                    + "' can only be deleted by user '"
-                    + selectedContact.getSystemUser().getFirstName()
-                    + " "
-                    + selectedContact.getSystemUser().getLastName()
-                    + "'");
+                    + "' can only be deleted by it's own admin user.");
         }
 
         List<Activity> selectedContactActivities = adminRepository

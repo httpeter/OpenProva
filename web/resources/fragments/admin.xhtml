@@ -85,7 +85,7 @@
         <!--
             Tab2
         -->
-        <p:tab title="#{labels.contacts}">
+        <p:tab id="contactsTab" title="#{labels.contacts} #{adminController.contacts.size()}">
 
             <p:panelGrid columns="2" layout="grid">
 
@@ -97,19 +97,27 @@
                 <h:panelGrid columns="4">
                     <h:commandLink>
                         <p:graphicImage value="/resources/img/excel.png" />
-                        <p:dataExporter type="xls" target="contactsTable" fileName="Leden"/>
+                        <p:dataExporter type="xls" 
+                                        target="contactsTable" 
+                                        fileName="Leden"/>
                     </h:commandLink>
                     <h:commandLink>
                         <p:graphicImage value="/resources/img/pdf.png" />
-                        <p:dataExporter type="pdf" target="contactsTable" fileName="Leden"/>
+                        <p:dataExporter type="pdf" 
+                                        target="contactsTable" 
+                                        fileName="Leden"/>
                     </h:commandLink>
                     <h:commandLink>
                         <p:graphicImage value="/resources/img/csv.png" />
-                        <p:dataExporter type="csv" target="contactsTable" fileName="Leden"/>
+                        <p:dataExporter type="csv" 
+                                        target="contactsTable" 
+                                        fileName="Leden"/>
                     </h:commandLink>
                     <h:commandLink>
                         <p:graphicImage value="/resources/img/xml.png" />
-                        <p:dataExporter type="xml" target="contactsTable" fileName="Leden"/>
+                        <p:dataExporter type="xml"
+                                        target="contactsTable" 
+                                        fileName="Leden"/>
                     </h:commandLink>
                 </h:panelGrid>
 
@@ -122,7 +130,7 @@
 
 
 
-
+            
             <!--
                 Contacts Datatable
             -->
@@ -194,7 +202,8 @@
                           sortBy="#{contact.systemUser.firstName}"
                           filterBy="#{contact.systemUser.firstName}" 
                           filterMatchMode="contains">
-                    <h:outputText value="#{contact.systemUser.firstName} #{contact.systemUser.lastName}" />
+                    <h:outputText value="#{contact.systemUser.firstName}
+                                  #{contact.systemUser.lastName}" />
                 </p:column>
 
             </p:dataTable>
@@ -213,7 +222,8 @@
             -->
             <p:dialog id="changeContactDLG"
                       widgetVar="changeContactDLG" 
-                      header="Edit #{adminController.selectedContact.firstName} #{adminController.selectedContact.lastName}"
+                      header="Edit #{adminController.selectedContact.firstName} 
+                      #{adminController.selectedContact.lastName}"
                       modal="true" 
                       dynamic="true"
                       closeOnEscape="true" 
@@ -377,7 +387,8 @@
                 <br/>
                 <p:commandButton value="Yes" icon="ui-icon-check" 
                                  action="#{adminController.deleteContactAndActivities()}" 
-                                 oncomplete="PF('delDLG').hide();" update="mainForm:currentFragment"/>
+                                 oncomplete="PF('delDLG').hide();"
+                                 update="mainForm:adminTabView:contactsTab"/>
 
                 <p:commandButton value="No" 
                                  onclick="PF('delDLG').hide();" 
@@ -389,7 +400,7 @@
 
 
 
-
+                                 
 
 
 

@@ -1,8 +1,8 @@
 /**
-*Adapt the strings in the 'restore' method below 
-*to change the values of the labels that your see in the system
-**/
-
+ *Adapt the strings in the 'restore' method below
+ *to change the values of the labels that your see in the system
+ *
+ */
 package org.op.util;
 
 import java.io.Serializable;
@@ -111,9 +111,6 @@ public class DBScaffolder implements Serializable
                         msg.warn("Error while trying to restore standard contacts...");
                     }
                 }
-            } else
-            {
-                msg.info("SystemUsers found, not restoring.");
             }
 
             //Projects
@@ -133,9 +130,6 @@ public class DBScaffolder implements Serializable
                 {
                     msg.warn("Error while trying to restore standard projects...");
                 }
-            } else
-            {
-                msg.info("Projects found, not restoring.");
             }
 
             if (defaultRepository.getResultList(Activity.class).isEmpty())
@@ -162,9 +156,6 @@ public class DBScaffolder implements Serializable
                 msg.info("Standard master activities added: \n"
                         .concat(msgBuffer.toString()));
 
-            } else
-            {
-                msg.info("Activities found, not restoring.");
             }
         } catch (Exception e)
         {
