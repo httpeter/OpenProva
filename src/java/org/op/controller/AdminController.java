@@ -21,7 +21,7 @@ public class AdminController implements Serializable
 
     private AdminRepository adminRepository;
 
-    private MailFactory mail;
+    private final MailFactory mail;
 
     private final FMessage msg;
 
@@ -61,6 +61,7 @@ public class AdminController implements Serializable
         newContact = new Contact();
         selectedContact = new Contact();
         msg = new FMessage();
+        mail = new MailFactory();
     }
 
 
@@ -240,10 +241,6 @@ public class AdminController implements Serializable
 
     public void saveNewContact()
     {
-        if (mail == null)
-        {
-            mail = new MailFactory();
-        }
         if (newContact != null
                 && !newContact.getFirstName().isEmpty()
                 && mail.addressValid(newContact.getEmail())
@@ -265,8 +262,6 @@ public class AdminController implements Serializable
 
     public void saveExistingContact()
     {
-        mail = new MailFactory();
-
         if (selectedContact != null
                 && !selectedContact.getFirstName().isEmpty()
                 && mail.addressValid(selectedContact.getEmail())
