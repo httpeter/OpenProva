@@ -11,8 +11,6 @@ import org.op.util.FMessage;
 public class IndexController implements Serializable
 {
 
-    private final FMessage msg;
-
     private String labelFile,
             currentFragment;
 
@@ -50,7 +48,6 @@ public class IndexController implements Serializable
 
     public IndexController()
     {
-        msg = new FMessage();
 
         FacesContext facesContext = FacesContext.getCurrentInstance();
 
