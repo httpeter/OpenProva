@@ -172,21 +172,27 @@ public class AdminController implements Serializable
         String userPwdEncrypted = null;
         try
         {
-            userPwdEncrypted = new AESEncryptor().encrypt(currentUser.getPassword().toLowerCase());
+            userPwdEncrypted = new AESEncryptor().encrypt(currentUser
+                    .getPassword()
+                    .toLowerCase());
+
         } catch (Exception e)
         {
             msg.fatal("Fatal Error\n\n" + e.getMessage());
         }
-        SystemUser u = adminRepository.getSystemUser(currentUser.getUsername().toLowerCase(),
+        SystemUser u = adminRepository.getSystemUser(currentUser
+                .getUsername().toLowerCase(),
                 userPwdEncrypted,
                 "admin");
 
         if (u != null)
         {
             currentUser = u;
-            currentUserIsAdmin = currentUser.getUserRole().equalsIgnoreCase("admin");
+            currentUserIsAdmin = currentUser.getUserRole()
+                    .equalsIgnoreCase("admin");
             List<SystemUser> au = adminRepository.getResultList(SystemUser.class);
             allUsers = new ArrayList<>(au.size());
+
             au.forEach((usr)
                     -> 
                     {
@@ -219,7 +225,7 @@ public class AdminController implements Serializable
         newContact = new Contact();
         adminRepository.close();
         FacesContext.getCurrentInstance().getExternalContext().getSession(false);
-        
+
     }
 
 
