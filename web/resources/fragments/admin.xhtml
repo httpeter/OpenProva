@@ -60,7 +60,7 @@
 
         <p:ajax event="tabChange" 
                 listener="#{adminController.adminTabChange()}"
-                update="adminTabView"/>
+                update="mainForm:adminTabView"/>
 
 
 
@@ -69,7 +69,7 @@
         <!--
             Tab1
         -->
-        <p:tab title="Test">
+        <p:tab id="overviewTab" title="Test">
 
             <p>
                 content...
@@ -285,7 +285,7 @@
                                  value="Delete #{adminController.selectedContact.firstName} 
                                  #{adminController.selectedContact.lastName}" 
                                  oncomplete="PF('delDLG').show();"
-                                 update="mainForm:adminTabView:contactsTab"
+                                 update="mainForm:adminTabView"
                                  styleClass="mySpecialButton"/>
             </p:dialog>
 
@@ -349,7 +349,7 @@
                 <p:panelGrid columns="2" layout="grid">
                     <p:commandButton value="Save" icon="ui-icon-disk"
                                      action="#{adminController.saveNewContact()}"
-                                     update="mainForm:adminTabView:contactsTab" 
+                                     update="mainForm:adminTabView" 
                                      oncomplete="PF('contactDLGNew').hide()"
                                      styleClass="mySpecialButton"/>
 
@@ -388,7 +388,7 @@
                 <p:commandButton value="Yes" icon="ui-icon-check" 
                                  action="#{adminController.deleteContactAndActivities()}" 
                                  oncomplete="PF('delDLG').hide();"
-                                 update="mainForm:adminTabView:contactsTab"/>
+                                 update="mainForm:adminTabView"/>
 
                 <p:commandButton value="No" 
                                  onclick="PF('delDLG').hide();" 
