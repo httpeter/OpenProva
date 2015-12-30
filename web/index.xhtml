@@ -22,11 +22,24 @@
 
 
     <h:head>
-        <link rel="shortcut icon" href="resources/img/favicon.ico" type="image/x-icon"/>
-        <meta name="viewport" content="width=device-width, user-scalable=no"/>
-        <meta name="mobile-web-app-capable" content="yes"/>
-        <link href="resources/css/main.css" rel="stylesheet" type="text/css"/>        
-        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css"/>
+        <link rel="shortcut icon" 
+              href="resources/img/favicon.ico" 
+              type="image/x-icon"/>
+
+        <meta name="viewport" 
+              content="width=device-width, user-scalable=no"/>
+
+        <meta name="mobile-web-app-capable" 
+              content="yes"/>
+
+        <link href="resources/css/main.css" 
+              rel="stylesheet" 
+              type="text/css"/>        
+
+        <link href="https://fonts.googleapis.com/css?family=Roboto" 
+              rel="stylesheet" 
+              type="text/css"/>
+
         <title>#{labels.appTitle} - #{labels.organizationName}</title>
     </h:head>
 
@@ -52,7 +65,8 @@
 
 
                 <p:menuitem value="#{labels.menuItemHome}" 
-                            action="#{indexController.setCurrentFragment('resources/fragments/home.xhtml')}" 
+                            action="#{indexController.setCurrentFragment(
+                                      'resources/fragments/home.xhtml')}" 
                             update="mainForm:currentFragment" icon="fa fa-home"/>
 
 
@@ -60,18 +74,21 @@
                 <p:submenu label="#{labels.menuItemProjects}" icon="fa fa-users">
 
                     <p:menuitem value="#{labels.menuItemResubscribe}" 
-                                action="#{indexController.setCurrentFragment('resources/fragments/resubscribe.xhtml')}" 
+                                action="#{indexController.setCurrentFragment(
+                                          'resources/fragments/resubscribe.xhtml')}" 
                                 update="mainForm:currentFragment" icon="ui-icon-refresh"/>
 
                     <p:menuitem value="#{labels.menuItemAdmin}" 
-                                action="#{indexController.setCurrentFragment('resources/fragments/admin.xhtml')}"
+                                action="#{indexController.setCurrentFragment(
+                                          'resources/fragments/admin.xhtml')}"
                                 update="mainForm:currentFragment" 
                                 icon="fa fa-legal"/>
 
                 </p:submenu>
 
 
-                <p:menuitem value="#{adminController.currentUser.firstName} #{labels.menuItemLogout}" 
+                <p:menuitem value="#{adminController.currentUser.firstName} 
+                            #{labels.menuItemLogout}" 
                             action="#{adminController.logout()}" 
                             icon="fa fa-sign-out" 
                             rendered="#{adminController.currentUserIsAdmin}" 
@@ -99,7 +116,8 @@
                 <ui:include src="#{indexController.currentFragment}"/>
             </p:outputPanel>
 
-            <p:idleMonitor timeout="#{session.maxInactiveInterval*900}" onidle="PF('idleDialog').show();"/>
+            <p:idleMonitor timeout="#{session.maxInactiveInterval*900}" 
+                           onidle="PF('idleDialog').show();"/>
 
             <h1></h1>
 
