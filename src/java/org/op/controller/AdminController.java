@@ -168,7 +168,6 @@ public class AdminController implements Serializable
 
     public void login()
     {
-
         adminRepository = new AdminRepository("OpenProvaPU");
         String userPwdEncrypted = null;
         try
