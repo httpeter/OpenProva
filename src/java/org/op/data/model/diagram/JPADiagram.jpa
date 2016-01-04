@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<jpa:entity-mappings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:java="http://jcp.org/en/jsr/detail?id=270" xmlns:jpa="http://java.sun.com/xml/ns/persistence/orm" persistenceUnitName="OpenProvaPU" xs="false" id="_144967529139275" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm orm_2_1.xsd">
-    <jpa:package>org.op.data.model</jpa:package>
-    <jpa:entity xre="false" sm="false" abstract="false" class="Person" visibile="true" minimized="false" rootElement="_144967529139275" id="_1449675336499">
+<jpa:entity-mappings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:java="http://jcp.org/en/jsr/detail?id=270" xmlns:jpa="http://java.sun.com/xml/ns/persistence/orm" pkg="org.op.data.model" persistenceUnitName="OpenProvaPU" xs="false" id="_144967529139275" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm orm_2_1.xsd">
+    <jpa:entity xre="false" sm="false" abs="false" class="Person" visibile="true" minimized="false" rootElement="_144967529139275" id="_1449675336499">
         <jpa:attributes>
             <basic attribute-type="String" visibile="true" name="firstName" id="_144967539512180">
                 <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
@@ -21,7 +20,7 @@
             </jpa:id>
         </jpa:attributes>
     </jpa:entity>
-    <jpa:entity xre="false" sm="false" abstract="false" class="SystemUser" superclassId="_1449675336499" visibile="true" minimized="false" rootElement="_144967529139275" id="_1449675450930">
+    <jpa:entity xre="false" sm="false" abs="false" class="SystemUser" superclassId="_1449675336499" visibile="true" minimized="false" rootElement="_144967529139275" id="_1449675450930">
         <jpa:attributes>
             <basic attribute-type="String" visibile="true" name="username" id="_144967565933588">
                 <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
@@ -37,7 +36,7 @@
             </basic>
         </jpa:attributes>
     </jpa:entity>
-    <jpa:entity xre="false" sm="false" abstract="false" class="Contact" superclassId="_1449675336499" visibile="true" minimized="false" rootElement="_144967529139275" id="_1449675453007">
+    <jpa:entity xre="false" sm="false" abs="false" class="Contact" superclassId="_1449675336499" visibile="true" minimized="false" rootElement="_144967529139275" id="_1449675453007">
         <jpa:attributes>
             <basic attribute-type="String" visibile="true" name="instrument" id="_144967569488692">
                 <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
@@ -50,7 +49,7 @@
             </many-to-one>
         </jpa:attributes>
     </jpa:entity>
-    <jpa:entity xre="false" sm="false" abstract="false" class="Project" visibile="true" minimized="false" rootElement="_144967529139275" id="_1449675455106">
+    <jpa:entity xre="false" sm="false" abs="false" class="Project" visibile="true" minimized="false" rootElement="_144967529139275" id="_1449675455106">
         <jpa:attributes>
             <basic attribute-type="String" visibile="true" name="projectName" id="_1449675945372102">
                 <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
@@ -76,7 +75,7 @@
             </jpa:id>
         </jpa:attributes>
     </jpa:entity>
-    <jpa:entity xre="false" sm="false" abstract="false" class="Activity" visibile="true" minimized="false" rootElement="_144967529139275" id="_1449675457082">
+    <jpa:entity xre="false" sm="false" abs="false" class="Activity" visibile="true" minimized="false" rootElement="_144967529139275" id="_1449675457082">
         <jpa:attributes>
             <basic attribute-type="java.sql.Date" visibile="true" name="activityDate" id="_1449676146545108">
                 <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
@@ -128,7 +127,7 @@
                 <Bounds x="270.0" y="274.0" width="140.0" height="113.0"/>
             </shape>
             <shape elementRef="_1449675455106" id="_1449675455106_gui">
-                <Bounds x="465.0" y="71.0" width="149.0" height="197.0"/>
+                <Bounds x="457.0" y="71.0" width="149.0" height="197.0"/>
             </shape>
             <shape elementRef="_1449675457082" id="_1449675457082_gui">
                 <Bounds x="457.0" y="301.0" width="164.0" height="281.0"/>
