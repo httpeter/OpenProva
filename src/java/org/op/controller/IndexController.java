@@ -1,9 +1,9 @@
 package org.op.controller;
 
+import java.io.File;
 import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
 @ManagedBean
@@ -76,25 +76,17 @@ public class IndexController implements Serializable
 
     private void navigate()
     {
-        String fragment = "home";
-        try
+        String p = (String) facesContext.getExternalContext()
+                .getRequestParameterMap()
+                .get("p");
+
+        if (p == null)
         {
-            String p = (String) facesContext.getExternalContext()
-                    .getRequestParameterMap()
-                    .get("p");
-            if (facesContext.getExternalContext()
-                    .getRealPath(p) != null)
-            {
-                fragment = p;
-            }
-        } catch (Exception e)
-        {
-            fragment = "home";
-            e.printStackTrace(System.out);
+            p = "home";
         }
 
         this.currentFragment = pageFragmentsDir
-                + fragment
+                + p
                 + ".xhtml";
     }
 
