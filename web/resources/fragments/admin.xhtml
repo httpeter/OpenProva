@@ -33,7 +33,7 @@
         <p:commandButton value="#{labels.login}" 
                          action="#{adminController.login()}" 
                          styleClass="mySpecialButton"
-                         ajax="false">
+                         update="mainForm:currentFragment">
         </p:commandButton>
     </h:panelGrid>
 
@@ -130,7 +130,7 @@
 
 
 
-            
+
             <!--
                 Contacts Datatable
             -->
@@ -400,7 +400,7 @@
 
 
 
-                                 
+
 
 
 

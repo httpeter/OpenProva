@@ -65,24 +65,20 @@
 
 
                 <p:menuitem value="#{labels.menuItemHome}" 
-                            action="#{indexController.setCurrentFragment(
-                                      'resources/fragments/home.xhtml')}" 
-                            update="mainForm:currentFragment" icon="fa fa-home"/>
+                            icon="fa fa-home"
+                            url="?p=home"/>
 
 
 
                 <p:submenu label="#{labels.menuItemProjects}" icon="fa fa-users">
 
                     <p:menuitem value="#{labels.menuItemResubscribe}" 
-                                action="#{indexController.setCurrentFragment(
-                                          'resources/fragments/resubscribe.xhtml')}" 
-                                update="mainForm:currentFragment" icon="ui-icon-refresh"/>
+                                icon="ui-icon-refresh"
+                                url="?p=resubscribe"/>
 
                     <p:menuitem value="#{labels.menuItemAdmin}" 
-                                action="#{indexController.setCurrentFragment(
-                                          'resources/fragments/admin.xhtml')}"
-                                update="mainForm:currentFragment" 
-                                icon="fa fa-legal"/>
+                                icon="fa fa-legal"
+                                url="?p=admin"/>
 
                 </p:submenu>
 

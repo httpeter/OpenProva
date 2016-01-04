@@ -3,12 +3,17 @@ package org.op.controller;
 import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
 @ManagedBean
 @ViewScoped
 public class IndexController implements Serializable
 {
+
+    private final FacesContext facesContext;
+
+    private final String pageFragmentsDir;
 
     private String labelFile,
             currentFragment;
@@ -47,13 +52,13 @@ public class IndexController implements Serializable
 
     public IndexController()
     {
-
-        FacesContext facesContext = FacesContext.getCurrentInstance();
+        facesContext = FacesContext.getCurrentInstance();
 
         labelFile = facesContext.getExternalContext()
                 .getInitParameter("labelFile");
 
-        currentFragment = "resources/fragments/home.xhtml";
+        pageFragmentsDir = facesContext.getExternalContext()
+                .getInitParameter("pageFragmentsDir");
 
         //Calling db schaffolding when in dev. 
         if (facesContext.getApplication()
@@ -63,6 +68,34 @@ public class IndexController implements Serializable
         {
             new org.op.util.DBScaffolder().restore();
         }
+
+        this.navigate();
+    }
+
+
+
+    private void navigate()
+    {
+        String fragment = "home";
+        try
+        {
+            String p = (String) facesContext.getExternalContext()
+                    .getRequestParameterMap()
+                    .get("p");
+            if (facesContext.getExternalContext()
+                    .getRealPath(p) != null)
+            {
+                fragment = p;
+            }
+        } catch (Exception e)
+        {
+            fragment = "home";
+            e.printStackTrace(System.out);
+        }
+
+        this.currentFragment = pageFragmentsDir
+                + fragment
+                + ".xhtml";
     }
 
 }
