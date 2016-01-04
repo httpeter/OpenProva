@@ -136,6 +136,9 @@ public class ResubscribeController implements Serializable
 
 
     //Loading project data and cloning dates
+    /*
+    * Code below is a really bad idea and should be improved!!!!!!
+     */
     public void selectProject()
     {
         activeProjects.forEach((ap)
