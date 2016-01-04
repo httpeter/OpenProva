@@ -16,11 +16,6 @@ import org.op.util.gmail.GMailSSLSender;
 public class MailFactory
 {
 
-    //getSession(false) attaches to existing session, getSession(true) creates a new one
-    private HttpSession session = (HttpSession) FacesContext.getCurrentInstance()
-            .getExternalContext()
-            .getSession(false);
-
     private final FMessage msg = new FMessage();
 
     private GMailSSLSender gMailClient;
@@ -47,8 +42,6 @@ public class MailFactory
 
         labels.load(this.getClass().getClassLoader()
                 .getResourceAsStream("org.op.properties.labelsNL.properties"));
-
-        AESEncryptor aESEncryptor = new AESEncryptor();
 
 //        For new member subscriptions, this is BS
         new Thread(()
