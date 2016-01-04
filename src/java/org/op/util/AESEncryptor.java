@@ -45,7 +45,9 @@ public class AESEncryptor implements Serializable
 
 
 
-    public String encrypt(String plainText) throws UnsupportedEncodingException, IllegalBlockSizeException, BadPaddingException
+    public String encrypt(String plainText) throws UnsupportedEncodingException,
+            IllegalBlockSizeException,
+            BadPaddingException
     {
         // get bytes from string, encrypt, encode
         byte[] utf8bytes = plainText.getBytes("utf-8");
@@ -55,7 +57,9 @@ public class AESEncryptor implements Serializable
 
 
 
-    public String decrypt(String cipherText) throws IOException, IllegalBlockSizeException, BadPaddingException
+    public String decrypt(String cipherText) throws IOException,
+            IllegalBlockSizeException,
+            BadPaddingException
     {
         // decode, decrypt, use bytes to create string
         byte[] encryptedBytes = Base64.getDecoder().decode(cipherText);
