@@ -16,12 +16,15 @@
         <p:panel id="dashboardInfoPanel" styleClass="myDashboardPanel">
 
             <h:outputText value="#{labels.welcomeMSG}" escape="false"/>
-           
-            <h5>{{Overzicht projecten inbouwen}}</h5> 
+
+            <!--Dit moet weg-->
+            <h:outputText value="#{labels.devToDo}" escape="false"/>
+            <!--einde-->
+
         </p:panel>
 
 
-        
+
 
 
 
@@ -36,11 +39,11 @@
             <p:separator/>
 
             <h:panelGrid columns="2">
-                
+
                 <p:inputText id="inputName" >
                     <p:watermark value="testing" for="inputName"/>
                 </p:inputText>
-                
+
             </h:panelGrid>
 
         </p:panel>
