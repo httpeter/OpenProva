@@ -11,6 +11,8 @@ public class FMessage implements Serializable
 
     private static final Logger logger = Logger.getLogger(FMessage.class.getName());
 
+
+
     public final void warn(String msg)
     {
         FacesContext.getCurrentInstance().addMessage(null,
@@ -18,6 +20,8 @@ public class FMessage implements Serializable
                         msg, null));
         logger.log(Level.WARNING, msg);
     }
+
+
 
     public final void error(String msg)
     {
@@ -27,6 +31,8 @@ public class FMessage implements Serializable
         logger.log(Level.WARNING, msg);
     }
 
+
+
     public final void fatal(String msg)
     {
         FacesContext.getCurrentInstance().addMessage(null,
@@ -34,6 +40,8 @@ public class FMessage implements Serializable
                         msg, null));
         logger.log(Level.WARNING, msg);
     }
+
+
 
     public final void info(String msg)
     {
