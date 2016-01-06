@@ -1,4 +1,4 @@
-package org.op.controller;
+package org.op.controller.compositon;
 
 import java.io.Serializable;
 import javax.faces.bean.ManagedBean;

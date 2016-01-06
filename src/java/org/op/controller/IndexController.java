@@ -12,24 +12,24 @@ public class IndexController implements Serializable
 
     private final FacesContext facesContext;
 
-    private final String pageFragmentsDir;
+    private final String compositionsDir;
 
     private String labelFile,
-            currentFragment;
+            currentComposition;
 
 
 
     //<editor-fold defaultstate="collapsed" desc="Getters & Setters">
-    public String getCurrentFragment()
+    public String getCurrentComposition()
     {
-        return currentFragment;
+        return currentComposition;
     }
 
 
 
-    public void setCurrentFragment(String currentFragment)
+    public void setCurrentComposition(String currentComposition)
     {
-        this.currentFragment = currentFragment;
+        this.currentComposition = currentComposition;
     }
 
 
@@ -56,8 +56,8 @@ public class IndexController implements Serializable
         labelFile = facesContext.getExternalContext()
                 .getInitParameter("labelFile");
 
-        pageFragmentsDir = facesContext.getExternalContext()
-                .getInitParameter("pageFragmentsDir");
+        compositionsDir = facesContext.getExternalContext()
+                .getInitParameter("compositionsDir");
 
         //Calling db schaffolding when in dev. 
         if (facesContext.getApplication()
@@ -84,7 +84,7 @@ public class IndexController implements Serializable
             p = "home";
         }
 
-        this.currentFragment = pageFragmentsDir
+        this.currentComposition = compositionsDir
                 + p
                 + ".xhtml";
     }

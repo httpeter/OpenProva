@@ -52,8 +52,8 @@
     </context-param>
     
     <context-param>
-        <param-name>pageFragmentsDir</param-name>
-        <param-value>resources/fragments/</param-value>
+        <param-name>compositionsDir</param-name>
+        <param-value>composition/</param-value>
     </context-param>
             
     <context-param>

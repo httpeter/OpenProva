@@ -1,4 +1,4 @@
-package org.op.controller;
+package org.op.controller.compositon;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -9,7 +9,7 @@ import javax.faces.context.FacesContext;
 import org.op.data.model.Activity;
 import org.op.data.model.Contact;
 import org.op.data.model.SystemUser;
-import org.op.data.repositories.AdminRepository;
+import org.op.data.repository.AdminRepository;
 import org.op.util.AESEncryptor;
 import org.op.util.FMessage;
 import org.op.util.MailFactory;

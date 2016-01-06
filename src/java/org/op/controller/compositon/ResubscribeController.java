@@ -1,4 +1,4 @@
-package org.op.controller;
+package org.op.controller.compositon;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -8,7 +8,7 @@ import javax.faces.bean.ViewScoped;
 import org.op.data.model.Activity;
 import org.op.data.model.Contact;
 import org.op.data.model.Project;
-import org.op.data.repositories.SubscribersRepository;
+import org.op.data.repository.SubscribersRepository;
 import org.op.util.FMessage;
 import org.op.util.MailFactory;
 
