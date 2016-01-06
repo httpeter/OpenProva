@@ -181,8 +181,9 @@ public class ResubscribeController implements Serializable
     {
         if (projectActivities != null)
         {
-            projectActivities.parallelStream()
-                    .forEach((activity)
+            // Removed parallelsteram because there the overhead will be
+            // bigger than the benefits
+            projectActivities.forEach((activity)
                             -> 
                             {
                                 if (allDatesSelected)
