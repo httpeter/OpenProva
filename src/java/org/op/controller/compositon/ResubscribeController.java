@@ -155,8 +155,6 @@ public class ResubscribeController implements Serializable
 
         projectActivities = new ArrayList(masterActivities.size());
 
-        //not using the Collections clong constructor option because this
-        //is not a master activity
         masterActivities.forEach((ma)
                 -> 
                 {
@@ -181,8 +179,6 @@ public class ResubscribeController implements Serializable
     {
         if (projectActivities != null)
         {
-            // Removed parallelsteram because there the overhead will be
-            // bigger than the benefits
             projectActivities.forEach((activity)
                     -> 
                     {
