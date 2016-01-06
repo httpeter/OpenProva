@@ -184,16 +184,16 @@ public class ResubscribeController implements Serializable
             // Removed parallelsteram because there the overhead will be
             // bigger than the benefits
             projectActivities.forEach((activity)
-                            -> 
-                            {
-                                if (allDatesSelected)
-                                {
-                                    activity.setPresent(true);
-                                } else
-                                {
-                                    activity.setPresent(false);
-                                }
-                    });
+                    -> 
+                    {
+                        if (allDatesSelected)
+                        {
+                            activity.setPresent(true);
+                        } else
+                        {
+                            activity.setPresent(false);
+                        }
+            });
         } else
         {
             msg.error("No project activities");
