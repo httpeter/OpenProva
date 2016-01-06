@@ -75,7 +75,7 @@ public class IndexController implements Serializable
 
     private void navigate()
     {
-        String p = (String) facesContext.getExternalContext()
+        String p = facesContext.getExternalContext()
                 .getRequestParameterMap()
                 .get("p");
 
