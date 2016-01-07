@@ -15,10 +15,12 @@
 
 
 
-    <!--
-        Admin login panel
-    -->
+
     <h:panelGrid  columns="2" rendered="#{!adminController.currentUserIsAdmin}">
+
+        <!--
+            Admin login panel
+        -->
 
         <p:inputText id="auText" value="#{adminController.currentUser.username}">
             <p:watermark for="auText" value="#{labels.username}"/>

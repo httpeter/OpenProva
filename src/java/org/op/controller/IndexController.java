@@ -14,12 +14,28 @@ public class IndexController implements Serializable
 
     private final String compositionsDir;
 
+    private final boolean developmentStage;
+
     private String labelFile,
             currentComposition;
 
 
 
     //<editor-fold defaultstate="collapsed" desc="Getters & Setters">
+    public boolean isDevelopmentStage()
+    {
+        return developmentStage;
+    }
+
+
+
+    public String getCompositionsDir()
+    {
+        return compositionsDir;
+    }
+
+
+
     public String getCurrentComposition()
     {
         return currentComposition;
@@ -53,17 +69,19 @@ public class IndexController implements Serializable
     {
         facesContext = FacesContext.getCurrentInstance();
 
+        developmentStage = facesContext.getApplication()
+                .getProjectStage()
+                .toString()
+                .equalsIgnoreCase("development");
+
         labelFile = facesContext.getExternalContext()
                 .getInitParameter("labelFile");
 
         compositionsDir = facesContext.getExternalContext()
                 .getInitParameter("compositionsDir");
 
-        //Calling db schaffolding when in dev. 
-        if (facesContext.getApplication()
-                .getProjectStage()
-                .toString()
-                .equalsIgnoreCase("development"))
+        //Calling db schaffolding when in dev. mode 
+        if (developmentStage)
         {
             new org.op.util.DBScaffolder().restore();
         }
