@@ -18,7 +18,6 @@ import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
-import org.op.data.repository.DefaultRepository;
 
 @ManagedBean
 @ViewScoped
@@ -87,7 +86,7 @@ public class IndexController implements Serializable
      * Constructor checks if the project stage is 'Development' or 'Production'.
      * in the 'web.xml' file.
      *
-     * In 'Development' mode the DBSchaffloder class is called to populate the
+     * In 'Development' mode the DBSchaffolder class is called to populate the
      * database when it is empty. It is therefore ESSENTIAL to set the parameter
      * to 'Production' when using ths sytem in production to prevent data loss.
      *
