@@ -12,6 +12,13 @@ import org.op.data.model.Project;
 public class SubscribersRepository extends DefaultRepository implements Serializable
 {
 
+    /**
+     * Extending the DefaultRepository, this class is meant to deal with
+     * requests from and to the DB that involve user subscriptions or
+     * re-subscriptions.
+     *
+     * @param persistenceUnitName
+     */
     public SubscribersRepository(String persistenceUnitName)
     {
         super(persistenceUnitName);
@@ -35,7 +42,8 @@ public class SubscribersRepository extends DefaultRepository implements Serializ
 
 
 
-    public List<Activity> getProjectActivities(long projectId, boolean isMasterActivity)
+    public List<Activity> getProjectActivities(long projectId,
+            boolean isMasterActivity)
     {
         if (emIsOpen())
         {
@@ -44,7 +52,8 @@ public class SubscribersRepository extends DefaultRepository implements Serializ
                             + "where a.projectId = :projectId "
                             + "and a.isMasterActivity = :isMasterActivity")
                     .setParameter("projectId", projectId)
-                    .setParameter("isMasterActivity", isMasterActivity).getResultList();
+                    .setParameter("isMasterActivity", isMasterActivity)
+                    .getResultList();
         }
         return null;
     }
@@ -58,7 +67,8 @@ public class SubscribersRepository extends DefaultRepository implements Serializ
             return this.getEm()
                     .createQuery("select p from Project p "
                             + "where p.active = :active")
-                    .setParameter("active", active).getResultList();
+                    .setParameter("active", active)
+                    .getResultList();
         }
         return null;
     }
