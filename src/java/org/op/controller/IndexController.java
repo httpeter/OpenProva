@@ -83,6 +83,9 @@ public class IndexController implements Serializable
      * JSF managed bean responsible for page composition and property files such
      * as labels.
      *
+     * Pages are composed of facelet page fragments located in the composition
+     * folder.
+     *
      * Constructor checks if the project stage is 'Development' or 'Production'.
      * in the 'web.xml' file.
      *
