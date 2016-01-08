@@ -1,9 +1,10 @@
+// This code covered by the Apache2 License: http://www.apache.org/licenses/LICENSE-2.0
+// You are free to use it for your own good as long as it doesn't hurt anybody.
+// For questions or suggestions please contact me at httpeter@gmail.com
 package org.op.util;
 
 import java.util.List;
 import java.util.Properties;
-import javax.faces.context.FacesContext;
-import javax.servlet.http.HttpSession;
 import org.op.data.model.Activity;
 import org.op.data.model.Contact;
 import org.op.data.model.Project;

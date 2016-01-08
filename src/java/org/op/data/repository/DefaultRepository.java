@@ -1,3 +1,6 @@
+// This code covered by the Apache2 License: http://www.apache.org/licenses/LICENSE-2.0
+// You are free to use it for your own good as long as it doesn't hurt anybody.
+// For questions or suggestions please contact me at httpeter@gmail.com
 package org.op.data.repository;
 
 import java.io.Serializable;
@@ -12,8 +15,11 @@ import javax.persistence.TypedQuery;
 public class DefaultRepository implements Serializable
 {
 
-    private static final Logger logger = Logger.getLogger(DefaultRepository.class.getName());
+    private static final Logger logger = Logger.getLogger(DefaultRepository.class
+            .getName());
+
     private EntityManagerFactory emf;
+
     private EntityManager em;
 
 
@@ -48,6 +54,13 @@ public class DefaultRepository implements Serializable
 
 
 
+    /**
+     * Simple extendable repository for use with JPA2 offering basic list
+     * retrieval en persistence functionalities. Requires the name of the used
+     * Persistence Unit.
+     *
+     * @param persistenceUnitName
+     */
     public DefaultRepository(String persistenceUnitName)
     {
         emf = Persistence.createEntityManagerFactory(persistenceUnitName);
@@ -56,6 +69,13 @@ public class DefaultRepository implements Serializable
 
 
 
+    /**
+     * Checking whether Entity Manager and Entity Manager Factory are open. made
+     * public so that it can be used by classes that extend DefaultRepository.
+     *
+     * @return
+     *
+     */
     public boolean emIsOpen()
     {
         if (!emf.isOpen())
@@ -71,6 +91,10 @@ public class DefaultRepository implements Serializable
 
 
 
+    /**
+     * Saving an object to the databse. If EntityManager or EntityManagerFactory
+     * are closed an error is thrown. The latter can be checked with 'emIsOpen'.
+     */
     public boolean persisted(Object object)
     {
         if (emIsOpen())
@@ -103,6 +127,9 @@ public class DefaultRepository implements Serializable
 
 
 
+    /**
+     * Retrieve a list of objects according to their type from the DB.
+     */
     public List getResultList(Class c)
     {
         if (emIsOpen())
@@ -117,6 +144,11 @@ public class DefaultRepository implements Serializable
 
 
 
+    /**
+     * Delete a specific object from the DB. Does not work with objects
+     * extending Collection! If the EntityManager and the EntityManagerFactory
+     * are closed, an error is thrown
+     */
     public boolean deleted(Object object)
     {
         if (emIsOpen())
@@ -129,7 +161,7 @@ public class DefaultRepository implements Serializable
             return true;
         } else
         {
-            System.out.println("EntityManagerFactor or EntityManager are closed");
+            System.out.println("EntityManagerFactory or EntityManager are closed");
             em.getTransaction().rollback();
             return false;
         }
@@ -138,6 +170,10 @@ public class DefaultRepository implements Serializable
 
 
 
+    /**
+     * Method for closing the EntityManager and the EntityManagerFactory. If
+     * closed, other methods persistence breaks.
+     */
     public void close()
     {
         if (emIsOpen())
