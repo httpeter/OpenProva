@@ -129,6 +129,9 @@ public class DefaultRepository implements Serializable
 
     /**
      * Retrieve a list of objects according to their type from the DB.
+     *
+     * @param c
+     * @return
      */
     public List getResultList(Class c)
     {
@@ -148,6 +151,9 @@ public class DefaultRepository implements Serializable
      * Delete a specific object from the DB. Does not work with objects
      * extending Collection! If the EntityManager and the EntityManagerFactory
      * are closed, an error is thrown
+     *
+     * @param object
+     * @return
      */
     public boolean deleted(Object object)
     {
@@ -162,7 +168,8 @@ public class DefaultRepository implements Serializable
         } else
         {
             System.out.println("EntityManagerFactory or EntityManager are closed");
-            em.getTransaction().rollback();
+            em.getTransaction()
+                    .rollback();
             return false;
         }
 

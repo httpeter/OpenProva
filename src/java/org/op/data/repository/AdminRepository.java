@@ -53,7 +53,8 @@ public class AdminRepository extends DefaultRepository implements Serializable
                             + "where a.projectId = :projectId "
                             + "and a.isMasterActivity = :isMasterActivity")
                     .setParameter("projectId", projectId)
-                    .setParameter("isMasterActivity", isMasterActivity).getResultList();
+                    .setParameter("isMasterActivity", isMasterActivity)
+                    .getResultList();
         }
         return null;
     }
@@ -69,7 +70,8 @@ public class AdminRepository extends DefaultRepository implements Serializable
                             + "where a.contactId = :contactId "
                             + "and a.isMasterActivity = :isMasterActivity")
                     .setParameter("contactId", c.getId())
-                    .setParameter("isMasterActivity", isMasterActivity).getResultList();
+                    .setParameter("isMasterActivity", isMasterActivity)
+                    .getResultList();
         }
         return null;
     }
