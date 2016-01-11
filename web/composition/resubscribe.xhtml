@@ -12,7 +12,8 @@
 
 
 
-    <p:panel header="#{labels.resubscribeProject} #{resubscribeController.selectedProject.projectName}">
+    <p:panel header="#{labels.resubscribeProject} 
+             #{resubscribeController.selectedProject.projectName}">
 
         <br/>
 
@@ -39,23 +40,27 @@
 
         <h:panelGrid id="programmePanel" 
                      columns="3" 
-                     rendered="#{not empty resubscribeController.selectedProject.projectName}">
+                     rendered="#{not empty resubscribeController.selectedProject
+                                 .projectName}">
 
             <p:outputLabel value="#{labels.projectFrom}"/>
             <p:outputLabel value=":"/>
-            <h:outputText value="#{resubscribeController.selectedProject.projectStartDate}">
+            <h:outputText value="#{resubscribeController.selectedProject
+                                   .projectStartDate}">
                 <f:convertDateTime locale="#{labels.locale}"/>
             </h:outputText>
 
             <p:outputLabel value="#{labels.projectUntil}"/>
             <p:outputLabel value=":"/>
-            <h:outputText value="#{resubscribeController.selectedProject.projectEndDate}">
+            <h:outputText value="#{resubscribeController.selectedProject
+                                   .projectEndDate}">
                 <f:convertDateTime locale="#{labels.locale}"/>
             </h:outputText>
 
             <p:outputLabel value="#{labels.projectRepertoire}"/>
             <p:outputLabel value=":"/>
-            <h:outputText value="#{resubscribeController.selectedProject.projectRepertoire}"/>
+            <h:outputText value="#{resubscribeController.selectedProject
+                                   .projectRepertoire}"/>
 
             <p:effect event="load" type="highlight"/>
             <h:outputText/>
@@ -72,19 +77,22 @@
 
 
 
-    <p:panel id="newSubscriptionPanel" header="#{labels.projectResubscriptionPanelHeader}" 
+    <p:panel id="newSubscriptionPanel"
+             header="#{labels.projectResubscriptionPanelHeader}" 
              rendered="#{not empty resubscribeController.selectedProject.projectName}">
 
         <br/>
 
         <h:panelGrid columns="2" style="width:100%">                                        
 
-            <p:inputText id="firstName" value="#{resubscribeController.newContact.firstName}">
+            <p:inputText id="firstName" value="#{resubscribeController.newContact
+                                                 .firstName}">
                 <p:watermark for="firstName" value="#{labels.firstName}"/>
             </p:inputText>
             <p:outputLabel value="*"/>                                       
 
-            <p:inputText id="lastName" value="#{resubscribeController.newContact.lastName}">
+            <p:inputText id="lastName" value="#{resubscribeController.newContact
+                                                .lastName}">
                 <p:watermark for="lastName" value="#{labels.lastName}"/>
             </p:inputText>
             <p:outputLabel value="*"/>
@@ -99,7 +107,8 @@
             </p:inputText>
             <p:outputLabel value="*"/>
 
-            <p:inputText id="instrument" value="#{resubscribeController.newContact.instrument}">
+            <p:inputText id="instrument" value="#{resubscribeController.newContact
+                                                  .instrument}">
                 <p:watermark for="instrument" value="#{labels.instrument}"/>
             </p:inputText>
             <p:outputLabel value="*"/>
