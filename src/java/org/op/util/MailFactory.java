@@ -3,6 +3,7 @@
 // For questions or suggestions please contact me at httpeter@gmail.com
 package org.op.util;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.Properties;
 import org.op.data.model.Activity;
@@ -14,7 +15,7 @@ import org.op.util.gmail.GMailSSLSender;
  *
  * @author PeterH
  */
-public class MailFactory
+public class MailFactory implements Serializable
 {
 
     private final FMessage msg = new FMessage();
