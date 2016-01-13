@@ -123,7 +123,23 @@ public class DBScaffolder implements Serializable
                 p.setRequiredPresence(99);
                 if (defaultRepository.persisted(p))
                 {
-                    msg.info("Standard projects restored");
+                    msg.info("Standard project p1 restored");
+                } else
+                {
+                    msg.warn("Error while trying to restore standard projects...");
+                }
+
+                Project p2 = new Project();
+
+                p2.setProjectName("Najaar 2015");
+                p2.setActive(true);
+                p2.setProjectStartDate(new Date(115, 6, 1));
+                p2.setProjectEndDate(new Date(115, 6, 28));
+                p2.setProjectRepertoire("Schubert, Mozart etc.");
+                p2.setRequiredPresence(99);
+                if (defaultRepository.persisted(p2))
+                {
+                    msg.info("Standard project p2 restored");
                 } else
                 {
                     msg.warn("Error while trying to restore standard projects...");

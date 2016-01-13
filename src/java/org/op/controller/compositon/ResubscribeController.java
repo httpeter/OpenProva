@@ -17,6 +17,7 @@ package org.op.controller.compositon;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import org.op.data.model.Activity;
@@ -158,33 +159,42 @@ public class ResubscribeController implements Serializable
         activeProjects.forEach((ap)
                 -> 
                 {
-                    if (ap.getId() != null)
+                    if (selectedProject.getId() != null
+                            && Objects.equals(ap.getId(),
+                                    selectedProject.getId()))
                     {
                         selectedProject = ap;
                     }
         });
 
-        List<Activity> masterActivities = subscribersRepository
-                .getProjectActivities(selectedProject.getId(), true);
+        if (selectedProject.getId() != null)
+        {
+            List<Activity> masterActivities = subscribersRepository
+                    .getProjectActivities(selectedProject.getId(), true);
 
-        projectActivities = new ArrayList(masterActivities.size());
+            projectActivities = new ArrayList(masterActivities.size());
 
-        masterActivities.forEach((ma)
-                -> 
-                {
-                    Activity a = new Activity();
-                    a.setCommentsByContact(ma.getCommentsByContact());
-                    a.setActivityDate(ma.getActivityDate());
-                    a.setDescription(ma.getDescription());
-                    a.setEndTime(ma.getEndTime());
-                    a.setIsMasterActivity(false);
-                    a.setLocation(ma.getLocation());
-                    a.setPresent(ma.isPresent());
-                    a.setProjectId(ma.getProjectId());
-                    a.setStartTime(ma.getStartTime());
-                    a.setIsMasterActivity(false);
-                    projectActivities.add(a);
-        });
+            masterActivities.forEach((ma)
+                    -> 
+                    {
+                        Activity a = new Activity();
+                        a.setCommentsByContact(ma.getCommentsByContact());
+                        a.setActivityDate(ma.getActivityDate());
+                        a.setDescription(ma.getDescription());
+                        a.setEndTime(ma.getEndTime());
+                        a.setIsMasterActivity(false);
+                        a.setLocation(ma.getLocation());
+                        a.setPresent(ma.isPresent());
+                        a.setProjectId(ma.getProjectId());
+                        a.setStartTime(ma.getStartTime());
+                        a.setIsMasterActivity(false);
+                        projectActivities.add(a);
+            });
+        } else
+        {
+            selectedProject = new Project();
+
+        }
     }
 
 
