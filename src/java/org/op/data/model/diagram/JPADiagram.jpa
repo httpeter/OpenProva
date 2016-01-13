@@ -86,16 +86,10 @@
             <basic attribute-type="java.sql.Time" visibile="true" name="endTime" id="_1449676244169110">
                 <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
             </basic>
-            <basic attribute-type="boolean" visibile="true" name="present" id="_1449676244640111">
-                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
-            </basic>
             <basic attribute-type="String" visibile="true" name="location" id="_1449676245072112">
                 <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
             </basic>
             <basic attribute-type="String" visibile="true" name="description" id="_1449676245576113">
-                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
-            </basic>
-            <basic attribute-type="String" visibile="true" name="commentsByContact" id="_1449676246360114">
                 <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
             </basic>
             <jpa:id attribute-type="Long" visibile="true" name="id" id="_1449675911124101">
@@ -110,8 +104,14 @@
     </jpa:entity>
     <jpa:entity xre="false" sm="false" abs="false" class="Subscription" superclassId="_1449675457082" visibile="true" minimized="false" rootElement="_144967529139275" id="_1452703801709">
         <jpa:attributes>
+            <basic attribute-type="String" visibile="true" name="commentsByContact" id="_145270569758819">
+                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </basic>
+            <basic attribute-type="boolean" visibile="true" name="present" id="_145270572766220">
+                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
+            </basic>
             <jpa:id attribute-type="Long" visibile="true" name="contactId" id="_145270387156618">
-                <jpa:column unique="false" nullable="true" insertable="true" updatable="true"/>
+                <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
                 <jpa:generated-value/>
             </jpa:id>
         </jpa:attributes>
@@ -119,22 +119,22 @@
     <jpa:diagram id="_144967529139276">
         <plane elementRef="_144967529139275" id="_144967529139277_p">
             <shape elementRef="_1449675336499" id="_1449675336499_gui">
-                <Bounds x="150.0" y="71.0" width="137.0" height="155.0"/>
+                <Bounds x="147.0" y="120.0" width="137.0" height="155.0"/>
             </shape>
             <shape elementRef="_1449675450930" id="_1449675450930_gui">
-                <Bounds x="26.0" y="274.0" width="166.0" height="121.0"/>
+                <Bounds x="56.0" y="356.0" width="166.0" height="121.0"/>
             </shape>
             <shape elementRef="_1449675453007" id="_1449675453007_gui">
-                <Bounds x="270.0" y="274.0" width="140.0" height="113.0"/>
+                <Bounds x="241.0" y="356.0" width="140.0" height="113.0"/>
             </shape>
             <shape elementRef="_1449675455106" id="_1449675455106_gui">
-                <Bounds x="457.0" y="71.0" width="149.0" height="197.0"/>
+                <Bounds x="381.0" y="28.0" width="149.0" height="197.0"/>
             </shape>
             <shape elementRef="_1449675457082" id="_1449675457082_gui">
-                <Bounds x="457.0" y="301.0" width="164.0" height="239.0"/>
+                <Bounds x="632.0" y="120.0" width="137.0" height="197.0"/>
             </shape>
             <shape elementRef="_1452703801709" id="_1452703801709_gui">
-                <Bounds x="455.0" y="605.0" width="168.0" height="58.0"/>
+                <Bounds x="616.0" y="356.0" width="168.0" height="113.0"/>
             </shape>
         </plane>
     </jpa:diagram>

@@ -4,6 +4,7 @@
 package org.op.data.model;
 
 import java.io.Serializable;
+import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -16,6 +17,14 @@ public class Subscription extends Activity implements Serializable
     @Column(unique = false, updatable = true, insertable = true, nullable = true, length = 255, scale = 0, precision = 0)
     @Id
     private Long contactId;
+
+    @Column(unique = false, updatable = true, insertable = true, nullable = true, length = 255, scale = 0, precision = 0)
+    @Basic
+    private String commentsByContact;
+
+    @Column(unique = false, updatable = true, insertable = true, nullable = true, length = 255, scale = 0, precision = 0)
+    @Basic
+    private boolean present;
 
 
 
@@ -36,5 +45,33 @@ public class Subscription extends Activity implements Serializable
     public void setContactId(Long contactId)
     {
         this.contactId = contactId;
+    }
+
+
+
+    public String getCommentsByContact()
+    {
+        return this.commentsByContact;
+    }
+
+
+
+    public void setCommentsByContact(String commentsByContact)
+    {
+        this.commentsByContact = commentsByContact;
+    }
+
+
+
+    public boolean isPresent()
+    {
+        return this.present;
+    }
+
+
+
+    public void setPresent(boolean present)
+    {
+        this.present = present;
     }
 }

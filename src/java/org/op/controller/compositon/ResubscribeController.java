@@ -179,12 +179,10 @@ public class ResubscribeController implements Serializable
                     -> 
                     {
                         Subscription s = new Subscription();
-                        s.setCommentsByContact(ma.getCommentsByContact());
                         s.setActivityDate(ma.getActivityDate());
                         s.setDescription(ma.getDescription());
                         s.setEndTime(ma.getEndTime());
                         s.setLocation(ma.getLocation());
-                        s.setPresent(ma.isPresent());
                         s.setProjectId(ma.getProjectId());
                         s.setStartTime(ma.getStartTime());
                         subscriptions.add(s);

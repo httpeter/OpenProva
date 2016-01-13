@@ -24,10 +24,6 @@ public class Activity implements Serializable
 
     @Column(unique = false, updatable = true, insertable = true, nullable = true, length = 255, scale = 0, precision = 0)
     @Basic
-    private String commentsByContact;
-
-    @Column(unique = false, updatable = true, insertable = true, nullable = true, length = 255, scale = 0, precision = 0)
-    @Basic
     private String description;
 
     @Column(unique = false, updatable = true, insertable = true, nullable = true, length = 255, scale = 0, precision = 0)
@@ -46,10 +42,6 @@ public class Activity implements Serializable
     @Column(unique = false, updatable = true, insertable = true, nullable = true, length = 255, scale = 0, precision = 0)
     @Basic
     private Time endTime;
-
-    @Column(unique = false, updatable = true, insertable = true, nullable = true, length = 255, scale = 0, precision = 0)
-    @Basic
-    private boolean present;
 
     @Column(unique = false, updatable = true, insertable = true, nullable = true, length = 255, scale = 0, precision = 0)
     @Id
@@ -74,20 +66,6 @@ public class Activity implements Serializable
     public void setActivityDate(Date activityDate)
     {
         this.activityDate = activityDate;
-    }
-
-
-
-    public String getCommentsByContact()
-    {
-        return this.commentsByContact;
-    }
-
-
-
-    public void setCommentsByContact(String commentsByContact)
-    {
-        this.commentsByContact = commentsByContact;
     }
 
 
@@ -158,20 +136,6 @@ public class Activity implements Serializable
     public void setEndTime(Time endTime)
     {
         this.endTime = endTime;
-    }
-
-
-
-    public boolean isPresent()
-    {
-        return this.present;
-    }
-
-
-
-    public void setPresent(boolean present)
-    {
-        this.present = present;
     }
 
 
