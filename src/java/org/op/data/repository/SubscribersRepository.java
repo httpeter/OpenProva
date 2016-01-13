@@ -42,17 +42,14 @@ public class SubscribersRepository extends DefaultRepository implements Serializ
 
 
 
-    public List<Activity> getProjectActivities(long projectId,
-            boolean isMasterActivity)
+    public List<Activity> getActivities(long projectId)
     {
         if (emIsOpen())
         {
             return this.getEm()
                     .createQuery("select a from Activity a "
-                            + "where a.projectId = :projectId "
-                            + "and a.isMasterActivity = :isMasterActivity")
+                            + "where a.projectId = :projectId")
                     .setParameter("projectId", projectId)
-                    .setParameter("isMasterActivity", isMasterActivity)
                     .getResultList();
         }
         return null;

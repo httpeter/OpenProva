@@ -23,10 +23,6 @@ public class Activity implements Serializable
     private Date activityDate;
 
     @Column(unique = false, updatable = true, insertable = true, nullable = true, length = 255, scale = 0, precision = 0)
-    @Id
-    private Long contactId;
-
-    @Column(unique = false, updatable = true, insertable = true, nullable = true, length = 255, scale = 0, precision = 0)
     @Basic
     private String commentsByContact;
 
@@ -56,10 +52,6 @@ public class Activity implements Serializable
     private boolean present;
 
     @Column(unique = false, updatable = true, insertable = true, nullable = true, length = 255, scale = 0, precision = 0)
-    @Basic
-    private boolean isMasterActivity;
-
-    @Column(unique = false, updatable = true, insertable = true, nullable = true, length = 255, scale = 0, precision = 0)
     @Id
     private Long projectId;
 
@@ -82,20 +74,6 @@ public class Activity implements Serializable
     public void setActivityDate(Date activityDate)
     {
         this.activityDate = activityDate;
-    }
-
-
-
-    public Long getContactId()
-    {
-        return this.contactId;
-    }
-
-
-
-    public void setContactId(Long contactId)
-    {
-        this.contactId = contactId;
     }
 
 
@@ -194,20 +172,6 @@ public class Activity implements Serializable
     public void setPresent(boolean present)
     {
         this.present = present;
-    }
-
-
-
-    public boolean isIsMasterActivity()
-    {
-        return this.isMasterActivity;
-    }
-
-
-
-    public void setIsMasterActivity(boolean isMasterActivity)
-    {
-        this.isMasterActivity = isMasterActivity;
     }
 
 

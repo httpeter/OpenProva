@@ -7,6 +7,7 @@
     <class>org.op.data.model.Person</class>
     <class>org.op.data.model.Project</class>
     <class>org.op.data.model.SystemUser</class>
+    <class>org.op.data.model.Subscription</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/db_openprova?zeroDateTimeBehavior=convertToNull"/>

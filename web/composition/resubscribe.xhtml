@@ -47,14 +47,16 @@
             <p:outputLabel value=":"/>
             <h:outputText value="#{resubscribeController.selectedProject
                                    .projectStartDate}">
-                <f:convertDateTime locale="#{labels.locale}"/>
+                <f:convertDateTime locale="#{labels.locale}" 
+                                   dateStyle="full" />
             </h:outputText>
 
             <p:outputLabel value="#{labels.projectUntil}"/>
             <p:outputLabel value=":"/>
             <h:outputText value="#{resubscribeController.selectedProject
                                    .projectEndDate}">
-                <f:convertDateTime locale="#{labels.locale}"/>
+                <f:convertDateTime locale="#{labels.locale}" 
+                                   dateStyle="full"/>
             </h:outputText>
 
             <p:outputLabel value="#{labels.projectRepertoire}"/>
@@ -151,17 +153,21 @@
 
             <p:column headerText="#{labels.activityDate}">
                 <h:outputText value="#{date.activityDate}">
-                    <f:convertDateTime locale="#{labels.locale}"/>
+                    <f:convertDateTime locale="#{labels.locale}" 
+                                       dateStyle="full"/>
                 </h:outputText>
             </p:column>
 
             <p:column headerText="#{labels.activityTime}">
                 <h:outputText value="#{date.startTime}">
-                    <f:convertDateTime type="time" timeStyle="short" locale="#{labels.locale}"/>
+                    <f:convertDateTime type="time" 
+                                       timeStyle="short" 
+                                       locale="#{labels.locale}"/>
                 </h:outputText>
                 <h:outputText value=" - "/>
                 <h:outputText value="#{date.endTime}">
-                    <f:convertDateTime type="time" timeStyle="short" locale="#{labels.locale}"/>
+                    <f:convertDateTime type="time" timeStyle="short" 
+                                       locale="#{labels.locale}"/>
                 </h:outputText>
             </p:column>
 

@@ -6,6 +6,8 @@ package org.op.util;
 import java.io.Serializable;
 import java.sql.Date;
 import java.sql.Time;
+import java.util.Calendar;
+import java.util.TimeZone;
 import org.op.data.model.Contact;
 import org.op.data.model.Activity;
 import org.op.data.model.Project;
@@ -112,16 +114,17 @@ public class DBScaffolder implements Serializable
             }
 
             //Projects
-            Project p = new Project();
+            Project p1 = new Project();
+            Project p2 = new Project();
             if (defaultRepository.getResultList(Project.class).isEmpty())
             {
-                p.setProjectName("Voorjaar 2015");
-                p.setActive(true);
-                p.setProjectStartDate(new Date(115, 6, 1));
-                p.setProjectEndDate(new Date(115, 6, 28));
-                p.setProjectRepertoire("Bach, Beethoven etc.");
-                p.setRequiredPresence(99);
-                if (defaultRepository.persisted(p))
+                p1.setProjectName("Voorjaar 2015");
+                p1.setActive(true);
+                p1.setProjectStartDate(java.sql.Date.valueOf("2015-05-10"));
+                p1.setProjectEndDate(java.sql.Date.valueOf("2015-06-12"));
+                p1.setProjectRepertoire("Bach, Beethoven etc.");
+                p1.setRequiredPresence(99);
+                if (defaultRepository.persisted(p1))
                 {
                     msg.info("Standard project p1 restored");
                 } else
@@ -129,12 +132,10 @@ public class DBScaffolder implements Serializable
                     msg.warn("Error while trying to restore standard projects...");
                 }
 
-                Project p2 = new Project();
-
                 p2.setProjectName("Najaar 2015");
                 p2.setActive(true);
-                p2.setProjectStartDate(new Date(115, 6, 1));
-                p2.setProjectEndDate(new Date(115, 6, 28));
+                p2.setProjectStartDate(java.sql.Date.valueOf("2015-09-10"));
+                p2.setProjectEndDate(java.sql.Date.valueOf("2015-09-14"));
                 p2.setProjectRepertoire("Schubert, Mozart etc.");
                 p2.setRequiredPresence(99);
                 if (defaultRepository.persisted(p2))
@@ -152,21 +153,39 @@ public class DBScaffolder implements Serializable
                 //Activities
                 for (int i = 10; i < 20; i++)
                 {
-                    Activity a = new Activity();
-                    a.setIsMasterActivity(true);
-                    a.setActivityDate(new java.sql.Date(115, 6, i));
-                    a.setStartTime(new Time((int) Math.round(Math.random() * 10), 00, 0));
-                    a.setEndTime(new Time((int) Math.round(Math.random() * 10), 00, 0));
-                    a.setDescription("bla " + String.valueOf(Math.round(Math.random() * 100)));
-                    a.setLocation("Griffioen, Amstelveen");
-                    a.setProjectId(p.getId());
-                    a.setContactId(0L);
-                    if (defaultRepository.persisted(a))
+                    Activity a1 = new Activity();
+                    a1.setIsMasterActivity(true);
+                    a1.setActivityDate(java.sql.Date.valueOf("2015-05-" + i));
+                    a1.setStartTime(new Time((int) Math.round(Math.random() * 10), 00, 0));
+                    a1.setEndTime(new Time((int) Math.round(Math.random() * 10), 00, 0));
+                    a1.setDescription("bla " + String.valueOf(Math.round(Math.random() * 100)));
+                    a1.setLocation("Griffioen, Amstelveen");
+                    a1.setProjectId(p1.getId());
+                    a1.setContactId(0L);
+                    if (defaultRepository.persisted(a1))
                     {
-                        msgBuffer.append(a.getActivityDate());
+                        msgBuffer.append(a1.getActivityDate());
                         msgBuffer.append("\n");
                     }
                 }
+                for (int i = 10; i < 15; i++)
+                {
+                    Activity a2 = new Activity();
+                    a2.setIsMasterActivity(true);
+                    a2.setActivityDate(java.sql.Date.valueOf("2015-09-" + i));
+                    a2.setStartTime(new Time((int) Math.round(Math.random() * 10), 00, 0));
+                    a2.setEndTime(new Time((int) Math.round(Math.random() * 10), 00, 0));
+                    a2.setDescription("bla " + String.valueOf(Math.round(Math.random() * 100)));
+                    a2.setLocation("Griffioen, Amstelveen");
+                    a2.setProjectId(p2.getId());
+                    a2.setContactId(0L);
+                    if (defaultRepository.persisted(a2))
+                    {
+                        msgBuffer.append(a2.getActivityDate());
+                        msgBuffer.append("\n");
+                    }
+                }
+
                 msg.info("Standard master activities added: \n"
                         .concat(msgBuffer.toString()));
 

@@ -23,6 +23,7 @@ import javax.faces.bean.ViewScoped;
 import org.op.data.model.Activity;
 import org.op.data.model.Contact;
 import org.op.data.model.Project;
+import org.op.data.model.Subscription;
 import org.op.data.repository.SubscribersRepository;
 import org.op.util.FMessage;
 import org.op.util.MailFactory;
@@ -42,7 +43,7 @@ public class ResubscribeController implements Serializable
 
     private Project selectedProject;
 
-    private List<Activity> projectActivities;
+    private List<Subscription> subscriptions;
 
     //Moet weg. alleen nog bestaande contanten
     private Contact newContact = new Contact();
@@ -124,16 +125,16 @@ public class ResubscribeController implements Serializable
 
 
 
-    public List<Activity> getProjectActivities()
+    public List<Subscription> getSubscriptions()
     {
-        return projectActivities;
+        return subscriptions;
     }
 
 
 
-    public void setProjectActivities(List<Activity> projectActivities)
+    public void setSubscriptions(List<Subscription> subscriptions)
     {
-        this.projectActivities = projectActivities;
+        this.subscriptions = subscriptions;
     }
 
 
@@ -169,30 +170,28 @@ public class ResubscribeController implements Serializable
 
         if (selectedProject.getId() != null)
         {
-            List<Activity> masterActivities = subscribersRepository
-                    .getProjectActivities(selectedProject.getId(), true);
+            List<Activity> activities = subscribersRepository
+                    .getActivities(selectedProject.getId());
 
-            projectActivities = new ArrayList(masterActivities.size());
+            subscriptions = new ArrayList(activities.size());
 
-            masterActivities.forEach((ma)
+            activities.forEach((ma)
                     -> 
                     {
-                        Activity a = new Activity();
-                        a.setCommentsByContact(ma.getCommentsByContact());
-                        a.setActivityDate(ma.getActivityDate());
-                        a.setDescription(ma.getDescription());
-                        a.setEndTime(ma.getEndTime());
-                        a.setIsMasterActivity(false);
-                        a.setLocation(ma.getLocation());
-                        a.setPresent(ma.isPresent());
-                        a.setProjectId(ma.getProjectId());
-                        a.setStartTime(ma.getStartTime());
-                        a.setIsMasterActivity(false);
-                        projectActivities.add(a);
+                        Subscription s = new Subscription();
+                        s.setCommentsByContact(ma.getCommentsByContact());
+                        s.setActivityDate(ma.getActivityDate());
+                        s.setDescription(ma.getDescription());
+                        s.setEndTime(ma.getEndTime());
+                        s.setLocation(ma.getLocation());
+                        s.setPresent(ma.isPresent());
+                        s.setProjectId(ma.getProjectId());
+                        s.setStartTime(ma.getStartTime());
+                        subscriptions.add(s);
             });
         } else
         {
-            selectedProject = new Project();
+//            selectedProject = new Project();
 
         }
     }
@@ -204,9 +203,9 @@ public class ResubscribeController implements Serializable
      */
     public void selectAllDates()
     {
-        if (projectActivities != null)
+        if (subscriptions != null)
         {
-            projectActivities.forEach((activity)
+            subscriptions.forEach((activity)
                     -> 
                     {
                         if (allDatesSelected)
@@ -243,7 +242,7 @@ public class ResubscribeController implements Serializable
 
             //now saving the projectdata
             StringBuilder resultLog = new StringBuilder();
-            projectActivities.forEach((newActivity)
+            subscriptions.forEach((newActivity)
                     -> 
                     {
                         newActivity.setContactId(newContact.getId());
@@ -266,7 +265,7 @@ public class ResubscribeController implements Serializable
                 {
                     mailFactory.sendNewMemberSubscriptionMail(newContact,
                             selectedProject,
-                            projectActivities,
+                            subscriptions,
                             additionalMessage);
 
                     subscribersRepository.close();
