@@ -42,7 +42,8 @@ public class MailFactory implements Serializable
 
         Properties labels = new Properties();
 
-        labels.load(this.getClass().getClassLoader()
+        labels.load(this.getClass()
+                .getClassLoader()
                 .getResourceAsStream("org.op.properties.labelsNL.properties"));
 
 //        For new member subscriptions, this is BS
@@ -58,7 +59,7 @@ public class MailFactory implements Serializable
                             gMailClient = new GMailSSLSender(contact.getSystemUser().getEmail(),
                                     contact.getSystemUser().getEmailPassword());
 
-                            // Send msg to new member
+                            // Send msg to new member using prefixt tags
                             gMailClient.send(contact.getEmail(),
                                     tr.getReplacedString(labels.getProperty("mailMSGNewMemberSubscriptionSubject"),
                                             project, contact, labels.getProperty("organizationName")),
