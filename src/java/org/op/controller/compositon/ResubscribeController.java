@@ -16,7 +16,6 @@ package org.op.controller.compositon;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -150,7 +149,7 @@ public class ResubscribeController implements Serializable
         //retrieving all projects
         List<Project> allProjects = subscribersRepository
                 .getResultList(Project.class);
-        
+
         //then only adding the active ones to the list
         activeProjects = allProjects.stream()
                 .filter(p -> p.isActive())
@@ -194,13 +193,13 @@ public class ResubscribeController implements Serializable
                         s.setDescription(a.getDescription());
                         s.setEndTime(a.getEndTime());
                         s.setLocation(a.getLocation());
-//                        s.setProjectId(ma.getProjectId());
+                        s.setProject(a.getProject());
                         s.setStartTime(a.getStartTime());
                         subscriptions.add(s);
             });
         } else
         {
-//            selectedProject = new Project();
+            selectedProject = new Project();
 
         }
     }
