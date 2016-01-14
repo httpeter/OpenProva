@@ -4,10 +4,7 @@
 package org.op.util;
 
 import java.io.Serializable;
-import java.sql.Date;
 import java.sql.Time;
-import java.util.Calendar;
-import java.util.TimeZone;
 import org.op.data.model.Contact;
 import org.op.data.model.Activity;
 import org.op.data.model.Project;
@@ -28,7 +25,7 @@ public class DBScaffolder implements Serializable
                 + "Set to 'PRODUCTION' for use in...production.");
     }
 
-    private final DefaultRepository defaultRepository = new DefaultRepository("OpenProvaPU");
+    private DefaultRepository defaultRepository = new DefaultRepository("OpenProvaPU");
 
 
 
@@ -154,14 +151,12 @@ public class DBScaffolder implements Serializable
                 for (int i = 10; i < 20; i++)
                 {
                     Activity a1 = new Activity();
-                    a1.setIsMasterActivity(true);
                     a1.setActivityDate(java.sql.Date.valueOf("2015-05-" + i));
                     a1.setStartTime(new Time((int) Math.round(Math.random() * 10), 00, 0));
                     a1.setEndTime(new Time((int) Math.round(Math.random() * 10), 00, 0));
                     a1.setDescription("bla " + String.valueOf(Math.round(Math.random() * 100)));
                     a1.setLocation("Griffioen, Amstelveen");
-                    a1.setProjectId(p1.getId());
-                    a1.setContactId(0L);
+//                    a1.setProjectId(p1.getId());
                     if (defaultRepository.persisted(a1))
                     {
                         msgBuffer.append(a1.getActivityDate());
@@ -171,14 +166,12 @@ public class DBScaffolder implements Serializable
                 for (int i = 10; i < 15; i++)
                 {
                     Activity a2 = new Activity();
-                    a2.setIsMasterActivity(true);
                     a2.setActivityDate(java.sql.Date.valueOf("2015-09-" + i));
                     a2.setStartTime(new Time((int) Math.round(Math.random() * 10), 00, 0));
                     a2.setEndTime(new Time((int) Math.round(Math.random() * 10), 00, 0));
                     a2.setDescription("bla " + String.valueOf(Math.round(Math.random() * 100)));
                     a2.setLocation("Griffioen, Amstelveen");
-                    a2.setProjectId(p2.getId());
-                    a2.setContactId(0L);
+//                    a2.setProjectId(p2.getId());
                     if (defaultRepository.persisted(a2))
                     {
                         msgBuffer.append(a2.getActivityDate());

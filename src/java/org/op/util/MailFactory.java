@@ -6,9 +6,9 @@ package org.op.util;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Properties;
-import org.op.data.model.Activity;
 import org.op.data.model.Contact;
 import org.op.data.model.Project;
+import org.op.data.model.Subscription;
 import org.op.util.gmail.GMailSSLSender;
 
 /**
@@ -34,9 +34,13 @@ public class MailFactory implements Serializable
 
 
 
+    /*
+    * Dit moet worden omgebouwd naar bestaande inschrijvingen.
+    *
+    */
     public void sendNewMemberSubscriptionMail(Contact contact,
             Project project,
-            List<Activity> activities,
+            List<Subscription> subscriptions,
             String additionalMessage) throws Exception
     {
 

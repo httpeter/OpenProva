@@ -12,6 +12,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 
@@ -22,9 +23,15 @@ public class Activity implements Serializable
     @Basic
     private Date activityDate;
 
+    @OneToOne(optional = true, targetEntity = Contact.class)
+    private Contact contact;
+
     @Column(unique = false, updatable = true, insertable = true, nullable = true, length = 255, scale = 0, precision = 0)
     @Basic
     private String description;
+
+    @OneToOne(optional = true, targetEntity = Project.class)
+    private Project project;
 
     @Column(unique = false, updatable = true, insertable = true, nullable = true, length = 255, scale = 0, precision = 0)
     @Basic
@@ -42,10 +49,6 @@ public class Activity implements Serializable
     @Column(unique = false, updatable = true, insertable = true, nullable = true, length = 255, scale = 0, precision = 0)
     @Basic
     private Time endTime;
-
-    @Column(unique = false, updatable = true, insertable = true, nullable = true, length = 255, scale = 0, precision = 0)
-    @Id
-    private Long projectId;
 
 
 
@@ -70,6 +73,20 @@ public class Activity implements Serializable
 
 
 
+    public Contact getContact()
+    {
+        return this.contact;
+    }
+
+
+
+    public void setContact(Contact contact)
+    {
+        this.contact = contact;
+    }
+
+
+
     public String getDescription()
     {
         return this.description;
@@ -80,6 +97,20 @@ public class Activity implements Serializable
     public void setDescription(String description)
     {
         this.description = description;
+    }
+
+
+
+    public Project getProject()
+    {
+        return this.project;
+    }
+
+
+
+    public void setProject(Project project)
+    {
+        this.project = project;
     }
 
 
@@ -136,19 +167,5 @@ public class Activity implements Serializable
     public void setEndTime(Time endTime)
     {
         this.endTime = endTime;
-    }
-
-
-
-    public Long getProjectId()
-    {
-        return this.projectId;
-    }
-
-
-
-    public void setProjectId(Long projectId)
-    {
-        this.projectId = projectId;
     }
 }

@@ -183,7 +183,7 @@ public class ResubscribeController implements Serializable
                         s.setDescription(ma.getDescription());
                         s.setEndTime(ma.getEndTime());
                         s.setLocation(ma.getLocation());
-                        s.setProjectId(ma.getProjectId());
+//                        s.setProjectId(ma.getProjectId());
                         s.setStartTime(ma.getStartTime());
                         subscriptions.add(s);
             });
@@ -225,72 +225,72 @@ public class ResubscribeController implements Serializable
     /**
      * This should be changed to facilitate resubscriptions only.
      */
-    public void saveAndMailNewSubscription()
-    {
-
-        //Saving the new Contact
-        if (mailFactory.addressValid(newContact.getEmail())
-                && !subscribersRepository.isExistingContact(newContact)
-                && subscribersRepository.persisted(newContact))
-        {
-            msg.info("Saved "
-                    + newContact.getFirstName()
-                    + " "
-                    + newContact.getLastName());
-
-            //now saving the projectdata
-            StringBuilder resultLog = new StringBuilder();
-            subscriptions.forEach((newActivity)
-                    -> 
-                    {
-                        newActivity.setContactId(newContact.getId());
-                        if (!subscribersRepository.persisted(newActivity))
-                        {
-                            resultLog.append(newActivity.getActivityDate());
-                        }
-            });
-
-            if (resultLog.length() == 0)
-            {
-                msg.info("Subscribed "
-                        + newContact.getFirstName()
-                        + " "
-                        + newContact.getLastName()
-                        + "\nTo project: "
-                        + selectedProject.getProjectName());
-
-                try
-                {
-                    mailFactory.sendNewMemberSubscriptionMail(newContact,
-                            selectedProject,
-                            subscriptions,
-                            additionalMessage);
-
-                    subscribersRepository.close();
-
-                } catch (Exception e)
-                {
-                    msg.fatal("Sending email failed\n\n"
-                            + e.getMessage());
-                    e.printStackTrace(System.out);
-                }
-
-                //Here we go sending an email...
-                newContact = new Contact();
-            } else
-            {
-                msg.error("Error saving " + selectedProject.getProjectName()
-                        + "\n\n" + resultLog);
-            }
-        } else
-        {
-            msg.error("Error saving "
-                    + newContact.getFirstName()
-                    + " "
-                    + newContact.getLastName());
-            msg.info("Contact email already exists, or is invalid");
-        }
-
-    }
+//    public void saveAndMailNewSubscription()
+//    {
+//
+//        //Saving the new Contact
+//        if (mailFactory.addressValid(newContact.getEmail())
+//                && !subscribersRepository.isExistingContact(newContact)
+//                && subscribersRepository.persisted(newContact))
+//        {
+//            msg.info("Saved "
+//                    + newContact.getFirstName()
+//                    + " "
+//                    + newContact.getLastName());
+//
+//            //now saving the projectdata
+//            StringBuilder resultLog = new StringBuilder();
+//            subscriptions.forEach((newActivity)
+//                    -> 
+//                    {
+//                        newActivity.setContactId(newContact.getId());
+//                        if (!subscribersRepository.persisted(newActivity))
+//                        {
+//                            resultLog.append(newActivity.getActivityDate());
+//                        }
+//            });
+//
+//            if (resultLog.length() == 0)
+//            {
+//                msg.info("Subscribed "
+//                        + newContact.getFirstName()
+//                        + " "
+//                        + newContact.getLastName()
+//                        + "\nTo project: "
+//                        + selectedProject.getProjectName());
+//
+//                try
+//                {
+//                    mailFactory.sendNewMemberSubscriptionMail(newContact,
+//                            selectedProject,
+//                            subscriptions,
+//                            additionalMessage);
+//
+//                    subscribersRepository.close();
+//
+//                } catch (Exception e)
+//                {
+//                    msg.fatal("Sending email failed\n\n"
+//                            + e.getMessage());
+//                    e.printStackTrace(System.out);
+//                }
+//
+//                //Here we go sending an email...
+//                newContact = new Contact();
+//            } else
+//            {
+//                msg.error("Error saving " + selectedProject.getProjectName()
+//                        + "\n\n" + resultLog);
+//            }
+//        } else
+//        {
+//            msg.error("Error saving "
+//                    + newContact.getFirstName()
+//                    + " "
+//                    + newContact.getLastName());
+//            msg.info("Contact email already exists, or is invalid");
+//        }
+//
+//    }
 
 }

@@ -7,16 +7,11 @@ import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Id;
 
 @Entity
 
 public class Subscription extends Activity implements Serializable
 {
-
-    @Column(unique = false, updatable = true, insertable = true, nullable = true, length = 255, scale = 0, precision = 0)
-    @Id
-    private Long contactId;
 
     @Column(unique = false, updatable = true, insertable = true, nullable = true, length = 255, scale = 0, precision = 0)
     @Basic
@@ -31,20 +26,6 @@ public class Subscription extends Activity implements Serializable
     public Subscription()
     {
 
-    }
-
-
-
-    public Long getContactId()
-    {
-        return this.contactId;
-    }
-
-
-
-    public void setContactId(Long contactId)
-    {
-        this.contactId = contactId;
     }
 
 
