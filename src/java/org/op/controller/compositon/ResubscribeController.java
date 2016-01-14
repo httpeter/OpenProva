@@ -16,8 +16,10 @@ package org.op.controller.compositon;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import org.op.data.model.Activity;
@@ -144,7 +146,16 @@ public class ResubscribeController implements Serializable
     {
         msg = new FMessage();
         subscribersRepository = new SubscribersRepository("OpenProvaPU");
-        activeProjects = subscribersRepository.getActiveProjects(true);
+
+        //retrieving all projects
+        List<Project> allProjects = subscribersRepository
+                .getResultList(Project.class);
+        
+        //then only adding the active ones to the list
+        activeProjects = allProjects.stream()
+                .filter(p -> p.isActive())
+                .collect(Collectors.toList());
+
         mailFactory = new MailFactory();
         selectedProject = new Project();
     }
@@ -171,20 +182,20 @@ public class ResubscribeController implements Serializable
         if (selectedProject.getId() != null)
         {
             List<Activity> activities = subscribersRepository
-                    .getActivities(selectedProject.getId());
+                    .getActivities(selectedProject);
 
             subscriptions = new ArrayList(activities.size());
 
-            activities.forEach((ma)
+            activities.forEach((a)
                     -> 
                     {
                         Subscription s = new Subscription();
-                        s.setActivityDate(ma.getActivityDate());
-                        s.setDescription(ma.getDescription());
-                        s.setEndTime(ma.getEndTime());
-                        s.setLocation(ma.getLocation());
+                        s.setActivityDate(a.getActivityDate());
+                        s.setDescription(a.getDescription());
+                        s.setEndTime(a.getEndTime());
+                        s.setLocation(a.getLocation());
 //                        s.setProjectId(ma.getProjectId());
-                        s.setStartTime(ma.getStartTime());
+                        s.setStartTime(a.getStartTime());
                         subscriptions.add(s);
             });
         } else
@@ -219,8 +230,6 @@ public class ResubscribeController implements Serializable
             msg.error("No project activities");
         }
     }
-
-
 
     /**
      * This should be changed to facilitate resubscriptions only.
@@ -292,5 +301,4 @@ public class ResubscribeController implements Serializable
 //        }
 //
 //    }
-
 }
