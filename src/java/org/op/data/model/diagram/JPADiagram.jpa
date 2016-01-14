@@ -95,9 +95,6 @@
             <one-to-one optional="true" primaryKey="false" connected-entity-id="_1449675455106" target-entity="Project" visibile="true" name="project" id="_145277056769245">
                 <join-table/>
             </one-to-one>
-            <one-to-one primaryKey="false" connected-entity-id="_1449675453007" target-entity="Contact" visibile="true" name="contact" id="_145277062502146">
-                <join-table/>
-            </one-to-one>
             <jpa:id attribute-type="Long" visibile="true" name="id" id="_1449675911124101">
                 <jpa:column unique="true" nullable="false" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
                 <jpa:generated-value strategy="AUTO"/>
@@ -112,6 +109,9 @@
             <basic attribute-type="String" visibile="true" name="commentsByContact" id="_145276959728771">
                 <jpa:column unique="false" nullable="true" insertable="true" updatable="true" length="255" precision="0" scale="0"/>
             </basic>
+            <one-to-one primaryKey="false" connected-entity-id="_1449675453007" target-entity="Contact" visibile="true" name="contact" id="_145277236699547">
+                <join-table/>
+            </one-to-one>
         </jpa:attributes>
     </jpa:entity>
     <jpa:diagram id="_144967529139276">
@@ -126,13 +126,13 @@
                 <Bounds x="270.0" y="274.0" width="140.0" height="113.0"/>
             </shape>
             <shape elementRef="_1449675455106" id="_1449675455106_gui">
-                <Bounds x="435.0" y="25.0" width="149.0" height="197.0"/>
+                <Bounds x="388.0" y="25.0" width="149.0" height="197.0"/>
             </shape>
             <shape elementRef="_1449675457082" id="_1449675457082_gui">
-                <Bounds x="537.0" y="295.0" width="137.0" height="231.0"/>
+                <Bounds x="499.0" y="274.0" width="137.0" height="210.0"/>
             </shape>
             <shape elementRef="_1452769443933" id="_1452769443933_gui">
-                <Bounds x="521.0" y="608.0" width="168.0" height="79.0"/>
+                <Bounds x="483.0" y="547.0" width="168.0" height="113.0"/>
             </shape>
         </plane>
     </jpa:diagram>

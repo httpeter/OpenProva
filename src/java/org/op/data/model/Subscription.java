@@ -7,6 +7,7 @@ import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 
 @Entity
 
@@ -16,6 +17,9 @@ public class Subscription extends Activity implements Serializable
     @Column(unique = false, updatable = true, insertable = true, nullable = true, length = 255, scale = 0, precision = 0)
     @Basic
     private String commentsByContact;
+
+    @OneToOne(optional = true, targetEntity = Contact.class)
+    private Contact contact;
 
     @Column(unique = false, updatable = true, insertable = true, nullable = true, length = 255, scale = 0, precision = 0)
     @Basic
@@ -40,6 +44,20 @@ public class Subscription extends Activity implements Serializable
     public void setCommentsByContact(String commentsByContact)
     {
         this.commentsByContact = commentsByContact;
+    }
+
+
+
+    public Contact getContact()
+    {
+        return this.contact;
+    }
+
+
+
+    public void setContact(Contact contact)
+    {
+        this.contact = contact;
     }
 
 

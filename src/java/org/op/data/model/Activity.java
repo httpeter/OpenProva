@@ -23,9 +23,6 @@ public class Activity implements Serializable
     @Basic
     private Date activityDate;
 
-    @OneToOne(optional = true, targetEntity = Contact.class)
-    private Contact contact;
-
     @Column(unique = false, updatable = true, insertable = true, nullable = true, length = 255, scale = 0, precision = 0)
     @Basic
     private String description;
@@ -69,20 +66,6 @@ public class Activity implements Serializable
     public void setActivityDate(Date activityDate)
     {
         this.activityDate = activityDate;
-    }
-
-
-
-    public Contact getContact()
-    {
-        return this.contact;
-    }
-
-
-
-    public void setContact(Contact contact)
-    {
-        this.contact = contact;
     }
 
 

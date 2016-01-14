@@ -25,7 +25,7 @@ public class DBScaffolder implements Serializable
                 + "Set to 'PRODUCTION' for use in...production.");
     }
 
-    private DefaultRepository defaultRepository = new DefaultRepository("OpenProvaPU");
+    private final DefaultRepository defaultRepository = new DefaultRepository("OpenProvaPU");
 
 
 
@@ -156,7 +156,7 @@ public class DBScaffolder implements Serializable
                     a1.setEndTime(new Time((int) Math.round(Math.random() * 10), 00, 0));
                     a1.setDescription("bla " + String.valueOf(Math.round(Math.random() * 100)));
                     a1.setLocation("Griffioen, Amstelveen");
-//                    a1.setProjectId(p1.getId());
+                    a1.setProject(p1);
                     if (defaultRepository.persisted(a1))
                     {
                         msgBuffer.append(a1.getActivityDate());
@@ -171,7 +171,7 @@ public class DBScaffolder implements Serializable
                     a2.setEndTime(new Time((int) Math.round(Math.random() * 10), 00, 0));
                     a2.setDescription("bla " + String.valueOf(Math.round(Math.random() * 100)));
                     a2.setLocation("Griffioen, Amstelveen");
-//                    a2.setProjectId(p2.getId());
+                    a2.setProject(p2);
                     if (defaultRepository.persisted(a2))
                     {
                         msgBuffer.append(a2.getActivityDate());
