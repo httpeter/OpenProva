@@ -92,8 +92,11 @@ public class DefaultRepository implements Serializable
 
 
     /**
-     * Saving an object to the databse. If EntityManager or EntityManagerFactory
+     * Saving an object to the database. If EntityManager or EntityManagerFactory
      * are closed an error is thrown. The latter can be checked with 'emIsOpen'.
+     *
+     * @param object
+     * @return
      */
     public boolean persisted(Object object)
     {
