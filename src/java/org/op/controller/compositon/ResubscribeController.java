@@ -213,15 +213,15 @@ public class ResubscribeController implements Serializable
     {
         if (subscriptions != null)
         {
-            subscriptions.forEach((activity)
+            subscriptions.forEach((subscription)
                     -> 
                     {
                         if (allDatesSelected)
                         {
-                            activity.setPresent(true);
+                            subscription.setPresent(true);
                         } else
                         {
-                            activity.setPresent(false);
+                            subscription.setPresent(false);
                         }
             });
         } else
