@@ -50,7 +50,7 @@ public class DBScaffolder implements Serializable
                 u1.setLastName("Hendriks");
                 u1.setUserRole("admin");
                 u1.setEmail("vuko.strijkerschef@gmail.com");
-                u1.setEmailPassword("strijkerschef!");
+                u1.setEmailPassword("****!");
                 if (defaultRepository.persisted(u1))
                 {
                     msg.info("Standard strings admin user restored");
