@@ -175,7 +175,7 @@ public class ResubscribeController implements Serializable
      */
     public void selectProject()
     {
-        activeProjects.forEach((ap)
+        activeProjects.forEach(ap
                 -> 
                 {
                     if (selectedProject.getId() != null
@@ -193,7 +193,7 @@ public class ResubscribeController implements Serializable
 
             subscriptions = new ArrayList(activities.size());
 
-            activities.forEach((a)
+            activities.forEach(a
                     -> 
                     {
                         Subscription s = new Subscription();
