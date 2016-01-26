@@ -133,9 +133,7 @@ public class IndexController implements Serializable
 
         if (p == null)
         {
-//            p = "home";
-//            Change back
-            p = "resubscribe";
+            p = "home";
         }
 
         this.currentComposition = compositionsDir
