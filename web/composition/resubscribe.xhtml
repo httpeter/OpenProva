@@ -78,7 +78,7 @@
 
 
 
-
+    <!--Moet resubscriptionpanel gana heten-->
     <p:panel id="newSubscriptionPanel"
              header="#{labels.projectResubscriptionPanelHeader}" 
              rendered="#{not empty resubscribeController.selectedProject.projectName}">
@@ -129,7 +129,10 @@
 
         <p:selectBooleanCheckbox value="#{resubscribeController.allDatesSelected}" 
                                  itemLabel="#{labels.selectAllDates}">
-            <p:ajax listener="#{resubscribeController.selectAllDates}" update="dTable"/>
+
+            <p:ajax listener="#{resubscribeController.selectAllDates()}" 
+                    update="dTable"/>
+
         </p:selectBooleanCheckbox>
 
 
@@ -143,7 +146,7 @@
 
         <p:dataTable id="dTable" 
                      var="date" 
-                     value="#{resubscribeController.projectActivities}"
+                     value="#{resubscribeController.subscriptions}"
                      reflow="true"
                      draggableColumns="true">
 
