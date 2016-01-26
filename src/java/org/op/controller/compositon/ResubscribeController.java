@@ -215,8 +215,8 @@ public class ResubscribeController implements Serializable
     /**
      * This should be changed to facilitate resubscriptions only.
      */
-//    public void saveAndMailNewSubscription()
-//    {
+    public void saveAndMailNewSubscription()
+    {
 //
 //        //Saving the new Contact
 //        if (mailFactory.addressValid(newContact.getEmail())
@@ -281,5 +281,5 @@ public class ResubscribeController implements Serializable
 //            msg.info("Contact email already exists, or is invalid");
 //        }
 //
-//    }
+    }
 }
