@@ -23,6 +23,15 @@
     text-align:left;
 }
 
+.mySelectAllBox
+{
+    font-weight: bold;
+    position: absolute;
+    right: 115px;
+    /*width: 300px;*/
+    padding: 10px;
+}
+
 .mySpecialButton
 {
     width: 100%;

@@ -126,18 +126,17 @@
 
 
 
-
         <p:selectBooleanCheckbox value="#{resubscribeController.allDatesSelected}" 
-                                 itemLabel="#{labels.selectAllDates}">
-
-            <p:ajax listener="#{resubscribeController.selectAllDates()}" 
-                    update="dTable"/>
-
+                                 itemLabel="#{labels.selectAllDates}" 
+                                 styleClass="mySelectAllBox">
+            <p:ajax update="dTable"/>
         </p:selectBooleanCheckbox>
 
 
 
 
+        <br/>
+        <br/>
         <br/>
         <br/>
 
@@ -149,10 +148,6 @@
                      value="#{resubscribeController.subscriptions}"
                      reflow="true"
                      draggableColumns="true">
-
-            <p:column headerText="#{labels.activityPresent}">
-                <p:selectBooleanCheckbox value="#{date.present}"/>
-            </p:column>
 
             <p:column headerText="#{labels.activityDate}">
                 <h:outputText value="#{date.activityDate}">
@@ -180,6 +175,10 @@
 
             <p:column headerText="#{labels.activityLocation}">
                 <h:outputText value="#{date.location}"/>
+            </p:column>
+
+            <p:column headerText="#{labels.activityPresent}">
+                <p:selectBooleanCheckbox value="#{date.present}"/>
             </p:column>
 
             <p:column headerText="#{labels.activityCommentsByContact}">
