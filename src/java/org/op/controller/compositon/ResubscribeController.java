@@ -79,7 +79,15 @@ public class ResubscribeController implements Serializable
 
     public void setAllDatesSelected(boolean allDatesSelected)
     {
-        this.allDatesSelected = allDatesSelected;
+        if (subscriptions != null)
+        {
+            subscriptions.forEach(subscription
+                    -> 
+                    {
+                        subscription.setPresent(allDatesSelected);
+            });
+
+        }
     }
 
 
@@ -201,32 +209,6 @@ public class ResubscribeController implements Serializable
         {
             selectedProject = new Project();
 
-        }
-    }
-
-
-
-    /**
-     * Simple method for selecting all dates of a project.
-     */
-    public void selectAllDates()
-    {
-        if (subscriptions != null)
-        {
-            subscriptions.forEach((subscription)
-                    -> 
-                    {
-                        if (allDatesSelected)
-                        {
-                            subscription.setPresent(true);
-                        } else
-                        {
-                            subscription.setPresent(false);
-                        }
-            });
-        } else
-        {
-            msg.error("No project activities");
         }
     }
 
