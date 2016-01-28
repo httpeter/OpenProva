@@ -51,8 +51,7 @@ public class AdminRepository extends DefaultRepository implements Serializable
         {
             return this.getEm()
                     .createQuery("select a from Activity a "
-                            + "where a.projectId = :projectId "
-                            + "and a.isMasterActivity = :isMasterActivity")
+                            + "where a.project.id = :projectId")
                     .setParameter("projectId", projectId)
                     .setParameter("isMasterActivity", isMasterActivity)
                     .getResultList();
