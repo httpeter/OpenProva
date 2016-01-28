@@ -43,6 +43,7 @@ public class AdminRepository extends DefaultRepository implements Serializable
     }
 
 
+//    Methods below should be changed so they fit the new datastructure
 
     public List<Activity> getProjectActivities(long projectId, boolean isMasterActivity)
     {
