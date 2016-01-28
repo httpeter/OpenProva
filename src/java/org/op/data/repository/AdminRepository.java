@@ -5,8 +5,10 @@ package org.op.data.repository;
 
 import java.io.Serializable;
 import java.util.List;
+import static org.apache.coyote.http11.Constants.a;
 import org.op.data.model.Activity;
 import org.op.data.model.Contact;
+import org.op.data.model.Subscription;
 import org.op.data.model.SystemUser;
 
 public class AdminRepository extends DefaultRepository implements Serializable
@@ -78,13 +80,13 @@ public class AdminRepository extends DefaultRepository implements Serializable
 
 
 
-    public boolean subscriptionRemoved(Activity a)
+    public boolean subscriptionRemoved(Subscription s)
     {
         if (emIsOpen())
         {
             this.getEm().getTransaction().begin();
-            a = this.getEm().merge(a);
-            this.getEm().remove(a);
+            s = this.getEm().merge(s);
+            this.getEm().remove(s);
             this.getEm().getTransaction().commit();
             this.getEm().clear();
             return true;
