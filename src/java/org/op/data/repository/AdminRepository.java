@@ -62,7 +62,7 @@ public class AdminRepository extends DefaultRepository implements Serializable
     }
 
 
-
+dit moeten subscriptions worden
     public List<Activity> getContactActivities(Contact c, boolean isMasterActivity)
     {
         if (emIsOpen())
