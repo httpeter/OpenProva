@@ -5,7 +5,6 @@ package org.op.data.repository;
 
 import java.io.Serializable;
 import java.util.List;
-import static org.apache.coyote.http11.Constants.a;
 import org.op.data.model.Activity;
 import org.op.data.model.Contact;
 import org.op.data.model.Subscription;
