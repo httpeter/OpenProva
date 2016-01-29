@@ -30,7 +30,7 @@
 
         <p:commandButton value="#{labels.login}" 
                          action="#{adminController.login()}" 
-                         styleClass="mySpecialButton"
+                         styleClass="myFullWidth"
                          update="@form">
         </p:commandButton>
 
@@ -250,13 +250,16 @@
                     <p:outputLabel value="#{labels.notes}"/>
                     <p:inputTextarea value="#{adminController.selectedContact.notes}"/>
 
-                    <!--                    <p:outputLabel value="{labels.responsibility}"/>
-                                        <p:selectOneRadio value="{adminController.selectedContact.systemUser.username}">
-                                            <f:selectItems value="{adminController.allUsers}" 
-                                                           var="u" 
-                                                           itemLabel="{u.username}" 
-                                                           itemValue="{u.username}" />
-                                        </p:selectOneRadio>-->
+                    <p:outputLabel value="#{labels.responsibility}"/>
+                    <p:selectOneRadio label="#{adminController.selectedContact.systemUser.firstName} 
+                                      #{adminController.selectedContact.lastName}"
+                                      value="#{adminController.selectedContact.systemUser}" layout="grid" columns="1">
+
+                        <f:selectItems value="#{adminController.allUsers}" 
+                                       var="u" 
+                                       itemLabel="#{u.firstName} #{u.lastName}" 
+                                       itemValue="#{u}" />
+                    </p:selectOneRadio>
 
                 </p:panelGrid>
 
@@ -265,16 +268,17 @@
 
 
                 <p:panelGrid columns="2" layout="grid">
+
                     <p:commandButton value="Save" icon="ui-icon-disk"
                                      action="#{adminController.saveExistingContact()}"
                                      update="mainForm:currentComposition" 
                                      oncomplete="PF('changeContactDLG').hide()"
-                                     styleClass="mySpecialButton"/>
+                                     styleClass="myFullWidth"/>
 
                     <p:commandButton value="Cancel"
                                      icon="ui-icon-arrowreturn-1-n" 
                                      onclick="PF('changeContactDLG').hide()"
-                                     styleClass="mySpecialButton"/>
+                                     styleClass="myFullWidth"/>
                 </p:panelGrid>
 
                 <p:spacer/>
@@ -286,7 +290,7 @@
                                  #{adminController.selectedContact.lastName}" 
                                  oncomplete="PF('delDLG').show();"
                                  update="mainForm:adminTabView"
-                                 styleClass="mySpecialButton"/>
+                                 styleClass="myFullWidth"/>
             </p:dialog>
 
 
@@ -351,12 +355,12 @@
                                      action="#{adminController.saveNewContact()}"
                                      update="mainForm:adminTabView" 
                                      oncomplete="PF('contactDLGNew').hide()"
-                                     styleClass="mySpecialButton"/>
+                                     styleClass="myFullWidth"/>
 
                     <p:commandButton value="Cancel"
                                      icon="ui-icon-arrowreturn-1-n" 
                                      onclick="PF('contactDLGNew').hide()"
-                                     styleClass="mySpecialButton"/>
+                                     styleClass="myFullWidth"/>
                 </p:panelGrid>
 
             </p:dialog>
@@ -380,7 +384,7 @@
                       modal="true" 
                       resizable="false" 
                       closeOnEscape="true">
-                <!--als dit fout gaat terugzetten op zelfde regel-->
+
                 <h:outputText value="Delete #{adminController.selectedContact.firstName} 
                               #{adminController.selectedContact.lastName}?"/>
                 <br/>
