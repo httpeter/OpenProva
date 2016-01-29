@@ -253,7 +253,9 @@
                     <p:outputLabel value="#{labels.responsibility}"/>
                     <p:selectOneRadio label="#{adminController.selectedContact.systemUser.firstName} 
                                       #{adminController.selectedContact.lastName}"
-                                      value="#{adminController.selectedContact.systemUser}" layout="grid" columns="1">
+                                      value="#{adminController.selectedContact.systemUser}" 
+                                      layout="grid" 
+                                      columns="1">
 
                         <f:selectItems value="#{adminController.allUsers}" 
                                        var="u" 
