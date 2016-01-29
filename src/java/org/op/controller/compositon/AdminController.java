@@ -20,8 +20,8 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
-import org.op.data.model.Activity;
 import org.op.data.model.Contact;
+import org.op.data.model.Subscription;
 import org.op.data.model.SystemUser;
 import org.op.data.repository.AdminRepository;
 import org.op.util.AESEncryptor;
@@ -294,7 +294,7 @@ public class AdminController implements Serializable
 
 
 
-    public void deleteContactAndActivities()
+    public void deleteContactAndSubscriptions()
     {
         if (selectedContact != null
                 && selectedContact.getSystemUser()
@@ -316,27 +316,19 @@ public class AdminController implements Serializable
                     + "' can only be deleted by it's own admin user.");
         }
 
-        List<Activity> selectedContactActivities = adminRepository
-                .getContactActivities(selectedContact, false);
+        List<Subscription> selectedContactSubscriptions = adminRepository
+                .getContactSubscriptions(selectedContact);
 
-        selectedContactActivities.forEach((activity)
+        selectedContactSubscriptions.forEach((subscription)
                 -> 
                 {
-                    if (adminRepository.subscriptionRemoved(activity))
-                    {
-                        msg.info("Subscription id: "
-                                + activity.getId()
-                                + ", "
-                                + activity.getDescription()
-                                + ", " + activity.getActivityDate()
-                                + " removed");
-                    } else
+                    if (!adminRepository.subscriptionRemoved(subscription))
                     {
                         msg.error("Subscription id: "
-                                + activity.getId()
+                                + subscription.getId()
                                 + ", "
-                                + activity.getDescription()
-                                + ", " + activity.getActivityDate()
+                                + subscription.getDescription()
+                                + ", " + subscription.getActivityDate()
                                 + " could not be removed");
                     }
         });

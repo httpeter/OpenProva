@@ -26,7 +26,8 @@ public class AdminRepository extends DefaultRepository implements Serializable
         {
             try
             {
-                return (SystemUser) this.getEm().createQuery("select u from SystemUser u "
+                return (SystemUser) this.getEm()
+                        .createQuery("select u from SystemUser u "
                         + "where u.username = :uName "
                         + "and :pWord = u.password "
                         + "and u.userRole = :uRole")
@@ -61,17 +62,15 @@ public class AdminRepository extends DefaultRepository implements Serializable
     }
 
 
-dit moeten subscriptions worden
-    public List<Activity> getContactActivities(Contact c, boolean isMasterActivity)
+
+    public List<Subscription> getContactSubscriptions(Contact c)
     {
         if (emIsOpen())
         {
             return this.getEm()
-                    .createQuery("select a from Activity a "
-                            + "where a.contactId = :contactId "
-                            + "and a.isMasterActivity = :isMasterActivity")
+                    .createQuery("select s from Subscription s "
+                            + "where s.contact.id = :contactId")
                     .setParameter("contactId", c.getId())
-                    .setParameter("isMasterActivity", isMasterActivity)
                     .getResultList();
         }
         return null;
