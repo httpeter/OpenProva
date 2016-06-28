@@ -25,18 +25,20 @@ public class DBScaffolder implements Serializable
                 + "Set to 'PRODUCTION' for use in...production.");
     }
 
-    private final DefaultRepository defaultRepository = new DefaultRepository("OpenProvaPU");
-
 
 
     public void restore()
     {
         try
         {
+            msg.info("Restoring development database...");
+
+            DefaultRepository repository = DefaultRepository.getInstance("OpenProvaPU");
 
             AESEncryptor aESEncryptor = new AESEncryptor();
 
-            if (defaultRepository.getResultList(SystemUser.class).isEmpty())
+            if (repository.getResultList(SystemUser.class) == null
+                    || repository.getResultList(SystemUser.class).isEmpty())
             {
 
                 //Users
@@ -51,7 +53,7 @@ public class DBScaffolder implements Serializable
                 u1.setUserRole("admin");
                 u1.setEmail("vuko.strijkerschef@gmail.com");
                 u1.setEmailPassword("****!");
-                if (defaultRepository.persisted(u1))
+                if (repository.persisted(u1))
                 {
                     msg.info("Standard strings admin user restored");
                 } else
@@ -70,7 +72,7 @@ public class DBScaffolder implements Serializable
                 u2.setUserRole("admin");
                 u2.setEmail("vuko.blazerschef@gmail.com");
                 u2.setEmailPassword("unknown");
-                if (defaultRepository.persisted(u2))
+                if (repository.persisted(u2))
                 {
                     msg.info("Standard winds user restored");
                 } else
@@ -100,7 +102,8 @@ public class DBScaffolder implements Serializable
                     c2.setPhone("063423423" + Math.round(Math.random() * 10));
                     c2.setEmail("e.dinges@gmail.com" + Math.round(Math.random() * 100));
 
-                    if (defaultRepository.persisted(c1) && defaultRepository.persisted(c2))
+                    if (repository.persisted(c1)
+                            && repository.persisted(c2))
                     {
                         msg.info("Standard contacts restored");
                     } else
@@ -113,7 +116,7 @@ public class DBScaffolder implements Serializable
             //Projects
             Project p1 = new Project();
             Project p2 = new Project();
-            if (defaultRepository.getResultList(Project.class).isEmpty())
+            if (repository.getResultList(Project.class).isEmpty())
             {
                 p1.setProjectName("Voorjaar 2015");
                 p1.setActive(true);
@@ -121,7 +124,7 @@ public class DBScaffolder implements Serializable
                 p1.setProjectEndDate(java.sql.Date.valueOf("2015-06-12"));
                 p1.setProjectRepertoire("Bach, Beethoven etc.");
                 p1.setRequiredPresence(99);
-                if (defaultRepository.persisted(p1))
+                if (repository.persisted(p1))
                 {
                     msg.info("Standard project p1 restored");
                 } else
@@ -135,7 +138,7 @@ public class DBScaffolder implements Serializable
                 p2.setProjectEndDate(java.sql.Date.valueOf("2015-09-14"));
                 p2.setProjectRepertoire("Schubert, Mozart etc.");
                 p2.setRequiredPresence(99);
-                if (defaultRepository.persisted(p2))
+                if (repository.persisted(p2))
                 {
                     msg.info("Standard project p2 restored");
                 } else
@@ -144,7 +147,7 @@ public class DBScaffolder implements Serializable
                 }
             }
 
-            if (defaultRepository.getResultList(Activity.class).isEmpty())
+            if (repository.getResultList(Activity.class).isEmpty())
             {
                 StringBuilder msgBuffer = new StringBuilder();
                 //Activities
@@ -157,7 +160,7 @@ public class DBScaffolder implements Serializable
                     a1.setDescription("bla " + String.valueOf(Math.round(Math.random() * 100)));
                     a1.setLocation("Griffioen, Amstelveen");
                     a1.setProject(p1);
-                    if (defaultRepository.persisted(a1))
+                    if (repository.persisted(a1))
                     {
                         msgBuffer.append(a1.getActivityDate());
                         msgBuffer.append("\n");
@@ -172,7 +175,7 @@ public class DBScaffolder implements Serializable
                     a2.setDescription("bla " + String.valueOf(Math.round(Math.random() * 100)));
                     a2.setLocation("Griffioen, Amstelveen");
                     a2.setProject(p2);
-                    if (defaultRepository.persisted(a2))
+                    if (repository.persisted(a2))
                     {
                         msgBuffer.append(a2.getActivityDate());
                         msgBuffer.append("\n");
@@ -185,6 +188,7 @@ public class DBScaffolder implements Serializable
             }
         } catch (Exception e)
         {
+            msg.fatal(e.getMessage());
             e.printStackTrace(System.out);
         }
     }

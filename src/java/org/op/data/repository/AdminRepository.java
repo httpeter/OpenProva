@@ -13,24 +13,30 @@ import org.op.data.model.SystemUser;
 public class AdminRepository extends DefaultRepository implements Serializable
 {
 
+    private static final long serialVersionUID = -7610678289904424970L;
+
+    private DefaultRepository repository;
+
+
+
     public AdminRepository(String persistenceUnitName)
     {
-        super(persistenceUnitName);
+        repository = DefaultRepository.getInstance(persistenceUnitName);
     }
 
 
 
     public SystemUser getSystemUser(String username, String password, String uRole)
     {
-        if (emIsOpen())
+        if (repository.emIsOpen())
         {
             try
             {
-                return (SystemUser) this.getEm()
+                return (SystemUser) repository.getEm()
                         .createQuery("select u from SystemUser u "
-                        + "where u.username = :uName "
-                        + "and :pWord = u.password "
-                        + "and u.userRole = :uRole")
+                                + "where u.username = :uName "
+                                + "and :pWord = u.password "
+                                + "and u.userRole = :uRole")
                         .setParameter("uName", username)
                         .setParameter("pWord", password)
                         .setParameter("uRole", uRole)
@@ -49,9 +55,9 @@ public class AdminRepository extends DefaultRepository implements Serializable
 
     public List<Activity> getProjectActivities(long projectId, boolean isMasterActivity)
     {
-        if (emIsOpen())
+        if (repository.emIsOpen())
         {
-            return this.getEm()
+            return repository.getEm()
                     .createQuery("select a from Activity a "
                             + "where a.project.id = :projectId")
                     .setParameter("projectId", projectId)
@@ -65,9 +71,9 @@ public class AdminRepository extends DefaultRepository implements Serializable
 
     public List<Subscription> getContactSubscriptions(Contact c)
     {
-        if (emIsOpen())
+        if (repository.emIsOpen())
         {
-            return this.getEm()
+            return repository.getEm()
                     .createQuery("select s from Subscription s "
                             + "where s.contact.id = :contactId")
                     .setParameter("contactId", c.getId())
@@ -80,17 +86,17 @@ public class AdminRepository extends DefaultRepository implements Serializable
 
     public boolean subscriptionRemoved(Subscription s)
     {
-        if (emIsOpen())
+        if (repository.emIsOpen())
         {
-            this.getEm().getTransaction().begin();
-            s = this.getEm().merge(s);
-            this.getEm().remove(s);
-            this.getEm().getTransaction().commit();
-            this.getEm().clear();
+            repository.getEm().getTransaction().begin();
+            s = repository.getEm().merge(s);
+            repository.getEm().remove(s);
+            repository.getEm().getTransaction().commit();
+            repository.getEm().clear();
             return true;
         } else
         {
-            this.getEm().getTransaction().rollback();
+            repository.getEm().getTransaction().rollback();
             return false;
         }
     }
