@@ -16,6 +16,8 @@ public class DBScaffolder implements Serializable
 
     private final FMessage msg;
 
+    private DefaultRepository repository;
+
 
 
     public DBScaffolder()
@@ -23,6 +25,7 @@ public class DBScaffolder implements Serializable
         msg = new FMessage();
         msg.warn("WARNING:\n\nRunning in 'Development' mode, DBScaffolding is active.\n\n"
                 + "Set to 'PRODUCTION' for use in...production.");
+        repository = DefaultRepository.getInstance("OpenProvaPU");
     }
 
 
@@ -31,8 +34,8 @@ public class DBScaffolder implements Serializable
     {
         try
         {
-            DefaultRepository repository = DefaultRepository.getInstance("OpenProvaPU");
-
+            repository = DefaultRepository.getInstance("OpenProvaPU");
+            
             AESEncryptor aESEncryptor = new AESEncryptor();
 
             if (repository.getResultList(SystemUser.class) == null
@@ -114,7 +117,8 @@ public class DBScaffolder implements Serializable
             //Projects
             Project p1 = new Project();
             Project p2 = new Project();
-            if (repository.getResultList(Project.class).isEmpty())
+            if (repository.getResultList(Project.class) == null
+                    || repository.getResultList(Project.class).isEmpty())
             {
                 p1.setProjectName("Voorjaar 2015");
                 p1.setActive(true);
@@ -145,7 +149,8 @@ public class DBScaffolder implements Serializable
                 }
             }
 
-            if (repository.getResultList(Activity.class).isEmpty())
+            if (repository.getResultList(Project.class) == null
+                    || repository.getResultList(Activity.class).isEmpty())
             {
                 StringBuilder msgBuffer = new StringBuilder();
                 //Activities

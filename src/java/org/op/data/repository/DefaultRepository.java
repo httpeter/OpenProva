@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 
@@ -27,8 +26,6 @@ public class DefaultRepository implements Serializable
             .getName());
     private static final long serialVersionUID = 7086626098229281352L;
 
-    private static EntityManagerFactory emf;
-
     private EntityManager em;
 
 
@@ -38,25 +35,10 @@ public class DefaultRepository implements Serializable
         if (instance == null)
         {
             instance = new DefaultRepository();
-            instance.setEmf(Persistence.createEntityManagerFactory(puName));
-            instance.setEm(emf.createEntityManager());
+            instance.setEm(Persistence.createEntityManagerFactory(puName)
+                    .createEntityManager());
         }
         return instance;
-    }
-
-
-
-    //<editor-fold defaultstate="collapsed" desc="'stupid'Getters & Setters">
-    public void setEmf(EntityManagerFactory emf)
-    {
-        this.emf = emf;
-    }
-
-
-
-    public EntityManager getEm()
-    {
-        return em;
     }
 
 
@@ -65,7 +47,13 @@ public class DefaultRepository implements Serializable
     {
         this.em = em;
     }
-//</editor-fold>
+
+
+
+    public EntityManager getEm()
+    {
+        return em;
+    }
 
 
 
@@ -78,15 +66,7 @@ public class DefaultRepository implements Serializable
      */
     public boolean emIsOpen()
     {
-        if (!instance.emf.isOpen())
-        {
-            logger.warning("EMF is closed!");
-        }
-        if (!instance.em.isOpen())
-        {
-            logger.warning("EM is closed!");
-        }
-        return instance.emf.isOpen() && instance.em.isOpen();
+        return instance.em.isOpen();
     }
 
 
