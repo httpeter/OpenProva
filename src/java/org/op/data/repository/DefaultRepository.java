@@ -34,6 +34,8 @@ public class DefaultRepository implements Serializable
     {
         if (instance == null)
         {
+            //temp
+            System.out.println("\n\n\n====== CREATING NEW EMF!!!!! ======\n\n\n");
             instance = new DefaultRepository();
             instance.setEm(Persistence.createEntityManagerFactory(puName)
                     .createEntityManager());
