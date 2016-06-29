@@ -31,8 +31,6 @@ public class DBScaffolder implements Serializable
     {
         try
         {
-            msg.info("Restoring development database...");
-
             DefaultRepository repository = DefaultRepository.getInstance("OpenProvaPU");
 
             AESEncryptor aESEncryptor = new AESEncryptor();

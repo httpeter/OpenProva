@@ -51,16 +51,16 @@ public class DefaultRepository implements Serializable
     {
         this.emf = emf;
     }
-    
-    
-    
+
+
+
     public EntityManager getEm()
     {
         return em;
     }
-    
-    
-    
+
+
+
     public void setEm(EntityManager em)
     {
         this.em = em;
