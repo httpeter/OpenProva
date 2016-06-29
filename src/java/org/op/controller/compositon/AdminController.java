@@ -237,7 +237,7 @@ public class AdminController implements Serializable
         currentUser = new SystemUser();
         selectedContact = new Contact();
         newContact = new Contact();
-        adminRepository.close();
+        adminRepository.closeEM();
         FacesContext.getCurrentInstance()
                 .getExternalContext()
                 .invalidateSession();

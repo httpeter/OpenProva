@@ -185,13 +185,12 @@ public class DefaultRepository implements Serializable
      * Method for closing the EntityManager and the EntityManagerFactory. If
      * closed, other methods persistence breaks.
      */
-    public void close()
+    public void closeEM()
     {
         if (instance.emIsOpen())
         {
             instance.em.clear();
             instance.em.close();
-            instance.emf.close();
         }
     }
 

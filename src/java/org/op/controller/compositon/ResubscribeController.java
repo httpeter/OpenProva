@@ -256,7 +256,7 @@ public class ResubscribeController implements Serializable
 //                            subscriptions,
 //                            additionalMessage);
 //
-//                    subscribersRepository.close();
+//                    subscribersRepository.closeEM();
 //
 //                } catch (Exception e)
 //                {
