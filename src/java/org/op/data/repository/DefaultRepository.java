@@ -11,12 +11,6 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.TypedQuery;
 import org.op.data.repository.persistence.PersistenceManager;
 
-/**
- * Simple extendable repository for use with JPA2 offering basic list retrieval
- * en persistence functionalities. Requires the name of the used Persistence
- * Unit.
- *
- */
 public class DefaultRepository implements Serializable
 {
 
@@ -28,11 +22,6 @@ public class DefaultRepository implements Serializable
 
 
 
-    /**
-     * Exposing the EntityManager for use in class extension
-     *
-     * @return
-     */
     public EntityManager getEm()
     {
         return em;
@@ -54,14 +43,6 @@ public class DefaultRepository implements Serializable
 
 
 
-    /**
-     * Saving an object to the database. If EntityManager or
-     * EntityManagerFactory are closed an error is thrown. The latter can be
-     * checked with 'emIsOpen'.
-     *
-     * @param object
-     * @return
-     */
     public boolean persisted(Object object)
     {
         try
@@ -105,8 +86,7 @@ public class DefaultRepository implements Serializable
 
     /**
      * Delete a specific object from the DB. Does not work with objects
-     * extending Collection! If the EntityManager and the EntityManagerFactory
-     * are closed, an error is thrown
+     * extending Collection!
      *
      * @param object
      * @return
