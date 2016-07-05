@@ -32,6 +32,7 @@ public class AdminRepository extends DefaultRepository implements Serializable
                     .getSingleResult();
         } catch (Exception e)
         {
+            e.printStackTrace(System.out);
             return null;
         }
     }
