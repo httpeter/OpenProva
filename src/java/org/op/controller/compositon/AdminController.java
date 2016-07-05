@@ -182,7 +182,7 @@ public class AdminController implements Serializable
 
     public void login()
     {
-        adminRepository = new AdminRepository("OpenProvaPU");
+        adminRepository = new AdminRepository();
         String userPwdEncrypted = null;
         try
         {
@@ -237,7 +237,6 @@ public class AdminController implements Serializable
         currentUser = new SystemUser();
         selectedContact = new Contact();
         newContact = new Contact();
-        adminRepository.closeEM();
         FacesContext.getCurrentInstance()
                 .getExternalContext()
                 .invalidateSession();

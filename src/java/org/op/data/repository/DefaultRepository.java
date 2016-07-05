@@ -5,11 +5,11 @@ package org.op.data.repository;
 
 import java.io.Serializable;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import javax.faces.context.FacesContext;
 import javax.persistence.EntityManager;
-import javax.persistence.Persistence;
+import javax.persistence.EntityManagerFactory;
 import javax.persistence.TypedQuery;
+import org.op.data.repository.persistence.PersistenceManager;
 
 /**
  * Simple extendable repository for use with JPA2 offering basic list retrieval
@@ -20,38 +20,19 @@ import javax.persistence.TypedQuery;
 public class DefaultRepository implements Serializable
 {
 
-    private static DefaultRepository instance = null;
-
-    private static final Logger logger = Logger.getLogger(DefaultRepository.class
-            .getName());
     private static final long serialVersionUID = 7086626098229281352L;
+
+    private EntityManagerFactory emf;
 
     private EntityManager em;
 
 
 
-    public static DefaultRepository getInstance(String puName)
-    {
-        if (instance == null)
-        {
-            //temp
-            System.out.println("\n\n\n====== CREATING NEW EMF!!!!! ======\n\n\n");
-            instance = new DefaultRepository();
-            instance.setEm(Persistence.createEntityManagerFactory(puName)
-                    .createEntityManager());
-        }
-        return instance;
-    }
-
-
-
-    public void setEm(EntityManager em)
-    {
-        this.em = em;
-    }
-
-
-
+    /**
+     * Exposing the EntityManager for use in class extension
+     *
+     * @return
+     */
     public EntityManager getEm()
     {
         return em;
@@ -59,16 +40,16 @@ public class DefaultRepository implements Serializable
 
 
 
-    /**
-     * Checking whether Entity Manager and Entity Manager Factory are open. made
-     * public so that it can be used by classes that extend DefaultRepository.
-     *
-     * @return
-     *
-     */
-    public boolean emIsOpen()
+    public DefaultRepository()
     {
-        return instance.em.isOpen();
+        String puName = FacesContext.getCurrentInstance()
+                .getExternalContext()
+                .getInitParameter("puName");
+
+        emf = PersistenceManager.getInstance()
+                .getEntityManagerFactory(puName);
+
+        em = emf.createEntityManager();
     }
 
 
@@ -83,30 +64,23 @@ public class DefaultRepository implements Serializable
      */
     public boolean persisted(Object object)
     {
-        if (instance.emIsOpen())
+        try
         {
+            em.getTransaction().begin();
+            em.persist(object);
+            em.getTransaction().commit();
+            em.clear();
+            return true;
+        } catch (Exception e)
+        {
+            e.printStackTrace();
             try
             {
-                instance.em.getTransaction().begin();
-                instance.em.persist(object);
-                instance.em.getTransaction().commit();
-                instance.em.clear();
-                return true;
-            } catch (Exception e)
+                em.getTransaction().rollback();
+            } catch (Exception e1)
             {
-                logger.log(Level.WARNING, e.getCause().getMessage());
-                try
-                {
-                    instance.em.getTransaction().rollback();
-                } catch (Exception e1)
-                {
-                    logger.log(Level.WARNING, e1.getCause().getMessage());
-                }
-                return false;
+                e1.printStackTrace(System.out);
             }
-        } else
-        {
-            System.out.println("EntityManagerFactor or EntityManager are closed");
             return false;
         }
     }
@@ -121,14 +95,10 @@ public class DefaultRepository implements Serializable
      */
     public List getResultList(Class c)
     {
-        if (instance.emIsOpen())
-        {
-            TypedQuery q = instance.em.createQuery("select o from "
-                    + c.getSimpleName()
-                    + " o", c);
-            return q.getResultList();
-        }
-        return null;
+        TypedQuery q = em.createQuery("select o from "
+                + c.getSimpleName()
+                + " o", c);
+        return q.getResultList();
     }
 
 
@@ -143,36 +113,18 @@ public class DefaultRepository implements Serializable
      */
     public boolean deleted(Object object)
     {
-        if (instance.emIsOpen())
+        try
         {
-            instance.em.getTransaction().begin();
-            instance.em.remove(object);
-            instance.em.getTransaction()
+            em.getTransaction().begin();
+            em.remove(object);
+            em.getTransaction()
                     .commit();
-            instance.em.clear();
+            em.clear();
             return true;
-        } else
+        } catch (Exception e)
         {
-            System.out.println("EntityManagerFactory or EntityManager are closed");
-            instance.em.getTransaction()
-                    .rollback();
+            e.printStackTrace(System.out);
             return false;
-        }
-
-    }
-
-
-
-    /**
-     * Method for closing the EntityManager and the EntityManagerFactory. If
-     * closed, other methods persistence breaks.
-     */
-    public void closeEM()
-    {
-        if (instance.emIsOpen())
-        {
-            instance.em.clear();
-            instance.em.close();
         }
     }
 

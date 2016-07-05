@@ -14,37 +14,16 @@ public class SubscribersRepository extends DefaultRepository implements Serializ
 
     private static final long serialVersionUID = 704529302348156052L;
 
-    private DefaultRepository repository;
-
-
-
-    /**
-     * Extending the DefaultRepository, this class is meant to deal with
-     * requests from and to the DB that involve user subscriptions or
-     * re-subscriptions.
-     *
-     * @param puName
-     */
-    public SubscribersRepository(String puName)
-    {
-
-        repository = DefaultRepository.getInstance(puName);
-    }
-
 
 
     public boolean isExistingContact(Contact c)
     {
-        if (repository.emIsOpen())
-        {
-            Contact con = (Contact) repository.getEm()
-                    .createQuery("select c from Contact c "
-                            + "where c.email = :cEmail")
-                    .setParameter("cEmail", c.getEmail())
-                    .getSingleResult();
-            return con != null;
-        }
-        return false;
+        Contact con = (Contact) this.getEm()
+                .createQuery("select c from Contact c "
+                        + "where c.email = :cEmail")
+                .setParameter("cEmail", c.getEmail())
+                .getSingleResult();
+        return con != null;
     }
 
 
@@ -56,15 +35,11 @@ public class SubscribersRepository extends DefaultRepository implements Serializ
      */
     public List<Activity> getActivities(Project project)
     {
-        if (repository.emIsOpen())
-        {
-            return repository.getEm()
-                    .createQuery("select a from Activity a "
-                            + "where a.project = :project")
-                    .setParameter("project", project)
-                    .getResultList();
-        }
-        return null;
+        return this.getEm()
+                .createQuery("select a from Activity a "
+                        + "where a.project = :project")
+                .setParameter("project", project)
+                .getResultList();
     }
 
 }

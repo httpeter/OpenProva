@@ -16,8 +16,6 @@ public class DBScaffolder implements Serializable
 
     private final FMessage msg;
 
-    private DefaultRepository repository;
-
 
 
     public DBScaffolder()
@@ -25,7 +23,6 @@ public class DBScaffolder implements Serializable
         msg = new FMessage();
         msg.warn("WARNING:\n\nRunning in 'Development' mode, DBScaffolding is active.\n\n"
                 + "Set to 'PRODUCTION' for use in...production.");
-        repository = DefaultRepository.getInstance("OpenProvaPU");
     }
 
 
@@ -34,8 +31,8 @@ public class DBScaffolder implements Serializable
     {
         try
         {
-            repository = DefaultRepository.getInstance("OpenProvaPU");
-            
+            DefaultRepository repository = new DefaultRepository();
+
             AESEncryptor aESEncryptor = new AESEncryptor();
 
             if (repository.getResultList(SystemUser.class) == null

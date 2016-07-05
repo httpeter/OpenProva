@@ -152,7 +152,7 @@ public class ResubscribeController implements Serializable
     public ResubscribeController()
     {
         msg = new FMessage();
-        subscribersRepository = new SubscribersRepository("OpenProvaPU");
+        subscribersRepository = new SubscribersRepository();
 
         //retrieving all projects
         List<Project> allProjects = subscribersRepository
@@ -211,6 +211,8 @@ public class ResubscribeController implements Serializable
 
         }
     }
+
+
 
     /**
      * This should be changed to facilitate resubscriptions only.

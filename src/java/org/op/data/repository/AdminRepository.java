@@ -15,88 +15,69 @@ public class AdminRepository extends DefaultRepository implements Serializable
 
     private static final long serialVersionUID = -7610678289904424970L;
 
-    private DefaultRepository repository;
-
-
-
-    public AdminRepository(String persistenceUnitName)
-    {
-        repository = DefaultRepository.getInstance(persistenceUnitName);
-    }
-
 
 
     public SystemUser getSystemUser(String username, String password, String uRole)
     {
-        if (repository.emIsOpen())
-        {
-            try
-            {
-                return (SystemUser) repository.getEm()
-                        .createQuery("select u from SystemUser u "
-                                + "where u.username = :uName "
-                                + "and :pWord = u.password "
-                                + "and u.userRole = :uRole")
-                        .setParameter("uName", username)
-                        .setParameter("pWord", password)
-                        .setParameter("uRole", uRole)
-                        .getSingleResult();
-            } catch (Exception e)
-            {
-                return null;
-            }
 
+        try
+        {
+            return (SystemUser) this.getEm().createQuery("select u from SystemUser u "
+                    + "where u.username = :uName "
+                    + "and :pWord = u.password "
+                    + "and u.userRole = :uRole")
+                    .setParameter("uName", username)
+                    .setParameter("pWord", password)
+                    .setParameter("uRole", uRole)
+                    .getSingleResult();
+        } catch (Exception e)
+        {
+            return null;
         }
-        return null;
     }
 
 
-//    Methods below should be changed so they fit the new datastructure
 
+    // Methods below should be changed so they fit the new datastructure
     public List<Activity> getProjectActivities(long projectId, boolean isMasterActivity)
     {
-        if (repository.emIsOpen())
-        {
-            return repository.getEm()
-                    .createQuery("select a from Activity a "
-                            + "where a.project.id = :projectId")
-                    .setParameter("projectId", projectId)
-                    .setParameter("isMasterActivity", isMasterActivity)
-                    .getResultList();
-        }
-        return null;
+        return this.getEm()
+                .createQuery("select a from Activity a "
+                        + "where a.project.id = :projectId")
+                .setParameter("projectId", projectId)
+                .setParameter("isMasterActivity", isMasterActivity)
+                .getResultList();
     }
 
 
 
     public List<Subscription> getContactSubscriptions(Contact c)
     {
-        if (repository.emIsOpen())
-        {
-            return repository.getEm()
-                    .createQuery("select s from Subscription s "
-                            + "where s.contact.id = :contactId")
-                    .setParameter("contactId", c.getId())
-                    .getResultList();
-        }
-        return null;
+
+        return this.getEm()
+                .createQuery("select s from Subscription s "
+                        + "where s.contact.id = :contactId")
+                .setParameter("contactId", c.getId())
+                .getResultList();
+
     }
 
 
 
     public boolean subscriptionRemoved(Subscription s)
     {
-        if (repository.emIsOpen())
+        try
         {
-            repository.getEm().getTransaction().begin();
-            s = repository.getEm().merge(s);
-            repository.getEm().remove(s);
-            repository.getEm().getTransaction().commit();
-            repository.getEm().clear();
+            this.getEm().getTransaction().begin();
+            s = this.getEm().merge(s);
+            this.getEm().remove(s);
+            this.getEm().getTransaction().commit();
+            this.getEm().clear();
             return true;
-        } else
+        } catch (Exception e)
         {
-            repository.getEm().getTransaction().rollback();
+            e.printStackTrace(System.out);
+            this.getEm().getTransaction().rollback();
             return false;
         }
     }
