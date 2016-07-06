@@ -1,0 +1,224 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+
+
+
+
+    <h:outputText value="#{labels.projectResubscriptionMSG}" escape="false"/>
+
+
+
+    <p:panel header="#{labels.resubscribeProject} 
+             #{resubscribeController.selectedProject.projectName}">
+
+        <br/>
+
+        <h:selectOneMenu label="#{resubscribeController.selectedProject.projectName}" 
+                         value="#{resubscribeController.selectedProject.id}" 
+                         style="width:100%">
+
+            <f:selectItem itemLabel="#{labels.projectSelect}"/>
+
+            <f:selectItems value="#{resubscribeController.activeProjects}"
+                           var="project" 
+                           itemLabel="#{project.projectName}"
+                           itemValue="#{project.id}"/>
+
+            <p:ajax listener="#{resubscribeController.selectProject()}" 
+                    update=":mainForm:currentComposition"/>
+
+        </h:selectOneMenu>
+
+
+        <br/>
+        <br/>
+
+
+        <h:panelGrid id="programmePanel" 
+                     columns="3" 
+                     rendered="#{not empty resubscribeController.selectedProject
+                                 .projectName}">
+
+            <p:outputLabel value="#{labels.projectFrom}"/>
+            <p:outputLabel value=":"/>
+            <h:outputText value="#{resubscribeController.selectedProject
+                                   .projectStartDate}">
+                <f:convertDateTime locale="#{labels.locale}" 
+                                   dateStyle="full" />
+            </h:outputText>
+
+            <p:outputLabel value="#{labels.projectUntil}"/>
+            <p:outputLabel value=":"/>
+            <h:outputText value="#{resubscribeController.selectedProject
+                                   .projectEndDate}">
+                <f:convertDateTime locale="#{labels.locale}" 
+                                   dateStyle="full"/>
+            </h:outputText>
+
+            <p:outputLabel value="#{labels.projectRepertoire}"/>
+            <p:outputLabel value=":"/>
+            <h:outputText value="#{resubscribeController.selectedProject
+                                   .projectRepertoire}"/>
+
+            <p:effect event="load" type="highlight"/>
+            <h:outputText/>
+            <h:outputText/>
+
+        </h:panelGrid>
+
+    </p:panel>
+
+
+
+    <br/>
+
+
+
+    <!--Moet resubscriptionpanel gana heten-->
+    <p:panel id="newSubscriptionPanel"
+             header="#{labels.projectResubscriptionPanelHeader}" 
+             rendered="#{not empty resubscribeController.selectedProject.projectName}">
+
+        <br/>
+
+        <h:panelGrid columns="2" style="width:100%">                                        
+
+            <p:inputText id="firstName" value="#{resubscribeController.newContact
+                                                 .firstName}">
+                <p:watermark for="firstName" value="#{labels.firstName}"/>
+            </p:inputText>
+            <p:outputLabel value="*"/>                                       
+
+            <p:inputText id="lastName" value="#{resubscribeController.newContact
+                                                .lastName}">
+                <p:watermark for="lastName" value="#{labels.lastName}"/>
+            </p:inputText>
+            <p:outputLabel value="*"/>
+
+            <p:inputText id="email" value="#{resubscribeController.newContact.email}" >
+                <p:watermark for="email" value="#{labels.email}"/>
+            </p:inputText>
+            <p:outputLabel value="*"/>
+
+            <p:inputText id="phone" value="#{resubscribeController.newContact.phone}">
+                <p:watermark for="phone" value="#{labels.phone}"/>
+            </p:inputText>
+            <p:outputLabel value="*"/>
+
+            <p:inputText id="instrument" value="#{resubscribeController.newContact
+                                                  .instrument}">
+                <p:watermark for="instrument" value="#{labels.instrument}"/>
+            </p:inputText>
+            <p:outputLabel value="*"/>
+
+        </h:panelGrid>
+
+
+
+
+
+
+
+        <p:selectBooleanCheckbox value="#{resubscribeController.allDatesSelected}" 
+                                 itemLabel="#{labels.selectAllDates}" 
+                                 styleClass="mySelectAllBox">
+            <p:ajax update="dTable"/>
+        </p:selectBooleanCheckbox>
+
+
+
+
+
+
+
+        <p:dataTable id="dTable" 
+                     var="date" 
+                     value="#{resubscribeController.subscriptions}"
+                     reflow="true"
+                     draggableColumns="true">
+
+            <p:column headerText="#{labels.activityDate}">
+                <h:outputText value="#{date.activityDate}">
+                    <f:convertDateTime locale="#{labels.locale}" 
+                                       dateStyle="full"/>
+                </h:outputText>
+            </p:column>
+
+            <p:column headerText="#{labels.activityTime}">
+                <h:outputText value="#{date.startTime}">
+                    <f:convertDateTime type="time" 
+                                       timeStyle="short" 
+                                       locale="#{labels.locale}"/>
+                </h:outputText>
+                <h:outputText value=" - "/>
+                <h:outputText value="#{date.endTime}">
+                    <f:convertDateTime type="time" timeStyle="short" 
+                                       locale="#{labels.locale}"/>
+                </h:outputText>
+            </p:column>
+
+            <p:column headerText="#{labels.activityDescription}">
+                <h:outputText value="#{date.description}"/>
+            </p:column>
+
+            <p:column headerText="#{labels.activityLocation}">
+                <h:outputText value="#{date.location}"/>
+            </p:column>
+
+            <p:column headerText="#{labels.activityPresent}">
+                <p:selectBooleanCheckbox value="#{date.present}"/>
+            </p:column>
+
+            <p:column headerText="#{labels.activityCommentsByContact}">
+                <p:inputTextarea value="#{date.commentsByContact}" 
+                                 rows="1" 
+                                 cols="10"/>
+            </p:column>
+
+        </p:dataTable>
+
+
+
+        <br/>
+
+
+
+        <p:inputTextarea id="additionalMessage" 
+                         value="#{resubscribeController.additionalMessage}" 
+                         styleClass="mySpecialInputTextarea">
+            <p:watermark for="additionalMessage" value="#{labels.activityAdditionalMessage}"/>
+        </p:inputTextarea>
+
+
+
+        <br/>
+        <br/>
+
+
+
+        <p:commandButton value="#{labels.save}" 
+                         icon="ui-icon-disk" 
+                         action="#{resubscribeController.saveAndMailNewSubscription}" 
+                         styleClass="myFullWidth"
+                         ajax="false"/>
+
+
+
+        <br/>
+        <br/>
+
+
+
+    </p:panel>
+
+
+</ui:composition>   
+
+
+
+
+
