@@ -9,7 +9,11 @@
     <class>org.op.data.model.Subscription</class>
     <class>org.op.data.model.SystemUser</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
+    <shared-cache-mode>ALL</shared-cache-mode>
     <properties>
+      <!-- logging or no loggin
+      <property name="eclipselink.logging.level" value="WARNING"/>
+       end -->
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/db_openprova?zeroDateTimeBehavior=convertToNull"/>
       <property name="javax.persistence.jdbc.user" value="vuko"/>
       <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
