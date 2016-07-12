@@ -53,6 +53,10 @@
 
     <h:body styleClass="myBody">
 
+        <p:outputPanel rendered="#{!indexController.developmentStage}">
+            <!--Google Analytics-->
+            <ui:include src="#{indexController.compositionsDir}/ga.xhtml"/>
+        </p:outputPanel>
 
 
         <h:form id="mainForm" styleClass="myForm">
@@ -157,10 +161,6 @@
 
 
 
-        <p:outputPanel rendered="#{!indexController.developmentStage}">
-            <!--Google Analytics-->
-            <ui:include src="#{indexController.compositionsDir}/ga.xhtml"/>
-        </p:outputPanel>
 
 
 
