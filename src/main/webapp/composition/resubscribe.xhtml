@@ -25,8 +25,8 @@
 
             <f:selectItems value="#{resubscribeController.activeProjects}"
                            var="project" 
-                           itemLabel="#{project.projectName}"
-                           itemValue="#{project.id}"/>
+                           itemLabel="#{project}"
+                           itemValue="#{project}"/>
 
             <p:ajax listener="#{resubscribeController.selectProject()}" 
                     update=":mainForm:currentComposition"/>

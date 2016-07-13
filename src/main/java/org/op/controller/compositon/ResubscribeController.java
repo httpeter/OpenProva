@@ -17,10 +17,9 @@ package org.op.controller.compositon;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
-import java.util.stream.Collectors;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.model.SelectItem;
 import org.op.data.model.Activity;
 import org.op.data.model.Contact;
 import org.op.data.model.Project;
@@ -36,7 +35,7 @@ public class ResubscribeController implements Serializable
 
     private final SubscribersRepository subscribersRepository;
 
-    private List<Project> activeProjects;
+    private List<SelectItem> activeProjects;
 
     private final MailFactory mailFactory;
 
@@ -106,14 +105,14 @@ public class ResubscribeController implements Serializable
 
 
 
-    public List<Project> getActiveProjects()
+    public List<SelectItem> getActiveProjects()
     {
         return activeProjects;
     }
 
 
 
-    public void setActiveProjects(List<Project> activeProjects)
+    public void setActiveProjects(List<SelectItem> activeProjects)
     {
         this.activeProjects = activeProjects;
     }
@@ -159,9 +158,9 @@ public class ResubscribeController implements Serializable
                 .getResultList(Project.class);
 
         //then only adding the active ones to the list
-        activeProjects = allProjects.stream()
-                .filter(p -> p.isActive())
-                .collect(Collectors.toList());
+//        activeProjects = allProjects.stream()
+//                .filter(p -> p.isActive())
+//                .collect(Collectors.toList());
 
         mailFactory = new MailFactory();
         selectedProject = new Project();
@@ -178,12 +177,12 @@ public class ResubscribeController implements Serializable
         activeProjects.forEach(ap
                 -> 
                 {
-                    if (selectedProject.getId() != null
-                            && Objects.equals(ap.getId(),
-                                    selectedProject.getId()))
-                    {
-                        selectedProject = ap;
-                    }
+//                    if (selectedProject.getId() != null
+//                            && Objects.equals(ap.getId(),
+//                                    selectedProject.getId()))
+//                    {
+//                        selectedProject = ap;
+//                    }
         });
 
         if (selectedProject.getId() != null)

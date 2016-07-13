@@ -5,6 +5,7 @@ package org.op.data.repository;
 
 import java.io.Serializable;
 import java.util.List;
+import org.httpeter.repository.DefaultRepository;
 import org.op.data.model.Activity;
 import org.op.data.model.Contact;
 import org.op.data.model.Subscription;
