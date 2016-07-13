@@ -16,7 +16,7 @@
     <!--Persistence-->
     <description>ServletContextListener</description>
     <listener>
-        <listener-class>org.op.data.repository.persistence.PersistenceAppListener</listener-class>
+        <listener-class>org.httpeter.repository.persistence.PersistenceAppListener</listener-class>
     </listener>
     
     <!--Change to 'Production' when going live-->
@@ -37,16 +37,10 @@
         <param-value>true</param-value>
     </context-param> 
     
-    <!--
+    
     <context-param>
         <param-name>primefaces.THEME</param-name>
         <param-value>omega</param-value>
-    </context-param>
-    -->
-   
-    <context-param>
-        <param-name>primefaces.THEME</param-name>
-        <param-value>metroui</param-value>
     </context-param>
     
     <context-param>
