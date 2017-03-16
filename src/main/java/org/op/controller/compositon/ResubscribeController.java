@@ -33,6 +33,8 @@ import org.op.util.MailFactory;
 public class ResubscribeController implements Serializable
 {
 
+    private static final long serialVersionUID = -4563884303830445895L;
+
     private final SubscribersRepository subscribersRepository;
 
     private List<SelectItem> activeProjects;

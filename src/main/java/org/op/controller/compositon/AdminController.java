@@ -33,6 +33,8 @@ import org.op.util.MailFactory;
 public class AdminController implements Serializable
 {
 
+    private static final long serialVersionUID = 932378170497270415L;
+
     private AdminRepository adminRepository;
 
     private final MailFactory mail;
@@ -53,7 +55,6 @@ public class AdminController implements Serializable
     private int activeAdminTab;
 
 
-
     //Private so kept here...
     private void loadContacts()
     {
@@ -68,7 +69,6 @@ public class AdminController implements Serializable
     }
 
 
-
     public AdminController()
     {
         currentUser = new SystemUser();
@@ -79,13 +79,11 @@ public class AdminController implements Serializable
     }
 
 
-
     //<editor-fold defaultstate="collapsed" desc="Getters & Setters">
     public List<SystemUser> getAllUsers()
     {
         return allUsers;
     }
-
 
 
     public void setAllUsers(List<SystemUser> allUsers)
@@ -94,12 +92,10 @@ public class AdminController implements Serializable
     }
 
 
-
     public int getActiveAdminTab()
     {
         return activeAdminTab;
     }
-
 
 
     public void setActiveAdminTab(int activeAdminTab)
@@ -108,12 +104,10 @@ public class AdminController implements Serializable
     }
 
 
-
     public Contact getNewContact()
     {
         return newContact;
     }
-
 
 
     public void setNewContact(Contact newContact)
@@ -122,12 +116,10 @@ public class AdminController implements Serializable
     }
 
 
-
     public boolean isCurrentUserIsAdmin()
     {
         return currentUserIsAdmin;
     }
-
 
 
     public void setCurrentUserIsAdmin(boolean currentUserIsAdmin)
@@ -136,12 +128,10 @@ public class AdminController implements Serializable
     }
 
 
-
     public SystemUser getCurrentUser()
     {
         return currentUser;
     }
-
 
 
     public void setCurrentUser(SystemUser currentUser)
@@ -150,12 +140,10 @@ public class AdminController implements Serializable
     }
 
 
-
     public List<Contact> getContacts()
     {
         return contacts;
     }
-
 
 
     public void setContacts(List<Contact> contacts)
@@ -164,12 +152,10 @@ public class AdminController implements Serializable
     }
 
 
-
     public Contact getSelectedContact()
     {
         return selectedContact;
     }
-
 
 
     public void setSelectedContact(Contact selectedContact)
@@ -178,7 +164,6 @@ public class AdminController implements Serializable
     }
 
 //</editor-fold>
-
 
     public void login()
     {
@@ -208,9 +193,9 @@ public class AdminController implements Serializable
             allUsers = new ArrayList<>(au.size());
 
             au.forEach((usr)
-                    -> 
-                    {
-                        allUsers.add(usr);
+                    ->
+            {
+                allUsers.add(usr);
             });
         } else
         {
@@ -220,7 +205,6 @@ public class AdminController implements Serializable
     }
 
 
-
     public void adminTabChange()
     {
         if (activeAdminTab == 1)
@@ -228,7 +212,6 @@ public class AdminController implements Serializable
             this.loadContacts();
         }
     }
-
 
 
     public void logout()
@@ -243,12 +226,10 @@ public class AdminController implements Serializable
     }
 
 
-
     public void addNewContact()
     {
         newContact = new Contact();
     }
-
 
 
     public void saveNewContact()
@@ -271,7 +252,6 @@ public class AdminController implements Serializable
     }
 
 
-
     public void saveExistingContact()
     {
         if (selectedContact != null
@@ -292,13 +272,12 @@ public class AdminController implements Serializable
     }
 
 
-
     public void deleteContactAndSubscriptions()
     {
         if (selectedContact != null
                 && selectedContact.getSystemUser()
-                .getUsername()
-                .equals(currentUser.getUsername())
+                        .getUsername()
+                        .equals(currentUser.getUsername())
                 && adminRepository.deleted(selectedContact))
         {
             msg.info("Contact '"
@@ -319,17 +298,17 @@ public class AdminController implements Serializable
                 .getContactSubscriptions(selectedContact);
 
         selectedContactSubscriptions.forEach((subscription)
-                -> 
-                {
-                    if (!adminRepository.subscriptionRemoved(subscription))
-                    {
-                        msg.error("Subscription id: "
-                                + subscription.getId()
-                                + ", "
-                                + subscription.getDescription()
-                                + ", " + subscription.getActivityDate()
-                                + " could not be removed");
-                    }
+                ->
+        {
+            if (!adminRepository.subscriptionRemoved(subscription))
+            {
+                msg.error("Subscription id: "
+                        + subscription.getId()
+                        + ", "
+                        + subscription.getDescription()
+                        + ", " + subscription.getActivityDate()
+                        + " could not be removed");
+            }
         });
 
         this.loadContacts();

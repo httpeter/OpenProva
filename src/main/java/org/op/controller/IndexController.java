@@ -24,6 +24,8 @@ import javax.faces.context.FacesContext;
 public class IndexController implements Serializable
 {
 
+    private static final long serialVersionUID = 5672874275536200004L;
+
     private final FacesContext facesContext;
 
     private final String compositionsDir;
@@ -34,13 +36,11 @@ public class IndexController implements Serializable
             currentComposition;
 
 
-
     //<editor-fold defaultstate="collapsed" desc="Getters & Setters">
     public boolean isDevelopmentStage()
     {
         return developmentStage;
     }
-
 
 
     public String getCompositionsDir()
@@ -49,12 +49,10 @@ public class IndexController implements Serializable
     }
 
 
-
     public String getCurrentComposition()
     {
         return currentComposition;
     }
-
 
 
     public void setCurrentComposition(String currentComposition)
@@ -63,12 +61,10 @@ public class IndexController implements Serializable
     }
 
 
-
     public String getLabelFile()
     {
         return labelFile;
     }
-
 
 
     public void setLabelFile(String labelFile)
@@ -77,7 +73,6 @@ public class IndexController implements Serializable
     }
 
 //</editor-fold>
-
 
     /**
      * JSF managed bean responsible for page composition and property files such
@@ -117,7 +112,6 @@ public class IndexController implements Serializable
         }
         this.navigate();
     }
-
 
 
     /**

@@ -31,6 +31,8 @@ import org.primefaces.model.DefaultDashboardModel;
 public class HomeController implements Serializable
 {
 
+    private static final long serialVersionUID = 3159436671438091042L;
+
     private DashboardModel dashboardModel;
 
 
