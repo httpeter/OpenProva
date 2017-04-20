@@ -19,7 +19,8 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.context.FacesContext;
+import javax.faces.context.ExternalContext;
+import javax.inject.Inject;
 import org.op.data.model.Contact;
 import org.op.data.model.Subscription;
 import org.op.data.model.SystemUser;
@@ -32,6 +33,9 @@ import org.op.util.MailFactory;
 @SessionScoped
 public class AdminController implements Serializable
 {
+
+    @Inject
+    private ExternalContext context;
 
     private static final long serialVersionUID = 932378170497270415L;
 
@@ -220,9 +224,7 @@ public class AdminController implements Serializable
         currentUser = new SystemUser();
         selectedContact = new Contact();
         newContact = new Contact();
-        FacesContext.getCurrentInstance()
-                .getExternalContext()
-                .invalidateSession();
+        context.invalidateSession();
     }
 
 
