@@ -16,7 +16,7 @@
     A management-login enables the orchestra managers/coordinators to see who will be present at a given date, view contact information and modify projects and subscriptions.
 </p>
 <p>
-    The system uses Java8, JSF, Primefaces, JPA2 and was created with Netbeans. Currently a <a href='http://inschrijven-vukamerorkest.heliohost.org/vukosyst_web/'>simplified version</a> that I made for the <a href='http://vu-kamerorkest.nl/'>VU-Chamber Orchestra</a> is running at Redhat's OpenShift (free!) cloud platform.
+    The system uses Java8, JSF, Primefaces, JPA2 and was created with Netbeans. Currently a <a href='http://www.case1.nl/omlite/'>simplified version</a> that I made for the <a href='http://vu-kamerorkest.nl/'>VU-Chamber Orchestra</a> can be viewed.
 </p>
 <p>
     You're free to use the code as you please as long as it does not hurt anyone (Apache2 lisence).
