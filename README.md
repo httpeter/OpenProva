@@ -16,9 +16,7 @@
     A management-login enables the orchestra managers/coordinators to see who will be present at a given date, view contact information and modify projects and subscriptions.
 </p>
 <p>
-    The system uses Java8, JSF, Primefaces, JPA2 and was created with Netbeans. Currently a <a href='http://inschrijven-vukamerorkest.rhcloud.com/'>simplified version</a> that I made for the <a href='http://vu-kamerorkest.nl/'>VU-Chamber Orchestra</a> is running at Redhat's OpenShift (free!) cloud platform.
-    <br/>
-    The current source looks like <a href='http://www.positive-interaction.com'>this</a> when deployed.
+    The system uses Java8, JSF, Primefaces, JPA2 and was created with Netbeans. Currently a <a href='http://inschrijven-vukamerorkest.heliohost.org/vukosyst_web/'>simplified version</a> that I made for the <a href='http://vu-kamerorkest.nl/'>VU-Chamber Orchestra</a> is running at Redhat's OpenShift (free!) cloud platform.
     <br/>
     I used the great new Netbeans JPA Modeler plugin to create Entities. The ERD can be viewed <a href='src/java/org/op/data/model/diagram/JPADiagram.jpa.png?raw=true' target='_blank'>here</a>.
 </p>
